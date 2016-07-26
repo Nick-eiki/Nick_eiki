@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/schoolPage.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script>
+$(function(){
+
+$('.list .applyFor').click(function(){
+$('#handle').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					class:"okBtn",
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					class:"cancelBtn",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#handle" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+
+
+})
+})
+
+
+
+</script>
+
+<title>学校-教研组列表页</title>
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+	<div class="cont24 clearfix">
+    	<div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            
+            <div class="userAccount hide grid_3 alpha omega">
+            	<img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+            	<h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->
+<!--主体内容开始-->
+
+	<div class="main cont24">
+        <div class="main_head">
+            <h2 class="main_t">
+            	<span class="mainName">北京四中</span>
+            	
+            </h2>
+            <h3 class="Signature">
+            	<span>我不是最好的，但却是唯一的向前冲，让我们与众不同</span><i></i>
+            	
+            </h3>
+            
+        </div>
+        <div class="main_cent">
+        	<div class="mainNav">
+            	<ul class="mainNav_L">
+                	<li><a href="#">首页</a></li>
+                    <li><a href="#">班级公告</a></li>
+                    <li class="ac"><a href="#">教研组</a></li>
+                    <li><a href="#">班级</a></li>
+                    <li><a href="#">招生简章</a></li>
+                    <li><a href="#">录取分数线</a></li>
+                </ul>
+                <ul class="mainNav_R clearfix">
+                	<li>
+                    	<i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                     	<ul class="tab hide">
+                        	<li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                        </ul>   
+                     </li>
+                    <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                    <li><i class="management"></i><span>个人管理中心</span></li>
+                </ul>
+            </div>
+            <div class="main_c clearfix class_listi" style="padding-bottom:50px;">
+            	<div class="noticeH clearfix noticeB">
+                <h4 class="h3L">教研组</h4>
+                
+              
+                    <span class="title">(所在：<a href="#">五四运动教研组</a>)</span>
+                   <a href="school_z_organization.html" class="B_btn120 addBtn">管理教研组</a>
+            	</div>
+                
+                
+          
+                
+                	
+                
+                <hr>
+                <div class="class_list_min">
+                	<div class="class_list_t clearfix">
+                    	<p class="classL" style="margin-right:28px;">
+                        	<em class="classify">学部: </em><label for="c1"><input type="checkbox" id="c1">小学部</label>&nbsp;&nbsp;
+                        	<label for="c2"><input type="checkbox" id="c2">初中部</label>&nbsp;&nbsp;
+                            <label for="c3"><input type="checkbox" id="c3">高中部</label>&nbsp;&nbsp;
+                        </p>
+                        <p class="classL classR"><em class="classify">科目: </em><label for="c6"><input type="checkbox" id="c6">数学</label>&nbsp;
+                        	<label for="c4"><input type="checkbox" id="c4">语文</label>&nbsp;&nbsp;
+                            <label for="c5"><input type="checkbox" id="c5">英语</label>&nbsp;&nbsp;
+                            <span class="stext">
+                            	<input type="text" class="text text_Width">
+                                <i></i>
+                            </span>
+                            <input type="button" value="搜&nbsp;&nbsp;索" class="btn class_Btn">
+                        </p>
+                    </div>
+                    <div class="s_class_list clearfix" >
+                    	<div class="graduate_list">
+                        	<dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                        </div>
+                        <div class="graduate_list">
+                        	<dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                        </div>
+                        <div class="graduate_list">
+                        	<dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                            <dl>
+                            	<dt>语文考研组</dt>
+                                <dd><span>考研组长：<em>孙悟空</em></span></dd>
+                                <dd><span>小学部：<em>语文</em><em>人教版</em></span></dd>
+                                <dd><span>考研计划：<em>30分</em></span><span>考研课题：<em>3项</em></span></dd>
+                                <dd><span>考研资料：<em>10篇教案</em><em>10篇讲义</em><em>10个系列视频</em></span></dd>
+                                <dd><span>考研成员：<em>3<i>名教师</i></em></span></dd>
+                            </dl>
+                        </div>
+                        <div class="page minipage" style="width:1079px; float:left;  text-align:center;"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+                    </div>
+                     
+                </div>
+            </div>
+            
+        </div>
+
+	</div>
+<!--主体内容结束-->
+
+
+<div class="footWrap">
+	<div class="foot">
+    	<dl>
+        	<dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+        	<dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+        	<dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+        	<dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+
+
+</div>
+<!--弹出框pop--------------------->
+<div id="handle" class=" popBox handle hide" title="手拉手班级申请">
+	<div class="impBox">
+    	 <div class="handleT">申请成为<span>北京市</span><em>海淀区</em><i>人大附中</i></div>
+         <div class="handleM"><h4>班名称班名称班名称</h4></div>
+         <div class="handleB">的手拉手班级？</div>
+       
+    </div>
+
+</div>
+</body>
+</html>

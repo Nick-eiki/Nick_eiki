@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>视频库</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/platform.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('.tree').tree({openSubMenu:true,operate:false});
+	$('.orderBar span').click(function(){
+		$(this).addClass('ac').siblings().removeClass('ac');
+	})
+	
+	$('.subTitleBar_text').placeholder({value:'视频名称',ie6Top:10});
+	$("#searchText").placeholder({'value':"请输入视频名称"});
+	
+})
+</script>
+</head>
+
+<body class="platform">
+<div class="head">
+
+</div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        
+        <div class="grid_24 main_r">
+            <div class="main_cont video_library">
+                <div class="title">
+                    <h4>视频库</h4>
+                </div>
+                <div class="subTitle_r pr">
+                    <input type="text" style="width:550px" class="text subTitleBar_text" name="text" value="">
+                    <button type="submit" class="search">搜索视频</button>
+                </div>
+                <div class="form_list no_padding_form_list">
+                    <div class="row">
+                        <div class="formR">
+                            <ul class="resultList resultListcon" >
+                                <li><a href="#">知识点选视频</a></li>
+                                <li class="ac"><a href="#">试卷选视频</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formR">
+                            <ul class="resultList testClsList" >
+                                <li><a href="javascript:;">学科:</a></li>
+                                <li class="ac"><a href="javascript:;">语文</a></li>
+                                <li><a href="javascript:;">数学</a></li>
+                                <li><a href="javascript:;">英语</a></li>
+                                <li><a href="javascript:;">历史</a></li>
+                                <li><a href="javascript:;">地理</a></li>
+                                <li><a href="javascript:;">政治</a></li>
+                                <li><a href="javascript:;">物理</a></li>
+                                <li><a href="javascript:;">化学</a></li>
+                                <li><a href="javascript:;">政治</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formR">
+                            <ul class="resultList testClsList" >
+                                <li><a href="javascript:;">类型:</a></li>
+                                <li class="ac"><a href="javascript:;">中考真题</a></li>
+                                <li><a href="javascript:;">高考真题</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formR">
+                            <ul class="resultList testClsList" >
+                                <li><a href="javascript:;">年份:</a></li>
+                                <li class="ac"><a href="javascript:;">2015</a></li>
+                                <li><a href="javascript:;">2014</a></li>
+                                <li><a href="javascript:;">2013</a></li>
+                                <li><a href="javascript:;">2012</a></li>
+                                <li><a href="javascript:;">2011</a></li>
+                                <li><a href="javascript:;">2010</a></li>
+                                <li><a href="javascript:;">2009</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formR">
+                            <ul class="resultList testClsList" >
+                                <li class="hiegts"><a href="javascript:;">省份:</a></li>
+                                <li class="ac"><a href="javascript:;">北京</a></li>
+                                <li><a href="javascript:;">天津</a></li>
+                                <li><a href="javascript:;">河北</a></li>
+                                <li><a href="javascript:;">上海</a></li>
+                                <li><a href="javascript:;">山东</a></li>
+                                <li><a href="javascript:;">山西</a></li>
+                                <li><a href="javascript:;">陕西</a></li>
+                                <li><a href="javascript:;">吉林</a></li>
+                                <li><a href="javascript:;">辽宁</a></li>
+                                <li><a href="javascript:;">江苏</a></li>
+                                <li><a href="javascript:;">浙江</a></li>
+                                <li><a href="javascript:;">安徽</a></li>
+                                <li><a href="javascript:;">福建</a></li>
+                                <li><a href="javascript:;">广东</a></li>
+                                <li><a href="javascript:;">广西</a></li>
+                                <li><a href="javascript:;">海南</a></li>
+                                <li><a href="javascript:;">湖北</a></li>
+                                <li><a href="javascript:;">湖南</a></li>
+                                <li><a href="javascript:;">宁夏</a></li>
+                                <li><a href="javascript:;">贵州</a></li>
+                                <li><a href="javascript:;">河北</a></li>
+                                <li><a href="javascript:;">上海</a></li>
+                                <li><a href="javascript:;">山东</a></li>
+                                <li><a href="javascript:;">山西</a></li>
+                                <li><a href="javascript:;">陕西</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="problem_box videos_box clearfix">
+                    <div class="grid_18 omega alpha videobox_con">
+                        <div class="tab video_library_con">
+                            <div class="tabCont">
+                                <div class="tabItem">
+                                    <ul class="videoList clearfix">
+                                    	<li class="cur">
+                                        	<h4><a href="video_detail.html">此处视频名称此处视频名称此处视频名称</a></h4>
+                                           <dl class="exam">
+                                           		<dt>高考真题&nbsp;&nbsp;|</dt>
+                                                <dt>北京&nbsp;&nbsp;|</dt>
+                                                <dt>2014年</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>总题数:&nbsp;&nbsp;12</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>更新时间:2015-04-12</dt>
+                                           </dl>
+                                        </li>
+                                        <li>
+                                        	<h4><a href="video_detail.html">此处视频名称此处视频名称此处视频名称</a></h4>
+                                           <dl class="exam">
+                                           		<dt>高考真题&nbsp;&nbsp;|</dt>
+                                                <dt>北京&nbsp;&nbsp;|</dt>
+                                                <dt>2014年</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>总题数:&nbsp;&nbsp;12</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>更新时间:2015-04-12</dt>
+                                           </dl>
+                                        </li>
+                                        <li>
+                                        	<h4><a href="video_detail.html">此处视频名称此处视频名称此处视频名称</a></h4>
+                                           <dl class="exam">
+                                           		<dt>高考真题&nbsp;&nbsp;|</dt>
+                                                <dt>北京&nbsp;&nbsp;|</dt>
+                                                <dt>2014年</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>总题数:&nbsp;&nbsp;12</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>更新时间:2015-04-12</dt>
+                                           </dl>
+                                        </li>
+                                        <li>
+                                        	<h4><a href="video_detail.html">此处视频名称此处视频名称此处视频名称</a></h4>
+                                           <dl class="exam">
+                                           		<dt>高考真题&nbsp;&nbsp;|</dt>
+                                                <dt>北京&nbsp;&nbsp;|</dt>
+                                                <dt>2014年</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>总题数:&nbsp;&nbsp;12</dt>
+                                           </dl>
+                                           <dl class="exam examc">
+                                           		<dt>更新时间:2015-04-12</dt>
+                                           </dl>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                    <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                                </div>
+                                <div class="tabItem hide"> </div>
+                                <div class="tabItem hide"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--主体end--> 
+</body>
+</html>

@@ -1,0 +1,59 @@
+*{margin:0;padding:0;}
+/*选项栏*/
+.container{width:1200px;margin:18px auto;float:none;}
+.tch_head ul{float:left;}
+.tch_head ul li{float:left;width:70px;height:22px;padding:19px 31px 19px 32px}
+.tch_head ul li a{float:left;width:70px;height:22px;line-height:22px;text-align:center;border-radius:3px;color:#333}
+.tch_head ul li .ac{background-color:#0fade5;color:#fff}
+/*主体*/
+#main{width:1200px;margin:0 auto}
+#main_left{background:white;width:910px;float:left;margin-bottom:40px;}
+/*选项卡*/
+#main_left ul.main_tab{width:910px;height:60px;line-height:60px;border-bottom:1px solid #f5f5f5;}
+#main_left ul.main_tab li{cursor:pointer;float:left;width:110px;text-align:center;border-left:1px solid #f5f5f5;border-right:1px solid #f5f5f5;}
+#main_left ul.main_tab li#select{border-top:4px solid #10ade5;line-height:56px;}
+/*收入明细*/
+#tab_2,#tab_3{display:none;}
+#tab_1 .page{text-align:center;margin-top:30px;}
+#tab_1 .page input{margin:0 5px;}
+#tab_1 .page a{margin:0 5px;}
+/*我的等级*/
+#tab_2 ul li a,#tab_3 ul li a{font-size:24px;margin:0 10px;}
+/*收入明细 && 我的等级共用*/
+.conversion{width:690px;text-align:right;}
+#tab_1,#tab_2{padding:54px 110px;}
+#tab_1 table,#tab_2 table{width:690px;text-align:center;}
+#tab_1 table thead tr,#tab_2 table thead tr{background:#d7f2fc;height:40px;line-height:40px;}
+#tab_1 table tbody tr,#tab_2 table tbody tr{line-height:60px;height:60px;border-bottom:1px solid #dcdcdc;}
+/*积分商城*/
+#tab_3{padding:54px 0;padding-left:110px;}
+#tab_3 table tr{height:350px;}
+#tab_3 table td{width:222px;}
+#tab_3 table td div#images_1{background:url("../images/MAC.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td div#images_2{background:url("../images/Bracelet.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td div#images_3{background:url("../images/Charger_Baby.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td div#images_4{background:url("../images/pen.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td div#images_5{background:url("../images/U.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td div#images_6{background:url("../images/note_book.jpg") no-repeat;height:160px;width:220px;}
+#tab_3 table td li{margin:5px 0;}
+#tab_3 table td li strong{font-weight:bold;font-size:18px;}
+#tab_3 table td li.img_name{text-align:center;}
+#tab_3 table td li.integral{text-indent:2em;}
+#tab_3 table td li.btn_{text-align:center;}
+#tab_3 table td button.btn40{background:#11ade6;border:1px solid #11ade6;}
+#tab_3 table td button.btn40:hover{background:#fff;color:#11ade6;}
+/*右侧我的积分*/
+#main_right{float:right;width:260px;background:white;}
+#main_right .title_pannel{width:100%;line-height:40px;height:40px;background:#d7f2fc;}
+#main_right .title_pannel i {width: 20px;height: 18px;margin: 0 15px;margin-top:-5px;margin-right:5px;background: url("../images/ico.png") -379px -641px;}
+#main_right .title_pannel:hover i{background: url("../images/ico_hover.png") -379px -641px;}
+#main_right .title_pannel a{width: 16px;height: 16px;margin:12px;float:right;display:block;background:url("../images/ico.png") -380px -714px;}
+#main_right ul.score{position:relative;height:58px;padding-bottom:12px;border-bottom:1px solid rgb(220, 220, 220);}
+#main_right .scores li{color:rgb(136,136,136);width:33%;height:58px;float:left;text-align:center;}
+#main_right .scores li span{font-size:21px;display:block;margin-bottom:10px;}
+#main_right .scores i.scoreArrow{position: absolute;left: 100px;bottom: -1px;width: 11px;height: 7px;background: url(../images/ico.png) -540px -860px;}
+#main_right p{padding:8px 0;}
+#main_right .percent{width:206px;height:14px;border:1px solid rgb(126, 206, 244);position:relative;}
+#main_right .percentRate{z-index:101;overflow:hidden;background-color: rgb(15, 173, 229);position:absolute;height:14px;line-height:14px;}
+#main_right .percentRate .percentNumWhite{position: absolute;left: 60px;top: 0;color:white;height: 14px;width: 100px;}
+.percentNumBlue {z-index:100;position: absolute;left: 60px;top: -5px;color:rgb(15, 173, 229);height: 14px;width: 100px;}

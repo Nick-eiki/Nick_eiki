@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>教研组--首页</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/tch_group.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<style>
+.ui-datepicker-calendar tbody{ position:relative; z-index:200;}
+.notice_pop{ width:190px; height:82px; padding:5px;background-color:#FFF; border:#CCC solid 1px; position:absolute; opacity:1; filter: alpha(opacity = 100); display:none;}
+#datepicker .ui-datepicker-calendar tbody tr td a{ text-align:center;}
+.notice_pop p{ line-height:24px; height:24px; width:100%; overflow:hidden; white-space: nowrap;text-overflow: ellipsis; font-size:12px;}
+.name .type{ font-size:14px;}	
+.name .time{ font-size:12px; padding-left:10px;}
+.ico{width:14px; height:8px; display:inline-block; background:url(../images/sprite.png) no-repeat -2px -188px; display:inline-block; position:absolute; top:-2px; left:10px;}
+</style>
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script>
+$(function(){
+	$('.Signature i').editPlus();	
+	
+	$("#datepicker").datepicker({monthNames:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']});
+	$('#datepicker').datepicker('option','dayNamesMin',['日','一','二','三','四','五','六']); 
+	
+	var timer_alert = null;
+	var html='<div class="notice_pop">';
+			html+='<i></i>';
+			html+='<p class="name"><span class="type">老师1</span><span class="time">2014-04-08 10：00</span></p>';
+			html+='<p class="designation"><a href="tch-hear-comment-details.html">课程名称课程名称课程名称</a></p>';
+			html+='<p><em>听课人：</em><span>老师1，</span><span>老师2</span></p>';
+		html+='</div>';
+	
+	$('#datepicker').append(html);	
+   $('.hasDatepicker tbody td a').live('mouseover',function(){
+	   	var month = $('.hasDatepicker').find('span.ui-datepicker-month').text();
+		month=month.substr(0,1);
+		var year = $('.hasDatepicker').find('span.ui-datepicker-year').text();
+		var day=$(this).text();
+		var date=year+'/'+month+'/'+day
+		console.log(date)
+		
+		clearTimeout(timer_alert);
+		$(this).css("position",'relative')
+		$(this).append('<i class="ico" style="position:absolute; top:-2px; z-index:300"></i>');
+		var aBtnTop=$(this).position().top - 95;
+		var aBtnLeft=$(this).position().left;
+		var aBtn_position_l=$(this).position().left;
+		var l=aBtnLeft-aBtn_position_l/2;
+		$('.notice_pop').show().css({'position':'absolute','z-index':200})
+		if(aBtnLeft>=115){
+			$('.notice_pop').removeAttr("style");
+			$('.notice_pop').show().css({'top':+aBtnTop+'px','right':0});
+		}
+		else{
+			$('.notice_pop').removeAttr("style");
+			$('.notice_pop').show().css({'top':+aBtnTop+'px','left':aBtnLeft});
+		}
+		$('.notice_pop').show();
+		
+	})
+ 	 $('.hasDatepicker tbody td a').live('mouseout',function(){
+		 $(this).children('.ico').remove();
+		 timer_alert = setTimeout(function(){
+			 $('.notice_pop').hide();
+		 },10);
+	 })
+	 
+	 $('.notice_pop').live('mouseover',function(){
+		 $(this).hide();
+		 //clearTimeout(timer_alert);
+	 })
+	 /*$('.notice_pop').live('mouseout',function(){
+		 timer_alert = setTimeout(function(){
+			 $('.notice_pop').hide();
+		 },10);
+	 })*/
+	 
+	$('.hasDatepicker tbody .ui-state-disabled').children('.occupy').remove();
+	
+	$('.designation a').hover(function(){
+		$(this).css('color','#F00')	;
+	},function(){
+		$(this).css('color','#333')	;
+	})
+
+})
+</script>
+
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head terrace_head">
+  <div class="cont24 terrace clearfix">
+    <div class="head_left terrace_left grid_6">
+    	<ul class="terrace_ul clearfix">
+        	<li><a href="#">题库</a></li>
+            <li><a href="#">资料库</a></li>
+            <li><a href="#">视频库</a></li>
+            <li><a href="terrace-information_list.html">资讯</a></li>
+        </ul>
+    
+    </div>
+     <ul class="terrace_ul fl">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">免费登录</a></li>    
+     </ul>
+    
+    
+    <div class="userCenter grid_6 userCenter_R">
+      
+      <div class="userAccount userAccount2  grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg userMsg2 grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+      <div class="detail fr">
+      	<span><a href="#">通知</a></span>
+        <em>|</em>
+        <span><a href="#">收藏夹</a></span>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!--顶部结束-->
+<!--主体内容开始-->
+
+	<div class="mainBody cont24">
+        <div class="main_head">
+            <h2 class="class_t">
+            	<span class="classFocus">语文教研组</span></i>
+            	
+            </h2>
+            <h3 class="Signature fot_z">
+            	<span>人大附中&nbsp;&nbsp;&nbsp;&nbsp;初中部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>宋江老师(教研组长)</span><i></i>
+            	
+            </h3>
+            
+        </div>
+        <div class="main_cent">
+        	<div class="mainNav clearfix">
+            	<ul class="mainNav_L">
+                	<li class="ac"><a href="tch_group.html">首页</a></li>
+                    <li><a href="tch_group-plan.html">教学计划</a></li>
+                    <li><a href="tch_group-topic.html">教研课题</a></li>
+                    <li><a href="#">听课评课</a></li>
+                    <li><a href="#">教研资料</a></li>
+                </ul>
+                <ul class="mainNav_R">
+                	<li>
+                    	<i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                     	<ul class="tab hide">
+                        	<li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                        </ul>   
+                     </li>
+                    <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                    <li><i class="management"></i><span>个人管理中心</span></li>
+                </ul>
+            </div>
+            <div class="class_c clearfix tch">
+                   <div class="centLeft">
+                        <div class="notice">
+                            <div class="noticeH group"><h3 class="h3L">教研安排</h3><a href="#" class="a_rl">更多</a></div>
+                            
+                           <ul class="notice_list notice_width">
+                                	<li><h4><a href="tch-topic-details.html"><i>[一年级]</i>教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学计划教学计划教学计划</a></h4></li>
+                                    <li><i>课题描述:</i>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述</li>
+                              
+                           </ul>
+						   <ul class="notice_list notice_width">
+                                	<li><h4><a href="tch-topic-details.html"><i>[一年级]</i>教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学计划教学计划教学计划</a></h4></li>
+                                    <li><i>课题描述:</i>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述</li>
+                              
+                           </ul>
+                        </div>
+						<div class="notice">
+                            <div class="noticeH group"><h3 class="h3L">本班公开资料</h3><a href="#" class="a_rl">更多</a></div>
+                            <dl class="data">
+                            	<dt><img src="../images/pic.png" alt=""></dt>
+                                <dd><h5><a href="#"><i>[教案]</i>课程名称</a></h5></dd>
+                                <dd><i>简介:</i>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</dd>
+                                <dd><a href="#" class="btn">预览</a></dd>
+                            </dl>
+                            <dl class="data">
+                            	<dt><img src="../images/pic.png" alt=""></dt>
+                                <dd><h5><a href="#"><i>[讲义]</i>课程名称</a></h5></dd>
+                                <dd><i>简介:</i>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</dd>
+                                <dd><a href="#" class="btn">预览</a></dd>
+                            </dl>
+                            <dl class="data">
+                            	<dt style="width:120px; height:90px;position:relative; top:10px;"><img src="../images/ico.png"  alt="" width="120" height="90"></dt>
+                                <dd><h5><a href="#"><i>[视频]</i>课程名称</a></h5></dd>
+                                <dd><i>简介:</i>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</dd>
+                                <dd><a href="#" class="btn" style="background-color:#00cacf;">预览</a></dd>
+                            </dl>
+                           
+                        </div>
+						<div class="notice">
+                            <div class="noticeH group"><h3 class="h3L">教学计划</h3><a href="#" class="a_rl">更多</a></div>
+                            
+                           <ul class="notice_list notice_width">
+                                	<li><h4><a href="tch-topic-details.html"><i>[一年级]</i>教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学计划教学计划教学计划</a></h4></li>
+                                    <li><i>课题描述:</i>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述</li>
+                              
+                           </ul>
+						   <ul class="notice_list notice_width">
+                                	<li><h4><a href="tch-topic-details.html"><i>[一年级]</i>教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学教学计划教学计划教学计划教学计划教学计划</a></h4></li>
+                                    <li><i>课题描述:</i>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述</li>
+                              
+                           </ul>
+                        </div>
+                   
+                   </div>
+                   <div class="centRight">
+                    <div class="centRightT" style="text-align:center;">
+                    <p class="title">本班还没有手拉手班级，快来设置吧！</p>
+                    <a href="tch_addHandsin.html" class=" outAdd_btn B_btn120" style="font-size:14px; display:inline-block; color:#FFF;" id="addThinkBtn">设置手拉手班级</a> </div>
+                   	<div class="centRightT">
+                    	<h3>听课安排</h3>
+                        <hr>
+                        <div id="datepicker" style="position:relative"></div>
+                      
+                    </div>
+                    <div class="centRightT">
+                    	<h3>教研组成员</h3>
+                        <a href="#" class="fr">所有成员</a>
+                        <hr>
+                        <div class="sc_ivo">
+                        	<ul class="class_list clearfix">
+                        	<li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            <li><a href="#"><img src="../images/user_s.jpg"></a></li>
+                            
+                         
+                        </ul>
+                        </div>
+                       
+                    </div>
+                   </div>
+
+            </div>
+            
+        </div>
+
+	</div>
+<!--主体内容结束-->
+
+
+<div class="footWrap">
+	<div class="foot">
+    	<dl>
+        	<dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+        	<dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+        	<dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+        	<dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+
+
+</div>
+</body>
+</html>

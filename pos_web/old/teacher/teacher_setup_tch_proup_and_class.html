@@ -1,0 +1,837 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>教师设置-班级/教研组设置</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/teacher.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script>
+$(function(){
+	var trunOFF=0;
+	//判断任职学校的弹窗是谁
+	$('#schoolBtn').click(function(){trunOFF=0});
+	$('#govBtn').click(function(){trunOFF=1});
+
+	//我就任的教研组
+	$('#groupInput .text').live('click',function(){
+		$('.groupList li').click(function(){
+			$(this).addClass('ac').siblings().removeClass('ac');
+		})
+	$('#myGroupPop').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						if($('#myGroupPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#myGroupPop" ).dialog( "open" );
+		return false;
+	});
+
+	//我就任的班(中小学)
+	$('#classesInput .text').live('click',function(){
+		if(trunOFF==0)
+		{
+		$('.classesList li').click(function(){
+			$(this).addClass('ac').siblings().removeClass('ac');
+		})
+		$('#myClassesPop').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+					 
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#myClassesPop" ).dialog( "open" );
+		return false;
+		}
+		else
+		{
+			$('#myClassesPop2').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#myClassesPop2" ).dialog( "open" );
+		return false;	
+		}
+	});
+
+	//我就任的部门
+	/*$('#deptInput .text').live('click',function(){
+		$('#myDeptPop').dialog({
+			autoOpen: true,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						if($('#myDeptPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#myDeptPop" ).dialog( "open" );
+		return false;
+	});*/
+
+	//我任职的学校
+	/*$('#schoolName').click(function(){
+		if(trunOFF==0)
+		{
+			$('.schoolList li').click(function(){
+				$(this).addClass('ac').siblings().removeClass('ac');
+			})
+			
+			$('#mySchoolPop' ).dialog({
+				autoOpen: false,
+				width:500,
+				modal: true,
+				resizable:false,
+				buttons: [
+					{
+						text: "确定",
+						click: function() {
+							if($('#mySchoolPop .text').val()==1){
+								$( this ).dialog( "close" );
+							}
+							else{
+								alert(4545)
+							}
+						}
+					},
+					{
+						text: "取消",
+						click: function() {
+							$( this ).dialog( "close" );
+						} 
+					}
+				]
+			});
+			$( "#mySchoolPop" ).dialog( "open" );
+			return false;
+		}
+		else
+		{
+			$('.schoolList li').click(function(){
+				$(this).addClass('ac').siblings().removeClass('ac');
+			})
+			
+			$('#mySchoolPop2' ).dialog({
+				autoOpen: false,
+				width:500,
+				modal: true,
+				resizable:false,
+				buttons: [
+					{
+						text: "确定",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					},
+					{
+						text: "取消",
+						click: function() {
+							$( this ).dialog( "close" );
+						} 
+					}
+				]
+			});
+			$( "#mySchoolPop2" ).dialog( "open" );
+			return false;	
+		}
+	})
+			*/
+	
+	
+	
+	
+	//弹框内
+	$('.addClassesBtn').click(function(){
+		$('.newClassesList').show();
+	})
+	$('.addSchoolBtn').live('click',function(){
+		$('.newSchoolList').show();
+	})
+	$('.addGroupBtn').live('click',function(){
+		$('.newGroupList').show();
+	})
+	$('.addDeptBtn').live('click',function(){
+		$('.newDeptList').show();
+	})
+	
+})
+
+
+</script>
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+<div class="main cont24 clearfix">
+	<div class="main_head pr clearfix"> <img class="img_lm" src="../images/teacher_lm.jpg">
+                    <ul class="infoList">
+                      <li><span>30</span>试卷</li>
+                      <li><span>300</span>课程</li>
+                      <li><span>49</span>精品课程</li>
+                    </ul>
+                    <h2>毛毛虫</h2>
+                    <p class="signTxt">队伍不好带呀<i>编辑</i></p>
+                    <p>学　校:北京四中</p>
+                    <p class="handCls">班　级:101班 班主任&nbsp;&nbsp;&nbsp;201班 数学教师 </p>
+                    <p>教研组:数学</p>
+          </div>
+    <div class="mainNav">
+    	<ul class="mainNav_L">
+        	<li class="ac"><a href="teacher_setup_info.html">基本信息</a></li>
+            <li><a href="teacher_setup_setupInfo.html">个人信息设置</a></li>
+            <li><a href="teacher_setup_tch_proup_and_class.html">班级/教研组 设置</a></li>
+            <li><a href="teacher_setup_headPic.html">头像管理</a></li>
+            <li><a href="teacher_setup_changePassword.html">密码管理</a></li>
+            <li><a href="teacher_setup_email.html">邮箱管理</a></li>
+        </ul>
+        <ul class="mainNav_R clearfix">
+           
+            <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+            <li><i class="management"></i><span>个人管理中心</span></li>
+        </ul>
+    </div>
+    
+    <div class="currentRight grid_22 cp_email_cl setup">
+    	<h3>班级与教研组</h3>
+        <hr/>
+        <br>
+        <div class="editBox">
+                <form>
+                    <ul class="form_list organization">
+                <li>
+                    <div class="formL">
+                        <label class="label"><i></i>任教班级：</label>
+                    </div>
+                    <div class="formR">
+                    	<div id="classesInput">
+                            <div class="input_list">
+                                <input type="text" class="text text_defined">
+                                <select class="mySel">
+                                    <option value="选择省">班主任</option>
+                                    <option value="江苏省">江苏省</option>
+                                    <option value="四川省">四川省</option>
+                                    <option value="浙江省">浙江省</option>
+                                    <option value="云南省">云南省</option>
+                                    <option value="黑龙江省">黑龙江省</option>
+                                </select>
+                                <select class="mySel">
+                                    <option value="选择省">任教科目</option>
+                                    <option value="江苏省">江苏省</option>
+                                    <option value="四川省">四川省</option>
+                                    <option value="浙江省">浙江省</option>
+                                    <option value="云南省">云南省</option>
+                                    <option value="黑龙江省">黑龙江省</option>
+                                </select>
+                                <a href="javascript:;" class="apde_btn apde_js"><i>添加</i>任教班级</a> 
+                                
+                            </div>
+                     	</div>
+                    </div>
+                </li>
+                <hr>
+                <li>
+                    <div class="formL">
+                        <label class="label"><i></i>教研组：</label>
+                    </div>
+                    <div class="formR" id="groupInput">
+                        <div class="input_list">
+                            <input type="text" class="text text_defined text_l text_t">
+                            <select class="mySel">
+                                <option value="选择职务">选择职务</option>
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                            </select>
+                            <a href="javascript:;" class="apde_btn apde_btn_c k_js"><i>添加</i>教研组</a> </div>
+                    </div>
+                </li>
+                <hr>
+                
+                
+                <li class="conserve">
+                    <div class="formL">
+                        <label class="label"></label>
+                    </div>
+                    <div class="formR">
+                        <button type="button">保&nbsp;&nbsp;存</button>
+                    </div>
+                </li>
+            </ul>
+                </form>
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+<!--弹出框pop---------------------------------------------------------------> 
+<!--我就职的学校---中小学--->
+<div id="mySchoolPop" class="popBox mySchoolPop hide" title="任职学校">
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>学校类别1111：</label>
+            </div>
+            <div class="formR schoolRadio">
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    所有</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    小学</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    初中</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    高中</label>
+            </div>
+        </li>
+        <li>
+            <div class="formL">
+                <label class="genre">学校：</label>
+            </div>
+            <div class="formR">
+                <input  type="text" class="text">
+                <button type="submit" class="btn">查找</button>
+            </div>
+        </li>
+    </ul>
+    <ul class="schoolList clearfix">
+        <li class="ac">东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>光明小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>朝阳小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+    </ul>
+    <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+    <hr>
+    <p class="tc">如果没有找到学校，请单击此处<a href="javascript:;" class="addSchoolBtn">添加学校</a></p>
+    <form>
+        <ul class="form_list newSchoolList hide">
+            <li>
+                <div class="formL">
+                    <label>学校类别：</label>
+                </div>
+                <div class="formR">
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        小学</label>
+                    &nbsp;
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        初中</label>
+                    &nbsp;
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        高中</label>
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label>学校：</label>
+                </div>
+                <div class="formR">
+                    <input type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label>学校学制：</label>
+                </div>
+                <div class="formR">
+                    <select>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+<!--我就职的学校---教培机构--->
+<div id="mySchoolPop2" class="popBox mySchoolPop hide" title="任职学校">
+    <ul class="form_list">
+       
+        <li>
+            <div class="formL">
+                <label>学校：</label>
+            </div>
+            <div class="formR">
+                <input  type="text" class="text">
+                <button type="submit" class="btn">查找</button>
+            </div>
+        </li>
+    </ul>
+    <ul class="schoolList clearfix">
+        <li class="ac">东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>光明小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+        <li>朝阳小学</li>
+        <li>东北旺小学</li>
+        <li>东北旺小学</li>
+    </ul>
+    <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+    <hr>
+    <p class="tc">如果没有找到学校，请单击此处<a href="javascript:;" class="addSchoolBtn">添加学校</a></p>
+    <form>
+        <ul class="form_list newSchoolList hide">
+            <li>
+                <div class="formL">
+                    <label class="genre">学校类别：</label>
+                </div>
+                <div class="formR">
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        小学</label>
+                    &nbsp;
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        初中</label>
+                    &nbsp;
+                    <label>
+                        <input class="radio" type="radio" name="school">
+                        高中</label>
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label>学校：</label>
+                </div>
+                <div class="formR">
+                    <input type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label>学校学制：</label>
+                </div>
+                <div class="formR">
+                    <select>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                        <option value="00">学制安排</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+<!--我就职的班--------------------->
+<!--中小学-->
+<div id="myClassesPop" class="popBox myClassesPop hide" title="任教班级">
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>年级：</label>
+            </div>
+            <div class="formR">
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    一年级</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    二年级</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    三年中</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    四年级</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    五年级</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    六年级</label>
+                &nbsp; </div>
+        </li>
+        <li>
+            <div class="formL">
+                <label></label>
+            </div>
+            <div class="formR">
+                <ul class="classesList">
+                    <li>071班</li>
+                    <li class="ac">081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                    <li>071班</li>
+                    <li>081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                    <li>071班</li>
+                    <li>081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                </ul>
+                <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+            </div>
+        </li>
+    </ul>
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>班级别名：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text">
+                <br>
+            </div>
+        </li>
+    </ul>
+    <hr>
+    <p>如果没有找到班级，请单击此处<a href="javascript:;" class="addClassesBtn">添加班级</a></p>
+    <ul class="form_list newClassesList hide">
+        <li>
+            <div class="formL">
+                <label>选择班级：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text" value="初三（2）班">
+            </div>
+        </li>
+        <li>
+            <div class="formL">
+                <label>班级别名：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text">
+                 <select>
+                 	<option>01班级</option>
+                    <option>02班级</option>
+                    <option>03班级</option>
+                    <option>04班级</option>
+                 </select>
+                <br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!--我就职的教研组--->
+<div id="myGroupPop" class="popBox myGroupPop hide" title="任职教研组">
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>科目：</label>
+            </div>
+            <div class="formR schoolRadio">
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    语文</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    数学</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    英语</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    政治</label>
+            </div>
+        </li>
+    </ul>
+    <ul class="groupList clearfix">
+        <li class="ac">化学教研组</li>
+        <li>语文教研组</li>
+        <li>地理教研组</li>
+        <li>语文教研组</li>
+        <li>语文教研组</li>
+        <li>数学教研组</li>
+        <li>政治教研组</li>
+        <li>语文教研组</li>
+    </ul>
+    <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+    <hr>
+    <p class="tc">如果没有找到学校，请单击此处<a href="javascript:;" class="addGroupBtn">添加教研组</a></p>
+    <form>
+        <ul class="form_list newGroupList hide">
+            <li>
+                <div class="formL">
+                    <label>教研组名称：</label>
+                </div>
+                <div class="formR">
+                    <input type="text" class="text">
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+
+<!--教培机构-->
+<!--<div id="myClassesPop2" class="popBox myClassesPop hide" title="任教班级">
+    <ul class="form_list">
+        
+        <li>
+            <div class="formL">
+                <label></label>
+            </div>
+            <div class="formR">
+                <ul class="classesList">
+                    <li>071班</li>
+                    <li class="ac">081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                    <li>071班</li>
+                    <li>081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                    <li>071班</li>
+                    <li>081班</li>
+                    <li>071班</li>
+                    <li>071班</li>
+                    <li>091班</li>
+                    <li>191班</li>
+                </ul>
+                <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+            </div>
+        </li>
+    </ul>
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>班级别名：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text">
+                <br>
+            </div>
+        </li>
+    </ul>
+    <hr>
+    <p>如果没有找到班级，请单击此处<a href="javascript:;" class="addClassesBtn">添加班级</a></p>
+    <ul class="form_list newClassesList hide">
+         <li>
+            <div class="formL">
+                <label>选择班级：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text" value="初三（2）班">
+            </div>
+        </li>
+        <li>
+            <div class="formL">
+                <label>班级别名：</label>
+            </div>
+            <div class="formR">
+                <input type="text" class="text">
+                 <select>
+                 	<option>01班级</option>
+                    <option>02班级</option>
+                    <option>03班级</option>
+                    <option>04班级</option>
+                 </select>
+                <br>
+            </div>
+        </li>
+    </ul>
+</div>-->
+
+<!--我就职的部门--->
+<!--<div id="myDeptPop" class="popBox myDeptPop hide" title="任职部门">
+    <ul class="form_list">
+        <li>
+            <div class="formL">
+                <label>部门：</label>
+            </div>
+            <div class="formR">
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    教务处</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    电教处</label>
+                &nbsp;
+                <label>
+                    <input class="radio" type="radio" name="school">
+                    教材室</label>
+                &nbsp; </div>
+        </li>
+    </ul>
+    <hr>
+    <p class="tc">如果没有找到部门，请单击此处<a href="javascript:;" class="addDeptBtn">添加部门</a></p>
+    <form>
+        <ul class="form_list newDeptList hide">
+            <li>
+                <div class="formL">
+                    <label>部门名称：</label>
+                </div>
+                <div class="formR">
+                    <input type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label>职务名称：</label>
+                </div>
+                <div class="formR">
+                    <input type="text" class="text">
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>-->
+</body>
+</html>

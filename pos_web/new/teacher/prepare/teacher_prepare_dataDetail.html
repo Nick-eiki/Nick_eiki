@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--文件详情页</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+$('.correctPaper').testpaperSlider();
+});
+//初始化弹窗
+    $(function() {
+		
+		/*我要纠错弹窗*/
+        $('#Ercorrection').click(function() {
+            popBox.errorCorrect_topic();
+        });
+		 
+    });
+</script>
+
+
+</head>
+
+<body class="teacher">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_24 main_r">
+            <div class="main_cont tea_prepare">
+                <div class="title"><a href="#" class="txtBtn backBtn"></a>
+                    <h4>教学计划名称教学计划名称教学计划名称教学计划名称教学计划名称</h4>
+                </div>
+                <div class="teaching_plan">
+                    <dl class="introduce_list font14">
+                        <dt><em>描述：</em></dt>
+                        <dd>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述课题描述</dd>
+                    </dl>
+                    <div class="read_div">文件阅读器</div>
+                    <button type="button" class="btn white btn40 w140 bg_blue">下载教学计划</button>
+                    <button type="button" class="btn btn40 w140 bg_blue_l collectionbtn" style="margin-left:10px;">收 藏</button>
+                    <button type="button" id="Ercorrection" class="btn white btn40 w140 bg_blue error_correction">我要纠错</button>
+                </div>
+                <br>
+                <br>
+                <div class=" font16 tr pageCount" style="padding-right:10px"></div>
+                <div class="correctPaper" style="border:1px solid #ddd; padding:30px">
+                <div class="testPaperWrap mc pr">
+                    <ul class="testPaperSlideList slid">
+                        <li name="111"><img id="111" src="../../images/testPaper.jpg" width="830" height="508"  alt=""/></li>
+                                <li name="222"><img src="../../images/homePageBG.jpg" width="830" height="1208" alt=""/></li>
+                                <li name="333"><img src="../../images/schoolBG.jpg" width="830" height="758"  alt=""/></li>
+                                <li name="444"><img src="../../images/testPaper.jpg" width="830" height="658"  alt=""/></li>
+                                <li name="555"><img src="../../images/testPaper.jpg" width="830" height="908"  alt=""/></li>
+                                <li name="666"><img src="../../images/schoolBG.jpg" width="830" height="608"  alt=""/></li>
+                    </ul>
+                    <a href="javascript:;" id="prevBtn" class="correctPaperPrev">上一页</a> <a href="javascript:;" id="nextBtn" class="correctPaperNext">下一页</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主体end-->
+    <!--我要纠错弹出层-->
+    <!--<div id="popBox1" class="popBox popBox_hand hide" title="资源纠错">
+        <div class="popCont  work_form_list">
+            <div class="new_tch_group">
+                <form>
+                    <div class="form_list">
+                        <div class="row">
+                            <div class="formL">
+                                <label>错误类型:</label>
+                            </div>
+                            <div class="formR personal topic_opt">
+                                <input type="checkbox" class="chked hide" id="ch3" name="act_type">
+                                <label class="chkLabel stuZ" for="ch3">资源类型</label>
+                                <input type="checkbox" class="chked hide" id="ch4" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch4">资源内容</label>
+                                <input type="checkbox" class="chked hide" id="ch5" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch5">资源知识点</label>
+                                <input type="checkbox" class="chked hide" id="ch6" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch6">其它</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="formL">
+                                <label>错误描述:</label>
+                            </div>
+                            <div class="formR">
+                            <div class="textareaBox text_correction">
+                                <textarea class="textarea"></textarea>
+                                <span class="placeholder" style="display: block;">请输入您的错误描述</span>
+                                <div class="btnArea">
+                                <em class="txtCount">可以输入 <b class="num">300</b> 字</em>
+                                <button type="button" style="right:-3px" class="sendBtn">发送</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+    <!--确定弹出层-->
+    <!--<div id="popBox2" class="popBox popBox_hand hide" title="系统提示">
+        <div class="popCont">
+            <div class="">
+                <form>
+                    <div class="form_list">
+                        <div class="row work_row clearfix">
+                            <div class="formL formL_face">
+                                <label class="face_pic"><img src="../../images/face_pic.png" alt=""></label>
+                            </div>
+                            <div class="formR formR_text">
+                            非常感谢您的纠错，我们会持续改进的。
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+</body>
+</html>

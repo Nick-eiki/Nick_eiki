@@ -1,0 +1,233 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学生--作业管理--作业详情</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/student.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+		imgArr=["../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg"]
+	$('.correctPaperSlide').testpaperSlider({ClipArr:imgArr});
+	
+	$('.test_class_this .c_Btn').click(function(){
+		$('.imgFile').show().imgFileUpload();
+		$(this).parent('.test_class_this').hide();
+	})
+	
+	$('.finishBtn').click(function(){
+		//$(this).hide();
+		$('.item_title, .imgFile h6').show();
+	});
+	
+	$('.cancelBtn').click(function(){
+		$('.test_class_this').show();
+		$('.imgFile').hide();
+	})
+})
+
+
+</script>
+</head>
+
+<body class="student">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l">
+            <div class="clearfix item l_userInfo"> <img src="../../images/teacher_l.jpg"> <a style="border-right:1px solid #ddd"><em>30</em><br>
+                试卷</a><a><em>300</em><br>
+                课程</a> </div>
+            <div class="item l_asideMenu">
+                <h4>我的档案</h4>
+                <ul class="setupMenu">
+                    <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">信息</a></li>
+                            <li><a href="#">通知</a></li>
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">考试管理</a></li>
+                            <li><a href="#">试卷管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">题目推送</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a class="ac" href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">班级统计</a></li>
+                            <li><a href="#">熊孩子管理器</a></li>
+                            <li><a href="#">个人统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">教研课题</a></li>
+                            <li><a href="#">教学计划</a></li>
+                            <li><a href="#">听课评课</a></li>
+                            <li><a href="#">教研组资料</a></li>
+                            <li><a href="#">教研日记</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                            <li><a href="#">资料袋</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">收藏的讲义</a></li>
+                            <li><a href="#">收藏的课程</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">暂无内容(空)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid_19 main_r">
+            <div class="main_cont ">
+                <div class="title"> <a href="#" class="txtBtn backBtn"></a>
+                    <h4>作业管理</h4>
+                </div>
+                <div class="correctPaper">
+                    <h5>作业名称作业名称作业名称作业名称作业名称作业名称</h5>
+                    <ul class="up_details_list">
+                        <li class="clearfix">
+                            <p>地区：<span>北京&nbsp;&nbsp;海淀区</span></p>
+                        </li>
+                        <li class="clearfix">
+                            <p>知识点：<span>追击问题，相遇问题</span></p>
+                        </li>
+                        <li class="clearfix">
+                            <p>作业简介：<span>试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷
+                                简介试卷简介试卷简介试卷简介试卷简介</span></p>
+                        </li>
+                    </ul>
+                    <div class="test_class_this tc">
+                    	<span>该作业为非正式作业，老师可能会修改作业内容，别做无用功哟！</span>
+                        <a href="stu_work_online_answer.html" class="w160 btn50 bg_green c_Btn a_button" style="margin-right:20px;">开始答题</a>
+                        <a href="stu_work_answer_finish.html" class="w160 btn50 bg_green c_Btn a_button hide">作业预览</a>
+                        <!--开始答题：电子作业没有上交答案时显示;作业预览：答案提交完毕以后，显示此按钮-->
+                  </div>
+                    <br>
+                    
+                      <div class="digitalFile">
+						<h6>客观题答案</h6>
+                        <p><span class="correct">1. A<i class="right"></i></span><span class="correct">2. B<i class="wrong"></i></span><span class="error">3. A<i></i></span><span class="correct">1. A<i></i></span></p>
+						<h6 class="my_answer">主观题答案</h6>
+                        <ul class="up_test_list clearfix ">
+                            <li><a><img src="../../images/test_img.png" alt=""></a></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+							<li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+						</ul>
+                        </div>
+									
+                    
+                    <div class="slidClip"></div>
+                    <div class="correctPaperSlide">
+                        <div class="testPaperWrap mc pr">
+                            <ul class="testPaperSlideList slid">
+                                <li><img src="../../images/testPaper.jpg" width="830" height="508"  alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg" width="830" height="608"  alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg" width="830" height="1208" alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg" width="830" height="758"  alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg" width="830" height="658"  alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg" width="830" height="908"  alt=""/></li>
+                            </ul>
+                            <a href="javascript:;" id="prevBtn" class="correctPaperPrev">上一页</a> <a href="javascript:;" id="nextBtn" class="correctPaperNext">下一页</a> </div>
+                        <div class="sliderBtnBar"></div>
+                    </div>
+                </div>
+                <div class="test_class_this tc">
+                	<span>该作业为非正式作业，老师可能会修改作业内容，别做无用功哟！</span>
+                    <button type="button" class="w160 btn50 bg_green c_Btn">上传答案</button>
+                </div>
+                <br>
+                <div class="work_checked"><!--已批改-->
+                    <div class="title item_title hide">
+                        <h4>我的答案&nbsp;&nbsp;<span class="gray">已批改</span></h4>
+                        <div class="title_r"> <a href="stu_look_answer.html" class="btn bg_blue_l w80">查看批改</a> </div>
+                    </div>
+                    <div class="my_answer">
+                        <div class="digitalFile hide">
+                            <h6>客观题答案</h6>
+                            <p class="answers"><span>1. A</span><span>2. B</span><span>3. A</span><span>1. A</span></p>
+                        </div>
+                        <div class="imgFile hide">
+                            <h6 class="hide">主观题答案</h6>
+                            <ul class="up_test_list clearfix ">
+                                <!--<li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                <li><img src="../../images/test_img.png" alt="">试卷第一<span class="delBtn"></span>页</li>
+                                <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>-->
+                                <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                <li class="more"></li>
+                            </ul>
+                            <button type="button" class="bg_blue w120 btn40 modifyBtn hide">修改答案</button>
+                            <button type="button" class="bg_blue w120 btn40 finishBtn hide">上传完毕</button>
+                            <button type="button" class="bg_blue w120 btn40 cancelBtn">取消</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="myCorrect hide">
+                        <h6>我的批阅</h6>
+                        <ul class="up_test_list clearfix ">
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                            <li><img src="../../images/test_img.png" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--主体end-->
+</body>
+</html>

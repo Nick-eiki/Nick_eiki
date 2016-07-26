@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+/*注册公用样式*/
+.reg_c_width{width:700px; margin:0 auto}
+.form_list{padding-top:30px}
+.myRadio{ margin-right:3px}
+
+/*大按钮*/
+.B_btn{width:130px;height:40px;line-height:40px;background:#57c077;font-size:14px;color:#fff;border-radius:4px;font-size:16px;box-shadow:0 -2px 0 #319550 inset}
+.B_btn:hover{background:#fc6f51;box-shadow:0 -2px 0 #fa4f51 inset; color:#fff !important}
+
+/*协议样式*/
+.box_max_w{padding-bottom:100px;border:#19b8ff solid 1px;padding:0 40px 40px 40px;margin-top:40px;margin-bottom:40px}
+.box_max_w h5{font-size:18px;color:#000;text-align:center;line-height:66px;height:66px;font-weight:bold}
+.box_max_w p{line-height:24px;font-size:12px}
+
+/*注册步骤一*/
+.reg_c_content{ margin-top:80px}
+.reg_c_content .flow_path{height:54px}
+.reg_c_content .flow_path li{float:left;height:2px;width:226px;text-align:center;position:relative}
+.reg_c_content .flow_path li .flow_w{color:#ee4d4e;font-size:16px;position:absolute;top:-35px;left:62px}
+.reg_c_content .flow_path li .flow_w2{color:#896dcf}
+.reg_c_content .flow_path .flow_path01{background-color:#ee4d4e}
+.reg_c_content .flow_path .flow_path02{background-color:#896dcf}
+.reg_c_content .flow_path .flow_path03{background-color:#ee4d4e}
+.reg_c_content .flow_path .flow_n{width:38px;height:40px;display:inline-block;position:absolute;top:-20px;right:0 }
+.reg_c_content .flow_path .flow_1{background:url(../images/sprite.png) no-repeat -40px 0}
+.reg_c_content .flow_path .flow_2{background:url(../images/sprite.png) no-repeat -240px 0}
+.reg_c_content .flow_path .flow_3{background:url(../images/sprite.png) no-repeat -280px 0}
+
+.reg_c_c h3{font-size:24px;color:#333;height:60px; line-height:60px;}
+
+
+/*注册步骤二*/
+.reg_c_content{ margin-bottom:60px}
+.reg_c_content .flow_path .flow_path03{background-color:#00cacf}
+.reg_c_content .flow_path li .flow_w3{color:#00cacf}
+.reg_c_content .flow_path .flow_5{background:url(../images/sprite.png) no-repeat -160px 0}
+.reg_c_content .flow_path .flow_4{background:url(../images/sprite.png) no-repeat -80px 0}
+.reg_c_content .activation{padding-top:26px;margin-left:30px}
+.reg_c_content .activation li{line-height:32px;color:#333;font-size:16px; margin-bottom:10px}
+.reg_c_content .activation li a{color:#06c;padding:0 4px}
+.reg_c_content .activation li a:hover{text-decoration:underline}
+.reg_c_content .activation li button{height:18px;height:24px !important; line-height:24px !important;font-size:12px;margin-left:10px}
+.reg_c_content .activation li .act_btn{ background:#00cacf}
+.reg_c_content .activation li .act_ok{ background:#f99; width:60px}
+.reg_c_content .ect_w{margin-right:18px}
+
+/*注册步骤三*/
+.reg_c_content .flow_path .flow_6{background:url(../images/sprite.png) no-repeat -200px 0}
+.reg_c_content .flow_path .flow_06{background:url(../images/sprite.png) no-repeat -120px 0}
+
+.organization{position:relative;left:-2px}
+.organization hr{margin-bottom:14px}
+.organization .apde_btn_a{margin-bottom:10px}
+.organization .formR select{height:26px;border:#CCC solid 1px;font-size:12px;margin-right:20px}
+.organization .formR .text{margin-right:10px}
+.organization li .formR .popo_text{width:298px}
+.organization li .formR .text_defined{width:154px}
+.organization button{width:110px;height:30px;background-color:#ee4d4e;line-height:30px;text-align:center;font-size:14px;color:#fff;cursor:pointer}
+.organization .input_list{margin-bottom:14px;font-size:0 ;position:relative}
+.organization .input_list .apde_btn_c{background-color:#00cacf}
+.organization .input_list .apde_btn_b{background-color:#19b8ff}
+.organization li .formR .text_min{width:90px;margin-right:20px}
+.organization .new_add{font-size:12px;margin-right:20px;display:inline-block;vertical-align:middle}
+.organization .new_add input{margin-right:4px;display:inline-block;vertical-align:middle}
+.organization li .apde_btn{width:100px;height:30px;line-height:30px;background-color:#76e1b6;vertical-align:middle;display:block;font-size:12px;color:#FFF;text-align:center;margin-top:10px}
+
+/*注册--找回密码*/
+.reg_password{width:1040px;margin:0 auto;padding-top:80px}
+.reg_password h3{font-size:24px;color:#333;border-bottom:#999 solid 1px;height:60px; line-height:60px}
+.reg_password .ico{width:36px;height:26px;display:inline-block;position:relative;margin-left:40px;background:url(../images/sprite.png) no-repeat -126px -43px}
+.reg_password .ico i{width:16px;height:16px;display:inline-block;cursor:pointer;background:url(../images/sprite.png) no-repeat -92px -52px;position:absolute;left:-24px;top:8px}
+.reg_password .ico .i_btn{background:url(../images/sprite.png) no-repeat -52px -52px}
+.reg_password .ico_ip{background:url(../images/sprite.png) no-repeat -172px -47px;top:2px}
+
+.passWordBox{width:480px;margin-left:88px}
+.passWordBox .submitBtn{width:80px;height:24px !important;line-height:24px !important;background:#ec0909;font-size:12px;color:#fff;margin-left:6px}
+.passWordBox .submitBtn:hover{background:#fc6f51;box-shadow:0 -2px 0 #fc6f51 inset}
+.passWordBox .form_list{width:100%}
+.passWordBox .form_list li{font-size:12px;margin-bottom:10px}
+.passWordBox .form_list li a{color:#06c}
+.passWordBox .form_list li a:hover{text-decoration:underline}
+.passWordBox .form_list li label{font-size:12px}
+.passWordBox .form_list .padding{padding-left:40px}
+.passWordBox .form_list .f_btn{height:24px !important;line-height:24px !important;background:#19b8ff;font-size:12px;color:#fff;border-radius:2px}
+.passWordBox .form_list .f_btn:hover{background:#fc6f51;box-shadow:0 -2px 0 #fc6f51 inset;text-decoration:underline}
+.passWordBox .form_list .t_btn{width:94px;height:20px !important;line-height:20px !important;background:#999;font-size:12px;color:#fff}
+.passWordBox .form_list .t_btn:hover{background:#fc6f51;box-shadow:0 -2px 0 #fc6f51 inset;text-decoration:underline}
+.passWordBox .btn_left{position:relative;left:-6px}
+
+/*密码重置*/
+.pass_L{float:left;width:730px}
+.pass_L .tips{color:#999;font-size:12px;margin-left:10px}
+.pass_L .pass_color{font-size:24px; height:60px; line-height:60px; border-bottom:1px solid #999}
+.pass_R{float:left;padding-left:26px;position:relative}
+.pass_R .pass_bj{background:url(../images/right_b.png) no-repeat left center;height:346px;width:20px;display:inline-block;margin-top:-20px}
+.pass_R .r_btn{width:135px;position:absolute;left:130px;top:-10px}
+.pass_R .r_btn strong{font-size:24px;color:#666;margin-bottom:20px;font-weight:normal;display:inline-block}
+.reg_c{width:980px;margin:80px auto 0}
+
+/*重置密码成功跳转页面*/
+.link_list{width:264px;margin:0 auto;padding-top:96px}
+.link_list dt{height:24px;margin-bottom:20px;color:#57c077;font-size:22px;padding-left:20px}
+.link_list dt i{background:url(../images/f00c.png) no-repeat;width:40px;height:30px;display:inline-block;vertical-align:middle;margin-right:10px}
+.link_list dd{font-size:14px;color:#666}
+.link_list dd a{font-size:14px;color:#4280d3;display:inline-block;margin:0 6px}
+
+/*注册登录*/
+.form_list li .formR .minWith{width:76px}
+.formR .landing{width:74px;height:32px;overflow:hidden;vertical-align:middle}
+.landing_Btn{font-size:14px}
+.pass_link{font-size:14px;color:#06c;position:relative;left:62px}
+
+/*邮箱激活失败*/
+.link_list .emailError{color:#ee4d4e}
+.link_list .emailError i{background:url(../images/cross.png) no-repeat;width:40px;height:45px;display:inline-block;vertical-align:middle;margin-right:10px}
+
+.gradeID{width:343px;display:inline-block}
+.footWrap{ position:relative;bottom:0 }
+
+.foot_landing{position:absolute;color:#1b2f48;bottom:0 ;left:0 ;height:auto;width:100%;margin:0 auto;text-align:center;padding-bottom:10px}

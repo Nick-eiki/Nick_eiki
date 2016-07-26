@@ -1,0 +1,314 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--批改作业</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	//判卷
+		imgArr=["../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg","../../images/testPaper.jpg"]
+	$('#correctPaperSlide1').testpaperSlider({ClipArr:imgArr,slidClip:"#slidClip1"});
+	//左侧点击状态
+	$(".left_correct dl").click(function(){
+		$(this).addClass("cur").siblings().removeClass("cur");
+		$(".original").removeClass("show_original");
+	});
+
+(function(){
+  var scroll_Left=0;
+	//右侧点击状态
+	$("#q_list li").click(function(){
+    scroll_Left=$('.cor_questions').scrollLeft();
+		$(this).addClass("act").siblings().removeClass("act");
+		$(".original").removeClass("show_original");
+	});
+	
+	
+    
+		var q_lis=$("#q_list li");
+		var ul_w=0;
+    
+		q_lis.each(function(index, element) {
+            ul_w+=$(this).outerWidth(true);
+        });
+		$("#q_list").width(ul_w+20);
+		//批改状态
+		$('.cor_btn a').click(function(){
+			var num=$("#q_list li").size();
+			var index=0;
+			var cls_name=$(this).attr('class');
+      
+			function chk(cls_name){
+				index=$("#q_list .act").index()+1;	
+				scroll_Left+=50;
+				$("#q_list .act i").removeClass().addClass(cls_name+"_btn");
+				$("#q_list .act").removeClass('act').next().addClass('act');
+				$('.cor_questions').scrollLeft(scroll_Left);
+			};
+			cls_name=="check" && chk("check")||cls_name=="half" && chk("half")||cls_name=="wrong" && chk("wrong")
+			
+			/*switch(cls_name){
+				case "check":
+				chk("check");
+				break;
+				case "half":
+				chk("half");
+				break;
+				case "wrong":
+				chk("wrong");
+				break;
+			};*/
+			var topic_num=$("#q_list i[class$=btn]").size();
+			$('#userList .cur span').text(topic_num);
+			if(topic_num==num) popBox.alertBox('已全部批改完成!',
+			function(){alert("确定")},
+			function(){alert("取消")}
+			);
+		});
+	})();
+	
+	//原题弹窗
+	$(".original").click(function(){
+		$(this).toggleClass("show_original");
+	});
+	
+
+	
+})
+</script>
+</head>
+
+<body class="teacher">
+
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+  <div class="grid24 main">
+    <div class="grid_24 main_r">
+      <div class="main_cont">
+        <div class="title">
+            <h4>作业批改</h4>
+        </div>
+        <div class="correct_workcon">
+              <div class="tab">
+                <ul class="tabList clearfix">
+                    <li class="tabListShow"><a href="teacher_correcting_people.html" class="ac">按人批改</a></li>
+                    <li class="tabListShow"><a href="teacher_correcting_questions.html">按题批改</a></li>
+                </ul>
+                <!--按人批改-->
+                <div class="tabCont correctcon">
+                <div class="tabItem">
+                  <div id="userList" class="left_correct">
+                      <dl class="cur">
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em class="approved">已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                      <dl>
+                      	<dt><img src="../../images/answerqu03.png"></dt>
+                        <dd>
+                        	<p>孙尚香</p>
+                            <em>已批:<span>49</span>/<b>88</b></em>
+                        </dd>
+                      </dl>
+                  </div>
+                  <div class="right_correct">
+                  	<div class="cor_questions">
+                    	<ul id="q_list">
+                        	<li class="act">题0111<i></i></li>
+                            <li>题022<i></i></li>
+                            <li>题01<i></i></li>
+                            <li>题0211111<i></i></li>
+                            <li>题0111<i></i></li>
+                            <li>题022<i></i></li>
+                            <li>题01<i></i></li>
+                            <li>题0211111<i></i></li>
+                            <li>题0111<i></i></li>
+                            <li>题022<i></i></li>
+                            <li>题01<i></i></li>
+                            <li>题0211111<i></i></li>
+                            <li>题0111<i></i></li>
+                            <li>题022<i></i></li>
+                            <li>题01<i></i></li>
+                            <li>题0211111<i></i></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="work_btnmark">
+                     <div class="correctPaper">
+            				<div id="correctPaperSlide1" class="correctPaperSlide">
+                      		<div class="testPaperWrap mc pr">
+                            <ul class="testPaperSlideList slid">
+                                <li><img src="../../images/testPaper.jpg"  alt=""/></li>
+                                <li><img src="../../images/testPaper02.jpg" alt=""/></li>
+                                <li><img src="../../images/testPaper03.jpg" alt=""/></li>
+                                <li><img src="../../images/testPaper04.jpg" alt=""/></li>
+                                <li><img src="../../images/testPaper.jpg"  alt=""/></li>
+                                <li><img src="../../images/testPaper02.jpg" alt=""/></li>
+                                <li><img src="../../images/testPaper03.jpg" alt=""/></li>
+                                <li><img src="../../images/testPaper04.jpg" alt=""/></li>
+                            </ul>
+                            <a href="javascript:;" id="prevBtn" class="correctPaperPrev">上一页</a> 
+                            <a href="javascript:;" id="nextBtn" class="correctPaperNext">下一页</a>
+                      </div>
+                    </div>
+        			</div>
+                     <div id="slidClip1" class="slidClip"></div>
+                     <div class="original">
+                     	<span class="btn_txt">原题</span>
+                        <div class="exhibition">
+                        	<i class="v_r_arrow"></i>
+                            <div class="testPaperView">
+                            	<div class="paper"><!--多个小题-->
+                	
+                	<h5>题目1:</h5>
+                    <h6>【2013年】 高考 多个小题</h6>
+                	<p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                    <ul class="sub_Q_List">
+                       <li><span>小题1:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+                       <li><span>小题2:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+                       <li><span>小题3:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+                   </ul>
+                   <dl class="userUploadAnswerList clearfix">
+                   		<dt>您上传的答案:</dt>
+                    	<dd>1. <img src="../../images/answer.png" alt=""></dd>
+                        <dd>2. <img src="../../images/answer.png" alt=""></dd>
+                        <dd>3. <img src="../../images/answer.png" alt=""></dd>
+                    </dl>
+                    <div class="btnArea clearfix">
+                		<span class="openAnswerBtn fl">答案与解析<i></i></span>
+                		<span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span>
+                	</div>
+                    <div class="answerArea">
+                    	<p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                        <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                    </div>
+                </div>
+                            </div>
+                            
+                        </div>
+                     </div>
+                     <div class="cor_btn">
+                         <a href="javascript:;" class="check"></a>
+                         <a href="javascript:;" class="half"></a>
+                         <a href="javascript:;" class="wrong"></a>
+                     </div>
+                	</div>
+                  </div>
+              	</div>
+              </div>
+         	  </div>
+              
+        </div>
+      </div>
+    </div>
+</div>  
+</div>
+<!--主体end-->
+</body>
+</html>

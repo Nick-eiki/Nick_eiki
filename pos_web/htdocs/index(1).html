@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>三海教育--首页</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/base.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+//slide
+	$('.slide').cycle({ 
+		fx:'fade',
+		pager:'.slideBtn',
+		speed:1000,
+		timeout:5000,
+		next:'#nextBtn',
+		prev:'#prevBtn'
+	});	
+	
+	$('.slideWrap').hover(function(){
+		$('.prevBtn, .nextBtn').show();
+	},
+	function(){
+		$('.prevBtn, .nextBtn').hide();
+	}
+	)
+	
+})
+</script>
+</head>
+
+<body>
+<div class="top cont24">
+	<h1 class="hideTxt grid_6">
+    	三海教育
+    </h1>
+    <div class="links grid_5 push_13">
+    	<a class="weibo" href="#">新浪微博</a><a class="weixin" href="#">官方微信</a>
+    </div>
+</div>
+
+<div class="mainNavWrap">
+	<div class="cont24">
+    	<ul class="mainNav grid_24">
+        	<li><a class="ac" href="index.html">首　　页</a></li>
+            <li><a href="introduce.html">公司介绍</a></li>
+            <li><a href="welfare.html">公司福利</a></li>
+            <li><a href="cooperation.html">商务合作</a></li>
+            <li><a href="recruitment.html">诚聘英才</a></li>
+            <li><a href="contact_us.html">联系我们</a></li>
+        </ul>
+    </div>
+</div>
+<div class="shadow">
+    <div class="slideWrap">
+        <div class="cont24 pr" style="height:530px">
+            <div class="slide grid_24">
+                <img src="images/banner/first-01.jpg" width="1180" height="530" /> 
+                <img src="images/banner/first-02.jpg" width="1180" height="530" /> 
+                <img src="images/banner/first-03.jpg" width="1180" height="530" /> 
+        	</div>
+            <div class="slideBtn"></div>  <!--图片切换按钮--> 
+            <div id="prevBtn" class="prevBtn hideTxt hide">prev</div>
+            <div id="nextBtn" class="nextBtn hideTxt hide">next</div>
+        </div>
+    </div>
+</div>
+<div class="main clearfix cont24" style="padding-bottom:60px">
+	<div class="item info grid_8">
+    	<h3>三海教育简介</h3>
+        <div class="itemCont">
+        	<p>北京三海教育科技有限公司成立于2010年，是中国最早进入互联网教育的创业公司之一。创办五年多来，三海教育始终专注于中小学在线教育市场，汇集了一大批来自知名教育机构和BAT等著名互联网公司的顶尖人才，致力于打造一个可以为全国2.3亿的中小学生、一千万老师、6万中小学校提供优质教育教学资源的学习交流平台<a class="more blue_l" href="introduce.html">[详情]</a></p>
+        </div>
+    </div>
+    <div class="item future grid_8">
+    	<h3>愿景与文化</h3>
+    	<div class="itemCont">
+        	<ul class="culture">
+            	<li><em>使命</em>打造中国最优质便捷的中小学在线课程学习交流平台</li>
+                <li><em>愿景</em>中国最专业的在线教育管理咨询服务商</li>
+                <li><em>企业价值观</em>诚实信用、服务第一、客户为先</li>
+                
+            </ul>
+	    </div>
+    </div>
+    <div class="item sever grid_8">
+    	<h3>客服中心</h3>
+        <div class="itemCont noBorder">
+        	<h4>渠道合作 电话咨询</h4>
+            <h5>010 62962123</h5>
+            <p>周一 至 周日 9:00--18:00</p>
+        </div>
+    </div>
+</div>
+<div class="footWrap">
+	<div class="foot cont24">
+        <dl class="grid_6">
+            <dt>关于三海</dt>
+            <dd><a href="introduce.html">了解我们</a></dd>
+            <dd><a href="contact_us.html">联系我们</a></dd>
+            <dd><a href="recruitment.html">加入我们</a></dd>
+        </dl>
+        <dl class="grid_6">
+            <dt>帮助中心</dt>
+            <dd><a href="#">平台流程</a></dd>
+            <dd><a href="#">学生帮助</a></dd>
+            <dd><a href="#">老师帮助</a></dd>
+        </dl>
+        <dl class="grid_6">
+            <dt>商务合作</dt>
+            <dd><a href="add_school.html">学校入驻</a></dd>
+            <dd><a href="add_teacher.html">教师入驻</a></dd>
+            <dd><a href="cooperation.html">渠道合作</a></dd>
+        </dl>
+        <dl class="grid_6">
+            <dt>关注我们</dt>
+            <dd><a href="#">官方微信</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+        </dl>
+         <p class="grid_24 tc" style="margin-top:50px">北京三海教育科技有限公司&nbsp;&nbsp; ©版权所有 京ICP备14022510号-2&nbsp;&nbsp;京公网安备 11010802017286</p>
+    </div>
+    
+</div>
+</body>
+</html>

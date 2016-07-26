@@ -1,0 +1,649 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/main.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src='../../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../../js/echarts/echarts.js" type="text/javascript"></script>
+<link href="../../css/base.css" type="text/css" rel="stylesheet">
+<link href="../../css/president.css" type="text/css" rel="stylesheet">
+<link href="../../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../../css/popBox.css" type="text/css" rel="stylesheet">
+<style type="text/css">
+.popo{ display:none;}
+.echarts{width:100%; height:300px; margin-bottom:30px; padding-bottom:20px; border-bottom:1px solid #ccc}
+</style>
+<title>校长-个人管理中心</title>
+<script>
+	// 路径配置
+	require.config({
+		paths: {echarts: '../../js/echarts'}
+	});
+        
+	//饼图
+	var opts={
+			option1:{
+					title : {
+						text: '成绩公布图',
+						
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				},
+				option2: {
+					title : {
+						text: '本站满意度调查',
+						subtext: '纯属虚构',
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				}
+		
+		
+		}
+	
+	
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init( document.getElementById('echarts04') );
+
+                // 为echarts对象加载数据 
+                myChart.setOption(opts.option1); 
+            }
+        );
+			
+			
+	
+	
+
+$(function(){
+	$('h2').click(function(){
+			require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init( document.getElementById('echarts04') ); 
+                // 为echarts对象加载数据 
+                myChart.setOption(opts.option2); 
+            }
+        );
+	
+	})
+	$('.sechang').change(function(){
+		//alert($(this).val())
+		if($(this).val()=='b')
+		{
+			$('.image').children('#echarts01').remove();
+			$('.image').append(' <div id="echarts04" class="echarts"></div>');
+			//饼图
+	var opts={
+			option1:{
+					title : {
+						text: '成绩公布图',
+						
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				},
+				option2: {
+					title : {
+						text: '本站满意度调查',
+						subtext: '纯属虚构',
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				}
+		
+		
+		}
+	
+	
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init( document.getElementById('echarts04') ); 
+                
+                
+                // 为echarts对象加载数据 
+                myChart.setOption(opts.option1); 
+            }
+        );	
+		}
+		else if($(this).val()=='s')
+		{
+			$('.image').children('#echarts04').remove();
+			$('.image').append(' <div id="echarts01" class="echarts"></div>');
+			// 柱状图
+	require(
+		[
+			'echarts',
+			'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+		],
+		function (ec) {
+			// 基于准备好的dom，初始化echarts图表
+			var _this=this
+			var myChart = ec.init(document.getElementById('echarts01')); 
+			
+			var option = {
+				tooltip: {
+					show: true,
+					formatter: "{b} : {c}人" 
+				},
+				color:['#f00'],
+				legend: {
+					data:['分数统计']
+				},
+				xAxis : [
+					{
+						type : 'category',
+						data : ["60以下","70-80分","80-90分","90-100分"]
+					}
+				],
+				yAxis : [
+					{
+						type : 'value', name:'人数'
+					}
+				],
+				series : [
+					{
+						"name":"分数统计",
+						"type":"bar",
+						"barWidth":"50",
+						"data":[5, 14, 8, 3]
+					}
+				]
+			};
+	
+			// 为echarts对象加载数据 
+			myChart.setOption(option); 
+		}
+	);
+	
+	
+		}
+	})
+	
+})
+
+</script>
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                    
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->  
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+        <div class="main_head pr clearfix">
+            <img class="img_lm" src="../../images/teacher_lm.jpg">
+            <ul class="infoList">
+                <li><span>30</span>学生</li>
+                <li><span>300</span>班级</li>
+                <li><span>49</span>教师</li>
+            </ul>
+            
+            <h2>毛毛虫</h2>
+            <p class="signTxt">队伍不好带呀<i>编辑</i></p>
+            <p>学　校:北京四中</p>
+            <p class="handCls">班　级:101班 班主任&nbsp;&nbsp;&nbsp;201班 数学教师 </p>
+            <p>教研组:数学</p>
+        </div>
+        <div class="mainNav noBg grid_24">
+            <ul class="mainNav_R clearfix">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置</span>
+                   
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="currentLeft grid_5">
+            <div class="item l_asideMenu">
+            <h4>个人中心</h4>
+            <ul class="setupMenu">
+                <li><a class="lisA" href="javascript:;"><i></i>超级管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">三率统计</a></li>
+                        <li><a href="#">年级统计表</a></li>
+                        <li><a href="#">班级统计表</a></li>
+                       
+                    </ul>
+                </li>
+                <li><a class="lisB" href="javascript:;"><i></i>工作交流</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">我的私信</a></li>
+                        <li><a href="#">教学通知</a></li>
+                    </ul>
+                </li>
+               
+            </ul>
+            </div>	
+        </div>
+    	<div class="currentRight grid_16 push_2">
+        	<div class="retting_box">
+                 <div class="noticeH clearfix resetting">
+                    <h3 class="h3L">最新入驻</h3>
+                    <p class="fl">规划：昨天成员增加的班级，按照最新变动的时间倒叙</p>
+                    <ul class="fr">
+                        <li class="fl">学生：60人</li>
+                        <li class="fl">教师：10个</li>
+                        <li class="fl">班级：10个</li>
+                        
+                    </ul>
+                </div>
+                <hr>
+             	<div class="rettingList clearfix">
+                	<h4>初中1100班</h4>
+                    <dl>
+                    	<dt><a href="#"><img src="../../images/teacher_lm.jpg" alt="某某学校" title="某某学校"></a></dt>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三" title="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                    </dl>
+                </div>
+                <div class="rettingList clearfix">
+                	<h4>初中1100班</h4>
+                    <dl>
+                    	<dt><a href="#"><img src="../../images/teacher_lm.jpg" alt="某某学校" title="某某学校"></a></dt>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三" title="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a></dd>
+                        <dd><a href="#"><img src="../../images/teacher_s.jpg" alt="数学老师张三"></a> </dd>
+                    </dl>
+                    
+                </div>
+                <div class="more">
+                    	<a href="javascript:;" class="w120">查看更多班级</a>
+                        <!--点击更多显示几条，再点击在显示几条,最后没有了，更多消失-->
+                    </div>
+             </div>
+            <div class="retting_box">
+                 <div class="noticeH clearfix resetting">
+                    <h3 class="h3L">考试成绩</h3>
+                    <p class="fl">规则：昨天发布成绩的考试，按照成绩发布的时间倒叙</p>
+                    <ul class="fr">
+                        <li class="fl">最新公布成绩：10次</li>
+                    </ul>
+                </div>
+                <hr>
+             	<div class="rettingList clearfix">
+                	<h4>1100班</h4>
+                    <ul class="ret">
+                    	<li>初一语文随堂测验</li>
+                        <li class="clearfix">
+                        	<div class="fl"><label>教师：</label></div>
+                            <div class="fl">李四</div>
+                        </li>
+                        <li class="clearfix">
+                        	<div class="fl"><label>成绩公布：</label></div>
+                            <div class="fl">
+                            	<span>0-59：10人</span>
+                                <span>60-69：20人</span>
+                                <span>70-79：20人</span>
+                                <span>80-89：30人</span>
+                                <span>90-100：20人</span>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                        	<div class="fl"><label>成绩公布图：</label></div>
+                            <div class="fl">
+                            	<select class="sechang">
+                                	<option value="b">饼图</option>
+                                    <option value="s">树状图</option>
+                                </select>
+                            </div>
+                           <div class="image">
+                           		<div id="echarts04" class="echarts"></div>
+                           </div>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                    <div class="more">
+                    	<a href="javascript:;" class="w120">查看更多班级</a>
+                        <!--点击更多显示几条，再点击在显示几条,最后没有了，更多消失-->
+                    </div>
+                    
+                </div>
+                
+             </div> 
+             <div class="retting_box">
+                 <div class="noticeH clearfix resetting">
+                    <h3 class="h3L">作业情况</h3>
+                    <p class="fl">规则：昨天发布的作业，按照作业的布置时间倒叙</p>
+                    <ul class="fr">
+                        <li class="fl">最新发布作业：10次</li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="rettingList clearfix">
+                	<h4>1405班</h4>
+                	<ul class="classList">
+                    	<li><h5><a href="#">数学作业xxxxx</a></h5></li>
+                        <li><span>教师：王五</span></li>
+                        <li><span>收到答案：20份</span></li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="rettingList clearfix">
+                	<h4>1406班</h4>
+                	<ul class="classList">
+                    	<li><h5><a href="#">数学作业xxxxx</a></h5></li>
+                        <li><span>教师：王五</span></li>
+                        <li><span>收到答案：20份</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="more">
+                    	<a href="javascript:;" class="w120">查看更多班级</a>
+                        <!--点击更多显示几条，再点击在显示几条,最后没有了，更多消失-->
+             	</div>	
+             </div> 
+             
+                  
+    	</div>
+   
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+</body>
+</html>

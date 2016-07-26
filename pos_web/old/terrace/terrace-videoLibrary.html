@@ -1,0 +1,403 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>视频库</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/terrace.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('#searchJS').click(function(){
+		$('#database_List').toggleClass("hide");
+		$('#arr_icon').toggleClass("close");
+	})
+//搜索按钮切换	
+	$('.terrace_btn_js span').bind('click',function(){
+		$(this).addClass('s_btn').siblings('span').removeClass('s_btn');	
+		
+	})
+})
+</script>
+</head>
+
+<body id="body">
+<!--顶部开始-->
+<div class="min_head terrace_head">
+  <div class="cont24 terrace clearfix">
+    <div class="head_left terrace_left grid_6">
+    	<ul class="terrace_ul clearfix">
+        	<li><a href="#">题库</a></li>
+            <li><a href="#">资料库</a></li>
+            <li><a href="#">视频库</a></li>
+        </ul>
+    
+    </div>
+     <ul class="terrace_ul fl">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">免费登录</a></li>    
+     </ul>
+    
+    
+    <div class="userCenter grid_6 userCenter_R">
+      
+      <div class="userAccount userAccount2  grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg userMsg2 grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+      <div class="detail fr">
+      	<span><a href="#">通知</a></span>
+        <em>|</em>
+        <span><a href="#">收藏夹</a></span>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!--顶部结束-->
+<!--搜索开始--> 
+<div class="terrace_search ">
+	<div class="terrace_box clearfix">
+    	<div class="terrace_logo">
+    		<img src="../images/logo.png" alt="">
+        </div>
+        <div class="terrace_search">
+        	<p class="terrace_btn terrace_btn_js"><span class="mini_btn s_btn">试题</span><span class="mini_btn">试卷</span></p>
+            <div class="terrace_text">
+            	<em></em>
+                <input type="text" value="请输入题目关键字" class="text">
+                <button type="button" class="tye_btn">搜 索</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!--搜索结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+     <div class="main_cent">
+  <div class="mainNav terrace_Nav">
+            <ul class="terrace_nav">
+                <li class="terrace_nav_this"><a href="#">首页</a></li>
+                <li><a href="#">小学</a></li>
+                <li><a href="#">初中</a></li>
+                <li><a href="#">高中</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="deta_de">
+            <a href="#">首页</a>&gt;&gt;<a href="#" class="this">视频库</a>
+        </div>
+   <div class="class_c clearfix tch">
+  <div class="currentLeft grid_17 videoLibrary_div">
+     <div class="noticeH clearfix videoLibrary_top">
+      <h3 class="h3L">视频库</h3>
+      <div class="new_not fr">
+        <input type="text" class="text">
+        <input type="button" class="btn" value="搜索">
+        &nbsp;&nbsp;<a id="searchJS">高级搜索<i class="open" id="arr_icon"></i></a> </div>
+    </div>
+    <hr>
+    <div class="videoLibrary_main">
+      <form id="database_List" class="hide">
+        <ul class="form_list videoLibrary_List clearfix">
+          <li>
+            <div class="formL">
+              <label for="name">区域：</label>
+            </div>
+            <div class="formR">
+              <select class="t1">
+                <option value="1">选择省</option>
+                <option value="">还顶</option>
+              </select>
+              <select class="t2">
+                <option value="2">选择地区</option>
+                <option value="">还顶</option>
+              </select>
+              <select class="t3">
+                <option value="3">选择县</option>
+                <option value="">还顶</option>
+              </select>
+            </div>
+          </li>
+          <li class="short_list">
+            <div class="formL">
+              <label>年级：</label>
+            </div>
+            <div class="formR">
+              <select class="t4">
+              	<option value="4">选择年级</option>
+                <option value="一年级">一年级</option>
+              </select>
+            </div>
+          </li>
+          <li class="short_list">
+            <div class="formL">
+              <label>科目：</label>
+            </div>
+            <div class="formR">
+              <select class="t5">
+              	 <option value="5">选择科目</option>
+                <option value="一年级">语文 </option>
+              </select>
+            </div>
+          </li>
+          <li class="long_list">
+            <div class="formL">
+              <label>视频名称：</label>
+            </div>
+            <div class="formR">
+              <input type="text" class="text t6">
+              </div>
+          </li>
+        </ul>
+        <p class="conserve clearBoth">
+          <button type="button" class="B_btn110">搜索</button><span>找到符合条件的结果约<em> 1000 </em>条</span><a class="clear_btn">清空搜索条件</a>
+        </p>
+      </form>
+      <script type="text/javascript">  
+//function clearForm(id)  
+//{  
+//    var formObj = document.getElementById(id);  
+//    if(formObj == undefined)  
+//    {  
+//        return;  
+//    }  
+//      
+//    for(var i=0; i<formObj.elements.length; i++)  
+//    {  
+//        if(formObj.elements[i].type == "text")  
+//        {  
+//            formObj.elements[i].value = "";  
+//        }  
+//        else if(formObj.elements[i].type == "password")  
+//        {  
+//            formObj.elements[i].value = "";  
+//        }  
+//        else if(formObj.elements[i].type == "radio")  
+//        {  
+//            formObj.elements[i].checked = false;  
+//        }  
+//        else if(formObj.elements[i].type == "checkbox")  
+//        {  
+//            formObj.elements[i].checked = false;  
+//        }  
+//        else if(formObj.elements[i].type == "select-one")  
+//        {  
+//            formObj.elements[i].options[0].selected = true;  
+//        }  
+//        else if(formObj.elements[i].type == "select-multiple")  
+//        {      
+//            for(var j = 0; j < formObj.elements[i].options.length; j++)  
+//            {  
+//                formObj.elements[i].options[j].selected = false;  
+//            }  
+//        }  
+//        else if(formObj.elements[i].type == "file")  
+//        {  
+//            //formObj.elements[i].select();  
+//            //document.selection.clear();               
+//            // for IE, Opera, Safari, Chrome  
+//            var file = formObj.elements[i];  
+//             if (file.outerHTML) {  
+//                 file.outerHTML = file.outerHTML;  
+//             } else {  
+//                 file.value = "";  // FF(包括3.5)  
+//            }  
+//        }  
+//        else if(formObj.elements[i].type == "textarea")  
+//        {  
+//            formObj.elements[i].value = "";  
+//        }  
+//    }  
+//    
+//} 
+//
+//
+//
+// $('.clear_btn').click(function(){
+//		clearForm('database_List') 
+//	})  
+</script>  
+      
+      
+      <ul class="videoLibrary_bottom_list clearfix">
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn left">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">取消收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">取消收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">取消收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      	<li class="clearfix">
+        	<img src="../images/ico.png" alt=" " />
+            <h4>[<i>视频</i>]课程名称课程名课程课程......</h4>
+            <p>简介：简介简介简介简介简介简简介简介简简介简介简介介简介简介简介......</p>
+            <button class="lookBtn">预览</button><button class="lookBtn">收藏</button>
+        </li>
+      </ul>
+              <div class="page"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+
+    </div>
+    
+  </div>
+  <div class="centRight">
+                <div class="centRightT">
+                    <a href="classHandsin.html" class=" outAdd_btn B_btn120">设置手拉手班级</a> </div>
+                <div class="centRightT clearfix">
+                    <p class="title titleLeft"> <span>手拉手班级</span><i></i> </p>
+                    <hr>
+                    <dl class="list_dl clearfix">
+                        <dt><img src="../images/pic.png" alt="" width="90" height="90"></dt>
+                        <dd>
+                            <h3>177班</h3>
+                        </dd>
+                        <dd><span>学校：</span>北京人大附中</dd>
+                  
+                        <dd><span>成员：</span>30名学生</dd>
+                    </dl>
+                </div>
+                <div class="centRightT">
+                   
+                    <ul class="class_list clearfix">
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                    </ul>
+                </div>
+                <div class="centRightT">
+                    <h3 class="clearfix">推荐视频</h3>
+                    <hr>
+                    <h4>资料名称资料名称资料名称资料名称......</h4>
+                    <dl class="y_list">
+                        <dt><a href="#"><img src="../images/teacher_m.jpg"></a></dt>
+                        <dd>
+                            <span>简介：</span>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+                        </dd>
+                        
+                    </dl>
+                    <ul class="info_list">
+                    	<li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                    </ul>
+                </div>
+               </div>
+  </div>
+  </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+  <div class="foot">
+    <dl>
+      <dt>关于我们</dt>
+      <dd><a href="#">关于班海</a></dd>
+      <dd><a href="#">招聘启事</a></dd>
+      <dd><a href="#">法律声明</a></dd>
+      <dd><a href="#">网站地图</a></dd>
+    </dl>
+    <dl>
+      <dt>商务合作</dt>
+      <dd><a href="#">商务合作</a></dd>
+      <dd><a href="#">友情链接</a></dd>
+      <dd><a href="#">资源合作</a></dd>
+      <dd><a href="#">视频合作</a></dd>
+    </dl>
+    <dl>
+      <dt>联系我们</dt>
+      <dd><a href="#">在线客服</a></dd>
+      <dd><a href="#">官方微博</a></dd>
+      <dd><a href="#">意见反馈</a></dd>
+      <dd><a href="#">关注微信</a></dd>
+    </dl>
+    <dl>
+      <dt>问题帮助</dt>
+      <dd><a href="#">常见问题</a></dd>
+      <dd><a href="#">用户答疑</a></dd>
+    </dl>
+    <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+      京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学校-教师列表</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../css/school.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script>
+$(function() {
+	//显示更多
+	$('.classesList,.tch_group_list').each(function(index, element) {
+        var ddSize=$(this).children('dd').size();
+		if(ddSize>4){
+			$(this).addClass('addMore');
+		}
+    });
+	//ie7
+	$('.classesList,.tch_group_list').mousemove(
+		function(){
+			var pa=$(this).parent('li');
+			pa.css('z-index',100).siblings().css('z-index',1);
+		})
+	
+	
+	
+	
+	//修改身份
+	$('#popBox').dialog({
+		autoOpen: false,
+		width: 500,
+		height: 240,
+		modal: true,
+		resizable: false,
+		close: function() {
+			$(this).dialog("close")
+		}
+	});
+	$('.pop_sch_t').click(function() {
+			$("#popBox").dialog("open");
+			return false;
+		})
+		/*弹窗初始化*/
+	$('.popBox').dialog({
+		autoOpen: false,
+		width: 480,
+		modal: true,
+		resizable: false,
+		close: function() {
+			$(this).dialog("close")
+		}
+	});
+	/*导入教师名单弹窗*/
+	$('.pushBtnJs').click(function() {
+			$("#pushNotice").dialog("open");
+			return false;
+		})
+		/*系统提示弹窗*/
+	$('.name_list_btn').click(function() {
+			$("#pushNotice").dialog("close");
+			$("#system_hints").dialog("open");
+			return false;
+		})
+		/*系统弹窗关闭*/
+	$('.okBtn').click(function() {
+		$("#system_hints").dialog("close");
+	})
+	//显示更多任课老师
+	$('.moreClsBtn').click(function(){
+		$('.cls_teacher').show();
+		return false;
+	})
+	$(document).click(function() {
+		$('.cls_teacher').hide();
+	})
+})
+</script>
+</head>
+
+		<body class="school">
+<div class="bodyBg"> <img src="../images/schoolBG.jpg"> </div>
+<div class="opacity_mask"></div>
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24 homepage school_classes">
+            <h2>北京第四中学</h2>
+            <div class="grid_24 main_nav">
+        <div class="main_nav_BG"></div>
+        <ul class="clearfix">
+                    <li><a href="school_home.html">首页</a> </li>
+                    <li><a href="#">学校公示</a> </li>
+                    <li><a href="school_teacher.html" class="ac">教师</a> </li>
+                    <li><a href="school_teachingGroup.html">教研组</a> </li>
+                    <li><a href="school_classes.html">班级</a> </li>
+                    <li><a href="#">招生简章</a> </li>
+                    <li><a href="school_cuttingScore.html">录取分数线</a> </li>
+                </ul>
+    </div>
+            <div class="grid_24 main">
+        <div class="main_cont">
+                    <div class="title">
+                <h4>校内教师</h4>
+            </div>
+                    <div class="scholl_class_cont scholl_teacher_cont">
+                <div class="scholl_class_contTop">
+                            <div class="class_contList clearfix">
+                        <label>学段：</label>
+                        <span class="selectWrap big_sel" style="width:110px"> <i></i> <em>请选择</em>
+                                <select>
+                            <option>小学部</option>
+                            <option>初中部</option>
+                            <option>高中部</option>
+                        </select>
+                                <span id="" class="errorTxt"></span> </span>
+                        <label>科目：</label>
+                        <span class="selectWrap big_sel" style="width:110px; margin-right:30px"> <i></i> <em>请选择</em>
+                                <select>
+                            <option>语文</option>
+                            <option>数学</option>
+                            <option>英语</option>
+                        </select>
+                                </span>
+                        <input type="text" style="width:278px" class="text" id="sclName" value="">
+                        <button type="button" class="big_searchBtn">确定</button>
+                        <span><a href="" class="fr blue_d pushBtnJs">导入教师名单</a></span> </div>
+                        </div>
+                <div class="scholl_class_cont_middle">
+                            <ol class="school_t clearfix">
+                        <li> <img src="../images/class_right_1.png">
+                            <h4>杨维玮</h4>
+                            <h5><a title="" href="javacsript:;">班级：</a></h5>
+                            <dl class="classesList">
+                            <dd> <span>126班&nbsp;&nbsp;班主任</span><em class="yuwen">语</em></dd>
+                            <dd> <span>126班&nbsp;&nbsp;班主任</span><em class="dili">地</em></dd>
+                            <dd> <span>126班&nbsp;&nbsp;班主任</span><em class="yuwen">语</em></dd>
+                            <dd> <span>126班&nbsp;&nbsp;班主任</span><em class="yuwen">语</em></dd>
+                            <dd> <span>126班&nbsp;&nbsp;班主任</span><em class="yuwen">语</em></dd>
+                            <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                        </dl>
+                            <h6><a href="javacsript:;" class=" w70 class_teac">教研组：</a></h6>
+                            <dl class="tch_group_list">
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            </dl>
+                        </li>
+                        <li> <img src="../images/class_right_1.png">
+                            <h4>杨维玮</h4>
+                            <h5><a title="" href="javacsript:;">班级：</a></h5>
+                            <dl class="classesList">
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            <h6><a href="javacsript:;" class=" w70 class_teac">教研组：</a></h6>
+                            <dl class="tch_group_list">
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            </dl>
+                        </li>
+                        <li> <img src="../images/class_right_1.png">
+                            <h4>杨维玮</h4>
+                            <h5><a title="" href="javacsript:;">班级：</a></h5>
+                            <dl class="classesList">
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            <h6><a href="javacsript:;" class=" w70 class_teac">教研组：</a></h6>
+                            <dl class="tch_group_list">
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            </dl>
+                        </li>
+                        <li> <img src="../images/class_right_1.png">
+                            <h4>杨维玮</h4>
+                            <h5><a title="" href="javacsript:;">班级：</a></h5>
+                            <dl class="classesList">
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            <h6><a href="javacsript:;" class=" w70 class_teac">教研组：</a></h6>
+                            <dl class="tch_group_list">
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            </dl>
+                        </li>
+                        <li> <img src="../images/class_right_1.png">
+                            <h4>杨维玮</h4>
+                            <h5><a title="" href="javacsript:;">班级：</a></h5>
+                            <dl class="classesList">
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        <dd> <span>126班&nbsp;&nbsp;班主任</span></dd>
+                        
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            <h6><a href="javacsript:;" class=" w70 class_teac">教研组：</a></h6>
+                            <dl class="tch_group_list">
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd> <span>语文教研组&nbsp;&nbsp;教研主任</span></dd>
+                        <dd class="more"> <a href="javacsript:;">更多……</a> </dd>
+                    </dl>
+                            </dl>
+                        </li>
+                    </ol>
+                            <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a> </div>
+                        </div>
+            </div>
+                </div>
+    </div>
+        </div>
+</div>
+<!--主体end-->
+
+<div id="popBox" class="popBox popBox_school_teacher hide" title="修改身份"> 
+            <!--完成答题-->
+            <div class="impBox">
+        <p><em class="teacher_name">教师一</em> 在 <em class="class_name">101班（第54班）</em> 的身份为：</p>
+        <p>
+                    <select style="width:120px;">
+                <option>班主任</option>
+                <option>任课教师</option>
+            </select>
+                </p>
+    </div>
+            <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+        </div>
+<!--导入教师 名单弹窗-->
+<div class="popBox hide pushNotice" title="导入教师名单" id="pushNotice">
+            <div class="popCont">
+        <div class="new_tch_group">
+                    <p>步骤一：使用Excel编辑学生名单，格式如下图。</p>
+                    <p class="download"><a href="" class="blue mar_left">点击下载Excel模版</a> </p>
+                    <p> <img src="../images/school_class.png" class="mar_left" /> </p>
+                    <p>步骤二：上传学生名单，完成添加。</p>
+                    <button class="w160 btn30 name_list_btn">上传教师名单</button>
+                </div>
+    </div>
+        </div>
+<!--系统提示-->
+<div class="popBox hide system_hints" title="系统提示" id="system_hints">
+            <div class="popCont upload">
+        <p class="ac"><i class="success"></i> 上传成功</p>
+        <p class="hide"><i class="failure"></i> 上传失败</p>
+    </div>
+            <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+    </div>
+        </div>
+</body>
+</html>

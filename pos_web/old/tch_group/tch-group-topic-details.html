@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/tch_group.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script>
+$(function(){
+$('h3.Signature i').editPlus();	
+$('.newBtnJs').click(function(){
+$('#addPlan').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#addPlan" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+
+
+})
+})
+
+
+
+</script>
+<title>教研组-教研题目详情页</title>
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登陆</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+
+<div class="mainBody cont24">
+    <div class="main_head">
+        <h2 class="class_t"> <span class="classFocus">语文教研组</span></i> </h2>
+        <h3 class="Signature fot_z"> <span>人大附中&nbsp;&nbsp;&nbsp;&nbsp;初中部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="edit">宋江老师(教研组长)</span><i></i> </h3>
+    </div>
+    <div class="main_cent">
+        <div class="mainNav clearfix">
+            <ul class="mainNav_L">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">教学计划</a></li>
+                <li class="ac"><a href="#">教研课题</a></li>
+                <li><a href="#">听课评课</a></li>
+                <li><a href="#">教研资料</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="class_c clearfix tch">
+            <div class="crumbs"><a href="#">教研课题</a> >> <a href="#">课题列表</a> >> 课题详情</div>
+            <div class="centLeft">
+                <div class="notice ">
+                    <div class="noticeH clearfix noticeB">
+                        <h3 class="h3L">教学名称教学名称教学名称</h3>
+                        <div class="new_not fr"> <a href="../teacher/teacher_write-diary.html" class="new_bj">提交课题报告</a> </div>
+                    </div>
+                    <hr>
+                    <div class="plan_l details">
+                    	 <dl class="clearfix">
+                            <dt class="fl">课题组成员:</dt>
+                            <dd class="fl">老师1、老师2、老师3、老师4</dd>
+                        </dl>
+                        <p><i>课题描述：</i>课题描述课题描述课题描述课题描述课题描述课题描述课题描述课课题描述课题描述课题描述课题描述课题描述课题描述课题描述课课题描述课题描述课题描述
+                            题描述课题描述课题描述课题描述课题描述课描述课...... </p>
+                        <div>放插件</div>
+                        <div class="plan_l details_width">
+                            <div class="noticeH clearfix">
+                                <h4 class="h3L" style="padding-left:10px;">教研报告</h4>
+                                <div class="new_not fr"> <a href="javascript:;" class="a_rl" style="margin-right:30px;">共<i>3</i>篇</a> </div>
+                            </div>
+                            <hr>
+                            <ul class="notice_list">
+                                <li class="clearfix"><a href="tch_group-details-diary.html"><i>[唐僧老师]</i>教研报告名称教研报告名称教研报告名称教报</a><em>2012-01-10</em></li>
+                                <li class="clearfix"><a href="javascript:;"><i>[唐僧老师]</i>教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报</a><em>2012-01-10</em></li>
+                                <li class="clearfix"><a href="javascript:;"><i>[唐僧老师]</i>教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报</a><em>2012-01-10</em></li>
+                                <li class="clearfix"><a href="javascript:;"><i>[唐僧老师]</i>教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报</a><em>2012-01-10</em></li>
+                                <li class="clearfix"><a href="javascript:;"><i>[唐僧老师]</i>教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报告名称教研报</a><em>2012-01-10</em></li>
+                            </ul>
+                            <div class="page minipage" style="width:762px; float:left;  text-align:center;"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="centRight"></div>
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+<style type="text/css">
+.fot_z span{ font-size:14px;}
+</style>
+
+<!--创建修改新建教学计划--------------------->
+<div id="addPlan" class=" popBox addPlan hide" title="创建教学计划">
+    <div class="impBox">
+        <div class="handleT clearfix">
+            <label><i></i>教学计划名称：</label>
+            <div class="planR">
+                <input type="text" class="text">
+            </div>
+        </div>
+        <div class="handleT clearfix">
+            <label>使用年级：</label>
+            <div class="planR">
+                <select>
+                    <option value="000班">000班</option>
+                    <option value="000班">000班</option>
+                    <option value="000班">000班</option>
+                </select>
+            </div>
+        </div>
+        <div class="handleT clearfix">
+            <label><i></i>描述：</label>
+            <div class="planR">
+                <textarea></textarea>
+            </div>
+        </div>
+        <div class="handleT clearfix">
+            <label><i></i>教学计划：</label>
+            <div class="planR">
+                <div class="fl" style="font-size:12px; color:#999999;"> <a href="#" class="btn">上传试卷</a> <em style="margin-left:10px;">文件格式限定为doc,docx或pdf</em> </div>
+                <ul class="add_del clearfix">
+                    <li><a href="javascript:;" class="addDel">删除</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$('.addDel').live('click',function(){
+		$(this).parent().remove();	
+		
+	})	
+	
+})
+
+</script>
+</body>
+</html>

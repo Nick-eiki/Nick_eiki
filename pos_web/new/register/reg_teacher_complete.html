@@ -1,0 +1,567 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>用户注册--老师完善信息</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script>
+$(function(){
+	//顶部显示验证
+	popBox.validation_top("#form_id2");
+	
+/*添加任教班级---------------*/	
+;(function(){
+	function checkSingle(){
+		var pa='#work_cls_list';
+		if($(pa+' li').size()<2) $(pa+' li:first .delBtn').hide();	
+		else $(pa+' li:first .delBtn').show();
+	};
+	
+	$('.addClsBtn').click(function(){
+		var html='<li>';
+			html+='<input type="text" class="text w120 sel_class_input" data-validation-engine="validate[required]"  data-prompt-position="inline" data-prompt-target="id"><span id="id" class="errorTxt" style="left:340px"></span>';
+        	html+='&nbsp;<span class="selectWrap big_sel" style="width:120px">'; 
+			html+='<i></i><em>选择身份</em>'; 
+			html+='<select><option value="0">选择身份</option><option value="1">班主任</option>><option value="2">任课老师</option></select>'; 
+			html+='</span>'; 
+			html+=' <button type="button" class="delBtn"></button>'; 
+			html+='</li>';                  
+		$(this).prev('ul').append(html);
+		checkSingle();
+	});
+
+/*删除行*/
+	$('.work_cls_list li .delBtn').live('click',function(){
+		$(this).parent().remove();
+		checkSingle();
+	});
+})();
+
+/*学校列表 地区列表 班级列表 教研组列表鼠标hover--------------*/		
+	$('.resultList li,.mySchoolBox .selectAreaBox dl dd,.gradeList dd').live('click',function(){
+		$(this).addClass('ac').siblings().removeClass('ac');
+	});
+
+$('.popBox').dialog({
+		autoOpen: false,
+		width:670,
+		modal: true,
+		resizable:false,
+		close:function(){$(this).dialog("close")}
+	});
+
+
+/*学校pop-----------------------------------------*/	
+
+$('.mySchoolBox .okBtn').click(function(){
+	alert(55555);
+	$('#selectSchoolText').val($('.popBox .schoolList .ac').attr('id'));
+	$(this).parents('.popBox').dialog("close");
+});
+
+
+
+/*地区选择级联*/
+;(function(){
+	var index=0;//层级索引
+	function addItem(url,target){//地区ajax
+		$.getJSON(url,function(data){
+			target.show().children('dd').remove();
+			for(var i=0; i<data.length; i++){
+				target.append('<dd id="'+data[i].AreaID+'">'+data[i].AreaName+'</dd>');
+			};
+		});
+	};
+	function crumb(elm){//面包屑
+		$(elm).parent().hide();
+		$('.mySchoolBox .crumbList').show();
+		$('.mySchoolBox .crumbList span').removeClass('ac');
+		$('.mySchoolBox .crumbList a').before('<span data-value="'+elm.attr('id')+'" class="ac">'+elm.text()+'</span>');
+	};
+	function chk_stage(val){
+		if(val){
+			if(val==1) $('.checkboxArea input:eq(0)').addClass('chked').attr('disabled',true).next('label').addClass('chkedDisable');
+			if(val==2) $('.checkboxArea input:eq(1)').addClass('chked').attr('disabled',true).next('label').addClass('chkedDisable');
+			if(val==3) $('.checkboxArea input:eq(2)').addClass('chked').attr('disabled',true).next('label').addClass('chkedDisable');
+		};
+		var chkeed=$('.checkboxArea input[class*="chked"]').size();
+		if(chkeed==1 && $('.checkboxArea input:last').hasClass('chked')){
+			$('.sel_stu_system').hide();
+		}
+		else{$('.sel_stu_system').show();}
+		if(chkeed==0)$('.sel_stu_system').hide();
+	};
+	
+	
+	
+	$('.creatNewSchool').click(function(){//创建新学校
+		chk_stage(3);
+		$(this).hide();
+		$('.schoolList,.mySchoolBox dl').hide();
+		$('.newSchool').show();
+		$('.mySchoolBox h5').text('创建新学校');
+		
+	})
+	
+	$('#selectSchoolText').click(function(){//弹框
+		//alert('请先选择学段');
+		$('.schoolList').hide();
+		$('.mySchoolBox .crumbList span').remove();
+		$( ".mySchoolBox" ).dialog( "open" );
+		$('#searchText').placeholder({value:'请输入学校名称',ie6Top:10});
+		addItem('http://127.0.0.1:8033/ajax/GetJsonProvinceList?jsoncallback=?',$('.mySchoolBox .stateList'))
+	});
+	$('.backTopArea').click(function(){//返回顶部
+		$(this).hide();
+		$('.selectArea').show();
+		$('.schoolList,.mySchoolBox .crumbList').hide();
+		$('.stateList,.cityList,.districtList').empty();
+		$('.mySchoolBox .crumbList span').remove();
+		addItem('http://127.0.0.1:8033/ajax/GetJsonProvinceList?jsoncallback=?',$('.mySchoolBox .stateList'))
+	});
+	
+	$('.mySchoolBox .stateList dd').live('click',function(){//选择省
+		var id=$(this).attr('id');
+		addItem('http://127.0.0.1:8033/ajax/GetJsonArea?id='+id+'&jsoncallback=?',$('.mySchoolBox .cityList'));
+		$('.back_selectArea').show();
+		crumb($(this));
+	});
+	
+	$('.mySchoolBox .cityList dd').live('click',function(){//选择市
+		var id=$(this).attr('id');
+		addItem('http://127.0.0.1:8033/ajax/GetJsonArea?id='+id+'&jsoncallback=?',$('.mySchoolBox .districtList'));
+		crumb($(this));
+		index++;
+	});
+	$('.mySchoolBox .districtList dd').live('click',function(){//选择区县
+		if($('.mySchoolBox .crumbList span').size()<3){
+			crumb($(this));
+			index++;
+			$('.schoolList,.creatNewSchool').show();
+		};
+	});
+	
+	$('.mySchoolBox .back_selectArea').click(function(){//返回上级地区
+		$('.mySchoolBox dl,.newSchool').hide();
+		$('.mySchoolBox dl:eq('+index+')').show();
+		$('.mySchoolBox .crumbList span:last').remove();
+		$('.mySchoolBox h5').text('选择地区');
+		index==0? index=0:index--;
+		$('.mySchoolBox .crumbList span:last').addClass('ac');
+		if($('.mySchoolBox .crumbList span').size()==0) $(this).hide();
+		if(index!=0) $('.schoolList').hide();
+	});
+	
+	$('.checkboxArea label').live('click',function(){
+		chk_stage()
+	})
+})();
+
+
+/*教研组pop-------------------------------------------*/
+(function(){
+	var target="";
+	$('#sel_tch_group_input').click(function(){
+		target=$(this);
+		$('.creat_tch_groupBox').dialog('open');
+		$('.creat_tch_groupBox .okBtn').click(function(){
+			target.val($('.creat_tch_groupBox .tch_group_List .ac').text());
+			$(this).parents('.popBox').dialog("close");
+		});
+	});
+})();
+
+
+$('.creat_tch_group').click(function(){
+	$('.back_selectArea').css('display','inline-block');
+	$(this).hide();
+	$('.tch_group_List').hide();
+	$('.new_tch_group').show();
+	$('.creat_tch_groupBox h5').text('创建教研组');
+	$('.back_selectArea').click(function(){
+		$(this).hide();
+		$('.tch_group_List,.creat_tch_group').show();
+		$('.new_tch_group').hide();
+	});
+});
+
+/*班级pop---------------------------------------*/
+(function(){
+	var target="";
+	$('.sel_class_input').live('click',function(){
+		alert('请先选择学校');
+		target=$(this);
+		$('.creat_classBox').dialog('open');
+		$('.creat_classBox .okBtn').click(function(){
+			target.val($('.creat_classBox .myclassList .ac').text());
+			$(this).parents('.popBox').dialog("close");
+		});
+	});
+})();
+
+
+$('.gradeList dd').live('click',function(){
+	$('.creat_classBox .crumbList').show().children('span').remove();
+	$('.creat_classBox .crumbList a').before('<span class="ac">'+$(this).text()+'</span>');
+	$('.gradeList').hide();
+	$('.creat_classBox h5').text('班级列表')
+	$('.creat_classBox .myclassList').show();
+});
+
+$('.creat_classBox .back_selectArea').live('click',function(){
+	$('.creat_classBox .crumbList').hide().children('span').remove();
+	$('.gradeList').show();
+	$('.creat_classBox .myclassList').hide();
+})
+
+$('.creatNewClass').click(function(){
+	$(this).hide();
+	$('.gradeList,.crumbListWrap,.myclassList').hide();
+	$('.myNewClass').show();
+	$('.creat_classBox h5').text('创建新班级')
+});
+
+/*关闭弹钮*/
+$('.popBox .cancelBtn').click(function(){
+	$(this).parents('.popBox').dialog("close");
+});
+
+
+})
+</script>
+</head>
+
+<body class="reg reg_teacher_complete">
+<!--头部-->
+<div class="head reg_head">
+	<div class="cont24">
+    	<a href="#"><h1>班海网</h1></a>
+        <div class="userCenter">
+        	<a class="userName" href="#"><i></i>张三</a><a href="javascript:;" class="logOff">退出</a>
+        </div>
+    </div>
+	
+</div>
+<!--头部end-->
+<!--主体部分-->
+<div class="cont24">
+    <div class="grid_19 push_3">
+    	<h1>完善信息</h1>
+        <div class="formArea">
+            <form id="form_id2">
+                <div class="form_list">
+                    <div class="row">
+                        <div class="formL">
+                            <label></label>
+                        </div>
+                        <div class="formR">
+                            <p class="bg_blue_l_gray gray_d font12 attention"><i></i> 所有项目都为必填项,请按顺序认真填写</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>学段</label>
+                        </div>
+                        <div class="formR">
+                        	<span class="selectWrap big_sel"> <em>请选择</em>
+                            <select data-validation-engine="validate[required]" data-prompt-target="validation_errorBox" data-prompt-position="inline" data-errormessage-value-missing="学段不能为空" name="UserForm[department]" id="sel_stu_stage">
+                                <option value="">请选择</option>
+                                <option value="1">小学部</option>
+                                <option value="2">初中部</option>
+                                <option value="3">高中部</option>
+                            </select>
+                            <span id="validation_errorBox" class="errorTxt"></span>
+                           </span> 
+                           </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>学科</label>
+                        </div>
+                        <div class="formR"> <span class="selectWrap big_sel"> <i></i> <em>请选择</em>
+                            <select data-validation-engine="validate[required]" data-prompt-target="validation_errorBox" data-prompt-position="inline" data-errormessage-value-missing="科目不能为空!!!!!!!!" name="UserForm[department]" id="sel_stu_stage">
+                                <option value="">请选择</option>
+                                <option value="1">语文</option>
+                                <option value="2">数学</option>
+                                <option value="3">英语</option>
+                            </select>
+                            <span id="" class="errorTxt"></span>
+                            </span>  </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>教材版本</label>
+                        </div>
+                        <div class="formR"> <span class="selectWrap big_sel"> <i></i> <em>请选择</em>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="1">人教版</option>
+                                <option value="2">新课标</option>
+                                <option value="3">粤教版</option>
+                            </select>
+                            </span> <span id="" class="errorTxt"></span> </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>选择学校</label>
+                        </div>
+                        <div class="formR">
+                            <input id="selectSchoolText" type="text" class="text">
+                            <span id="" class="errorTxt"></span> </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>任教班级</label>
+                        </div>
+                        <div class="formR">
+                            <ul id="work_cls_list" class="work_cls_list">
+                                <li>
+                                    <input type="text" class="text w120 sel_class_input" data-validation-engine="validate[required]"  data-prompt-position="inline" data-prompt-target="aaatttt" >
+                                    <span id="aaatttt" class="errorTxt" style="left:340px"></span>
+                                    <span class="selectWrap big_sel" style="width:120px"> <i></i> <em>任课老师</em>
+                                    <select data-validation-engine="validate[required]" defaultvalue="" data-prompt-target="eeee" data-prompt-position="inline" data-errormessage-value-missing="学段不能为空" name="UserForm[department]" id="kkkk">
+                                        <option value="1">班主任</option>
+                                        <option value="2" selected>任课老师</option>
+                                    </select>
+                                    </span>
+                                    <button type="button" class="delBtn  hide"></button>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn36 bg_blue_l w130 addClsBtn"> 添加任教班级</button>
+                        </div>
+                    </div>
+                    <hr  style="width:370px;margin:0 auto 20px; position:relative;left:-30px;border-top:1px dashed #ddd; border-bottom:1px dashed #fff">
+                    <div class="row">
+                        <div class="formL">
+                            <label>教研组</label>
+                        </div>
+                        <div class="formR">
+                            <ul class="work_cls_list">
+                                <li>
+                                    <input id="sel_tch_group_input" type="text" class="text w120">
+                                    <span id="" class="errorTxt"></span> <span class="selectWrap big_sel" style="width:161px"> <i></i> <em>教研员</em>
+                                    <select class="validate[required]">
+                                        <option value="1">教研主任</option>
+                                        <option value="2" selected>教研员</option>
+                                    </select>
+                                    <span id="" class="errorTxt"></span> </span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label></label>
+                        </div>
+                        <div class="formR submitBtnBar">
+                            <button type="button" class="btn40 bg_green submitBtn">完　成</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--主体end--> 
+
+
+
+<!--页脚-->
+<div class="cont24 clearfix">
+    <div class="foot font12 grid_18 push_3">
+        <p>北京三海教育科技有限公司 版权所有</p>
+        <p>京ICP证080367号/京ICP备08103829号 北京市公安局海淀分局备案号1101081714</p>
+    </div>
+</div>
+<!--弹窗pop-----------------------------------------------------> 
+<!--选择学校-->
+<div class="popBox mySchoolBox" title="我所在的学校">
+    <div class="subTitleBar">
+        <h5>选择地区</h5>
+        <div class="subTitle_r">
+            <input id="searchText" tabindex="-1" type="text" class="text">
+            <button type="button" class="hideText searchBtn">搜索</button>
+        </div>
+    </div>
+    <div class="popCont"> <a href="#" class="txtBtn gray_d creatNewSchool hide">创建新学校</a>
+    	<a href="javascript:;" class="backTopArea hide">返回顶级</a>
+        <div class="selectArea">
+        	<div class="crumbListWrap">
+            <div class="crumbList clearfix hide"> 
+                <!--<span>山东省</span>
+                <span>青岛市</span>
+                <span class="ac">和平区</span>--> 
+                <a id="" class="back_selectArea"  href="javascript:;">返回上级</a> </div>
+            </div>
+            <dl class="clearfix stateList"></dl>
+            <dl class="clearfix cityList hide"></dl>
+            <dl class="clearfix districtList hide"></dl>
+        </div>
+        <ul class="resultList schoolList clearfix hide">
+            <li id="93933" title="金州区马家第一中学">金州区马家第一中学</li>
+            <li id="2543" class="ac" title="北京市人民大学附属中学">北京市人民大学附属中学</li>
+            <li id="533" title="北京市第四中学">北京市第四中学</li>
+            <li id="7833" title="北京市人民大学附属中学">北京市人民大学附属中学</li>
+            <li id="543333" title="金州区马家第一中学">金州区马家第一中学</li>
+            <li id="2133" title="北京市人民大学附属中学">北京市人民大学附属中学</li>
+            <li id="3333" title="北京市第四中学">北京市第四中学</li>
+            <li id="0033" title="北京市人民大学附属中学">北京市人民大学附属中学</li>
+        </ul>
+        <div class="newSchool hide">
+            <form>
+                <div class="form_list">
+                    <div class="row">
+                        <div class="formL">
+                            <label>学校名称</label>
+                        </div>
+                        <div class="formR">
+                            <input type="text" class="text">
+                            <span id="" class="errorTxt" style="left:268px"></span> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>学部设置</label>
+                        </div>
+                        <div class="formR checkboxArea">
+                            <input id="c01" type="checkbox" class="checkbox hide" name="xuebu1">
+                            <label for="c01" class="chkLabel">小学</label>
+                            <input id="c02"  type="checkbox" class="checkbox hide" name="xuebu2">
+                            <label for="c02" class="chkLabel">初中</label>
+                            <input id="c03"  type="checkbox" class="checkbox hide" name="xuebu3">
+                            <label for="c03" class="chkLabel">高中</label>
+                        </div>
+                    </div>
+                    <div class="row sel_stu_system hide">
+                        <div class="formL">
+                            <label>学校学制</label>
+                        </div>
+                        <div class="formR"> 
+                        	<span class="selectWrap big_sel"> <i></i> <em>选择学制</em>
+                                <select>
+                                    <option value="">选择学制</option>
+                                    <option value="1">六三制</option>
+                                    <option value="2">五四制</option>
+                                    <option value="3">五三制</option>
+                                </select>
+                            </span> 
+                            <span id="" class="errorTxt"></span> 
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+<!--班级-->
+<div class="popBox creat_classBox hide" title="我所在的班级">
+    <div class="subTitleBar">
+        <h5>选择学段</h5>
+    </div>
+    <div class="popCont">
+        <div class="crumbListWrap"> <a href="#" class="txtBtn gray_d creatNewClass">创建新班级</a>
+            <div class="crumbList clearfix hide"> 
+                <!--<span class="ac">三年级</span>--> 
+                <a class="back_selectArea"  href="javascript:;">返回上级</a> </div>
+        </div>
+        <dl class="clearfix gradeList">
+            <dd>一年级</dd>
+            <dd>二年级</dd>
+            <dd>三年级</dd>
+        </dl>
+        <ul class="resultList myclassList clearfix hide">
+        	<div class="empty"><i></i>啥也没有</div>
+            <!--<li id="2543" class="ac" title="北京市人民大学附属中学四年级一班">北京市人民大学附属中学四年级一班</li>
+            <li id="533" title="北京市第四中学三年级三班">北京市第四中学三年级三班</li>
+            <li id="7833" title="北京市人民大学附属中学一年级二班">北京市人民大学附属中学一年级二班</li>
+            <li id="543333" title="金州区马家第一中学三年级一班">金州区马家第一中学三年级一班</li>
+            <li id="2133" title="北京市人民大学附属中学三班">北京市人民大学附属中学三班</li>
+            <li id="3333" title="北京市第四中学五年级一班">北京市第四中学五年级一班</li>
+            <li id="0033" title="北京市人民大学附属中学二年级一班">北京市人民大学附属中学二年级一班</li>-->
+        </ul>
+        <div class="myNewClass hide">
+            <form>
+                <div class="form_list">
+                    <div class="row">
+                        <div class="formL">
+                            <label>班级编号</label>
+                        </div>
+                        <div class="formR"> <span class="selectWrap big_sel w130"> <i></i> <em>请选择</em>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="1">2012</option>
+                                <option value="2">2013</option>
+                                <option value="3">2014</option>
+                            </select>
+                            <span id="" class="errorTxt" style="left:289px"></span> </span> 年&nbsp;
+                            <input type="text" class="text  w100">
+                            班 <span id="" class="errorTxt"></span> </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>班级别名</label>
+                        </div>
+                        <div class="formR">
+                            <input type="text" class="text">
+                            <span id="" class="errorTxt"></span> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+<!--教研组-->
+<div class="popBox creat_tch_groupBox hide" title="我所在的教研组">
+    <div class="subTitleBar">
+        <h5>选择教研组</h5>
+    </div>
+    <div class="popCont">
+        <div class="crumbListWrap"> <a href="#" class="txtBtn gray_d creat_tch_group">创建教研组</a>
+            <div class="crumbList clearfix"> <span class="ac">语文</span><a class="back_selectArea hide"  href="javascript:;">返回</a> </div>
+        </div>
+        <ul class="resultList tch_group_List clearfix">
+            <li id="93933" title="语文">语文</li>
+            <li id="2543" class="ac" title="数学">数学</li>
+            <li id="533" title="信息技术">信息技术</li>
+            <li id="7833" title="物理">物理</li>
+            <li id="543333" title="化学">化学</li>
+            <li id="2133" title="政治">政治</li>
+        </ul>
+        <div class="new_tch_group hide">
+            <form>
+                <div class="form_list">
+                    <div class="row">
+                        <div class="formL">
+                            <label>教研组名称</label>
+                        </div>
+                        <div class="formR">
+                            <input type="text" class="text">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+</body>
+</html>

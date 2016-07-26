@@ -1,0 +1,270 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学生-我的私信</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/student.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	//字体加粗变细
+	$('.bottom_tab a').click(function(){
+		
+		$(this).parents('.gray').siblings('.msg_cent').css('font-weight','normal')	
+	})
+	/*删除图标显示和隐藏*/
+		$('.notice_list li').live('mouseover',function(){
+		$(this).children('.crossDelBtn').removeClass('hide');
+		$(this).children('.notice_send_btn').addClass('bg_blue_d');
+		$(this).addClass('bg_gray_ll');
+	})
+	$('.notice_list li').live('mouseout',function(){
+		$(this).children('.crossDelBtn').addClass('hide');
+		$(this).children('.notice_send_btn').removeClass('bg_blue_d');
+		$(this).removeClass('bg_gray_ll');
+	})
+$('.newBtnJs').click(function(){
+	/*发私信*/
+	popBox.private_new_msg([{'id':1,'name':'zhangsan'},{'id':3,'name':'李四'}])
+	$('#sends').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			close:function(){
+				
+				
+			}
+			
+		});
+		/*清除UI里面横向滚动条*/
+			$('#sends').css('overflow','hidden');
+			$( "#sends" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+
+
+})
+	/*弹窗初始化*/
+	$('.popBox').dialog({
+		autoOpen: false,
+		width:600,
+		modal: true,
+		resizable:false,
+		close:function(){$(this).dialog("close")}
+	});
+	/*举报弹窗*/
+	$('.reportJs').click(function(){
+		  $( "#reportbox" ).dialog( "open" );
+		  return false;
+	})
+
+
+	})
+</script>
+</head>
+
+<body class="student Problem_management">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l l_stuInfo">
+            <div class="clearfix item l_userInfo "> <img src="../../images/stu.png">
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>30</em><br>作业</a>
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>300</em><br>错题</a>
+                     <a href="javascript:;"><em>300</em><br>精品课程</a>
+            </div>
+            <div class="item l_asideMenu">
+               
+                <ul class="setupMenu">
+                   <li><a class="lisA ac" href="javascript:;"><i></i>信息</a>
+                        <ul class="subMenu">
+                            <li><a href="#">通知</a></li>
+                           
+                            <li><a href="#">系统消息</a></li>
+                            <li><a class="ac" href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>我的作业</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">004班</a></li>
+                            <li><a href="#">006班</a></li>
+                            <li><a href="#">007班</a></li>
+                            <li><a href="#">008班</a></li>
+                           
+                        </ul>
+                    </li>
+                  
+                    <li><a class="lisD" href="javascript:;"><i></i>考试管理</a>
+                        <ul class="subMenu hide">
+                          
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF noBg" href="javascript:;"><i></i>练练</a>
+                        
+                    </li>
+                    <li><a class="lisG noBg" href="javascript:;"><i></i>学霸养成记</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>错题管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">错题集</a></li>
+                            <li><a href="#">题目录入</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li><a class="lisH noBg" href="javascript:;"><i></i>答疑管理(提问)</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>学习时间轴</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">学习时间轴</a></li>
+                            <li><a href="#">成绩统计表</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r">
+            <div class="main_cont msg_mine">
+                <div class="title">
+                    <h4>我的私信</h4>
+                    <div class="title_r"><a class="btn btn40 bg_green w120 newBtnJs">发私信</a></div>
+                </div>
+ 				<ul class="notice_list">
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+                	<li class="clearfix">
+                    	<img src="../../images/tch_1.png" alt=" ">
+                        <p class="gray msg_from">来自 <em>范冰冰</em></p>
+                        <p class="msg_cent">取经回来了？你取经回来了？你取经回来了？你取经回来了？你取经回来了？</p>
+                        <p class="gray">2014-03-04 14:00 <a class="gray reportJs">举报</a></p>
+                        <div class="bottom_tab gray">
+                        <a href="#" class="gray">共<em>28</em>条对话</span></a> | <a class="gray newBtnJs">快速回复</a>
+                        </div>
+                        <em class="crossDelBtn hide"></em>
+                    </li>
+
+                </ul>
+                <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+<!--举报弹窗-->
+<div class="popBox hide pushNotice reportbox" title="举报" id="reportbox">
+    <div class="popCont">
+        <div class="new_tch_group">
+            <form>
+                <div class="form_list">
+                    <div class="row">
+                            <div class="formL">
+                                <label>举报类型：</label>
+                            </div>
+                            <div class="formR">
+                            <span class="selectWrap big_sel">
+                           	<i></i>
+                           	<em>请选择</em>
+                            	<select data-validation-engine="validate[required]" data-prompt-target="new_department" data-prompt-position="inline" name="UserForm[department]" id="UserForm_department">
+                                    <option value="">垃圾广告</option>
+                                    <option value="20201">其他</option>
+                                    </select>
+                            </span>
+                            </div>
+                      </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>举报理由：</label>
+                        </div>
+                        <div class="formR">
+                           <textarea class="textarea gray"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+</body>
+</html>

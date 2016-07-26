@@ -1,0 +1,559 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>班级-人员管理</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/classPage.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/schoolEdit.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+	$('h2.class_t i').editPlus({target:"h2 span"});	
+		
+	/*添加成员*/
+		function compile_teacher(){
+			var oper=$('.pon').text();
+			var oSe=$('.fake .seR1 option');
+			oSe.each(function(index, element) {
+				if($(this).text()==oper){
+					$(this).attr('selected',"") 
+				}
+   
+			});
+		
+			var ter=$('.maths').text();
+			var oSe2=$('.fake .seR2 option')
+			
+			oSe2.each(function(index, element) {
+				if($(this).text()==ter){
+					$(this).attr('selected',"") 
+				}   
+			});	
+		$('.class_teacher .man_ment i').live('click',function(){
+			$(this).parent().hide();	
+			$(this).parent().siblings('.ap').show();
+			})
+			
+		// 修改教师职务	
+		$('.positionR .btnok').live('click',function(){
+			var parent = $(this).parents('.member');
+			var val1 = parent.find('.seR1').val(); //职务
+			var val2 = parent.find('.seR2').val(); //科目
+			var tid = parent.attr('tid');
+			
+			// 静态页面预览的效果
+			var txt1 = parent.find('.seR1').find(':selected').text();
+			var txt2 = parent.find('.seR2').find(':selected').text();
+			var html = '<em>'+ txt2 +'</em> <em>'+ txt1 +'</em>';
+			parent.find('.man_ment').find('span').html(html);
+			parent.find('.ap').hide();
+			parent.find('strong').show();
+		
+			// php可用的ajax，如果启用ajax,请将上方代码段注释或者删除掉
+			/*$.ajax({
+				url:'',
+				type:'POST',
+				dataType:"json",
+				data:{'tid':tid,'job':val1,'subject':val2},
+				success:function(msg){
+					if(msg.code){
+						var txt1 = parent.find('.seR1').find(':selected').text();
+						var txt2 = parent.find('.seR2').find(':selected').text();
+						var html = '<em>'+ txt2 +'</em> <em>'+ txt +'</em>';
+						parent.find('.man_ment').find('span').html(html);
+						parent.find('.ap').hide();
+						parent.find('strong').show();
+					}else{
+						popBox.errorBox('修改失败,请再次提交！');
+						return false;
+					}
+				}
+			})*/
+		
+		})
+		/*删除教师*/
+		$('.class_teacher .dele').live('click',function(){
+			$(this).parent().parent().parent().remove();
+		});
+		
+	}
+	compile_teacher();
+
+	/*已有的数据名单的修改*/
+	function has(){
+		var arr = [{"key":20102,"value":"学习委员"},{"key":20101,"value":"班长"},{"key":20103,"value":"其他"}];
+        $('.tr_border .man_ment i').editPlus({top: 4, type: "select", list: arr, url: '/ajax/saveStudentJob', data:['classMemID']});
+	}
+	has();
+	
+	/*学生删除*/
+	$('.tr_border .dele').live('click',function(){
+		$(this).parents(".tr_border").remove();								
+	});
+	
+	/*表格变色*/
+	$('.tr_border').live('mouseover',function(){
+		$(this).css('background-color','#d4f2ff')	
+	});
+	
+	$('.tr_border').live('mouseout',function(){
+		$(this).css('background-color','#fff')	
+	});
+				
+				
+				
+	/*学生名单获取text的值并且插入到页面*/
+		function newAdd(){
+			$('#okBtn').live('click',function(){
+				var oTxt1=$(this).parent().siblings('.text01').children().children('.editText').val();	
+				var oTxt2=$(this).parent().siblings('.text02').children().children('.editText').val();
+				if(oTxt1,oTxt2=='')
+				{
+					popBox.errorBox('修改失败,请正确填写！');
+					return false;
+				}
+				$(this).parent().siblings('.text01').children().children('.editText').remove();
+				$(this).parent().siblings('.text01').children('.editBar').append('<i>'+ oTxt1 +'</i>')
+				$(this).parent().siblings('.text02').children().children('.editText').remove();
+				$(this).parent().siblings('.text02').children('.editBar').append('<i>'+ oTxt2 +'</i>')
+				$(this).siblings('.ap').hide();
+				$(this).siblings('.man_edit').show();
+				$(this).siblings('.man_edit').children('.position').text('');
+				$(this).siblings('.man_edit').children('.position').append($(this).prev('.ap').find('select').val());
+				$(this).remove();
+			})
+		}
+		newAdd();
+				
+				
+				
+				
+	function add_name(){					
+	/*添加新的名单*/
+		$('.add a').live('click',function(){
+			var html='';
+			html +='<tr class="tr_border add_tr">';
+			html +=' <td class="text01">';
+				html +='<span class="hide span"></span>';
+				html +='<span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>';
+			   
+			 html +='</td>';
+			html +='<td class="text02">';
+				html +='<span class="hide span"></span>';
+				html +='<span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>';
+			
+			html +='</td>';
+			html +='<td class="edit" width="190">';
+				
+				html +='<strong class="man_ment man_edit" style="display:none;">';
+						html +='<span class="position">班长</span><i></i>';
+						
+					html +='</strong>';
+				html +='<div class="ap" style="display:block; position:relative; top:0px;">';
+					html +='<div>';
+				   html +=' <select class="se_0">';
+					   html +='<option value="文艺委员">文艺委员</option>';
+						html +='<option value="普通学生">普通学生</option>';
+						html +='<option value="班长">班长</option>';
+						 html +='<option value="教师">教师</option> ';
+					html +='</select>';
+					html +='</div>';
+					html +='</div>';
+				html +='<button type="button" class="btn editBtn" id="okBtn" style=" width:40px; height:24px; position:absolute; font-size:12px; left:96px; top:6px;">确定</button>';
+			html +='</td>';
+			html +='<td>未注册</td>';
+			html +='<td> <em class="dele"></em> </td>';						
+		html +='</tr>';
+		$('.ment tbody').append(html);	
+		has();	
+		});
+	
+	}
+	add_name();
+	
+})
+
+
+
+</script>
+
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+	<div class="cont24 clearfix">
+    	<div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login hide"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            
+            <div class="userAccount  grid_3 alpha omega">
+            	<img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+            	<h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->
+<!--主体内容开始-->
+
+	<div class="cont24">
+        <div class="main_head">
+            <h2 class="class_t">
+            	<span class="classFocus">人大附中147班</span>            	
+            </h2>
+            <h3 class="Signature">
+            	<span>我不是最好的，但却是唯一的向前冲，让我们与众不同</span><i></i>
+            </h3>
+            
+        </div>
+        <div class="main_cent">
+        	<div class="mainNav">
+            	<ul class="mainNav_L">
+                	<li><a href="#">首页</a></li>
+                    <li><a href="#">班级公告</a></li>
+                    <li><a href="#">每周一课</a></li>
+                    <li><a href="#">大事记</a></li>
+                    <li class="ac"><a href="class_management.html">班级成员</a></li>
+                </ul>
+                <ul class="mainNav_R clearfix">
+                	<li>
+                    	<i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                     	<ul class="tab hide">
+                        	<li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                        </ul>   
+                     </li>
+                    <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                    <li><i class="management"></i><span>个人管理中心</span></li>
+                </ul>
+            </div>
+            <div class="class_c clearfix ment" style="padding-bottom:50px;">
+            	<div class="class_ment">
+                	<h3>班级人员管理</h3>
+                    <dl class="class_teacher">
+                    	<dt>教师</dt>
+                    	
+                       <dd class="member" tid="11111">
+                        	<span class="name">赵佳欠</span>
+                            
+                            <div class="fl positionR">
+                                <strong class="man_ment man_edit">
+                                    <span class="position">
+                                    	<em class="maths">语文</em>
+                                        <em class="pon">班主任</em>
+                                    </span>
+                                    <i></i>
+                                    <em class="dele" style=" margin-left:30px;" title="删除老师"></em>
+                                </strong>
+                                <div class="ap">
+                                <div class="fake">
+                                <select class="seR2">
+                                	<option value="请选择" >请选择</option>
+                                    <option value="科目">科目</option>
+                                    <option value="语文">语文</option> 
+                                    <option value="数学">数学</option> 
+                                </select>
+                                <select class="seR1">
+                                	<option value="请选择">请选择</option>
+                                    <option value="班主任">班主任</option>
+                                    <option value="任课老师">任课老师</option> 
+                                </select>
+                                
+                                <button type="button" class="btn btnok">确定</button>
+                                </div>
+                                </div>
+                                 
+                            </div>
+                          
+                                   
+                       </dd>
+                       <dd class="member" tid="11111">
+                        	<span class="name">赵佳欠</span>
+                            
+                            <div class="fl positionR">
+                                <strong class="man_ment man_edit">
+                                    <span class="position">语文&nbsp;&nbsp;老师</span><i></i>
+                                     <em class="dele" style=" margin-left:30px;" title="删除老师"></em>
+                                </strong>
+                                <div class="ap">
+                                <div>
+                                <select class="seR2">
+                                	<option value="请选择">请选择</option>
+                                    <option value="科目">科目</option>
+                                    <option value="语文">语文</option> 
+                                    <option value="数学">数学</option> 
+                                </select>
+                                <select class="seR1">
+                                    <option value="班主任">班主任</option>
+                                    <option value="任课老师">任课老师</option> 
+                                </select>
+                                
+                                <button type="button" class="btn btnok">确定</button>
+                                </div>
+                                </div>
+                                 
+                            </div>
+                          
+                                        
+                       </dd>
+                      
+                    </dl>
+                    <h4 style=" margin:20px 0px; float:left; width:100%;">学生</h4>
+                    <table class="ment" width="1000" cellpadding="0" cellspacing="0">
+                    	<tbody>
+                        	
+                        	<tr bgcolor="#efefef">
+                            	<td width="190">姓名</td>
+                                <td width="367">学号</td>
+                                <td width="190">身份</td>
+                                <td width="125">状态</td>
+                                <td width="130">操作</td>
+                                
+                            </tr>
+                           <tr class="tr_border">
+						<td>猪八戒</td>
+						<td>123123123</td>
+						<td class="edit" width="190">
+							
+                            <strong class="man_ment man_edit">
+                                    <span class="position" value="20101">班长</span><i></i>
+                                    
+                                </strong>
+							<div class="ap">
+                                <div>
+                                <select class="se_0">
+                                   <option value="文艺委员">文艺委员</option>
+									<option value="普通学生">普通学生</option>
+									<option value="班长">班长</option>
+									 <option value="教师">教师</option> 
+                                </select>
+                                
+                                <button type="button" class="btn btnok2">确定</button>
+                                
+                                </div>
+                                </div>
+							
+						</td>
+						<td>注册</td>
+						<td> <em class="dele" title="删除此行"></em> </td>						
+					</tr>
+                    <tr class="tr_border tr01">
+						<td class="text01">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                           
+                         </td>
+						<td class="text02">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                        
+                        </td>
+						<td class="edit" width="190">
+							
+                            <strong class="man_ment man_edit" style="display:none;">
+                                    <span class="position" value="001">班长</span><i></i>
+                                    
+                                </strong>
+							<div class="ap" style="display:block; position:relative; top:0px;">
+                                <div>
+                                <select class="se_0">
+                                   <option value="文艺委员">文艺委员</option>
+									<option value="普通学生">普通学生</option>
+									<option value="班长">班长</option>
+									 <option value="教师">教师</option> 
+                                </select>
+                                
+                                
+                               
+                                </div>
+                                </div>
+							<button type="button" id="okBtn" class="btn editBtn" style=" width:48px; height:24px; position:absolute; font-size:12px; left:96px; top:7px;">确定</button>
+						</td>
+                        
+						<td>注册</td>
+						<td> <em class="dele"></em> </td>						
+					</tr>
+                    <tr class="tr_border tr01">
+						<td class="text01">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                           
+                         </td>
+						<td class="text02">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                        
+                        </td>
+						<td class="edit" width="190">
+							
+                            <strong class="man_ment man_edit" style="display:none;">
+                                    <span class="position" value="001">班长</span><i></i>
+                                    
+                                </strong>
+							<div class="ap" style="display:block; position:relative; top:0px;">
+                                <div>
+                                <select class="se_0">
+                                   <option value="文艺委员">文艺委员</option>
+									<option value="普通学生">普通学生</option>
+									<option value="班长">班长</option>
+									 <option value="教师">教师</option> 
+                                </select>
+                                
+                                
+                               
+                                </div>
+                                </div>
+							<button type="button" id="okBtn" class="btn editBtn" style=" width:48px; height:24px; position:absolute; font-size:12px; left:96px; top:7px;">确定</button>
+						</td>
+                        
+						<td>注册</td>
+						<td> <em class="dele"></em> </td>						
+					</tr>
+                    <tr class="tr_border tr01">
+						<td class="text01">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                           
+                         </td>
+						<td class="text02">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                        
+                        </td>
+						<td class="edit" width="190">
+							
+                            <strong class="man_ment man_edit" style="display:none;">
+                                    <span class="position" value="001">班长</span><i></i>
+                                    
+                                </strong>
+							<div class="ap" style="display:block; position:relative; top:0px;">
+                                <div>
+                                <select class="se_0">
+                                   <option value="文艺委员">文艺委员</option>
+									<option value="普通学生">普通学生</option>
+									<option value="班长">班长</option>
+									 <option value="教师">教师</option> 
+                                </select>
+                                
+                                
+                               
+                                </div>
+                                </div>
+							<button type="button" id="okBtn" class="btn editBtn" style=" width:48px; height:24px; position:absolute; font-size:12px; left:96px; top:7px;">确定</button>
+						</td>
+                        
+						<td>注册</td>
+						<td> <em class="dele"></em> </td>						
+					</tr>
+                    <tr class="tr_border tr01">
+						<td class="text01">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                           
+                         </td>
+						<td class="text02">
+                        	<span class="hide span"></span>
+                            <span class="editBar"><input type="text" class="text editText" style="width:100px;"></span>
+                        
+                        </td>
+						<td class="edit" width="190">
+							
+                            <strong class="man_ment man_edit" style="display:none;">
+                                    <span class="position" value="001">班长</span><i></i>
+                                    
+                                </strong>
+							<div class="ap" style="display:block; position:relative; top:0px;">
+                                <div>
+                                <select class="se_0">
+                                   <option value="文艺委员">文艺委员</option>
+									<option value="普通学生">普通学生</option>
+									<option value="班长">班长</option>
+									 <option value="教师">教师</option> 
+                                </select>
+                                
+                                
+                               
+                                </div>
+                                </div>
+							<button type="button" id="okBtn" class="btn editBtn" style=" width:48px; height:24px; position:absolute; font-size:12px; left:96px; top:7px;">确定</button>
+						</td>
+                        
+						<td>注册</td>
+						<td> <em class="dele"></em> </td>						
+					</tr>
+                           
+                        </tbody>
+                    </table>
+                    <div class="add"><a href="javascript:;">添加学生</a></div>
+                   
+                </div>
+            	
+             
+        	</div>
+        </div>
+
+	</div>
+<!--主体内容结束-->
+
+
+<div class="footWrap">
+	<div class="foot">
+    	<dl>
+        	<dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+        	<dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+        	<dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+        	<dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+
+
+</div>  
+
+
+</body>
+</html>

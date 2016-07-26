@@ -1,0 +1,287 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>题目导入工具</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/addquestion.css" type="text/css" rel="stylesheet">
+<link href="css/questionInput.css" type="text/css" rel="stylesheet">
+<link href="js/ueditor/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
+<link href="js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<style>
+body{background:#f4f4f4}
+label { width: 90px; font-weight:bold }
+.mainLeft, .mainRight{ padding:10px; background:#fff}
+.topTools li .species{ height:20px}
+.topTools li .species, .topTools li .word_box{ line-height:24px}
+hr { margin-bottom: 10px }
+.noticeH { height: 35px; margin: 0 }
+.noticeH .h3L { top: 0; margin-left: 20px; }
+.box_data_list li .species { width: 90px }
+.box_data_list li .word_box { width: 500px }
+.inputVal{ text-decoration:underline; color:#00cacf}
+.box_data_list li{float:left}
+#treeList li{ float:none}
+</style>
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/base.js" type="text/javascript"></script>
+<script src="js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script src="js/ueditor/ueditor.config.js"  type="text/javascript"></script>
+<script src="js/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	var new_Q_title = UE.getEditor('new_Q_title');
+	var new_Q_analy = UE.getEditor('new_Q_analy');
+	
+	var old_Q_title = UE.getEditor('old_Q_title');
+	var old_Q_answer = UE.getEditor('old_Q_answer');
+	var old_Q_analy = UE.getEditor('old_Q_analy');
+	$('.inputVal').click(function(){
+	$('.valInputText').text("").append('<input class="text" type="text" value="" >');
+	});
+	
+	$('.treeList li').each(function(index, element) {
+        if($(this).children('.subTreeList').size()>0){
+			$(this).children('p').addClass('hasSubTree')
+		}
+    });
+	
+	var zNodes =[
+		{ id:1, pId:0, name:"语文"},
+		{ id:11, pId:1, name:"拼音"},
+		{ id:111, pId:11, name:"声母"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"}
+	];
+	var setting = {
+		check:{enable:false,chkboxType:{"Y" : "", "N" : ""} },
+		data:{simpleData: {	enable: true} },
+		view:{showIcon:false,showLine:true}
+	};
+	$.fn.zTree.init($("#treeList"), setting, zNodes);
+	
+	
+	
+	
+
+})
+	
+</script>
+<script src="js/preview.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6">题目导入工具</div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+<div class="main cont24 clearfix" style="width:1380px; margin:0 auto">
+    <div class="topTools" style="width:1300px; margin:20px 10px; background:#fff; padding:20px 10px">
+        <ul class="box_data_list clearfix">
+            <li class="clearfix">
+                <label class="species" style="line-height:30px; height:30px">题库:</label>
+                <div class="box_select" style=" width:160px;line-height:30px; height:30px">
+                    <select style="width:120px">
+                        <option value="">题库1 语文</option>
+                    </select>
+                </div>
+            </li>
+            <li class="clearfix" style="margin-bottom:20px">
+                <label class="species" style="line-height:30px; height:30px">题目id范围:</label>
+                <div class="word_box" style=" width:800px">
+                    <input type="text" value="" class="text w80">
+                    到
+                    <input type="text" value="" class="text w80">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第
+                    <input type="text" value="" class="text w50">
+                    小题&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn20 bg_red_d">查询</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn20 bg_red_l">上一题</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button"  class="btn20 bg_red_l">下一题</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button"  class="w120 bg_green">转换</button>
+                </div>
+            </li>
+            <li class="clearfix" style=" margin-bottom:20px">
+                <label class="species">章节树:</label>
+                <div class="word_box" style=" width:1100px; background:#efefef; padding:20px"> 
+					<div style="height:200px; overflow:auto">
+                    <ul id="treeList" class="ztree">
+                    </ul>
+                    </div>
+                    </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">版本id:</label>
+                <div class="word_box">345345 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">小题个数:</label>
+                <div class="word_box">1 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">出处:</label>
+                <div class="word_box"> 2010年厦门杏南中学八年级上学期10月月考数学 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">Guid:</label>
+                <div class="word_box">b00ea1b8-cd62-4dbe-b2a0-028f8d836f05 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">知识点:</label>
+                <div class="word_box"> 无理数 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">类型id:</label>
+                <div class="word_box">2类型 专题试卷 </div>
+            </li>
+            <li class="clearfix fl">
+                <label class="species">导入时间:</label>
+                <div class="word_box">1970-01-16 06:00:52 </div>
+            </li>
+            <li class="clearfix fl">
+                <label class="species">难度id:</label>
+                <div class="word_box"> 3 难度:一般 </div>
+            </li>
+            <li class="clearfix fl">
+                <label class="species">问题能力id:</label>
+                <div class="word_box">1 问题能力:了解和识记 </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mainLeft grid_13" style="background:#fff; padding:10px">
+        <div class="noticeH clearfix">
+            <h3 class="h3L">原题</h3>
+        </div>
+        <hr>
+        <ul class="box_data_list clearfix">
+            <li class="clearfix">
+                <label class="species">标题:</label>
+                <div class="word_box"> 2010年厦门杏南中学八年级上学期10月月考数学 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">分数:</label>
+                <div class="word_box"> 0 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">年份:</label>
+                <div class="word_box">2011 </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">题型:</label>
+                <div class="word_box">选择题</div>
+            </li>
+            <hr>
+            <li class="clearfix">
+                <label class="species">题干:</label>
+                <div class="word_box">
+                    <textarea id="old_Q_title" style="width:500px; height:100px;"> 选出标点符号运用有误的一项： (&nbsp;&nbsp;&nbsp;&nbsp; )测试图片<img src="xxd.gif" height="100" width="100">
+                    <table name="optionsTable" cellpadding="0" cellspacing="0" width="100%"><tr><td width="100%">A．说什么“山不在高，有仙则名”，我却道“山不在名，有泉则灵”。</td></tr><tr><td width="100%">B．可爱的，我将什么来比拟你呢？我怎比拟得出呢？ </td></tr><tr><td width="100%">C．小河对岸是浅山，好似细浪微波，线条柔和，蜿蜒起伏，连接着高高的远山。</td></tr><tr><td width="100%">D．竣工后园林管理局的人来问他，人行道应该修在哪里？</td></tr></table>
+</textarea>
+                </div>
+            </li>
+            <br>
+            <li class="clearfix">
+                <label class="species">答案:</label>
+                <div class="word_box">
+                    <textarea id="old_Q_answer" style="width:500px; height:100px;">D</textarea>
+                </div>
+            </li>
+            <br>
+            <li class="clearfix">
+                <label class="species">解析:</label>
+                <div class="word_box">
+                    <textarea id="old_Q_analy" style="width:500px; height:100px;">D选项句末不用问号，用句号。因为整个句子是陈述语气，而“人行道应该修在哪里”充当整个陈述句的宾语成分。
+                    </textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mainRight grid_13">
+        <div class="noticeH clearfix">
+            <h3 class="h3L">导入</h3>
+        </div>
+        <hr>
+        <ul class="box_data_list clearfix">
+            <li class="clearfix">
+                <label class="species">题目标题:</label>
+                <div class="word_box">
+                    <input type="text" value="" class="text">
+                    <span style="font-size:12px; color:#999">(如果标题中有分数,请先<a class="inputVal">手动添加分数</a>,再删除标题中分数)</span> </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">分数:</label>
+                <div class="word_box valInputText">
+                    0
+                </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">年份:</label>
+                <div class="word_box">
+                    <input type="text" value="" class="input_text text">
+                </div>
+            </li>
+            <li class="clearfix">
+                <label class="species">题型:</label>
+                <div class="box_select">
+                	<strong>选择题</strong>
+                    <!--<select id="type_0" class="xuanzhe02" >
+                        <option value="1">单选</option>
+                        <option value="2">多选</option>
+                        <option value="3">填空题</option>
+                        <option value="4">问答题</option>
+                        <option value="5">应用题</option>
+                        <option value="6">完形填空</option>
+                        <option value="7">阅读理解</option>
+                    </select>-->
+                </div>
+            </li>
+            <hr>
+            <li class="clearfix">
+                <label class="species"><i>*</i>题干:</label>
+                <div class="word_box clearfix" style="width:500px">
+                    <textarea id="new_Q_title" style="width:500px; height:100px;"></textarea>
+                </div>
+            </li>
+        </ul>
+        <div class="itemsBox">
+            <div class="Box"> </div>
+            <br>
+            <hr>
+            <div class="NBox">
+                <div class="row">
+                    <div class="formL"><label class="species">解析:</label></div>
+                    <div class="formR">
+                        <textarea id="new_Q_analy" style="width:500px; height:100px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row submit_BtnBar">
+            <div class="formL"></div>
+            <div class="formR">
+                <button type="button" class="saveBtn">保存题目</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体内容结束-->
+
+</body>
+</html>

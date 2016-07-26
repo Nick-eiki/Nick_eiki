@@ -1,0 +1,388 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/tch_group.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script>
+$(function(){
+$('.applyForJs').click(function(){
+$('#ask').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#ask" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+
+
+})
+})
+
+
+
+</script>
+
+<title>教研组-添加班级手拉手</title>
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+	<div class="cont24 clearfix">
+    	<div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登陆</a><a class="userReg" href="#">免费注册</a></div>
+            
+            <div class="userAccount hide grid_3 alpha omega">
+            	<img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+            	<h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->
+<!--主体内容开始-->
+
+	<div class="main cont24">
+        <div class="main_head">
+            <h2 class="class_t">
+            	<span class="classFocus">语文教研组</span></i>
+            	
+            </h2>
+            <h3 class="Signature fot_z">
+            	<span>人大附中&nbsp;&nbsp;&nbsp;&nbsp;初中部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>宋江老师(教研组长)</span><i></i>
+            	
+            </h3>
+            
+        </div>
+        <div class="main_cent">
+        	<div class="mainNav clearfix">
+            	<ul class="mainNav_L">
+                    <li ><a href="tch_group.html">首页</a></li>
+                    <li class="ac"><a href="tch_group-plan.html">教学计划</a></li>
+                    <li><a href="tch_group-topic.html">教研课题</a></li>
+                    <li><a href="#">听课评课</a></li>
+                    <li><a href="#">教研资料</a></li>
+                </ul>
+                <ul class="mainNav_R">
+                	<li>
+                    	<i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                     	<ul class="tab hide">
+                        	<li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                        </ul>   
+                     </li>
+                    <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                    <li><i class="management"></i><span>个人管理中心</span></li>
+                </ul>
+            </div>
+            <div class="class_c clearfix class_listi pr" style="padding-bottom:50px; margin-bottom:200px;">
+            	<h3>手拉手教研组</h3>
+                <hr>
+                <div class="selProvince">
+                    <select class="mySelect" >
+                        <option value="选择省">选择省</option>
+                        <option value="选择省">选择省</option>
+                        <option value="选择省">选择省</option>
+                    </select>
+                </div>
+                <div class="class_list_min">
+                	<div class="class_list_t clearfix">
+                    	<p class="classL">
+                        	<em class="classify">学校地区:</em>
+                            <select class="mySelect">
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                        	</select>
+                            <select class="mySelect">
+                                <option value="选择地区">选择地区</option>
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                        	</select>
+                            <select class="mySelect">
+                                <option value="选择县">选择县</option>
+                                <option value="选择省">选择省</option>
+                                <option value="选择省">选择省</option>
+                        	</select>
+                        </p>
+                        <p class="classR">
+                        	<label>学段：
+                            	<select class="mySelect">
+                                    <option value="小学">小学</option>
+                                    <option value="初中">初中</option>
+                                    <option value="高中">高中</option>
+                                </select>
+                            </label>
+                            <span class="stext">
+                            	<input type="text" class="text text_Width">
+                                <i></i>
+                            </span>
+                            <input type="button" value="搜&nbsp;&nbsp;索" class="btn class_Btn">
+                        </p>
+                    </div>
+                    <div class="s_class_list headIn clearfix">
+                    	<dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>教研组名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>教研组组长:</span><em>孙悟空</em></dd>
+                            <dd><span>学校:</span><em>人大附中</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>教研组成员:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>教师:<i>20人</i></span><span>教学计划:<i>20个</i></span><span>教学课题:<i>20个</i></span><span>教研资料:<i>20个</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        <dl class="list">
+                        	<dt><img src="../images/pic.png" alt=""></dt>
+                            <dd class="dd_fz">
+                            	<h5>班级名称班级名称班级名称班级名称名称</h5>
+                            	<span>
+                                	<a href="#" class="applyFor applyForJs">申请</a>
+                                </span>
+                            </dd>				
+                            <dd><span>班主任:</span><em>孙悟空</em></dd>
+                            <dd ><span>地区:</span><em>北京市 海淀区</em></dd>
+                            <dd><span>任课教师:</span><em><i>[数学]</i>萨省</em><em><i>[语文]</i>观音</em><em><i>[编程]</i>塞达慕</em></dd>
+                            <dd class="sRight"><span>学生:<i>20人</i></span><span>精品课程:<i>20门</i></span><span>讲义:<i>20篇</i></span><span>教案:<i>20篇</i></span></dd>
+                        </dl>
+                        
+                        <div class="page minipage" style="width:1079px; float:left;  text-align:center;"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+                    </div>
+                     
+                </div>
+            </div>
+            
+        </div>
+
+	</div>
+<!--主体内容结束-->
+
+
+<div class="footWrap">
+	<div class="foot">
+    	<dl>
+        	<dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+        	<dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+        	<dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+        	<dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+
+
+</div>
+<!--弹出框pop--------------------->
+<div id="ask" class=" popBox ask hide" title="手拉手班级申请">
+	<div class="impBox">
+    	 <div class="handleT">申请成为<span>北京市</span><em>海淀区</em><i>人大附中</i></div>
+         <div class="handleM"><h4>班名称班名称班名称</h4></div>
+         
+    </div>
+
+</div>
+</body>
+</html>

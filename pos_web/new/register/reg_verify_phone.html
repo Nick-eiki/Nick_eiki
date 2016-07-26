@@ -1,0 +1,96 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>用户注册--验证手机号</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('#verify_num').placeholder({value:'请输入验证码',ie6Top:10})
+	$('.sendCode').click(function(){
+		var _this=$(this);
+		$(this).hide();
+		$('#second_show').text(10);
+		$('.countdown,.attention span').show();
+		countdown(10,'#second_show',function(){
+			_this.show().text('重新发送');
+			$('.countdown').hide();
+			
+		});
+	})
+
+})
+</script>
+
+</head>
+
+<body class="reg verify_phone">
+
+<!--头部-->
+<div class="head reg_head">
+	<div class="cont24">
+    	<a href="#"><h1>班海网</h1></a>
+        <div class="userCenter">
+        	<a class="userName" href="#"><i></i>张三</a><a href="javascript:    ;" class="logOff">退出</a>
+        </div>
+    </div>
+	
+</div>
+<!--头部end-->
+
+
+
+<!--主体部分--> 
+<div class="cont24">
+    <div class="grid_19 push_3">
+    	<h1>验证手机号</h1>
+        <div class="formArea" style="height:550px">
+            <form id="form_id">
+                <div class="form_list">
+                    <div class="row" style="padding:0">
+                        <div class="formL">
+                            <label></label>
+                        </div>
+                        <div class="formR">
+                        <p class="font12 attention" style="line-height:18px; text-indent:0">
+                        	<span class="hide">
+                            	我们向您的手机18604435940发送了一条验证短信
+                                <br>
+                                如果您一直未收到验证码,可以<a class="green" href="#">修改手机号</a>
+                            </span>
+                        </p>
+                            <input id="verify_num" type="text" class="text validate[required]" data-prompt-position="inline"  data-prompt-target="codeError" style="margin-right:10px"><span id="codeError" class="errorTxt" style="top:46px"></span>
+                        <div><span class="red txtBtn sendCode">立即发送</span> <span class="gray countdown hide">(<em id="second_show"></em>) 秒后可重新发送</span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label></label>
+                        </div>
+                        <div class="formR submitBtnBar">
+                            <button type="submit" class="btn40 bg_green nextBtn" style="margin-bottom:10px">下一步</button>
+                            <button type="button" class="btn40 noBg gray_d prevBtn" style="border:1px solid #ddd">上一步</button>
+                           
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--主体end-->
+<!--页脚-->
+<div class="cont24">
+    <div class="foot font12 grid_18 push_3">
+        <p>北京三海教育科技有限公司 版权所有</p>
+        <p>京ICP证080367号/京ICP备08103829号 北京市公安局海淀分局备案号1101081714</p>
+    </div>
+</div>
+</body>
+</html>

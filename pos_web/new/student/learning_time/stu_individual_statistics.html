@@ -1,0 +1,449 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学生-个人统计</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/student.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/echarts/echarts.js" type="text/javascript"></script>
+<script>
+	// 路径配置
+	require.config({
+		paths: {echarts: '../../js/echarts'}
+	});
+        
+	// 柱状图
+	require(
+		[
+			'echarts',
+			'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+		],
+		function (ec) {
+			// 基于准备好的dom，初始化echarts图表
+			var _this=this
+			var myChart = ec.init(document.getElementById('echarts01')); 
+			
+			var option = {
+				tooltip: {
+					show: true,
+					formatter: "{b} : {c}人" 
+				},
+				color:['#f00'],
+				legend: {
+					data:['分数统计']
+				},
+				xAxis : [
+					{
+						type : 'category',
+						data : ["60以下","70-80分","80-90分","90-100分"]
+					}
+				],
+				yAxis : [
+					{
+						type : 'value', name:'人数'
+					}
+				],
+				series : [
+					{
+						"name":"分数统计",
+						"type":"bar",
+						"barWidth":"50",
+						"data":[5, 14, 8, 3]
+					}
+				]
+			};
+	
+			// 为echarts对象加载数据 
+			myChart.setOption(option); 
+		}
+	);
+	
+	//折线图
+	require(
+		[
+			'echarts',
+			'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+		],
+		function (ec) {
+			// 基于准备好的dom，初始化echarts图表
+			var myChart = ec.init( document.getElementById('echarts02') ); 
+			var option={
+				tooltip:{
+					show:true,
+					formatter: "{b} : {c}分" 
+				},
+				color:['#09f','#f00'],
+				legend:{
+					data:['平均分','最高分']
+				},
+				xAxis:[
+					{
+						type : 'category',
+						data : ["2001","2002","2003","2004"],
+					}
+				],
+				yAxis : [
+					{
+						type : 'value', name:'分数',min:0,max:100
+					},
+				],
+				series : [
+					{
+						"name":"平均分",
+						"type":"line",
+						"data":[78, 81, 89, 85]
+					},
+					{
+						"name":"最高分",
+						"type":"line",
+						"data":[50, 33, 8, 85]
+					}
+				]
+			};
+	
+			// 为echarts对象加载数据 
+			myChart.setOption(option); 
+		}
+	);
+	
+	//雷达
+	require(
+            [
+                'echarts',
+                'echarts/chart/radar' // 使用雷达图就加载radar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('echarts03')); 
+                
+             	var option = {
+					title : {
+						text: '学科分布',
+						subtext: '主要科目'
+					},
+					tooltip : {
+						trigger: 'axis'
+					},
+					legend: {
+						x : 'center',
+						data:['学科']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					polar : [
+						{
+							indicator : [
+								{text : '语文', max  : 100},
+								{text : '数学', max  : 100},
+								{text : '英语', max  : 100},
+								{text : '物理', max  : 100},
+								{text : '化学', max  : 100},
+								{text : '生物', max  : 100}
+							],
+							radius : 100
+						}
+					],
+					series : [
+						{
+							name: '完全实况球员数据',
+							type: 'radar',
+							itemStyle: {
+								normal: {
+									areaStyle: {
+										type: 'default'
+									}
+								}
+							},
+							data : [
+								{
+									value : [98, 42, 88, 94, 90, 86],
+									name : '张三'
+								}
+							]
+						}
+					]
+				};
+               // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+	
+	//饼图
+	var opts={
+			option1:{
+					title : {
+						text: '本站满意度调查',
+						subtext: '纯属虚构',
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['非常满意','比较满意','一般','不满意','非常不满意']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'满意度',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:335, name:'非常满意'},
+								{value:1310, name:'比较满意'},
+								{value:234, name:'一般'},
+								{value:135, name:'不满意'},
+								{value:48, name:'非常不满意'}
+							]
+						}
+					]
+				},
+				option2: {
+					title : {
+						text: '本站满意度调查',
+						subtext: '纯属虚构',
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['非常满意','比较满意','一般','不满意','非常不满意']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'满意度',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:35, name:'非常满意'},
+								{value:150, name:'比较满意'},
+								{value:3334, name:'一般'},
+								{value:135, name:'不满意'},
+								{value:8, name:'非常不满意'}
+							]
+						}
+					]
+				}
+		
+		
+		}
+	
+	
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init( document.getElementById('echarts04') ); 
+                // 为echarts对象加载数据 
+                myChart.setOption(opts.option1); 
+            }
+        );
+
+$(function(){
+
+
+})
+
+</script>
+</head>
+
+<body class="student">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l l_stuInfo">
+            <div class="clearfix item l_userInfo "> <img src="../../images/stu.png">
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>30</em><br>作业</a>
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>300</em><br>错题</a>
+                     <a href="javascript:;"><em>300</em><br>精品课程</a>
+            </div>
+            <div class="item l_asideMenu">
+               
+                <ul class="setupMenu">
+                   <li><a class="lisA ac" href="javascript:;"><i></i>信息</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">通知</a></li>
+                           
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>我的作业</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">004班</a></li>
+                            <li><a href="#">006班</a></li>
+                            <li><a href="#">007班</a></li>
+                            <li><a href="#">008班</a></li>
+                           
+                        </ul>
+                    </li>
+                  
+                    <li><a class="lisD" href="javascript:;"><i></i>考试管理</a>
+                        <ul class="subMenu hide">
+                          
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF noBg" href="javascript:;"><i></i>练练</a>
+                        
+                    </li>
+                    <li><a class="lisG noBg" href="javascript:;"><i></i>学霸养成记</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>错题管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">错题集</a></li>
+                            <li><a href="#">题目录入</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li><a class="lisH noBg" href="javascript:;"><i></i>答疑管理(提问)</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>学习时间轴</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">学习时间轴</a></li>
+                            <li><a href="#">成绩统计表</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r">
+            <div class="main_cont statistClass class_statist">
+                <div class="title">
+                	<a href="#" class="txtBtn backBtn"></a>
+                    <h4>个人统计</h4>
+                </div>
+               
+               <div class="statistics parsonal">
+                <div class="statistics_t">
+                   <div class="tab">
+                        <ul class="tabList clearfix">
+                            <li><a href="javascript:;" class="ac">作业统计数据</a></li>
+                            <li><a href="javascript:;">考试统计数据</a></li>
+                      
+                        </ul>
+                        <div class="tabCont">
+                            <div class="tabItem">
+                                 <ul class="resultList testClsList clearfix">
+                                    <li><a>作业完成程度</a></li>
+                                    <li class="ac"><a>作业分布</a></li>
+                                    <li><a>单科作业完成度</a></li>
+                                </ul>   
+    
+                            </div>
+                            <div class="tabItem hide">
+                				<ul class="resultList testClsList clearfix" >
+                                    <li><a>学生考试利用程度</a></li>
+                                    <li class="ac"><a>各科成绩录入占比图</a></li>
+                                    <li><a>成绩曲线（总成绩/单科成绩）</a></li>
+                                    <li><a>考试成绩分布图</a></li>
+                                </ul> 
+                            </div>
+                        </div>
+                </div> 
+                </div>
+            <div class="statis_chart">
+            	<div id="echarts04" class="echarts"></div>
+                <div id="echarts01" class="echarts"></div>
+                <div id="echarts02" class="echarts"></div>
+                <div id="echarts03" class="echarts"></div>
+            
+            </div>
+        
+        </div> 
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+</body>
+</html>

@@ -1,0 +1,674 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师-题目管理-题目录入-编辑</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/teacher.css" type="text/css" rel="stylesheet">
+<link href="../css/questionInput.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<link href="../js/ueditor/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script src="../js/preview.js" type="text/javascript"></script>
+<script src="../js/ueditor/ueditor.config.js" type="text/javascript" ></script>
+<script src="../js/ueditor/ueditor.all.min.js" type="text/javascript" ></script>
+
+<!--知识树-->
+<script>
+$(function(){
+	var zNodes =[
+		{ id:1, pId:0, name:"语文"}, 
+		{ id:11, pId:1, name:"拼音"},
+		{ id:111, pId:11, name:"声母"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+	];
+	
+	$('#addPointBtn,.addPoint').live('click',function(){
+		popBox.pointTree(zNodes,$(this))
+	
+	})
+
+})
+</script>
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+<div class="main cont24 clearfix">
+    <div class="main_head pr clearfix"> <img class="img_lm" src="../images/teacher_lm.jpg">
+        <ul class="infoList">
+            <li><span>30</span>作业</li>
+            <li><span>300</span>错题</li>
+            <li><span>49</span>精品课程</li>
+        </ul>
+        <h2>毛毛虫</h2>
+        <p class="signTxt">队伍不好带呀<i>编辑</i></p>
+        <p>学　校:北京四中</p>
+        <p class="handCls">班　级:101班 班主任&nbsp;&nbsp;&nbsp;201班 数学教师 </p>
+        <p>教研组:数学</p>
+    </div>
+    <div class="mainNav">
+        <ul class="mainNav_R clearfix">
+            <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                <ul class="tab hide">
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                </ul>
+            </li>
+            <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+            <li><i class="management"></i><span>个人管理中心</span></li>
+        </ul>
+    </div>
+    <div class="currentLeft grid_5 push_1">
+        <div class="item l_asideMenu">
+            <h4>项目</h4>
+            <ul class="setupMenu">
+                <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">基本信息</a></li>
+                        <li><a href="#">头像管理</a></li>
+                        <li><a href="#">密码管理</a></li>
+                        <li><a href="#">邮箱管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">我的通知</a></li>
+                        <li><a href="#">发短信</a></li>
+                        <li><a href="#">我的私信</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisD" href="javascript:;"><i></i>考试试卷和成绩</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">考试管理</a></li>
+                        <li><a href="#">学期总评</a></li>
+                        <li><a href="#">科目总评</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisF close" href="javascript:;"><i></i>教研工作</a>
+                    <ul class="subMenu hide" style="display: block;">
+                        <li><a class="ac" href="#">教研课题</a></li>
+                        <li><a href="#">教学计划</a></li>
+                        <li><a href="#">听课评课</a></li>
+                        <li><a href="#">教研组资料</a></li>
+                        <li><a href="#">教研日记</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisG" href="javascript:;"><i></i>备课</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">个人教学计划</a></li>
+                        <li><a href="#">公文包(教案|讲义|经典视频)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>试卷与作业</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">组织测验</a></li>
+                        <li><a href="#">作业管理</a></li>
+                        <li><a href="#">题目管理</a></li>
+                        <li><a href="#">题目推送</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">课程管理</a></li>
+                        <li><a href="#">评论管理</a></li>
+                        <li><a href="#">课程总结</a></li>
+                        <li><a href="#">家长会管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>成绩统计表</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">收藏的讲义</a></li>
+                        <li><a href="#">收藏的课程</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="currentRight grid_16 push_2 topic_input">
+        <div class="noticeH clearfix">
+            <h3 class="h3L">组卷</h3>
+        </div>
+        <hr>
+       
+        <br>
+        <div class="itemsBox">
+        	<div class="QBox">
+                    <div class="row">
+                        <div class="formL">题目</div>
+                        <div class="formR">
+                            <textarea disabled style=" border:none; width:530px">题目内容_____题目内容题目内___容题目容</textarea>	
+                        </div>
+                    </div>
+            </div>
+            <div class="Box">
+            
+            </div>
+            <div class="NBox">
+                    <div class="row">
+                        <div class="formL">解析:</div>
+                        <div class="formR">
+                            <textarea id="analytical"></textarea>
+                        </div>
+                    </div>
+            </div>	 
+        </div>
+        <!--QBox:大题目 SBox: 选项 添加选项按钮  IBox:小题  ABox:答案(radio checkbox textarea)  addBtn:添加小题按钮  NBox:解析--> 
+        <!--选择题-->
+        <!--<div class="itemsBox Box">
+            <div class="QBox">
+                    <div class="row">
+                        <div class="formL">题目</div>
+                        <div class="formR">
+                            <textarea disabled style=" border:none; width:530px">题目内容_____题目内容题目内___容题目容</textarea>
+                        </div>
+                    </div>
+            </div>
+            <div class="SBox">
+                    <div class="row">
+                        <div class="formL">答案选项:</div>
+                        <div class="formR"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">备选项1</div>
+                        <div class="formR">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">备选项2</div>
+                        <div class="formR">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL"></div>
+                        <div class="formR">
+                            <button type="button">添加备选项</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="ABox">
+                    <div class="row">
+                        <div class="formL">答案:</div>
+                        <div class="formR">
+                            <input type="radio">
+                            <label>备选项1</label>
+                            <input type="radio">
+                            <label>备选项2</label>
+                        </div>
+                    </div>
+            </div>
+            <div class="IBox">
+                <div class="I_0">
+                    <div class="I_type_0"></div>
+                    <div class="I_box_0">
+                        <div class="I_Q_0"> </div>
+                        <div class="I_S_0"> </div>
+                        <div class="I_A_0"> </div>
+                    </div>
+                    <div class="add_I_btn_0"></div>
+                </div>
+                <div class="I_1">
+                    <div class="I_type_0"></div>
+                    <div class="I_box_1">
+                        <div class="I_Q_1"> </div>
+                        <div class="I_S_1"> </div>
+                        <div class="I_A_1"> </div>
+                    </div>
+                    <div class="add_I_btn_0"></div>
+                </div>
+            </div>
+            <div class="addBtn">
+            </div>
+            <div class="NBox">
+                    <div class="row">
+                        <div class="formL">解析:</div>
+                        <div class="formR">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+            </div>
+        </div>--> 
+        
+        <!--问答题--> 
+        <!--<div class="itemsBox Box">
+            <div class="QBox">
+                <div class="row">
+                    <div class="formL">题目:</div>
+                    <div class="formR">
+                        <textarea disabled >题目内容_____题目内容题目内___容题目容</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="SBox"> </div>
+            <div class="ABox">
+                <div class="row">
+                    <div class="formL">答案:</div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="addBtn"> </div>
+            <div class="NBox">
+                <div class="row">
+                    <div class="formL">解析:</div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        
+        <!--小题--> 
+        <!--<div class="itemsBox Box">
+            <div class="QBox">
+                <div class="row">
+                    <div class="formL">题目</div>
+                    <div class="formR">
+                        <textarea>题目内容_____题目内容题目内___容题目容</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="SBox"></div>
+            <div class="ABox hide">
+                <div class="row">
+                    <div class="formL">答案:</div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="IBox">
+                <div class="subItem I_0">
+                    <h5>小题1:填空</h5>
+                    <span class="delBtn">删除</span>
+                    <div class="I_point_0">
+                        <div class="row">
+                            <div class="formL">知识点:</div>
+                            <div class="formR">
+                            	<div id="tree0" class="treeParent">
+                                    <button type="button" class="addPoint">编辑知识点</button>
+                                    <div class="pointArea hide">
+                                        <input class="hidVal" type="hidden" value="">
+                                        <h6>已选中知识点：</h6>
+                                        <ul class="labelList"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="I_type_0">
+                        <ul class="form_list">
+                            <li>
+                                <div class="formL">
+                                    <label>题型:</label>
+                                </div>
+                                <div class="formR">
+                                    <select>
+                                        <option showtypeid="3" value="30031">填空题</option>
+                                        <option showtypeid="1" value="30031">单选题</option>
+                                        <option showtypeid="2" value="30031">多选题</option>
+                                        <option showtypeid="4" value="30031">简答题</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="I_box_0">
+                        <div class="I_Q_0">
+                            <div class="row">
+                                <div class="formL">题目:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="I_S_0"> </div>
+                        <div class="I_A_0 hide">
+                            <div class="row">
+                                <div class="formL">答案:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="I_B_0">
+                            <div class="I_B_A_0">
+                                <div class="row">
+                                    <div class="formL">小题1答案:</div>
+                                    <div class="formR">
+                                        <textarea></textarea>
+                                        <span class="delBtn">删除</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="I_B_A_1">
+                                <div class="row">
+                                    <div class="formL">小题2答案:</div>
+                                    <div class="formR">
+                                        <textarea></textarea>
+                                        <span class="delBtn">删除</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="I_B_A_2">
+                                <div class="row">
+                                    <div class="formL">小题3答案:</div>
+                                    <div class="formR">
+                                        <textarea></textarea>
+                                        <span class="delBtn">删除</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add_I_btn">
+                            <div class="row">
+                                <div class="formL">
+                                    <label></label>
+                                </div>
+                                <div class="formR">
+                                    <button type="button">添加填空小题</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="subItem I_1">
+                    <h5>小题2:单选/多选</h5>
+                    <span class="delBtn">删除</span>
+                    <div class="I_point">
+                        <div class="row">
+                            <div class="formL">知识点:</div>
+                            <div class="formR">
+                                <div id="tree0" class="treeParent">
+                                    <button type="button" class="addPoint">编辑知识点</button>
+                                    <div class="pointArea hide">
+                                        <input class="hidVal" type="hidden" value="">
+                                        <h6>已选中知识点：</h6>
+                                        <ul class="labelList">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="I_type">
+                        <div class="row">
+                            <div class="formL">题型:</div>
+                            <div class="formR">
+                                <select>
+                                    <option showtypeid="1" value="30031">单选题</option>
+                                    <option showtypeid="2" value="30031">多选题</option>
+                                    <option showtypeid="3" value="30031">填空题</option>
+                                    <option showtypeid="4" value="30031">简答题</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="I_box">
+                        <div class="I_Q">
+                            <div class="row">
+                                <div class="formL">题目:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="I_S">
+                            <div class="row">
+                                <div class="formL">备选项1:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                    <span class="delBtn">删除</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="formL">备选项2:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                    <span class="delBtn">删除</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="I_A">
+                            <div class="row">
+                                <div class="formL">答案:</div>
+                                <div class="formR">
+                                    <input type="radio">
+                                    <label>备选项1</label>
+                                    <input type="radio">
+                                    <label>备选项2</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add_I_btn">
+                        <div class="row">
+                            <div class="formL"></div>
+                            <div class="formR">
+                                <button type="button">添加备选项</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subItem I_2">
+                    <h5>小题3:简答题</h5>
+                    <span class="delBtn">删除</span>
+                    <div class="I_point">
+                        <div class="row">
+                            <div class="formL">知识点:</div>
+                            <div class="formR">
+                                <div id="tree0" class="treeParent">
+                                    <button type="button" class="addPoint">编辑知识点</button>
+                                    <div class="pointArea hide">
+                                        <input class="hidVal" type="hidden" value="">
+                                        <h6>已选中知识点：</h6>
+                                        <ul class="labelList">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="I_type">
+                        <div class="row">
+                            <div class="formL">题型:</div>
+                            <div class="formR">
+                                <select>
+                                    <option showtypeid="4" value="30031">简答题</option>
+                                    <option showtypeid="1" value="30031">单选题</option>
+                                    <option showtypeid="2" value="30031">多选题</option>
+                                    <option showtypeid="3" value="30031">填空题</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="I_box">
+                        <div class="I_Q">
+                            <div class="row">
+                                <div class="formL">题目:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="I_S"></div>
+                        <div class="I_A">
+                            <div class="row">
+                                <div class="formL">答案:</div>
+                                <div class="formR">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add_I_btn"></div>
+                </div>
+            </div>
+            <div class="addBtn">
+                <button type="button">添加小题</button>
+            </div>
+            <div class="NBox">
+                <ul class="form_list">
+                    <li>
+                        <div class="formL">
+                            <label>解析:</label>
+                        </div>
+                        <div class="formR">
+                            <textarea></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+        <hr>
+        <div class="row submit_BtnBar">
+            <div class="formL"></div>
+            <div class="formR">
+                <button type="button" class="saveBtn">保存题目</button>
+                <button type="button" class="viewBtn">题目预览</button>
+                <button type="button" class="saveDraftBox">保存到草稿箱</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+<!--<div class="popBox previewBox hide" title="题目预览">
+	<div class="QuestionCont">
+        <h5 class="Q_title">大题题题目内容题目内容题目内容目</h5>
+        <div class="sub">
+            <h6 class="subTitle">第1小题</h6>
+            <p>小题题目内容题目内题目内容题目内容题目内容</p>
+            <dl class="clearfix">
+                <dt>备选项:</dt>
+                <dd>A</dd>
+                <dd>B</dd>
+                <dd>C</dd>
+            </dl>
+        </div>
+        <div class="sub">
+            <h6>第1小题</h6>
+            <p>小题题目内容题目内容题目内容题目内容</p>
+            <dl class="clearfix">
+                <dt>备选项:</dt>
+                <dd>A</dd>
+                <dd>B</dd>
+                <dd>C</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="btnBar">
+    	<a class="openAnalyBtn">查看答案和解析</a><span>难度:<em>1</em>&nbsp;&nbsp;录入:<i>我自己</i></span>
+    </div>
+    <div class="A_cont clearfix">
+    	<dl>
+        	<dt>答案:</dt>
+            <dd>
+            	<h6>1小题:</h6>
+                <p><span>A</span><span>B</span><span>C</span></p>
+            </dd>
+            <dd>
+            	<h6>1小题:</h6>
+                <p><span>A</span><span>B</span><span>C</span></p>
+            </dd>
+        </dl>
+        
+        <dl class="analyCont">
+        	<dt>解析:</dt>
+            <dd>解析内容解析内容解析内容解析内容解析内容解析内容解析内容</dd>
+        </dl>
+    </div>
+</div>
+-->
+</body>
+</html>
+<!-- 实例化编辑器 -->

@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background-color:#f4f4f4;}
+.resetting p{vertical-align:middle; line-height:24px; height:auto; position:relative; top:14px; font-size:12px; margin-left:10px;}
+.resetting ul{ position:relative; top:6px;}
+.resetting ul li{ font-size:12px; margin-left:20px;}
+.currentRight {padding-bottom: 100px;background: #fff; padding: 30px; margin-bottom:20px;}
+.retting_box .rettingList{ padding:10px;}
+.retting_box .rettingList h4{ height: 30px; line-height: 30px; padding-left:1px;}
+.retting_box .rettingList dl{height:120px;}
+.retting_box .rettingList dl dt{ width:110px; height:110px; float:left; margin-right:20px;}
+.retting_box .rettingList dl dd{ width:40px; height:40px; float:left; margin: 6px 10px 14px 0px}
+.retting_box .more{height:30px; line-height:30px; text-align:center; margin:0 auto; margin-top:30px;}
+.retting_box .more a{ font-size:14px; color:#fff;background-color:#f99; text-align:center; display:inline-block;}
+.retting_box .rettingList .ret li span{ margin-right:10px; font-size:14px;}
+.retting_box .rettingList .ret li .image{ width:800px;}
+.retting_box .rettingList .classList{ border-bottom:#999 dashed 1px; padding-bottom:10px;}
+.retting_box .rettingList .classList h5 a{ font-size:18px;}
+/*个人信息*/
+.individual_b{ padding-bottom:100px;}
+.individual_b .noticeB span{ color:#ccc; font-size:12px;}
+.individual_box .in_nav{ border-bottom:#00cacf solid 2px; margin-top:20px; height:27px;}
+.individual_box .in_nav li{ float:left; margin-right:20px; height:26px;  line-height:26px; width:160px; text-align:center;}
+.individual_box .in_nav li a{font-size:14px;color:#00cacf;}
+.individual_box .in_nav .this{ height:27px; line-height:27px; border-bottom:none;background-color:#00cacf; }
+.individual_box .in_nav .this a{ color:#fff;}
+.individual_box .individual{ margin-top:20px;}
+.individual_box .individual ul li .indual{ position:relative; top:2px;}
+.individual_box .indualBtn{ width:60px; height:30px; color:#fff; border:none; cursor:pointer;}
+.individual_box .hr{ margin-top:10px;} 
+.individual_box .individual .division{ padding-left:50px;position:relative; z-index:10; margin-bottom:20px;}
+.individual_box .individual .division dt{ margin-left:-50px; float:left; font-size:14px; color:#333333;}
+.individual_box .individual .division dd{ float:left; margin-right:40px; position:relative;  cursor:pointer; z-index:1;}
+.individual_box .individual .division dd em{ width:26px; height:12px; overflow:hidden;background:url(../images/sprite.png) no-repeat -20px -426px; display:inline-block; position:absolute; top:18px; left:28px;}
+.individual_box .individual .division dd span{ font-size:12px; color:#666666;}
+.individual_box .individual .division dd span i{ background:url(../images/sprite.png) no-repeat -4px -246px; width:10px; height:6px; overflow:hidden; display:inline-block; margin-left:10px;}
+.individual_box .individual .ind_b{ display:none; background-color:#f4f4f4; width:750px; position:absolute;top:25px; border:#ccc solid 1px; padding:15px;}
+.individual_box .individual .ind_b ul{min-width:100px;}
+.individual_box .individual .ind_b ul li{ float:left; margin-right:26px;}
+.individual_box .individual .ind_b ul li a{ font-size:12px; color:#333;}
+
+.statisticsm .statistics{ height:30px;}
+.statisticsm .statistics li{ float:left; width:100px; height:30px; line-height:30px; text-align:center;color:#000000; font-size:14px; cursor:pointer;}
+.statisticsm .statistics .this{ background-color:#00cacf; color:#fff;}
+.statisticsm .statisticsBox{ margin-top:10px;}
+.statisticsm .statisticsBox .stat_list{ margin-top:20px;}
+.statisticsm .statisticsBox h4{ font-size:14px;}
+.statisticsm .statisticsBox ol{ padding:0 10px;}
+.statisticsm .statisticsBox ol li{ float:left; margin-right:46px;}
+.statisticsm .statisticsBox ol li a{width:85px; white-space:nowrap;text-overflow:ellipsis; color:#4e6bab; font-size:12px;}
+.individm{ border-bottom:#00cacf solid 1px;}
+.individm span{ width:103px; height:30px; line-height:30px; color:#000000; font-size:14px; text-align:center; font-weight:bold;}

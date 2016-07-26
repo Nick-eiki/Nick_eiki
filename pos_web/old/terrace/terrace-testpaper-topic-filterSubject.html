@@ -1,0 +1,738 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>题目筛选--题库</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/terrace.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	
+//搜索按钮切换	
+	$('.terrace_btn_js span').bind('click',function(){
+		$(this).addClass('s_btn').siblings('span').removeClass('s_btn');	
+		
+	})
+	//解析下拉
+	$('.openAnswerBtn').toggle(function(){
+		$(this).parents('.btnArea').siblings('.answerArea').show();
+	},function(){
+		$(this).parents('.btnArea').siblings('.answerArea').hide();
+	})
+	
+	//高级搜索
+	$('#senior').toggle(function(){
+		
+		$('.senior_form').show();
+	},function(){
+		$('.senior_form').hide();	
+	})
+	
+	
+	
+	
+	
+	 $('#text').insertAtCaret("请填写自定义标签");  
+})
+</script>
+<script>
+$(function(){
+	var zNodes2 =[
+		{ id:1, pId:0, name:"数的认识"},
+		{ id:11, pId:1, name:"正数的认识"},
+		{ id:111, pId:11, name:"比较"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:12, pId:1, name:"数的运算"},
+		{ id:122, pId:11, name:"四则运算"},
+		{ id:13, pId:1, name:"常见的量"},
+		{ id:14, pId:1, name:"图形位置"},
+		{ id:2, pId:0, name:"数的运算"},
+		{ id:21, pId:2, name:"正数的认识"},
+		{ id:211, pId:21, name:"比较"},
+		{ id:212, pId:21, name:"韵母"},
+		{ id:22, pId:2, name:"数的运算"},
+		{ id:222, pId:21, name:"四则运算"},
+		{ id:23, pId:2, name:"常见的量"},
+		{ id:24, pId:2, name:"图形位置"},
+		{ id:3, pId:0, name:"常见的量"},
+		{ id:31, pId:3, name:"正数的认识"},
+		{ id:311, pId:31, name:"比较"},
+		{ id:312, pId:31, name:"韵母"},
+		{ id:32, pId:3, name:"数的运算"},
+		{ id:322, pId:31, name:"四则运算"},
+		{ id:33, pId:3, name:"常见的量"},
+		{ id:34, pId:3, name:"图形位置"},
+		
+	];
+	//popBox.pointTree3(zNodes2,$(this))	
+})
+
+
+</script>
+<script>
+$(function(){
+	var oDateBax=$('#bookVersionSelect');
+	var aDl=$('#bookVersionSelect dl');
+	var add=$('#bookVersionSelect dl dd');
+	var timer=null;
+	
+	
+	$('#dateBox').bind('mouseover',function(){
+		$('#dateBox h4').addClass('tre_hover');
+		$('#bookVersionSelect').show();	
+	});
+	
+	
+	$('#dateBox').bind('mouseout',function(){
+		$('#dateBox h4').removeClass('tre_hover');
+		$('#bookVersionSelect').hide();	
+	});
+	
+	
+	
+	for(var i=0; i<aDl.length;i++)
+	{	aDl[i].index=i;
+		aDl[i].onmouseover=function(){
+			clearTimeout(timer);
+			var this_=this;
+			for(var i=0; i<aDl.length;i++)
+			{	
+				aDl[i].className='';
+				add[i].className='';
+				add[i].style.display='none';
+			}
+			add[this_.index].style.display='block';
+			add[this_.index].className='greend';
+			this_.className='greend';
+			
+		}
+		
+		aDl[i].onmouseout=function(){
+			for(var i=0; i<aDl.length; i++)
+			{
+				aDl[i].index=i;
+				var _this=this;
+				
+			}
+			timer=setTimeout(function()
+			{
+				add[_this.index].style.display='none';
+				aDl.removeClass('greend');
+				add.removeClass('greend');
+				
+			},30);
+		}
+	}
+	
+	
+		
+});
+</script>
+
+</head>
+
+<body id="body">
+<!--顶部开始-->
+<div class="min_head terrace_head">
+  <div class="cont24 terrace clearfix">
+    <div class="head_left terrace_left grid_6">
+    	<ul class="terrace_ul clearfix">
+        	<li><a href="#">题库</a></li>
+            <li><a href="#">资料库</a></li>
+            <li><a href="#">视频库</a></li>
+        </ul>
+    
+    </div>
+     <ul class="terrace_ul fl">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">免费登录</a></li>    
+     </ul>
+    
+    
+    <div class="userCenter grid_6 userCenter_R">
+      
+      <div class="userAccount userAccount2  grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg userMsg2 grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+      <div class="detail fr">
+      	<span><a href="#">通知</a></span>
+        <em>|</em>
+        <span><a href="#">收藏夹</a></span>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!--顶部结束-->
+<!--搜索开始--> 
+<div class="terrace_search ">
+	<div class="terrace_box clearfix">
+    	<div class="terrace_logo">
+    		<img src="../images/logo.png" alt="">
+        </div>
+        <div class="terrace_search">
+        	<p class="terrace_btn terrace_btn_js"><span class="mini_btn s_btn">试题</span><span class="mini_btn">试卷</span></p>
+            <div class="terrace_text">
+            	<em></em>
+                <input type="text" value="请输入题目关键字" class="text">
+                <button type="button" class="tye_btn">搜 索</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!--搜索结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24 clearfix">
+    
+    <div class="mainNav terrace_Nav">
+            <ul class="terrace_nav">
+                <li class="terrace_nav_this"><a href="#">首页</a></li>
+                <li><a href="#">小学</a></li>
+                <li><a href="#">初中</a></li>
+                <li><a href="#">高中</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="deta_de">
+            <a href="#">首页</a>&gt;&gt;<a href="#" class="this">题目筛选</a>
+        </div>
+     <div class="class_c clearfix tch" style="min-height:500px">   
+        <div class="currentLeft grid_16 filterSubject"style=" float:right;">
+             <div class="noticeH clearfix">
+                <h3 class="h3L">题目筛选</h3>
+                
+            </div>
+            <hr>
+            <br>
+            <div class="searchBar">
+               
+                    <ul class="form_list">
+                        <li>
+                            <div class="formL">
+                                <label><i></i>题目关键字：</label>
+                            </div>
+                           
+                            <div class="formR" style="position:relative;">
+                                <input type="text" class="text" id="text" value="">
+                               
+                                <input type="button" class="btn" value="搜索">
+                                &nbsp;&nbsp;<a href="javascript:;" class="senior" id="senior">高级搜索</a> </div>
+                        </li>
+                    </ul>
+                    <form class="senior_form" style="display:none;">
+                        <ul class="form_list">
+                          <li>
+                            <div class="formL">
+                              <label><i></i>使用地区:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                <option value="选择省">选择省</option>
+                                </select>
+                                <select>
+                                    <option value="选择地区">选择地区</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                </select>
+                               <select>
+                                    <option value="选择县">选择县</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                    <option value="1990">1900</option>
+                                </select>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>适用年级:</label>
+                            </div>
+                            <div class="formR">
+                                <select class="mySel">
+                                    <option value="">一年级</option>
+                                    <option value="">二年级</option>
+                                    <option value="">三年级</option>
+                                </select>
+                            </div>
+                          </li>
+                          
+                          <li>
+                            <div class="formL">
+                              <label><i></i>版本:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                    <option value="">人教版</option>
+                                </select>
+                            </div>
+                          </li>
+                          
+                          <li>
+                            <div class="formL">
+                              <label><i></i>题型:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                    <option value="">单选</option>
+                                    <option value="">多选</option>
+                                    <option value="">填空题</option>
+                                </select>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>出处:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                    <option value="">高考</option>
+                                    <option value="">中考</option>
+                                    <option value="">升级</option>
+                                    <option value="">普通</option>
+                                    <option value="">上学期末</option>
+                                    <option value="">下学期末</option>
+                                </select>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>年份:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                    <option value="">2013年</option>
+                                    <option value="">2014年</option>
+                                    <option value="">2015年</option>
+                                </select>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>名校:</label>
+                            </div>
+                            <div class="formR">
+                                <select>
+                                    <option value="">北京四中</option>
+                                    <option value="">人大附中</option>
+                                    <option value="">其他</option>
+                                </select>
+                                <input type="text" class="text hide">
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>自定义标签:</label>
+                            </div>
+                            <div class="formR">
+                                <input type="text" value="" class="input_box text">
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label><i></i>题目关键字:</label>
+                            </div>
+                            <div class="formR">
+                                <input type="text" value="" class="input_box text">
+                            </div>
+                          </li>
+                          <li>
+                            <div class="formL">
+                              <label></label>
+                            </div>
+                            <div class="formR">
+                                <button class="btn">搜索</button>
+                            </div>
+                          </li>
+                        </ul>
+                </form>
+                
+            </div>
+            <br>
+            <br>
+            <div class="schResult">
+                <h3>搜索结果:</h3>
+                <ul class="form_list">
+                    <li>
+                        <div class="formL">
+                            <label>搜索条件：</label>
+                        </div>
+                        <div class="formR  schTxtArea">
+                            <p><span>(填写的搜索文本)</span></p>
+                        </div>
+                    </li>
+                </ul>
+                <h4>共有题目1道题如下:</h4>
+                
+                <div class="schResult">
+                    <div class="testpaper"><!--选择题--> 
+                        <h5>题目1:</h5>
+                        <h6>【2013年】 高考 选择题</h6>
+                        <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                        <div class="checkArea">
+                            <input type="radio" class="radio" name="aaa">
+                            <label>A 备选项1</label>
+                            <input type="radio" class="radio"  name="aaa">
+                            <label>B 备选项2</label>
+                            <input type="radio" class="radio"  name="aaa">
+                            <label>C 备选项3</label>
+                            <input type="radio" class="radio"  name="aaa">
+                            <label>D 备选项4</label>
+                        </div>
+                        <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                        <div class="answerArea hide">
+                            <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                            <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                        </div>
+                    </div>
+                    <div class="testpaper"><!--选择题--> 
+                        <h5>题目1:</h5>
+                        <h6>【2013年】 高考 选择题</h6>
+                        <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                        <div class="checkArea">
+                            <input type="checkbox" class="checkbox">
+                            <label>A 备选项1</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>B 备选项2</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>C 备选项3</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>D 备选项4</label>
+                        </div>
+                        <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                        <div class="answerArea hide">
+                            <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                            <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                        </div>
+                    </div>
+                    <div class="testpaper"><!--选择题--> 
+                        <h5>题目1:</h5>
+                        <h6>【2013年】 高考 选择题</h6>
+                        <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                        <div class="checkArea">
+                            <ul>
+                                <li><i>1.</i>
+                                    <input type="checkbox" class="checkbox" checked>
+                                    <label>A 备选项1</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>B 备选项2</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>C 备选项3</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>D 备选项4</label>
+                                </li>
+                                <li><i>2.</i>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>A 备选项1</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>B 备选项2</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>C 备选项3</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>D 备选项4</label>
+                                </li>
+                                <li><i>3.</i>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>A 备选项1</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>B 备选项2</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>C 备选项3</label>
+                                    <input type="checkbox" class="checkbox">
+                                    <label>D 备选项4</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                        <div class="answerArea hide">
+                            <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                            <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="page"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+            </div>
+        </div>
+       <div class="centRight centStyle" style=" float:left; background:#fff; margin-top:0px; padding:0px; width:228px; position:relative; height:200px; overflow:visible;">
+       		<div class="tree_none" style="verflow-y:scroll;height:500px; overflow:auto; overflow-x:hidden;">
+                <ul id="treeList2" class="clearfix ztree">
+                
+                </ul>
+                <div class="link">
+                    <span>共有41道题</span>
+                    <!--span 靠左-->
+                   
+                </div>
+                 </div>
+            	<div class="tree" id="dateBox">
+                	<h4 class="tree_h4">小学 语文 <i class="top"></i></h4>
+                    	
+                	<div id="bookVersionSelect" class="menuCon" style="display:none;">
+                        <dl class="">
+                            <dt>
+                                <a href="javascript:;">小学</a>
+                                <i></i>
+                             </dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">数学</span>
+                                            
+                                           
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">语文</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">英语</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                  <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">数学</span>
+                                            
+                                           
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">语文</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">英语</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                              </dd>
+                          </dl>
+                          <dl>
+                            <dt>
+                                <a href="javascript:;">初中</a>
+                                <i></i>
+                             </dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">语文</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">数学</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">英语</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">物理</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">化学</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">生物</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">政治</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">历史</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">地理</span>
+                                            
+                                        </a>
+                                    </li>
+                                  </ul>
+                              </dd>
+                          </dl>
+                          <dl>
+                            <dt>
+                                <a href="javascript:;">高中</a>
+                                <i></i>
+                             </dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">
+                                           
+                                            <span class="semesterName">语文</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">数学</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">英语</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">物理</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">化学</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">生物</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">政治</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">历史</span>
+                                            
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:;">
+                                            <span class="gradeName">地理</span>
+                                            
+                                        </a>
+                                    </li>
+                                  </ul>
+                              </dd>
+                          </dl>
+                          
+                        
+                  
+                  </div>
+                    
+                    
+                    
+                    
+                    
+                </div>
+       
+       
+       
+       </div>     
+   </div>
+    
+</div>
+</div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+</body>
+</html>

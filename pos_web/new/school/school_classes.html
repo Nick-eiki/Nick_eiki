@@ -1,0 +1,335 @@
+﻿<!doctype html>
+<html id="html">
+
+	<head>
+		<meta charset="utf-8">
+		<title>学校-班级</title>
+		<link href="../css/base.css" rel="stylesheet" type="text/css">
+		<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+		<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+		<link href="../css/school.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+		<script src="../js/base.js" type="text/javascript"></script>
+		<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+		<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+		<script>
+			$(function() {
+				$('#popBox').dialog({
+					autoOpen: false,
+					width: 500,
+					height: 240,
+					modal: true,
+					resizable: false,
+					close: function() {
+						$(this).dialog("close")
+					}
+				});
+				$('.hand_btn').click(function() {
+					/*手拉手*/
+					$("#popBox").dialog("open");
+					return false;
+				})
+				$('.hand_List li').live('mouseover', function() {
+					$(this).addClass('this');
+				});
+				$('.hand_List li').live('mouseout', function() {
+					$(this).removeClass('this');
+				});
+				//显示更多任课老师
+				(function() {
+					var _this;
+					$('.moreClsBtn').click(function() {
+						_this = $(this);
+						//$('.cls_and_teacher').removeClass('showClass');
+						$(this).nextAll('p').addClass('showClass');
+						return false;
+					});
+					$(document).click(function() {
+						$('.cls_and_teacher').removeClass('showClass');
+					})
+				})();
+				/*弹窗初始化*/
+				$('.popBox').dialog({
+					autoOpen: false,
+					width: 480,
+					modal: true,
+					resizable: false,
+					close: function() {
+						$(this).dialog("close")
+					}
+				});
+				/*导入班级学生名单弹窗*/
+				$('.pushBtnJs').click(function() {
+						$("#pushNotice").dialog("open");
+						return false;
+					})
+				/*系统提示弹窗*/
+				$('.name_list_btn').click(function() {
+					$("#pushNotice").dialog("close");
+					$("#system_hints").dialog("open");
+					return false;
+				})
+				/*系统弹窗关闭*/
+				$('.okBtn').click(function() {
+					$("#system_hints").dialog("close");
+				})
+			})
+		</script>
+	</head>
+
+	<body class="school">
+		<div class="bodyBg">
+			<img src="../images/schoolBG.jpg">
+		</div>
+		<div class="opacity_mask"></div>
+		<div class="head"></div>
+		<!--top_end-->
+		<!--主体-->
+		<div class="cont24 homepage school_classes">
+			<!--<h2><span title="北京第四中学">北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学北京第四中学</span>
+    </h2>-->
+			<h2>北京第四第四中学中学</h2>
+			<div class="grid_24 main_nav">
+				<div class="main_nav_BG"></div>
+				<ul class="clearfix">
+					<li><a href="school_home.html">首页</a>
+					</li>
+					<li><a href="#">学校公示</a>
+					</li>
+					<li><a href="school_teacher.html" class="ac">教师</a>
+					</li>
+					<li><a href="school_teachingGroup.html">答疑</a>
+					</li>
+					<li><a href="school_classes.html">班级</a>
+					</li>
+					<li><a href="#">招生简章</a>
+					</li>
+					<!--<li><a href="school_cuttingScore.html">录取分数线</a></li>-->
+				</ul>
+
+			</div>
+			<div class="grid_24 main">
+				<div class="main_cont">
+					<div class="title">
+						<h4>校内班级</h4>
+					</div>
+					<div class="scholl_class_cont">
+						<div class="scholl_class_contTop">
+							<div class="class_contList clearfix">
+								<label>学段：</label>
+								<span class="selectWrap big_sel" style="width:110px"> <i></i> <em>请选择</em>
+
+                            <select>
+
+                                <option>10年级</option>
+
+                                <option>10年级</option>
+
+                                <option>10年级</option>
+
+                            </select>
+                            </span>
+								<label>学年：</label>
+								<span class="selectWrap big_sel" style="width:110px"> <i></i> <em>请选择</em>
+
+                            <select>
+
+                                <option>10年级</option>
+
+                                <option>10年级</option>
+
+                                <option>10年级</option>
+
+                            </select>
+
+                           
+
+                            </span>
+								<input type="text" style="width:300px" class="text" id="sclName" value="">
+								<button type="button" class="big_searchBtn">搜索</button>
+								<span><a href="" class="fr blue_d pushBtnJs">导入班级学生名单</a></span>
+							</div>
+						</div>
+						<div class="scholl_class_cont_middle">
+							<ol class="hand_List">
+								<li class="this">
+									<dl class="clearfix">
+										<dt class="fl">
+
+                                	<img src="../images/class.png">
+
+                                    <h4><a href="../classes/classes_home.html">人大附中168班</a></h4>
+
+                                </dt>
+										<dd class="title">
+											<h5><a href="#">班主任：杨伟伟</a></h5>
+										</dd>
+										<dd class="slo"><span>学校：北京市人大附中</span> <span>地区：北京市 海淀区</span>
+										</dd>
+										<dd>
+											<a class="moreClsBtn" href="javascript:;">▼</a>
+											<em>任课教师：</em>
+											<p class="cls_and_teacher"><span>[语文]&nbsp;&nbsp;<a href="javascript:;">张朝阳</a></span><span>[数学]&nbsp;&nbsp;<a href="#">张阳</a></span><span>[英语]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span>
+											</p>
+										</dd>
+										<dd class="otherInfo"><span>学生<em>20</em>人</span><span>精品课程<em>17</em>门</span><span>讲义<em>126</em>篇</span><span>教案<em>98</em>篇</span>
+										</dd>
+									</dl>
+									<span class="p_btn">
+
+                            	<a href="javascript:;" class="hand_btn a_button w150">申请手拉手班级</a>
+
+                                <a href="javascript:;" class="a_button w90 add_class">加入本班</a>
+
+                                <!--申请手拉手班级和加入本班只有班主任可以申请-->
+
+                            </span>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt class="fl">
+
+                                	<img src="../images/class.png">
+
+                                    <h4><a href="#">人大附中168班</a></h4>
+
+                                </dt>
+										<dd class="title">
+											<h5><a href="#">班主任：杨伟伟</a></h5>
+										</dd>
+										<dd class="slo"><span>学校：北京市人大附中</span> <span>地区：北京市 海淀区</span>
+										</dd>
+										<dd>
+											<a class="moreClsBtn" href="javascript:;">▼</a>
+											<em>任课教师：</em>
+											<p class="cls_and_teacher"><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[数学]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[英语]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span>
+											</p>
+										</dd>
+										<dd class="otherInfo"><span>学生<em>20</em>人</span><span>精品课程<em>17</em>门</span><span>讲义<em>126</em>篇</span><span>教案<em>98</em>篇</span>
+										</dd>
+
+									</dl>
+									<span class="p_btn">
+
+                            	<a href="javascript:;" class="hand_btn a_button w150">申请手拉手班级</a>
+
+                                <a href="javascript:;" class="a_button w90 add_class">加入本班</a>
+
+                            </span>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt class="fl">
+
+                                	<img src="../images/class.png">
+
+                                    <h4><a href="../classes/classes_home.html">人大附中168班</a></h4>
+
+                                </dt>
+										<dd class="title">
+											<h5><a href="#">班主任：杨伟伟</a></h5>
+										</dd>
+										<dd class="slo"><span>学校：北京市人大附中</span> <span>地区：北京市 海淀区</span>
+										</dd>
+										<dd><span>任课教师：</span>
+											<br><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[数学]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[英语]&nbsp;&nbsp;<a href="#">张朝阳</a></span>
+										</dd>
+										<dd><span>学生<em>20</em>人</span><span>精品课程<em>17</em>门</span><span>讲义<em>126</em>篇</span><span>教案<em>98</em>篇</span>
+										</dd>
+									</dl>
+									<span class="p_btn">
+
+                            	<a href="javascript:;" class="hand_btn a_button w150">申请手拉手班级</a>
+
+                                <a href="javascript:;" class="a_button w90 add_class">加入本班</a>
+
+                            </span>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt class="fl">
+
+                                	<img src="../images/class.png">
+
+                                    <h4><a href="#">人大附中168班</a></h4>
+
+                                </dt>
+										<dd class="title">
+											<h5><a href="#">班主任：杨伟伟</a></h5>
+										</dd>
+										<dd class="slo"><span>学校：北京市人大附中</span> <span>地区：北京市 海淀区</span>
+										</dd>
+										<dd>
+											<a class="moreClsBtn" href="javascript:;">▼</a>
+											<em>任课教师：</em>
+											<p class="cls_and_teacher"><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[数学]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[英语]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span><span>[语文]&nbsp;&nbsp;<a href="#">张朝阳</a></span>
+											</p>
+										</dd>
+										<dd class="otherInfo"><span>学生<em>20</em>人</span><span>精品课程<em>17</em>门</span><span>讲义<em>126</em>篇</span><span>教案<em>98</em>篇</span>
+										</dd>
+									</dl>
+									<span class="p_btn">
+
+                            	<a href="javascript:;" class="hand_btn a_button w150">申请手拉手班级</a>
+
+                                <a href="javascript:;" class="a_button w90 add_class">加入本班</a>
+
+                            </span>
+								</li>
+
+							</ol>
+							<div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a> </div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!--主体end-->
+		<div id="popBox" class="popBox popBox_hand hide" title="手拉手班级申请">
+			<!--完成答题-->
+			<div class="impBox">
+				<h6 class="font16">申请成为 <span>北京市 海淀区&nbsp;&nbsp;&nbsp;&nbsp;人大附中</span></h6>
+				<p style="text-align:center" class="font16">班级名称</p>
+				<div class="font16" style="color:#777;">的手拉手班级吗？</div>
+
+			</div>
+
+			<div class="popBtnArea">
+				<button type="button" class="okBtn">申请</button>
+				<button type="button" class="cancelBtn">取消</button>
+			</div>
+
+		</div>
+		<!--导入学生名单弹窗-->
+		<div class="popBox hide pushNotice" title="导入班级学生名单" id="pushNotice">
+			<div class="popCont">
+				<div class="new_tch_group">
+					<p>步骤一：使用Excel编辑学生名单，格式如下图。</p>
+					<p class="download"><a href="" class="blue mar_left">点击下载Excel模版</a>
+					</p>
+					<p>
+						<img src="../images/school_class.png" class="mar_left" />
+					</p>
+					<p>步骤二：上传学生名单，完成添加。</p>
+					<button class="w160 btn30 name_list_btn">上传班级学生名单</button>
+
+				</div>
+			</div>
+		</div>
+		<!--系统提示-->
+		<div class="popBox hide system_hints" title="系统提示" id="system_hints">
+			<div class="popCont upload">
+				<p class="ac"><i class="success"></i> 上传成功</p>
+				<p class="hide"><i class="failure"></i> 上传失败</p>
+			</div>
+			<div class="popBtnArea">
+				<button type="button" class="okBtn">确定</button>
+			</div>
+		</div>
+	</body>
+
+</html>

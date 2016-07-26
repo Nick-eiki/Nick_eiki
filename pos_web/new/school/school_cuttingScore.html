@@ -1,0 +1,272 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学校-历年录取分数线</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../css/school.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script>
+$(function(){
+	/*弹窗初始化*/
+	$('.popBox').dialog({
+		autoOpen: false,
+		width:460,
+		modal: true,
+		resizable:false,
+		close:function(){$(this).dialog("close")}
+	});
+
+
+/*编辑弹窗*/
+(function(){
+	var score=[];
+	var tds="";
+	var end_score={};
+//编辑
+	$('.addBtnJs').click(function(){
+		var pa=$(this).parents('tr');
+		tds=pa.children('td').not('td:last');
+		score.length=0;
+		tds.each(function() {
+			score.push($(this).text());    
+		});
+		$('.addscoreBox .entry_score').val(score[1]);
+		$('.addscoreBox .sel_school_score').val(score[2]);
+		$('.addscoreBox .live_score').val(score[3]);
+		$('.addscoreBox .selectWrap select').val(score[0]);
+		$( "#addscoreBox" ).dialog( "open" );
+		return false;
+	});	
+
+
+//弹窗确定
+	$('.addscoreBox .okBtn').click(function(){
+		end_score.year=$('.addscoreBox .sel_year').val();
+		end_score.entry_score=$('.addscoreBox .entry_score').val();
+		end_score.sel_school_score=$('.addscoreBox .sel_school_score').val();
+		end_score.live_score=$('.addscoreBox .live_score').val();
+	
+		
+	$.ajax({
+		url:(''),
+		type:'POST',
+		data:{year:end_score.year,entry_score:end_score.entry_score,sel_school_score:end_score.sel_school_score,live_score:end_score.live_score},
+		dataType:'json',
+		success:function(msg){
+			if(msg.success){
+				if(!isNaN(end_score.entry_score) && !isNaN(end_score.sel_school_score) && !isNaN(end_score.live_score)){
+					tds.eq(0).text(end_score.year);
+					tds.eq(1).text(end_score.entry_score);
+					tds.eq(2).text(end_score.sel_school_score);
+					tds.eq(3).text(end_score.live_score);
+					$( "#addscoreBox" ).dialog( "close" );
+				}
+				else{
+					popBox.errorBox('请填写数字');
+				
+				}
+			}
+			else
+			{
+				alert('修改失败,请重试!')	
+			}
+		},
+		error:function(){
+			alert('失败');	
+		}
+	})
+})
+
+})()
+	
+	
+	
+	
+	
+	
+	
+	
+})
+
+</script>
+</head>
+
+<body class="school">
+<div class="bodyBg">
+	<img src="../images/schoolBG.jpg">
+</div>
+<div class="opacity_mask"></div>
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24 homepage school_classes">
+    <h2>教研组区第五中学</h2>
+    <div class="grid_24 main_nav">
+       <div class="main_nav_BG"></div> 
+        <ul>
+        	<li><a href="school_home.html">首页</a></li>
+            <li><a href="#">学校公示</a></li>
+            <li><a href="school_teacher.html" class="ac">教师</a></li>
+            <li><a href="school_teachingGroup.html">教研组</a></li>
+            <li><a href="school_classes.html">班级</a></li>
+            <li><a href="#">招生简章</a></li>
+            <li><a href="school_cuttingScore.html">录取分数线</a></li>
+        </ul>
+        
+    </div>
+    <div class="grid_24 main">
+    	<div class="main_cont cut_score">
+        	<div class="title">
+                <h4>历年录取分数线</h4>
+                 <div class="title_r">
+                 年份:
+            	<span class="selectWrap big_sel" style="width:100px"> <i></i> <em>2014</em>
+                    <select>
+                        <option value="1">2011</option>
+                        <option value="2">2012</option>
+                    </select>
+                    <span id="" class="errorTxt"></span>
+                </span>
+                <button type="button" class="btn40 bg_green addBtnJs">添加</button>
+            	</div> 
+            </div>
+           
+           <div class="cut_score_cont">
+           		<div class="cut_score_item">
+                	<h5 class="font16">高中部</h5>
+                    <table>
+                    	<colgroup>
+                        	<col width="250px">
+                        	<col width="250px">
+                        	<col width="250px">
+                        	<col width="250px">
+                        	<col width="113px">
+                        </colgroup>
+                        <thead>
+                        	<th>年份</th>
+                            <th>录取</th>
+                            <th>择校</th>
+                            <th>住宿</th>
+                            <th>操作</th>
+                        </thead>
+                        <tbody>
+                        	<tr>
+                            	<td>2011</td>
+                                <td>110</td>
+                                <td>430</td>
+                                <td>530</td>
+                                <td><span class="addBtnJs"></span></td>
+                            </tr>
+                        	<tr>
+                            	<td>2012</td>
+                                <td>210</td>
+                                <td>543</td>
+                                <td>752</td>
+                                <td><span class="addBtnJs"></span></td>
+                            </tr>
+                        	<tr>
+                            	<td>2013</td>
+                                <td>230</td>
+                                <td>190</td>
+                                <td>620</td>
+                                <td><span class="addBtnJs"></span></td>
+                            </tr>
+                        	<tr>
+                            	<td>2014</td>
+                                <td>530</td>
+                                <td>530</td>
+                                <td>530</td>
+                                <td><span class="addBtnJs"></span></td>
+                            </tr>
+                        	<tr>
+                            	<td>2015</td>
+                                <td>430</td>
+                                <td>100</td>
+                                <td>730</td>
+                                <td><span class="addBtnJs"></span></td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                    </table>
+                    <div class="page"><a class="jumpBtn prev">上一页</a><a class="jumpBtn next">下一页</a></div>
+                </div>
+           </div>
+        </div>
+       
+        
+    </div>
+</div>
+</div>
+<!--主体end-->
+<!--添加分数线/编辑分数线-->
+<div id="addscoreBox" class="popBox hide pushNotice addscoreBox" title="添加分数线/编辑分数线">
+    <div class="popCont">
+        <div class="new_tch_group">
+            <form>
+                <div class="form_list">
+                    
+                      <div class="row">
+                            <div class="formL">
+                                <label><i>*</i>年份：</label>
+                            </div>
+                            <div class="formR">
+                            <span class="selectWrap big_sel">
+                           	<i></i>
+                           	
+                            	<select class="sel_year" data-validation-engine="validate[required]" data-prompt-target="new_department" data-prompt-position="inline" name="UserForm[department]" id="UserForm_department">
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    </select>
+                            </span>
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="formL">
+                                <label><i>*</i>录取分数线：</label>
+                            </div>
+                            <div class="formR">
+                            	<input type="text" class="text entry_score">
+                            </div>
+                      </div>
+                      <div class="row"> 
+                            <div class="formL">
+                                <label>择校分数线：</label>
+                            </div>
+                            <div class="formR">
+                            	<input type="text" class="text sel_school_score">
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="formL">
+                                <label>住宿分数线：</label>
+                            </div>
+                            <div class="formR">
+                            	<input type="text" class="text live_score">
+                            </div>
+                      </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+</body>
+</html>

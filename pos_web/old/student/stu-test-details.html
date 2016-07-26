@@ -1,0 +1,602 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/student.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+
+<title>学生-考试管理--考试详情页</title>
+<script type="text/javascript">
+$(function(){
+	$('.btnjs').live('click',function(){
+		$(this).die('click');
+		$(this).siblings('.popoLook_js').show();	
+	}
+	
+	)	
+	
+})
+//选择每课然后跳转到相应的页面
+$(function(){
+	$('.sel_js').change(function(){
+		//这里去判断 val 的值，然后在if里面写上相应的地址
+		if($(this).val()==1)
+		{
+			 window.location.href = "stu-test-paper-preview.html";		
+		}	
+	})
+	
+	
+	
+	
+	
+	
+$('.up_btn_js').click(function(){
+/*上传试卷*/
+$('#up-manage').dialog({
+			autoOpen: false,
+			width:600,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#up-manage" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+	})
+		
+	/*删除添加的试卷*/
+	$('.up_img_js li').live('mouseover',function(){
+		$(this).children('i').show();	
+	});
+	$('.up_img_js li').live('mouseout',function(){
+		$(this).children('i').hide();	
+	})
+	$('.up_img_js li i').live('click',function(){
+		$(this).parent().remove();	
+	})
+
+
+//点击更多展示所有的图片
+$('.up_img_js .more').toggle(function(){
+	$(this).parent('.up_img_js').css('height','auto');	
+	
+},
+function(){
+	$(this).parent('.up_img_js').css('height','45px');	
+	
+}
+)
+})
+
+</script>
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->  
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+    <div class="mainNav">
+        <ul class="mainNav_R clearfix">
+            <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                <ul class="tab hide">
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                </ul>
+            </li>
+            <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+            <li><i class="management"></i><span>个人管理中心</span></li>
+        </ul>
+    </div>
+    
+        <div class="currentLeft grid_5 push_1">
+            <div class="item l_userInfo clearfix">
+                <img src="../images/teacher_l.jpg">
+                <ul>
+                    <li><span>30</span>作业</li>
+                    <li><span>300</span>错题</li>
+                    <li><span>49</span>精品课程</li>
+                </ul>
+                
+            </div>
+            <div class="item l_asideMenu">
+            <ul class="setupMenu">
+                <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">基本信息</a></li>
+                        <li><a href="#">头像管理</a></li>
+                        <li><a href="#">密码管理</a></li>
+                        <li><a href="#">邮箱管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">我的通知</a></li>
+                        <li><a href="#">发短信</a></li>
+                        <li><a href="#">我的私信</a></li>
+                    </ul>
+                
+                </li>
+                <li><a class="lisD" href="javascript:;"><i></i>考试试卷和成绩</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">考试管理</a></li>
+                        <li><a href="#">学期总评</a></li>
+                        <li><a href="#">科目总评</a></li>
+                    </ul>
+                    
+                </li>
+                <li><a class="lisF" href="javascript:;"><i></i>教研工作</a>
+                    <ul class="subMenu hide">
+                        <li><a class="ac" href="#">教研课题</a></li>
+                        <li><a href="#">教学计划</a></li>
+                        <li><a href="#">听课评课</a></li>
+                        <li><a href="#">教研组资料</a></li>
+                        <li><a href="#">教研日记</a></li>
+                    </ul>
+                
+                </li>
+                <li><a class="lisG" href="javascript:;"><i></i>备课</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">个人教学计划</a></li>
+                        <li><a href="#">公文包(教案|讲义|经典视频)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>试卷与作业</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">组织测验</a></li>
+                        <li><a href="#">作业管理</a></li>
+                        <li><a href="#">题目管理</a></li>
+                        <li><a href="#">题目推送</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">课程管理</a></li>
+                        <li><a href="#">评论管理</a></li>
+                        <li><a href="#">课程总结</a></li>
+                        <li><a href="#">家长会管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>成绩统计表</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">收藏的讲义</a></li>
+                        <li><a href="#">收藏的课程</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>	
+        </div>
+    	<div class="currentRight grid_17 teacher_preview push_1">
+           <div class="notice manage manage2">
+                <div class="noticeH clearfix noticeB">
+                    <h3 class="h3L fl">考试名称</h3>
+                    <div class="fr"> 
+                    	
+                        <a href="javascript:;" class="new_bj test_link newBtnJs">本班总评</a> </div>
+                	</div>
+                </div>
+               <hr style="margin-bottom:14px;">
+              <div class="details_d">
+              	<h4>考试名称考试名称考试名称考试名称考试名称考试名称考试名称考试名称</h4>
+              	<ul class="form_list formB">
+               		 <li>
+                        <div class="formL formL_my">
+                            <label for="name">原试卷内容：</label>
+                        </div>
+                        <!--(老师上传几个科目的试卷，这里就显示相应的科目名称)-->
+                        <div class="formR formR_my">
+                            <a href="stu-test-paper-preview.html">数学</a>
+                            <a href="stu-test-paper-preview.html">语文</a>
+                            <a href="stu-test-paper-preview.html">英语</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="formL formL_my">
+                            <label for="name">我的成绩单：</label>
+                        </div>
+                        <div class="formR formR_my">
+                            <span class="formSpan"><em>语文：</em>90分</span>
+                            <span class="formSpan"><em>数学：</em>90分</span>
+                            <span class="formSpan"><em>英语：</em>90分</span>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="formL">
+                            <label for="name">成绩汇总：</label>
+                        </div>
+                        <div class="formR formR_my">
+                            <a href="javascript:;" class="btn btnjs">本班总评<i></i></a>
+                            <div class="test_look_popo test_look_k popoLook_js hide pop">
+                                <em class="pop_s"></em>
+                                <ul class="form_list form_list_pop">
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">班内学习状态：</label>
+                                        </div>
+                                        <div class="formR">
+                                           学习状态学习状态学习状态学习状态学习状态学习状态学习状态学习状态学习状态学习状态
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">共性问题：</label>
+                                        </div>
+                                        <div class="formR">
+                                           问题问题问题问题问题问题问题问题问题
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">改进建议：</label>
+                                        </div>
+                                        <div class="formR">
+                                           建议建议建议建议建议建议建议建议建议建议建议
+                                        </div>
+                                    </li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="formL">
+                            <label for="name">总分：</label>
+                        </div>
+                        <div class="formR formR_my">
+                            <span class="formSpan"><em>最高分：</em>270分</span>
+                            <span class="formSpan"><em>最低分：</em>270分</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="formL">
+                            <label for="name">成绩公布：</label>
+                        </div>
+                        <div class="formR formR_my">
+                            <span><em>200-210：</em>2人</span>
+                            <span><em>211-220：</em>4人</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="formL">
+                            <label for="name">班主任评语：</label>
+                        </div>
+                        <div class="formR formR_my">
+                            <span class="details_display"><em>改变：</em>xxxxxx</span>
+                            <span class="details_display"><em>课堂表现：</em>xxxxxxx</span>
+                            <span class="details_display"><em>课间表现：</em>xxxxxx</span>
+                            <span class="details_display"><em>学习缺陷：</em>xxxxxxx</span>
+                            <span class="details_display"><em>改进方案：</em>xxxxxxx</span>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+               <div class="details_d details_best">
+              	<h4>我的试卷</h4>
+              	<dl class="clearfix">
+                	<dt>
+                    	<a href="stu-test-paper-preview.html"><img src="../images/teacher_lm.jpg" alt="" width="110"></a>
+                        <span class="s_btn btnjs">
+                        	<em>科目总评<i></i></em>
+                        </span>
+                        <div class="test_look_popo test_look_w popoLook_js hide pop">
+                                <em class="pop_s"></em>
+                                <ul class="form_list form_list_pop">
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">分学段：</label>
+                                        </div>
+                                        <div class="formR">
+                                           <span>90-80分<em>10人</em></span><span>80-70分<em>10人</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">考试难点：</label>
+                                        </div>
+                                        <div class="formR">
+                                           <span>Item<em>1.1</em></span>
+                                            <span>Item<em>1.2</em></span>
+                                       	      <span>Item<em>1.3</em></span>
+                                              <span>Item<em>1.4</em></span>
+                                               <span>Item<em>1.5</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">学习规划：</label>
+                                        </div>
+                                        <div class="formR">
+                                           学习规划学习规划学习规划学习规划学习规划学习规划学习规划
+                                        </div>
+                                    </li>
+                                 </ul>
+                       </div>
+                        
+                    </dt>
+                    <dd>
+                    	<h5>数学</h5>
+                    </dd>
+                    <dd>
+                    	<span>唐老师</span>
+                    </dd>
+                    <dd>
+                    	<span class="formSpan">最高:<em>90分</em></span>
+                        <span class="formSpan">最低:<em>90分</em></span>
+                    </dd>
+                    <dd>
+                    	
+                         <!--这里只显示前四张-->
+                        <ul class="up_img clearfix"> 
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                        </ul>
+                        <p class="addPic">
+                                <a href="javascript:;" class="id_btn mini_btn up_btn up_btn_js">上传试卷</a>
+                                <!--上传完按钮文字变成修改-->
+                         </p>
+                    </dd>
+                    
+                </dl>
+                <hr>
+                <dl class="clearfix">
+                	<dt>
+                    	<a href="stu-test-paper-preview.html"><img src="../images/teacher_lm.jpg" alt="" width="110"></a>
+                        <span class="s_btn btnjs">
+                        	<em>科目总评<i></i></em>
+                        </span>
+                        <div class="test_look_popo test_look_w popoLook_js hide pop">
+                                <em class="pop_s"></em>
+                                <ul class="form_list form_list_pop">
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">分学段：</label>
+                                        </div>
+                                        <div class="formR">
+                                           <span>90-80分<em>10人</em></span><span>80-70分<em>10人</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">考试难点：</label>
+                                        </div>
+                                        <div class="formR">
+                                           <span>Item<em>1.1</em></span>
+                                            <span>Item<em>1.2</em></span>
+                                       	      <span>Item<em>1.3</em></span>
+                                              <span>Item<em>1.4</em></span>
+                                               <span>Item<em>1.5</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="formL">
+                                            <label for="name">学习规划：</label>
+                                        </div>
+                                        <div class="formR">
+                                           学习规划学习规划学习规划学习规划学习规划学习规划学习规划
+                                        </div>
+                                    </li>
+                                 </ul>
+                       </div>
+                        
+                    </dt>
+                    <dd>
+                    	<h5>数学</h5>
+                    </dd>
+                    <dd>
+                    	<span>唐老师</span>
+                    </dd>
+                    <dd>
+                    	<span class="formSpan">最高:<em>90分</em></span>
+                        <span class="formSpan">最低:<em>90分</em></span>
+                    </dd>
+                    <dd>
+                    	
+                         
+                        <ul class="up_img clearfix up_img_hide up_img_js"> 
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                           <li class="more"></li>
+                           <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li>
+                            <li><a href="stu-test-paper-preview.html"><img src="../images/teacher_s.jpg" alt="" width="120" height="90"></a><i class="hide"></i></li> 
+                        </ul>
+                       
+                    </dd>
+                    
+                </dl>
+                
+              </div>
+               
+               
+               
+            </div>     	
+                  
+    </div>
+   
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+<!--上传试卷-->
+<div id="up-manage" class=" popBox up-manage hide" title="上传试卷">
+    <div class="impBox">
+    	 <ul class="form_list">
+               
+                <li>
+                    <div class="formL">
+                        <label for="name"><i></i>考试名称：</label>
+                    </div>
+                    <div class="formR">
+                        <span>考试名称</span>
+                    </div>
+                </li>
+                 <li>
+                    <div class="formL">
+                        <label for="name"><i></i>考试科目：</label>
+                    </div>
+                    <div class="formR">
+                        <span>语文</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label for="name"><i></i>考试试卷：</label>
+                    </div>
+                    <div class="formR">
+                       <!--一种是，弹框中的上传， 一种是 直接上传-->
+                             <div class="clearfix" style="width:400px;">
+                             	<div class="upBtn">
+                                	<p class="addPic">
+                                        <a href="javascript:;" class="id_btn" style="color:#FFF;">上传试卷</a>
+                                        <input id="fileupload" type="file" name="files[]" multiple class="file">
+                                 	</p>
+                                    <span>格式jpg,png,bmp，单图大小4M以内</span>
+                                </div>
+                                 
+                             <!--上传图片：格式jpg,png,bmp，单图大小4M以内；上传文档：附件格式：pdf或doc（含20M);
+上传视频40M以内--上传什么样式的类型需要PHP同学们自己判断了--->
+                             <!-- <em class="em_text">文件格式限定为jpg,png,bmp</em>--> 
+                             
+                             </div>
+                             	<ul class="up_img up_img_js clearfix"> 
+                                    <li><img src="../images/ivo.png" alt="" width="120" height="90"><i class="hide"></i></li>
+                                </ul>
+                            <div class="c_text"><em>试卷名称.jpg</em> <i>(25.7KB)</i><span class="Progress"><i class="Progress_i"></i></span></div>
+                            
+                         
+                    </div>
+                </li>
+                
+                
+            </ul>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

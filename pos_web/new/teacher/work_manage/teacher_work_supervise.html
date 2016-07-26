@@ -1,0 +1,275 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--作业管理-作业列表</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('.notice').click(function(){
+		
+		$(this).hide();
+		$(this).siblings('em').show();
+	
+	
+	})
+	
+	
+	//PHP 注意这里的弹窗 没有作业内容的情况下，才能出现弹窗。如有不清楚请直接问圆圆。
+	//添加作业内容
+	$('#popBox').dialog({
+		autoOpen: false,
+		width:500,
+		height:260,
+		modal: true,
+		resizable:false,
+		close:function(){$(this).dialog("close")}
+	});	
+	
+	$('.notice').click(function(){
+		$( "#popBox" ).dialog( "open" );
+	});
+
+	$('.sup_ul li').hover(function(){
+		
+		$(this).addClass('this');	
+	},function(){
+		$(this).removeClass('this');	
+	})
+	
+})
+
+</script>
+
+
+<style>
+
+</style>
+
+</head>
+
+<body class="teacher">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l">
+            <div class="clearfix item l_userInfo"> <img src="../../images/teacher_l.jpg">
+                    <a style="border-right:1px solid #ddd"><em>30</em><br>试卷</a>
+                    <a><em>300</em><br>课程</a>
+            </div>
+            <div class="item l_asideMenu">
+                <h4>我的档案</h4>
+                <ul class="setupMenu">
+                    <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">信息</a></li>
+                            <li><a href="#">通知</a></li>
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">考试管理</a></li>
+                            <li><a href="#">试卷管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">题目推送</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a class="ac" href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">班级统计</a></li>
+                            <li><a href="#">熊孩子管理器</a></li>
+                            <li><a href="#">个人统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">教研课题</a></li>
+                            <li><a href="#">教学计划</a></li>
+                            <li><a href="#">听课评课</a></li>
+                            <li><a href="#">教研组资料</a></li>
+                            <li><a href="#">教研日记</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                            <li><a href="#">资料袋</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">收藏的讲义</a></li>
+                            <li><a href="#">收藏的课程</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">暂无内容(空)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r">
+             <div class="main_cont">
+                <div class="title">
+                    <h4>作业管理作业管理作业管理作业管理作业管理作业管理作业管理</h4>
+                    <div class="title_r">
+                    	
+                        <a href="teacher_workOne.html" class="btn40 w120 bg_green a_button">布置作业</a>
+                    </div>
+                </div>
+                 <div class="form_list no_padding_form_list">
+                       <div class="row">
+                            <div class="formL">
+                                <label></label>
+                            </div>
+                            <div class="formR">
+                                <ul class="resultList testClsList" >
+                                    <li><a>所有作业</a></li>
+                                    <li class="ac"><a href="#">纸质作业</a></li>
+                                    <li><a href="#">电子作业</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="sup_box">
+                 	<ul class="itemList sup_ul">
+                    	<li class="clearfix sup_li">
+                        	<div class="item_title noBorder sup_l fl">
+                                <h4><a href="teacher_work_detail.html"><i>[电子]</i>此处显示作业名称</a></h4>
+                                <dl>
+                                	<dd>
+                                    	<em>简介：</em>
+                                        <span class="synopsis">全方位多角度解读中考各科重难点，迅速捕捉各类题型得分点，迅速捕捉各类题型得分点全面冲刺完胜中考!</span>
+                                    </dd>
+                                    <dd>
+                                    	<em>交作业截止时间：</em>
+                                         <span style=" color:#889ba8;">2015-04-25</span>
+                                    </dd>
+                                	<dd class="clearfix schedule">
+                                    	<div class="timeBox">
+                                        	<em class="scrollT">已答：未答</em>
+                                            <p class="scrollBar">
+                                            	<span class="scrollL"></span>
+                                                <em class="scrollR"><i>55/</i><i>10</i></em>
+                                            </p>
+                                        </div>
+                                        <div class="timeBox">
+                                        	<em class="scrollT">已批改：未批改</em>
+                                            <p class="scrollBar">
+                                            	<span class="scrollL"></span>
+                                                <em class="scrollR"><i>13/</i><i>60</i></em>
+                                            </p>
+                                        </div>
+                                        
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="sup_r  fr">
+                            	<div class="sup_box">
+                                	<div>
+                                    	<span class="a_button notice w120 ">通知学生</span>
+                                		<em class="hide w100">已通知</em>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        
+                        </li>
+                        <li class="clearfix sup_li">
+                        	<div class="item_title noBorder sup_l fl">
+                                <h4><a href="teacher_work_detail.html"><i>[纸质]</i>此处显示作业名称</a></h4>
+                                <dl>
+                                	<dd>
+                                    	<em>简介：</em>
+                                        <span class="synopsis">全方位多角度解读中考各科重难点，迅速捕捉各类题型得分点，迅速捕捉各类题型得分点全面冲刺完胜中考!</span>
+                                    </dd>
+                                    <dd>
+                                    	<em>交作业截止时间：</em>
+                                        <span style=" color:#889ba8;">2015-04-25</span>
+                                    </dd>
+                                	
+                                </dl>
+                            </div>
+                            <!--判断当前的作业有木有内容，没有就显示二维码。反之不显示-->
+                            <div class="sup_r  fr">
+                            	<div class="sup_box">
+                                	<div>
+                                    	<span class="a_button notice w120 ">通知学生</span>
+                                		<em class="hide w100">已通知</em>
+                                    </div>
+                                	<img src="../../images/two-dimension_code.png" alt="" width="100" height="100">
+                                </div>
+                            
+                            </div>
+                        
+                        </li>
+                       
+                    </ul>
+                 	  <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                 
+                 </div>
+                
+                
+                
+            </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+<!--添加作业内容-->
+<div id="popBox" class="popBox hide " title="添加作业内容">
+    <div class="popCont add_work">
+    	<div class="conet">
+        	作业名称作业名称作业名称作业名称作业名称作业名称作业名称作业名
+        </div>
+        <div class="conet">
+        	需要您添加一些作业内容
+        </div>
+    </div>
+    <div class="popBtnArea" style="margin-top:10px;">
+        <a href="teacher_up_work.html"class="w100 okBtn a_button">上传作业</a>
+       <a href="teacher_organization_work.html"class="w100 okBtn a_button">组织作业</a>
+    </div>
+</div>
+</body>
+</html>

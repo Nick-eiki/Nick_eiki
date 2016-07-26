@@ -1,0 +1,28 @@
+@charset "utf-8";
+.row{zoom:1;margin-top:10px}
+.delBtn{position:absolute;top:10px;right:20px;cursor:pointer}
+.row:before,.row:after{content:"";display:block;clear:both;overflow:hidden;visibility:hidden;font-size:0;height:0;width:0;line-height:0}
+.row .formL{float:left}
+.row .formL{width:90px;font-size:14px;display:inline-block;height:30px;line-height:30px;color:#666;text-align:right;padding-right:10px}
+.row .formL label i{width:12px;height:12px;overflow:hidden;display:inline-block;background:url(../images/sprite.png) no-repeat -6px -283px}
+.row .formR{float:left;position:relative;width:500px}
+.row .formR .ue_textarea{width:500px}
+.row .formR .delBtn{position:absolute;top:0;left:505px;background:url(../images/sprite.png) no-repeat -370px -90px;width:18px;height:18px;text-indent:-999px;overflow:hidden}
+.Box,.SBox,.IBox,.ABox,.addBtn,.NBox{margin-bottom:10px;position:relative}
+.itemsBox{margin-top:10px}
+.QBox{border-bottom:1px dashed #ccc}
+/*.QBox textarea{height:auto;background:none;border:none}*/
+/*.SBox textarea{height:50px}*/
+/*.ABox textarea,.IBox textarea{height:50px}*/
+.IBox .subItem{border-bottom:1px dashed #ccc;position:relative;padding:10px 0;}
+.IBox .subItem:hover{background:#f8f8f8}
+.IBox .subItem h5{padding-left:50px;font-size:16px;margin:0 0 20px;color:#900}
+/*.IBox .subItem textarea{height:50px}*/
+/*.I_B_A textarea{height:50px}*/
+.I_ABox .formR span,.ABox .formR span{margin-right:10px}
+.addPoint{background:#ee4d4e}
+.addSelBtn{background:#00cacf}
+.addSelBtn:hover{background:#06c}
+.addLevel3Btn{background:#19b8ff}
+.addSubBtn{background:#f99;width:100px; margin-left:100px}
+.submit_BtnBar button{background:#900;width:120px;height:30px}

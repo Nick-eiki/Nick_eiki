@@ -1,0 +1,307 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>题目详情页</title>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/terrace.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script>
+$(function(){
+	$('.openAnswerBtn').click(function(){
+		$(this).parents('.testpaper').children('.answerArea').toggle();
+	})
+	//搜索按钮切换	
+	$('.terrace_btn_js span').bind('click',function(){
+		$(this).addClass('s_btn').siblings('span').removeClass('s_btn');	
+		
+	})
+})
+</script>
+</head>
+
+<body id="body">
+<!--顶部开始-->
+<div class="min_head terrace_head">
+  <div class="cont24 terrace clearfix">
+    <div class="head_left terrace_left grid_6">
+    	<ul class="terrace_ul clearfix">
+        	<li><a href="#">题库</a></li>
+            <li><a href="#">资料库</a></li>
+            <li><a href="#">视频库</a></li>
+        </ul>
+    
+    </div>
+     <ul class="terrace_ul fl">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">免费登录</a></li>    
+     </ul>
+    
+    
+    <div class="userCenter grid_6 userCenter_R">
+      
+      <div class="userAccount userAccount2  grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg userMsg2 grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+      <div class="detail fr">
+      	<span><a href="#">通知</a></span>
+        <em>|</em>
+        <span><a href="#">收藏夹</a></span>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!--顶部结束-->
+<!--搜索开始--> 
+<div class="terrace_search ">
+	<div class="terrace_box clearfix">
+    	<div class="terrace_logo">
+    		<img src="../images/logo.png" alt="">
+        </div>
+        <div class="terrace_search">
+        	<p class="terrace_btn terrace_btn_js"><span class="mini_btn s_btn">试题</span><span class="mini_btn">试卷</span></p>
+            <div class="terrace_text">
+            	<em></em>
+                <input type="text" value="请输入题目关键字" class="text">
+                <button type="button" class="tye_btn">搜 索</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!--搜索结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24 clearfix">
+
+     <div class="main_cent">
+   <div class="mainNav terrace_Nav">
+            <ul class="terrace_nav">
+                <li class="terrace_nav_this"><a href="#">首页</a></li>
+                <li><a href="#">小学</a></li>
+                <li><a href="#">初中</a></li>
+                <li><a href="#">高中</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="deta_de">
+            <a href="#">首页</a>&gt;&gt;<a href="#" class="this">题目详情页</a>
+        </div>
+    <div class="class_c clearfix tch">    
+    <div class="currentLeft grid_16 topic_magmt">
+         <div class="noticeH clearfix">
+            <h3 class="h3L">题目管理</h3>
+            <div class="new_not fr">
+            	<em>题目类别：</em>
+                <select class="mySel">
+                    <option value="001">我录入的题目</option>
+                    <option value="002">题库题目</option>
+                </select>
+                <a href="javascript:;" class="B_btn120 btn uploadNewtestpaperBtn">加入错题本</a>
+                <a href="javascript:;" class="B_btn120 btn uploadNewtestpaperBtn">录入题目</a> </div>
+        </div>
+        <hr>
+        <div class="schResult">
+            <div class="testpaper"><!--选择题-->
+                <h5>题目1:</h5>
+                <h6>【2013年】 高考 选择题</h6>
+                <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                <div class="checkArea">
+                    <input type="radio" class="radio" name="aaa">
+                    <label>A 备选项1</label>
+                    <input type="radio" class="radio"  name="aaa">
+                    <label>B 备选项2</label>
+                    <input type="radio" class="radio"  name="aaa">
+                    <label>C 备选项3</label>
+                    <input type="radio" class="radio"  name="aaa">
+                    <label>D 备选项4</label>
+                </div>
+                <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                <div class="answerArea hide">
+                    <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                    <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                </div>
+            </div>
+            <div class="testpaper"><!--选择题-->
+                <h5>题目1:</h5>
+                <h6>【2013年】 高考 选择题</h6>
+                <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                <div class="checkArea">
+                    <input type="checkbox" class="checkbox">
+                    <label>A 备选项1</label>
+                    <input type="checkbox" class="checkbox">
+                    <label>B 备选项2</label>
+                    <input type="checkbox" class="checkbox">
+                    <label>C 备选项3</label>
+                    <input type="checkbox" class="checkbox">
+                    <label>D 备选项4</label>
+                </div>
+                <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                <div class="answerArea hide">
+                    <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                    <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                </div>
+            </div>
+            <div class="testpaper"><!--选择题-->
+                <h5>题目1:</h5>
+                <h6>【2013年】 高考 选择题</h6>
+                <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                <div class="checkArea">
+                    <ul>
+                        <li><i>1.</i>
+                            <input type="checkbox" class="checkbox" checked>
+                            <label>A 备选项1</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>B 备选项2</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>C 备选项3</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>D 备选项4</label>
+                        </li>
+                        <li><i>2.</i>
+                            <input type="checkbox" class="checkbox">
+                            <label>A 备选项1</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>B 备选项2</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>C 备选项3</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>D 备选项4</label>
+                        </li>
+                        <li><i>3.</i>
+                            <input type="checkbox" class="checkbox">
+                            <label>A 备选项1</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>B 备选项2</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>C 备选项3</label>
+                            <input type="checkbox" class="checkbox">
+                            <label>D 备选项4</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                <div class="answerArea hide">
+                    <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+                    <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                </div>
+            </div>
+        </div>
+        <p class="tc bottomBtnBar">
+        <button type="button" class="t_btn saveBtn">保存设置</button>
+        <button type="button" class="t_btn cancelBtn">取消预览</button>
+    	</p>
+    </div>
+    <div class="centRight">
+                <div class="centRightT">
+                    <a href="classHandsin.html" class=" outAdd_btn B_btn120">设置手拉手班级</a> </div>
+                <div class="centRightT clearfix">
+                    <p class="title titleLeft"> <span>手拉手班级</span><i></i> </p>
+                    <hr>
+                    <dl class="list_dl clearfix">
+                        <dt><img src="../images/pic.png" alt="" width="90" height="90"></dt>
+                        <dd>
+                            <h3>177班</h3>
+                        </dd>
+                        <dd><span>学校：</span>北京人大附中</dd>
+                  
+                        <dd><span>成员：</span>30名学生</dd>
+                    </dl>
+                </div>
+                <div class="centRightT">
+                   
+                    <ul class="class_list clearfix">
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                    </ul>
+                </div>
+                <div class="centRightT">
+                    <h3 class="clearfix">推荐视频</h3>
+                    <hr>
+                    <h4>资料名称资料名称资料名称资料名称......</h4>
+                    <dl class="y_list">
+                        <dt><a href="#"><img src="../images/teacher_m.jpg"></a></dt>
+                        <dd>
+                            <span>简介：</span>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+                        </dd>
+                        
+                    </dl>
+                    <ul class="info_list">
+                    	<li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                    </ul>
+                </div>
+               </div>
+</div>
+</div>
+</div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+</body>
+</html>

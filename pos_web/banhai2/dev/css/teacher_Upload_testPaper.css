@@ -1,0 +1,18 @@
+*{margin:0;padding:0;}
+#main{width:1200px;margin:0 auto;}
+h2#main_top{line-height:60px;}
+h2#main_top a{margin:15px 0;}
+.bg_fff{background:#fff;}
+
+#main_bottom{padding:60px 135px;margin-top:20px;min-height:600px;}
+
+.form_list .formL, .form_list .formR {float: left;line-height: 30px;}
+.form_list .formL label {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	vertical-align: middle;
+	padding-right: 15px;
+	min-width: 2em;
+}

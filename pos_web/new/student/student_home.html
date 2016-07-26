@@ -1,0 +1,452 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学生-首页</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../css/student.css" rel="stylesheet" type="text/css">
+<link href="../js/ueditor/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../js/ueditor/ueditor.config.js" type="text/javascript" ></script>
+<script src="../js/ueditor/ueditor.all.min.js" type="text/javascript" ></script>
+
+<script>
+$(function(){
+$('.textBtnJS').click(function(){
+	$(this).parents('.row_button').hide().siblings('.textarea_box').show();	
+})
+
+$('.submitBtn').live('click',function(){
+	var text_val= $(this).parents('.textarea_box').find('textarea').val();
+	var html='';
+	html+='<div class="row">';
+		html+='<div class="formL">';
+			html+='<label>答:</label>';
+		html+='</div>';
+		html+='<div class="formR">';
+			html+='<span class="gray_777">'+ text_val +'</span>';
+		html+='</div>';
+	html+='</div>';
+	$(this).parents('.QA_list').find('.row_button').before(html);
+	$(this).parents('.textarea_box').find('textarea').val('');
+	$(this).parents('.textarea_box').hide();
+	$(this).parents('.QA_cont').find('.row_button').show();
+})	
+	
+/*发私信*/
+	$('.newBtnJs').click(function(){
+	
+		popBox.private_new_msg([{'id':1,'name':'zhangsan'},{'id':3,'name':'李四'}]);
+		('#sends').dialog({
+				autoOpen: false,
+				width:500,
+				modal: true,
+				resizable:false,
+				close:function(){
+				}
+			});
+			//清除UI里面横向滚动条
+				$('#sends').css('overflow','hidden');
+				$( "#sends" ).dialog( "open" );
+			event.preventDefault();
+			return false;
+	
+	
+	})
+	
+	
+	
+
+})
+
+</script>
+</head>
+
+<body class="student"  style=" background:#42A4DB">
+<div class="head">
+    <div class="cont24"> <a href="#">
+        <h1>班海网</h1>
+        </a>
+        <ul class="head_nav">
+            <li><a class=" ac" href="">题库</a></li>
+            <li><a class="" href="/teacher/prepare">课件库</a></li>
+            <li><a class="" href="/terrace/video">视频库</a> </li>
+            <li><a class="" href="/terrace/answer">平台答疑</a> </li>
+            <li><a class="" href="/school/10124/index">学校</a></li>
+            <li><a class="has_subMenu">班级</a>
+                <ul class="subMenu hide">
+                    <li> <a href="/class/10147/index">2013年01班-圆圆创建</a> </li>
+                </ul>
+            </li>
+            
+        </ul>
+        <div class="userCenter">
+            <div class="userChannel"> <a class="userName" href="#"><i></i>张三张三张三张三张三</a>
+            </div>
+            <a href="javascript:;" class="logOff">退出</a>
+            <div class="msgAlert hasMsg"> <a href="javascript:;">(99)</a>
+                <ul class="msgList hide">
+                    <span class="arrow"></span>
+                    <li class="sendBar" >
+                    	<a href="javascript:;" class="sendMsg"><i></i><br>发送通知</a>
+                        <a href="javascript:;" class="sendLetter"><i></i><br>发送私信</a>
+                        <hr class="cutLine">
+                    </li>
+                    <li><a href="javascript:;">通知(33)</a></li>
+                    <li><a href="javascript:;">系统消息(33)</a></li>
+                    <li><a href="javascript:;">我的私信(33)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24 homepage student_home">
+    <div class="grid_24 myInfo">
+        <div class="infoBar pr">
+            <div class="infoBarBg"></div>
+            <div class="infoCont">
+                <div class="imgBG"> <img src="../images/user_l.jpg" width="220" height="220" alt=""/> </div>
+                <div class="teacher_title clearfix pr"  id="revise">
+                    <h2>张三学生</h2>
+                    <span class="class_title">彪悍的人生不需要解释彪悍的人生不需要解释彪悍的人生不需要解释</span><i class="ico"></i>
+                </div>
+                <p><span class="hideText sex man">男</span> | 北京四中 |007班 | 学生 | <span class="blue">班长</span></p>
+                <button type="button" class=" btn50 w160 bg_green iconBtn sendLetterBtn newBtnJs "><i class="btn_ico_letter"></i>私信</button>
+            </div>
+        </div>
+    </div>
+    <div class="grid_24 main">
+        <div class="grid_16 alpha omega main_l">
+            <div class="main_cont pr">
+            	<dl class="QA_list">
+                	<dt><em>2014</em>05</dt>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>提出了1个历史问题</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>问:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">历史问题的150字问题描述</span>
+                                    </div>
+                                </div>
+                                <div class="row row_button">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn textBtnJS">马上回答</button>
+                                    </div>
+                                </div>
+								<div class="textarea_box hide">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<textarea></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn submitBtn">提交答案</button>
+                                    </div>
+                                </div>
+                              </div>                              
+                              </div>
+                        </div>
+                    </dd>
+                    </dl>
+					<dl class="QA_list">
+                	<dt><em>2014</em>06</dt>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>回答了1道历史问题</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>问:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">历史问题的150字问题描述</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_777">答案答案答案</span>
+                                    </div>
+                                </div>
+                                <div class="row my_answer">
+                                    <div class="formL">
+                                        <label>我的回答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_777">答案答案答案</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row row_button">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn textBtnJS">继续回答</button>
+                                    </div>
+                                </div>
+								<div class="textarea_box hide">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<textarea></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn submitBtn">提交答案</button>
+                                    </div>
+                                </div>
+                                
+                              </div>  
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+					<dl class="QA_list">
+                	<dt><em>2014</em>06</dt>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>1个数学答案被采纳</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>问:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">数学问题的150字问题描述</span>
+                                    </div>
+                                </div>
+                                <div class="row choose_div">
+                                    <div class="formL">
+                                        <label>答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_777">答案答案答案</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            	<dl class="QA_list">
+                	<dt><em>2014</em>05</dt>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>提出了1个数学问题</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>问:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">数学问题的150字问题描述</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>补:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_777">问题补充问题补充图文混排</span> 
+						<div class="QA_cont_imgBox">
+                        	<span>
+                            	<img src="../images/test_img02.png" width="160" height="120" alt=""/>
+                            </span>
+                            <span>
+                            	<img src="../images/test_img02.png" width="160" height="120" alt=""/>
+                            </span>
+                            <span>
+                            	<img src="../images/test_img02.png" width="160" height="120" alt=""/>
+                            </span>
+                        </div>                                  
+
+
+							</div>
+                                </div>
+                                <div class="row row_button">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn textBtnJS">马上回答</button>
+                                    </div>
+                                </div>
+                                
+                             <div class="textarea_box hide">
+                                <div class="row">
+                                    <div class="formL">
+                                        <label>答:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<textarea></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="formL">
+                                        <label></label>
+                                    </div>
+                                    <div class="formR tr">
+                                    	<button type="button" class=" w120 bg_green answerBtn">提交答案</button>
+                                    </div>
+                                </div>
+                              </div>  
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="QA_list tch_read">
+                	<dt><em>2014</em>06</dt>
+                    <dd>
+                    	<div class="dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>阅读了教案 “<a href="#">2-10教案</a>”</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="moreQA">更多</div>
+                
+            </div>
+            
+        </div>
+        <div class="grid_8 alpha omega main_r">
+            <div class="main_cont">
+            	<div class="mainContBorder">
+                    	<div class="item">
+                    	<h4>他的答疑总汇</h4>
+                        <ul class="total_QA_list clearfix">
+                        	<li>
+                            	<span class="accept_ico">采纳</span>
+                                200
+                            </li>
+                            <li>
+                            	<span class="QA_ico">问答</span>
+                                200
+                            </li>
+                            <li>
+                            	<span class="ask_ico">提问</span>
+                                200
+                            </li>
+                        
+                        </ul>
+                    
+                    </div>
+                    <div class="item">
+                    	<h4>他的同学/同事</h4>
+                        <ul class="ta_student_list clearfix">
+                        	<li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                            <li>
+                           		<img src="../images/answerqu03.png" width="50" height="50" alt=""/>
+                            	孙尚香
+                            </li>
+                        </ul>
+                        <a href="#" class="blue underline">查看全部 200 位成员 》</a>
+                    </div>
+                    <div class="item noBorder">
+                    	<h4>他的同学/同事</h4>
+                        <a class="more">换一换</a>
+                        <ul class="tec_note_list">
+                        	<li>
+                            	<h6><a href="#">母鸡生蛋的时候会不会痛？</a></h6>
+                                <p>简介:全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。</p>
+                            </li>
+                            <li>
+                            	<h6><a href="#">人涨多胖才能够防弹？？</a></h6>
+                                <p>简介:全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。</p>
+                            </li>
+                            <li>
+                            	<h6><a href="#">人不吃饭能活吗？</a></h6>
+                                <p>简介:全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。</p>
+                            </li>
+                        </ul>
+                        
+                	</div>
+                    
+                </div>
+            
+            </div>
+        
+        
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+
+
+
+
+</body>
+</html>

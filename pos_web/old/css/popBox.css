@@ -1,0 +1,480 @@
+@charset "UTF-8";
+.id_btn{width:70px;height:20px;font-size:12px;display:inline-block; text-align:center;line-height:20px;background-color:#06c;color:#fff !important;border-radius:2px}
+
+.popBox hr{margin:10px 0}
+.popBox .addSchoolBtn, .popBox .addClassesBtn, .popBox .addGroupBtn, .popBox .addDeptBtn{color:#06c;cursor:pointer}
+.popBox .addSchoolBtn:hover, .popBox .addClassesBtn:hover, .popBox .addGroupBtn:hover, .popBox .addDeptBtn:hover{color:red;text-decoration:underline}
+
+.popBox .form_list{padding-top:20px}
+.popBox .form_list li:after{content:"";display:block;clear:both}
+.popBox .form_list li{margin-bottom:5px;zoom:1}
+.popBox .form_list li .formL{float:left}
+.popBox .form_list li .formL label{display:inline-block;height:30px;text-align:right;padding-right:10px;line-height:30px}
+.popBox .form_list li .formL label i{width:12px;height:12px;overflow:hidden;display:inline-block;background:url(../images/sprite.png) no-repeat -6px -283px}
+.popBox .form_list li .formR{float:left}
+.popBox .form_list li .formR .text{width:208px;height:24px;line-height:24px}
+
+.errorBox{position:absolute;z-index:1000; max-width:300px; font-size:16px;padding:10px 20px;background:red;color:#fff;opacity:0;filter:alpha(opacity=0); border-radius:4px}
+
+/*操作成功*/
+.successBox{position:absolute;z-index:500;padding:5px 40px;background:#00cacf;color:#fff;border:10px solid #fff;font-size:20px; border-radius:4px;opacity:0.9;filter:alpha(opacity=90)}
+
+/*表情符号*/
+.faceBox{background:#fff;border:1px solid #999;padding:5px; width:278px; height:128px;}
+.faceBox i{position:absolute;left:20px;top:-4px;width:9px;height:4px;font-size:0;background:url(../images/sprite.png) -25px -247px white}
+.faceBox img{margin:5px;cursor:pointer;width:15px;height:15px}
+
+/*上传头像 裁切头像*/
+.uploadPic{width:800px;position:relative}
+.uploadPic .selectPicBtn{width:100px;height:30px;line-height:30px;background:#ccc;font-size:12px;color:#fff}
+.uploadPic .selectPicBtn:hover{background:#fc6f51;box-shadow:0 -2px 0px #fc6f51 inset}
+.uploadPic h5{font-size:16px;margin-bottom:10px;font-weight:normal;margin-left:30px}
+.uploadPic h6{font-size:16px;font-weight:normal;position:absolute;top:65px;left:572px}
+.uploadPic .fileinput-button{width:100px;height:30px;line-height:30px;background:#06c;font-size:12px;color:#fff;display:inline-block;text-align:center}
+.uploadPic .fileinput-button:hover{background:#fc6f51;box-shadow:0 -2px 0px #fc6f51 inset}
+
+.popoBtn{height:36px;text-align:center}
+.popoBtn button{width:80px;height:32px;text-align:center;color:#fff;line-height:32px;background-color:#ee4d4e}
+.popoBtn button:hover{background-color:#99a2ad}
+
+/*知识树*/
+.treeBox .labelList{padding-bottom:20px}
+.treeBox .labelList li{float:left;padding:3px 6px;background:#ddd;line-height:18px;font-size:12px;margin:0 10px 10px 0;border:1px solid #ddd}
+.treeBox .labelList li{margin-left:5px;cursor:pointer;color:red}
+.treeBox hr{margin:5px 0}
+.treeBox h6{text-indent:10px;margin-bottom:10px}
+
+.btnpop{width:70px;height:20px;border-right:4px;background-color:#06c;float:left;text-align:center;line-height:20px;color:#FFF;font-size:12px}
+
+
+.mySchoolPop .form_list, .myGroupPop .form_list, .myDeptPop .form_list, myClassesPop .form_list{width:500px; padding:0}
+.mySchoolPop .form_list li, .myGroupPop .form_list li, .myDeptPop .form_list li, myClassesPop .form_list li{height:auto}
+.mySchoolPop .form_list li .text, .myGroupPop .form_list li .text, .myDeptPop .form_list li .text, myClassesPop .form_list li .text{height:24px}
+.mySchoolPop .form_list li button, .myGroupPop .form_list li button, .myDeptPop .form_list li button, myClassesPop .form_list li button{height:26px;  background:#19b8ff; color:#fff}
+.mySchoolPop .form_list li .genre, .myGroupPop .form_list li .genre, .myDeptPop .form_list li .genre, myClassesPop .form_list li .genre{width:60px}
+.mySchoolPop .schoolList, .myGroupPop .schoolList, .myDeptPop .schoolList, myClassesPop .schoolList{margin-top:20px}
+.mySchoolPop .schoolList li, .myGroupPop .schoolList li, .myDeptPop .schoolList li, myClassesPop .schoolList li{float:left; height:20px; line-height:20px; text-indent:10px; width:100px; color:#999; margin-left:40px; font-size:12px; margin-bottom:5px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+.mySchoolPop .schoolList .ac, .myGroupPop .schoolList .ac, .myDeptPop .schoolList .ac, myClassesPop .schoolList .ac{background:#00cacf; color:#fff}
+.mySchoolPop p, .myGroupPop p, .myDeptPop p, myClassesPop p{font-size:12px; color:#666; text-align:center}
+
+/*注册-老师--我任职的班    学生--我就读的班*/
+.myClassesPop .form_list{padding:0}
+.myClassesPop .form_list li label{width:70px}
+.myClassesPop .form_list li .formR{float:left;width:340px}
+.myClassesPop .classesList li{float:left;height:20px;line-height:20px;text-align:center;margin-right:10px;margin-bottom:10px;cursor:pointer}
+.myClassesPop .classesList .ac{background:#00cacf;color:#fff}
+.myClassesPop p{font-size:12px;color:#666;text-align:center}
+.myClassesPop .newClassesList{margin-top:10px}
+.myClassesPop .newClassesList .text{margin-bottom:10px}
+
+/*注册-老师--我任职的教研组 */
+.myGroupPop #subjectID{float:left;width:280px}
+.myGroupPop .form_list{padding:0; width:500px;}
+.myGroupPop .form_list li label{width:90px}
+.myGroupPop .groupList{width:473px;margin-top:20px;float:left; }
+.myGroupPop .groupList li{float:left;height:20px;line-height:20px;text-align:center;margin-right:10px;margin-bottom:10px;cursor:pointer}
+.myGroupPop .groupList .ac{background:#00cacf;color:#fff}
+.myGroupPop p{font-size:12px;color:#666;text-align:center}
+.myGroupPop .newGroupList{margin-top:10px}
+.myGroupPop .form_list li .schoolRadio2{ width:395px;}
+
+/*注册-老师--我任职的部门 */
+.myDeptPop .form_list{padding:0}
+.myDeptPop .form_list li label{width:70px}
+.myDeptPop .form_list li .formR{margin-left:80px}
+.myDeptPop .classesList li{float:left;height:20px;width:55px;line-height:20px;text-align:center;margin-right:10px;margin-bottom:10px;cursor:pointer}
+.myDeptPop .classesList .ac{background:#00cacf;color:#fff}
+.myDeptPop p{font-size:12px;color:#666;text-align:center}
+.myDeptPop .newDeptList{margin-top:10px}
+
+/*注册-学生--核对我的学号*/
+.myStuNumPop ul li{float:left;height:20px;width:220px;line-height:20px;text-align:center;margin-right:10px;margin-bottom:10px}
+
+.addSchoolBtn{color:#06c;cursor:pointer}
+.addSchoolBtn:hover{color:red;text-decoration:underline}
+
+/*班级大事记*/
+.Important_pop .impBox{padding-top:20px}
+.Important_pop .impBox .imp{width:368px;margin:0 auto}
+.Important_pop .impBox .imo_T{margin-bottom:14px}
+.Important_pop .impBox .iomL{float:left;font-size:14px;width:72px;text-align:right;margin-right:10px}
+.Important_pop .impBox .imoR{float:left}
+.Important_pop .impBox .imoR .textarea{width:270px;height:80px;border:#ccc solid 1px}
+.Important_pop .impBox .imoR .addPic{height:30px;background-color:#00cacf;line-height:30px;font-size:14px;color:#FFF;text-align:center;border-radius:4px}
+
+.addPicUl{margin-top:10px}
+.addPicUl li{width:70px;height:70px;margin:0 10px 10px 0px;position:relative;background:#000}
+.addPicUl li i{position:absolute;right:3px;top:4px;width:10px;height:10px;cursor:pointer;background:url(../images/jqueryUI/ui-icons_ffffff_256x240.png) no-repeat -100px -132px}
+.addPicUl li img{width:70px;height:70px;overflow:hidden}
+
+/*班级首页-----------------------------------*/
+/*录入成绩弹窗*/
+.proofreader .impBox{width:484px}
+.proofreader .impBox .imp{width:484px;padding-top:24px}
+.proofreader .impBox i{width:16px;height:16px;background:url(../images/sprite.png) no-repeat -3px -280px;display:inline-block}
+.proofreader .imo_T{font-size:14px;color:#666}
+.proofreader .iomL{width:94px}
+.proofreader .div_over{width:378px;height:235px;overflow:scroll;overflow-x:hidden}
+.proofreader .text{width:48px;height:26px;border:#CCC solid 1px;color:#999;font-size:12px;line-height:26px}
+
+/*上传考试试卷*/
+.uploadTestpaper{color:#666;font-size:14px}
+.uploadTestpaper .iomL{width:94px}
+.uploadTestpaper .impBox{padding-top:20px}
+.uploadTestpaper .imoR{width:286px}
+.uploadTestpaper .imp{width:400px}
+.uploadTestpaper i{width:16px;height:16px;background:url(../images/sprite.png) no-repeat -3px -280px;display:inline-block}
+.uploadTestpaper .up{height:20px}
+.uploadTestpaper .up a{color:#FFF;display:inline-block;width:70px;height:20px;border-radius:4px;text-align:center;background-color:#06c;line-height:20px;font-size:12px}
+.uploadTestpaper .up span{font-size:12px;color:#999;padding-left:10px}
+.uploadTestpaper .upT{height:32px;background-color:#FFF;padding:0 10px;line-height:32px;border-radius:4px;margin-top:10px}
+.uploadTestpaper .upT .paper{font-size:12px;color:#333;display:inline-block}
+.uploadTestpaper .upT .paper em{margin-left:10px;font-size:12px;color:#999}
+.uploadTestpaper .upT .paper_t{position:relative;margin-left:10px;height:4px;border-radius:4px;width:100px;overflow:hidden;background-color:#efefef;display:inline-block}
+.uploadTestpaper .upT .paper_t em{height:100%;width:10px;border-radius:4px;background-color:#19b8ff;position:absolute;left:0;top:0}
+
+.paper_list{padding-top:10px}
+.paper_list li{float:left;width:70px;height:70px;margin-right:10px}
+
+/*添加新荣誉*/
+.honour .impBox{width:356px;margin:0 auto}
+.honour .impBox .honourT{margin-bottom:10px;margin-top:10px}
+.honour .impBox .honourT label{width:70px;margin-right:10px;text-align:right;float:left;color:#666;font-size:14px}
+.honour .impBox .honourT div{float:left}
+.honour .impBox .honourT div input{width:240px}
+.honour .impBox .honourT div textarea{width:236px}
+
+/*发布班级公告*/
+.publishB .impBox{width:356px;margin:0 auto}
+.publishB .impBox .honourT{margin-bottom:10px;margin-top:10px}
+.publishB .impBox .honourT label{width:70px;margin-right:10px;text-align:right;float:left;color:#666;font-size:14px}
+.publishB .impBox .honourT div{float:left}
+.publishB .impBox .honourT div input{width:240px}
+.publishB .impBox .honourT div textarea{width:236px}
+
+/*班级手拉手申请*/
+.ask .impBox{width:306px;margin:0  auto}
+.ask div{line-height:26px}
+.ask .handleT{font-size:14px;color:#666}
+.ask .handleT span{margin-left:18px}
+.ask .handleT em{margin-left:10px}
+.ask .handleT i{margin-left:30px}
+.ask .handleM{text-align:left;font-size:16px;color:#333;font-size:14px;color:#999}
+.ask .handleM h4{width:328px;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;float:left;color:#000}
+.ask .handleB{font-size:14px;color:#666}
+.ask .radio label{font-size:12px;color:#666;margin-right:16px}
+.ask .radio label input{display:inline-block;vertical-align:middle;margin-right:4px;position:relative;top:-2px}
+
+/*学校------------------------------------------------------------------------*/
+/*学校手拉手班级*/
+.handle .impBox{width:306px;margin:0  auto}
+.handle div{line-height:26px}
+.handle .handleT{font-size:14px;color:#666}
+.handle .handleT span{margin-left:18px}
+.handle .handleT em{margin-left:10px}
+.handle .handleT i{margin-left:30px}
+.handle .handleM{text-align:center;font-size:16px;color:#333}
+.handle .handleM h4{width:250px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;float:left}
+.handle .handleB{font-size:14px;color:#666}
+
+/*添加分数线*/
+.add_f li{padding-bottom:10px}
+.add_f .formR{color:#666}
+.add_f .formR .add_t{width:98px}
+
+/*教研组------------------------------------------------------------------------*/
+.addPlan .form_list li{margin-bottom:10px}
+.addPlan .formR{width:300px}
+.addPlan .formR label{margin-left:6px}
+
+/*教研组的听课评课*/
+.hearBox h2{font-size:16px}
+.hearBox .hearLeft{width:160px;height:400px;float:left;position:relative}
+.hearBox .hearLeft .ztree{width:160px;height:400px;overflow-y:auto}
+.hearBox .impBox{width:380px;float:left}
+.hearBox .form_list li{margin-bottom:10px}
+.hearBox .form_list .formR{width:206px;position:relative; float:left;}
+.hearBox .form_list .formR .btn{width:48px;height:24px;background:url(../images/arrowhead.png) no-repeat left center}
+.hearBox .form_list li{margin:0 5px 5px 0}
+.hearBox .form_list .formR{width:206px;position:relative}
+.hearBox .form_list .formR .ico{display:inline-block;width:20px;height:16px;background:url(../images/sprite.png) no-repeat -250px -130px; position:static; left:0; top:0px}
+.hearBox .form_list .formR label{margin-right:20px}
+
+/*听课评课--上传资料*/
+.updata_pop .formR{position:relative}
+.updata_pop .formR .addPicUl2 li img{width:48px;height:48px;position:relative;left:10px}
+.updata_pop .formR .addPicUl2 li span{font-size:12px;color:#ccc;display:inline-block;position:relative;top:-22px}
+.updata_pop .formR .addPicUl2 li span em{margin-left:20px;color:#333;display:inline-block;vertical-align:top;margin-right:20px}
+.updata_pop .formR .addPicUl2 li i{font-size:12px;color:#00F;cursor:pointer;position:relative;top:-23px;left:14px}
+.updata_pop .formR .addPicUl3 li img{width:88px;height:88px}
+.updata_pop .newUp{position:relative}
+.updata_pop .newUp .txtn{font-size:12px;color:#CCC;width:200px;position:relative;top:-10px}
+.updata_pop textarea{width:300px;height:78px;border-radius:3px}
+
+/*修改教学计划*/
+/*教研组 教研资料--上传视频  使用讲义*/
+.DocBox ul{width:400px;margin:20px auto 0}
+.DocBox ul li{font-size:12px;margin-bottom:5px;height:20px;text-indent:10px;line-height:20px;cursor:pointer}
+.DocBox ul li:hover{color:red}
+.DocBox ul .ac{background:#ccc;color:#fff}
+
+/*选择教师*/
+.teacherListBox{margin-right:-20px}
+.teacherListBox li{margin:20px 20px 0 0;float:left;padding:2px;font-size:12px;text-align:center}
+.teacherListBox .ac{background:#fc6f51;color:#fff}
+.teacherListBox li img{display:block;text-align:center}
+
+/*.conserve{margin-top:18px}
+
+.conserve .B_btn110{width:110px;height:30px;line-height:30px;*line-height:32px;background:#fc6f51;font-size:12px;color:white;border-radius:4px;font-size:12px;box-shadow:0 -2px 0px #fc6f51  inset;-moz-box-shadow:0 -2px 0px #fc6f51  inset; -webkit-box-shadow:0 -2px 0px #fc6f51 inset}
+*/
+/*教师的考试管理--------------------------------------------------------*/
+/*修改考试名称*/
+.ex_name .impBox{width:376px;margin:0 auto}
+.ex_name h6{font-size:14px;color:#666;margin-bottom:10px}
+.ex_name .ex_name_w{width:370px}
+
+/**录入考试成绩**/
+.entering .form_list li .formR .text{width:60px;height:28px}
+.entering .form_list li .formR .tab{position:relative;left:-20px;top:-4px}
+.entering .form_list li .formR .tab td{font-size:14px;color:#666;text-align:center}
+.entering .overflow{height:208px;overflow-y:auto}
+.entering .tbody{width:200px}
+.entering .thead th{text-align:center}
+
+/*上传试卷*/
+.up-manage .formR{width:174px}
+.up-manage .formR span{font-size:14px}
+.up-manage .formR .em_text{font-size:12px;color:#999;float:left; padding-left:10px;}
+.up-manage .formR .addPic{width:70px;float:left}
+
+.up-manage .formR .c_text{font-size:12px;color:#CCC;width:340px}
+.up-manage .formR .c_text em{font-size:12px;color:#333}
+.up-manage .formR .Progress{width:160px;height:4px;background-color:#CCC;border-radius:2px;display:inline-block;overflow:hidden;position:relative;left:10px;top:-2px}
+.up-manage .formR .Progress i{width:10px;height:4px;position:absolute;left:0;top:0;background-color:#19b8ff;border-radius:2px;display:inline-block}
+.up-manage .formR .addPicUl li{margin-right:10px;float:left;width:70px;height:70px;position:relative}
+.up-manage .formR .addPicUl li i{width:10px;height:10px;position:absolute;top:4px;right:4px;display:inline-block;background:url(../images/jqueryUI/ui-icons_222222_256x240.png) no-repeat -99px -132px;display:none}
+
+
+
+/*教师的填写科目总评*/
+.write_popo .formR{font-size:12px;color:#666}
+.write_popo .formR .score{margin-right:50px; display: block}
+.write_popo .formR .btn{width:80px;height:30px;background-color:#06c;display:inline-block;text-align:center;line-height:30px;border-radius:4px;font-size:12px;color:#FFF;margin-bottom:10px}
+.write_popo .pointarea{width:278px}
+.write_popo .pointarea span{font-size:12px; display: block}
+.write_popo .textarea{width:240px}
+
+/*教师--本班总评*/
+.generalBox .formR div{font-size:14px;color:#333;width:264px}
+.generalBox .formR .max{margin-right:20px}
+.generalBox .formR textarea{margin-bottom:10px;width:270px;height:48px;border-radius:4px}
+
+/*教师---批量评价学生*/
+.batch .form_list .formL label{width:100px}
+.batch .term_tab td{font-size:14px}
+.batch .term_click{font-size:12px;color:#06c;cursor:pointer}
+.batch #tarea{width:300px;height:100px}
+.batch #spread{height:94px;overflow:hidden}
+
+/*创建教学计划/修改教学计划*/
+.tp .impBox{width:410px;margin:0 auto;margin-top:10px}
+.tp .handleT label{float:left;width:116px;font-size:14px;text-align:right}
+.tp .handleT i{margin-right:6px;width:12px;height:12px;overflow:hidden;display:inline-block;background:url(../images/sprite.png) no-repeat -6px -283px}
+.tp .handleT .docx{width:46px;height:45px;background:red;vertical-align:middle}
+.tp .handleT .fl{margin-bottom:8px}
+.tp .handleT .add_del{margin-bottom:15px}
+.tp .handleT .add_del em{font-size:12px}
+.tp .handleT .add_del .size{margin-left:22px;margin-right:25px;color:#b4b4b4}
+.tp .handleT .add_del a{font-size:12px;color:#06c}
+.tp .handleT .add_del li{margin-left:116px;margin-bottom:10px;width:277px; font-size:12px;}
+.tp .plan_name{margin-bottom:5px}
+.tp .plan_name label{margin-right:2px}
+.tp .plan_grade{margin-bottom:11px}
+.tp .plan_describe{margin-bottom:10px}
+.tp .plan_describe label{margin-right:2px}
+.tp .plan_describe textarea{width:260px}
+.tp .addPic{width:70px;height:22px;vertical-align:top}
+
+
+/*教师的--发私信--*/
+.sendspop .form_list .formL label{width:70px}
+/*.sendspop textarea{width:346px;height:110px;border-radius:6px;margin-top:10px}*/
+/*.sendspop .exp{height:30px;position:relative;margin-bottom:30px}
+.sendspop .exp .expression{color:#aaa;font-size:12px;display:inline-block;vertical-align:middle;position:relative;left:80px}
+.sendspop .exp .expression i{width:16px;height:20px;padding-right:4px;background:url(../images/w.png) left center no-repeat;display:inline-block;position:relative;top:2px;cursor:pointer}
+.sendspop .exp .counter{position:absolute;right:140px;top:5px;font-size:12px}
+.sendspop .exp .counter em{font-weight:bold}
+.sendspop .exp button{position:absolute;left:362px;color:#fff;background-color:#6dc8f3;height:30px;line-height:30px;width:74px;height:30px;line-height:30px;background:#64c5f3;font-size:12px;color:white;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}*/
+
+/*联系家长/编辑短信*/
+.msg_parentBox li{margin-bottom:5px}
+.msg_parentBox .stu_sel_list{margin-top:5px}
+.msg_parentBox .stu_sel_list li{float:left;position:relative;padding:6px 5px 0px;margin-right:5px;background:#ddd;font-size:12px}
+.msg_parentBox .stu_sel_list li .close_icon{position:absolute;top:2px;right:2px;width:10px;height:10px;width:10px;background:url(../images/jqueryUI/ui-icons_ffffff_256x240.png) no-repeat -164px -148px;cursor:pointer}
+/*改动家校联系的按钮*/
+.msg_parentBox .score_level{width:auto}
+.popBox .form_list li .formR .row{ font-size:14px;}
+.popBox .form_list li .formR .row .text{ width:30px;}
+
+
+
+
+.msg_parentBox .score_level p{margin-bottom:5px;margin-top:10px}
+.msg_parentBox .btn{width:80px;}
+.msg_parentBox .text{margin-right:10px}
+
+.schoolRadio{width:280px}
+
+
+
+
+
+/*学生名单*/
+.stuListBox .impBox{width:446px;height:273px;margin:0 auto;margin-top:20px;overflow:inherit;margin-bottom:20px}
+.stuListBox .stu_table{border:1px #000 solid;background:#fff;line-height:33px}
+.stuListBox .stu_table thead{font-size:12px}
+.stuListBox .stu_table thead .th_checkbox{text-align:right}
+.stuListBox .stu_table thead a{font-size:12px;color:#06c}
+.stuListBox .stu_table tr{border-bottom:1px #000 solid}
+.stuListBox .stu_table tbody{font-size:12px}
+.stuListBox .stu_table tbody .th_checkbox{text-align:right}
+.stuListBox .stu_table tbody td{text-align:center}
+
+/* 教师--同学互相判卷*/
+.mutual_pjjr_pop .mutual_pjjr_list{width:350px;margin:0 auto;line-height:30px;color:#666;font-size:14px}
+.mutual_pjjr_pop .mutual_pjjr_list h5{width:350px;color:#333;font-size:16px;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+/*教师-指定试卷阅读人*/
+.read_pop .mutual_pjjr_list{width:350px;margin:0 auto;line-height:30px;color:#666;font-size:14px}
+.read_pop .mutual_pjjr_list h5{width:350px;color:#333;font-size:16px;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.read_pop .chooseTeacherBar{padding-bottom:10px}
+.read_pop .chooseTeacherBtn{width:100px;height:30px;line-height:30px;text-align:center;background:#6cc;display:inline-block;font-size:12px;color:white;cursor:pointer;border:none 0;margin-right:10px}
+.read_pop .chooseTeacherBar ul li, .read_pop .chooseSchoolBar ul li{width:70px;float:left;line-height:18px !important;font-size:12px;text-align:center;margin:15px 20px 0 0}
+
+/*选择老师*/
+.select_ter_pop h5{font-weight:normal}
+.select_ter_pop ul{margin-right:-20px;zoom:1;clear:both;margin-right:0;margin-left:20px}
+.select_ter_pop ul li{height:auto;width:auto;margin:15px 8px 0 0;position:relative;display:inline;float:left}
+.select_ter_pop ul li{width:70px;height:88px;position:relative;font-size:12px;line-height:18px;text-align:center;cursor:pointer}
+.select_ter_pop ul li i{position:absolute;top:0;right:0;width:16px;height:16px;background:#3c9;display:none;opacity:0.6;filter:alpha(opacity=60)}
+.select_ter_pop ul li .choose{position:absolute;top:0;right:0;width:16px;height:16px;background:#093;opacity:1;filter:alpha(opacity=100)}
+.select_ter_pop ul .addMore{background:url(../images/sprite.png) no-repeat;height:80px;background-position:-85px -165px}
+.select_ter_pop .text{height:18px}
+.select_ter_pop .searchBtn{width:60px;height:20px;line-height:20px;background:#fcc;font-size:12px;color:#fff;background-color:#c33;width:60px}
+.select_ter_pop .searchBtn:hover{background:#fc6f51;box-shadow:0 -2px 0px #fc6f51 inset;text-decoration:underline}
+
+/*教师测试试卷--创建测验*/
+.adminPop select option{font-size:12px}
+.adminPop .form-validation-field-1{font-size:12px;font-weight:normal}
+
+/*题目录入--题目预览*/
+.entryBox{font-size:12px}
+.entryBox h6{font-weight:bold}
+.entryBox p{font-size:12px}
+.entryBox .clickBtn{color:red;cursor:pointer}
+.entryBox .showContent{background:#ddd;padding:5px}
+.entryBox .showContent label{font-weight:bold}
+.entryBox .showContent span{margin-right:20px}
+
+/*其他试卷*/
+.other p{text-align:center;font-size:14px;color:#666;margin-top:42px;margin-bottom:25px}
+
+/*开设家长会*/
+.open_parentMeeting .form_list{margin-top:-19px;margin-bottom:12px}
+.open_parentMeeting .form_list .meeting_class{font-size:12px;line-height:30px}
+.open_parentMeeting .form_list li .formR .text{width:270px;height:26px}
+.open_parentMeeting .form_list li .formR .time_text{width:118px;height:26px;border:1px solid #ddd}
+.open_parentMeeting .form_list li .formR .link_text{margin-left:7px;margin-right:8px;font-size:12px}
+.open_parentMeeting .form_list li .formR textarea{width:215px;height:68px}
+
+/*编辑家长会*/
+.edit_parentMeeting .form_list{margin-top:-19px;margin-bottom:12px}
+.edit_parentMeeting .form_list .meeting_class{font-size:12px;line-height:30px}
+.edit_parentMeeting .form_list li .formR .text{width:270px;height:26px}
+.edit_parentMeeting .form_list li .formR .time_text{width:118px;height:26px;border:1px solid #ddd}
+.edit_parentMeeting .form_list li .formR .link_text{margin-left:7px;margin-right:8px;font-size:12px}
+.edit_parentMeeting .form_list li .formR textarea{width:215px;height:68px}
+
+/*题目推送*/
+.titlePush_Box .form_list li .formL label{width:85px}
+.titlePush_Box button{width:70px;height:30px;line-height:30px;background:#00cacf;font-size:12px;color:#fff;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;line-height:12px}
+.titlePush_Box button:hover{background:#fc6f51;box-shadow:0 -2px 0px #fc6f51 inset}
+.titlePush_Box select{width:110px;height:28px}
+.titlePush_Box .stu_sel_list{margin-top:10px}
+.titlePush_Box .stu_sel_list li{float:left;position:relative;padding:6px 5px 3px;margin-right:5px;background:#ddd;font-size:12px}
+.titlePush_Box .stu_sel_list li .close_icon{position:absolute;top:2px;right:2px;margin-right:0;width:10px;height:10px;background:url(../images/jqueryUI/ui-icons_ffffff_256x240.png) no-repeat -100px -132px;cursor:pointer}
+.titlePush_Box .stu_more{display:block;margin-top:0;font-size:12px;line-height:12px;color:#06c}
+.titlePush_Box .checkbox_p{margin-top:7px;font-size:12px}
+.titlePush_Box textarea{margin-bottom:10px;width:265px;height:68px}
+
+/*课程管理--课程总结--新建总结*/
+.newSumBox .form_list li{margin-bottom:10px;border:none 0;padding:0}
+.newSumBox .form_list li label{width:100px}
+.newSumBox .form_list li textarea{height:50px;font-size:12px;line-height:18px}
+.newSumBox .form_list li .btn{width:100px;height:30px;line-height:30px;background:#ccc;font-size:12px;color:#fff}
+.newSumBox .form_list li .btn:hover{background:#fc6f51;box-shadow:0 -2px 0px #fc6f51 inset}
+.newSumBox .form_list li .saveBtn{background:#ed4d4d}
+
+/*学生的上传后删除样式*/
+.up_img li{float:left;width:70px;height:70px;position:relative;margin-right:10px}
+.up_img li img{width:70px;height:70px}
+.up_img li i{position:absolute;right:3px;top:4px;width:10px;height:10px;cursor:pointer;background:url(../images/jqueryUI/ui-icons_ffffff_256x240.png) no-repeat -100px -132px}
+.up_img li img{width:70px;height:70px;overflow:hidden}
+
+.form_list li .formR .up_img{padding-left:0}
+
+/*学生判卷*/
+.correctEndBox p, .correctEndBox h5{text-align:center;margin-bottom:10px}
+.correctEndBox p span, .correctEndBox h5 span{color:red}
+.correctEndBox em{font-size:18px;color:#900}
+
+/*学生--开始答题--完成答题/所有*/
+.complete_all{font-size:16px;text-align:center;line-height:90px}
+
+/*学生--开始答题--完成答题/部分*/
+.complete_part{font-size:16px;text-align:center;line-height:90px}
+.complete_part span{color:#06c}
+.complete_part em{color:#ec0909}
+
+/*完成答题弹窗*/
+.dati p{color:#333;font-size:16px;text-align:center}
+.dati .b{color:#06c}
+.dati .r{color:#ef8989}
+
+/*平台资讯详情列表-举报的弹窗*/
+.reportBox .textarea{width:300px;height:100px;margin:0}
+.reportBox .form_list li .formL label{width:86px}
+.reportBox span{display:block;font-size:12px;color:#999;text-align:right}
+
+/*填写科目总评弹窗*/
+.general_comment .hearLeft{width:106px}
+.general_comment .impBox{float:left;margin-left:40px;display:inline}
+.general_comment .textarea{width:280px;height:75px;position:relative;top:-22px;left:0}
+.general_comment .scorex{font-size:12px}
+
+/*添加荣誉弹窗*/
+.add_honour .impBox{padding-top:10px}
+.add_honour .impBox .honourT label{float:left}
+.add_honour .impBox .our{float:left;position:relative;top:0}
+.add_honour .impBox .our .add2{position:absolute;top:2px;left:0;color:#CCC;padding-left:10px;font-size:12px;z-index:100}
+.add_honour .impBox .our .text_tt{position:relative;z-index:2}
+/*.add_honour .impBox .our .add_btn{width:60px;height:30px;background-color:#19b8ff;cursor:pointer}*/
+.add_honour .impBox .imp_list li{padding-left:10px;margin:10px 0px}
+.add_honour .impBox .imp_list .m{font-size:12px;color:#666}
+.add_honour .impBox .imp_list .m strong{font-size:12px;color:#666;width:228px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.add_honour .impBox .imp_list .m a{font-size:14px;color:#06c;margin-left:20px}
+.add_honour .impBox .imp_list .b .text{width:300px;height:26px;font-size:12px}
+.add_honour .impBox .imp_list .b a{font-size:12px;color:#06c;margin-left:10px;width:60px;height:30px;color:#FFF}
+.add_honour .impBox .imp_list .b .ok{background-color:#ee4d4e}
+.add_honour .impBox .imp_list .b .no{background-color:#999}
+
+.class_list li{font-size:12px;margin-right:10px}
+.addUl li{ float:left; width:40px; height:40px; margin-right:10px; position:relative;}
+.addUl li i{ width:10px; height:10px; overflow:hidden; position:absolute; top:2px; right:0px; background:url(../images/jqueryUI/ui-icons_222222_256x240.png) no-repeat -84px -133px;}
+.addUl li img{ width:40px; height:40px;}
+
+
+/*班级荣誉*/
+#honour .imp_list{ min-height:50px; max-height:300px; overflow-y:auto; margin-bottom:60px;}
+#honour .honourT .add_btn{ color:#F00; cursor:pointer;}

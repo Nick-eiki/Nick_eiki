@@ -1,0 +1,308 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生--试卷预览</title>
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/move.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/student.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+$(function() {
+	var aLi=$('#deta_list li');
+	//var ol=$('.ol_list');
+	var oLi=$('.ol_list li')
+
+	var now=0;
+	var next=document.getElementById('nextBtn');
+	var prev=document.getElementById('prevBtn');
+		
+		
+	for(var i=0;i<aLi.length;i++)
+	{
+		aLi[i].index=i;
+		aLi[i].onclick=function()
+		{		
+			
+			now=this.index;
+			ty()
+		};
+	}
+	
+	
+	
+	
+	
+		
+	function ty()
+	{
+		for(var i=0;i<aLi.length;i++)
+			{
+				aLi[i].className='';
+				oLi[i].style.display='none';
+			}
+			aLi[now].className='active';
+			oLi[now].style.display='block';	
+		
+	}
+		
+		next.onclick=function()
+		{	
+			now++;
+		
+			if(now==aLi.length)
+			{
+				now=0;
+			}
+		
+			ty()
+		}
+		
+		
+		prev.onclick=function()
+		{
+			now--;
+
+		
+		if(now==-1)
+		{
+			now=aLi.length-1;
+		}
+		
+		if(now==aLi.length)
+		{
+			now=0;
+		}
+			ty()
+		};	
+		
+		
+		
+		
+			
+			
+});
+
+
+
+
+
+// JavaScript Document
+
+
+</script>
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+  <div class="cont24 clearfix">
+    <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+    <div class="userCenter grid_6 push_12 pr">
+      <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+      <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24 clearfix">
+  <div class="mainNav">
+    <ul class="mainNav_R clearfix">
+      <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+        <ul class="tab hide">
+          <li>零食</li>
+          <li>零食</li>
+          <li>零食</li>
+          <li>零食</li>
+        </ul>
+      </li>
+      <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+      <li><i class="management"></i><span>个人管理中心</span></li>
+    </ul>
+  </div>
+  <div class="currentLeft grid_5 push_1">
+    <div class="item l_userInfo clearfix"> <img src="../images/teacher_l.jpg">
+      <ul>
+        <li><span>30</span>作业</li>
+        <li><span>300</span>错题</li>
+        <li><span>49</span>精品课程</li>
+      </ul>
+    </div>
+    <div class="item l_asideMenu">
+      <ul class="setupMenu">
+        <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+          <ul class="subMenu hide">
+            <li><a class="ac" href="student/stu_setup_info.html">基本信息</a></li>
+            <li><a href="stu_setup_headPic.html">头像管理</a></li>
+            <li><a href="stu_setup_changePassword.html">密码管理</a></li>
+            <li><a href="stu_setup_email.html">邮箱管理</a></li>
+          </ul>
+        </li>
+        <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+          <ul class="subMenu hide">
+            <li><a href="stu-msg_my_notice.html">我的通知</a></li>
+            <li><a href="stu-msg_dialogue.html">发私信</a></li>
+            <li><a href="stu-msg_msgList.html">我的私信</a></li>
+          </ul>
+        </li>
+        <li><a class="lisM" href="javascript:;"><i></i>我的作业</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+        <li><a class="lisS" href="javascript:;"><i></i>考试试卷和成绩</a>
+          <ul class="subMenu hide">
+            <li><a href="stu-examination-manage.html">考试试卷管理</a></li>
+          </ul>
+        </li>
+        <li><a class="lisN" href="javascript:;"><i></i>学习时间轴</a>
+          <ul class="subMenu hide">
+            <li><a href="#">学习时间轴</a></li>
+            <li><a href="#">成绩统计表</a></li>
+          </ul>
+        </li>
+        <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+        <li><a class="lisP" href="javascript:;"><i></i>测验管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">日常测验</a></li>
+            <li><a href="#">推送题目</a></li>
+          </ul>
+        </li>
+        <li><a class="lisQ" href="javascript:;"><i></i>错题管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">错题集</a></li>
+            <li><a href="#">题目录入</a></li>
+          </ul>
+        </li>
+        <li><a class="lisI" href="javascript:;"><i></i>课程管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">课程管理</a></li>
+            <li><a href="#">评论管理</a></li>
+            <li><a href="#">课程总结</a></li>
+            <li><a href="#">家长会</a></li>
+          </ul>
+        </li>
+        <li><a class="lisK" href="javascript:;"><i></i>我的收藏</a>
+          <ul class="subMenu hide">
+            <li><a href="#">收藏的讲义</a></li>
+            <li><a href="#">收藏的课程</a></li>
+          </ul>
+        </li>
+        <li><a class="lisL" href="stu-testpaper-answer.html"><i></i>答疑管理(提问)</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="currentRight grid_16 push_2">
+    <div class="noticeH clearfix noticeB uploadedPaper_title">
+      <h3 class="h3L">数学试卷详情</h3>
+    </div>
+    <hr style="margin-top:10px;">
+    <div class="up_details">
+    	<h4>考试名称考试名称考试名称考试名称考试名称考试名考试名称考试</h4>
+    	<div class="subject">
+        	<span>科目：数学</span>
+            <span>任课教师：唐僧</span>
+        </div>
+       <div class="up_details_t">
+        	<h6>试卷内容：</h6>
+            <!--<a href="javascript:;" class="direction prev">上一个</a>
+            <a href="javascript:;" class="direction after">下一个</a>-->
+           <div class="ul_list_box">
+                <ul class="clearfix deta_list" id="deta_list">
+                    <li class="active"><img src="../images/12.png"></li>
+                    <li><img src="../images/12.png" alt=""></li>
+                    <li><img src="../images/12.png" alt=""></li>
+                    <li><img src="../images/12.png" alt=""></li>
+                    
+                </ul>
+                
+           
+           </div>
+           <a href="javascript:;" class="direction pre" id="prevBtn"></a>
+           <a href="javascript:;" class="direction next" id="nextBtn"></a>
+           <div class="paper_pic_box">
+           	 <ol class="ol_list slide">
+                	<li style="display:block"><img src="../images/li.png" alt="1"></li>
+                    <li><img src="../images/head.JPG" alt="2"></li>
+                    <li><img src="../images/testPaper.jpg" alt="3"></li>
+                    <li><img src="../images/testPaper.jpg" alt="4"></li>
+          	</ol>
+           
+           
+           </div>
+          
+        </div>
+    </div> 
+    
+  </div>
+  </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+  <div class="foot">
+    <dl>
+      <dt>关于我们</dt>
+      <dd><a href="#">关于班海</a></dd>
+      <dd><a href="#">招聘启事</a></dd>
+      <dd><a href="#">法律声明</a></dd>
+      <dd><a href="#">网站地图</a></dd>
+    </dl>
+    <dl>
+      <dt>商务合作</dt>
+      <dd><a href="#">商务合作</a></dd>
+      <dd><a href="#">友情链接</a></dd>
+      <dd><a href="#">资源合作</a></dd>
+      <dd><a href="#">视频合作</a></dd>
+    </dl>
+    <dl>
+      <dt>联系我们</dt>
+      <dd><a href="#">在线客服</a></dd>
+      <dd><a href="#">官方微博</a></dd>
+      <dd><a href="#">意见反馈</a></dd>
+      <dd><a href="#">关注微信</a></dd>
+    </dl>
+    <dl>
+      <dt>问题帮助</dt>
+      <dd><a href="#">常见问题</a></dd>
+      <dd><a href="#">用户答疑</a></dd>
+    </dl>
+    <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+      京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+  </div>
+</div>
+
+
+
+</body>
+</html>

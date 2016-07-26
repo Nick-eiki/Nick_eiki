@@ -1,0 +1,172 @@
+.testClsList li{width:auto; padding:0 20px;background:#fff; margin:0 0 10px 0}
+.testClsList li:hover{background:#f4faf5}
+.testClsList li.ac{background:#6cd685; color:#fff}
+.testClsList li.ac a{background:#6cd685; color:#fff}
+
+.answer_questions .title{margin-right:0px !important;}
+.answer_questions .title .title_r{padding-top:5px !important;}
+.answer_questions .testBox .resultList li{width:auto !important;padding:0 10px}
+.answer_questions .testBox .resultList .ac{background-color:#6cd685 !important}
+
+
+.main{}
+
+/*右侧栏--------------------*/
+.main_r .total_QA_list{margin-right:-24px;margin-top:22px}
+.main_r .total_QA_list li{width:89px;height:89px;border:1px solid #6cd685;float:left;margin-right:20px;text-align:center;font-size:22px;border-radius:50px}
+.main_r .total_QA_list li span{display:block;color:#6cd685;font-size:14px;background:#E7FFED;padding-top:20px;height:65px;margin:2px;border-radius:50px}
+.main_r .total_QA_list li em{display:block;font-weight:bold}
+
+/*手拉手*/
+.hand_div .more{top:31px}
+.hand_div .hand_list{margin-bottom:10px}
+.hand_div .hand_list li img{float:left}
+.hand_div .hand_list li h5{width:236px;margin-left:85px}
+.hand_div .hand_list li h5 span{margin-right:14px}
+.hand_div .hand_list li p{width:234px;margin-left:85px}
+.hand_div .hand_ico{display:inline-block;width:18px;height:18px;background:url(../images/ico.png) -50px -330px no-repeat}
+.hand_div .no_hand_in_hand{margin-top:30px; text-align:center}
+
+/*班级成员*/
+.main_r .ta_student_list{margin-right:-17px}
+.main_r .ta_student_list li{text-align:center; width:50px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size:13px;float:left;margin-right:17px;margin-bottom:17px}
+.main_r .ta_student_list li img{display:block}
+.main_r .tec_note_list li{margin-bottom:20px}
+.main_r .tec_note_list li h6 a{color:#017fd2}
+.main_r .tec_note_list li p{color:#777}
+
+/*本班大事记*/
+.memorabilia_list .time_block{float:left;display:inline-block;width:49px;height:54px;border:1px #ccc dashed;padding:2px 0 0 7px}
+.memorabilia_list .time_block .time_year{font-size:10px}
+.memorabilia_list .memor_list_top h5{line-height:20px !important;width:247px;margin-left:72px}
+.memorabilia_list .memor_list_top p{line-height:18px;width:247px;margin-left:72px}
+.memorabilia_list p{line-height:20px;margin-top:2px}
+.memorabilia_list li{margin-bottom:26px}
+.memorabilia_list li img{height:72px;width:99px;margin-right:4px;margin-top:5px}
+.memorabilia_list{margin-right:-5px}
+.memorabilia_list .li_last{margin-bottom:0}
+/*------------------------------------------*/
+
+/*头部*/
+.class_home_info{height:306px;background: url(../images/banner1.jpg) no-repeat;width: 100%}
+.class_home_info .infoBar{height:306px}
+.class_home_info .classes_head{height:148px; padding-left:162px;padding-top: 80px;}
+.class_home_info .classes_head dt{width:175px; height:125px; margin-left:-166px; margin-right:25px;border: 1px solid #DCDCDC;background: #fff;border-radius: 5px;padding: 5px 0 0 5px;}
+.class_home_info .classes_head dt img{width:170px; height:120px;}
+.class_home_info .classes_head dd{position:relative}
+.class_home_info .classes_head dd .class_opacity{width: 360px; height:40px;background:#000;opacity:0.2;filter:Alpha(opacity=20);border-radius:20px; padding:0 16px}
+.class_home_info .classes_head .revise .reviseStatus{ display:none}
+.class_home_info .classes_head .reviseHide .class_title{ display:none}
+.class_home_info .classes_head .reviseHide .ico{ display:none}
+.class_home_info .classes_head .reviseHide .reviseStatus{ display:block}
+.class_home_info .class_title{width: 354px; height:40px;line-height:40px; *line-height:42px; font-size:18px; color:#ffffff; position:absolute; top:0; left:16px; overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.class_home_info  .classes_head dd .ico{width:20px; height:20px; display:inline-block; background:url(../images/ico.png) no-repeat -49px -329px; position:absolute; top:10px; left:363px; cursor:pointer}
+.class_home_info  .classes_head dd .ioc:hover{background:url(../images/ico.png) no-repeat -49px -769px}
+.class_home_info .classes_head dd .attention h2{font-size:28px; color:#444;width: 200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;height: 35px;float: left;}
+.class_home_info .classes_head dd .attention{overflow: hidden}
+.class_home_info .classes_head dd .btn_atten{float: left;}
+.class_home_info .classes_head dd .tab_ls{height:25px;width: 500px;padding-top: 10px;}
+.class_home_info .classes_head dd .tab_ls p{float: left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width: 106px}
+.class_home_info .classes_head dd .brief_la{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width: 500px;margin-top: 30px;font-size: 16px;color: #656766}
+.class_nav{height:88px; position:relative; overflow:hidden; margin-top: 18px}
+ .class_nav .class_nav_opacity{width:100%; position:absolute; top:0; left:0; height:88px;background:#fff;opacity:0.8;filter:Alpha(opacity=80)}
+ .class_nav_list{position:relative; float:left; top:30px; left:50%}
+ .class_nav_list li{float:left; position:relative; margin:0 10px; left:-50%}
+ .class_nav_list li a{display:block; width:106px; text-align:center; line-height:32px; height:32px; font-size:16px; color:#333;}
+
+.class_nav_list .ac a{background: #11ADE6;border-radius: 3px;color: #fff}
+
+/*头部end---------------------------*/
+
+/*班级首页ljr*/
+.classesCon .main_cont{margin-top: 20px}
+.omega .main_cont .title{ margin-right:0}
+.main_cont .title{ margin-right:30px}
+.title_pannel {height: 40px;line-height: 40px;background:#D7F2FD;padding:0 25px 0 25px;border:none}
+.title_pannel h4 {float: left;}
+
+.classes_cont { overflow:hidden; text-align:center;background: #fff}
+.classes_cont .class_top {margin:30px 0 30px 0;text-align: left;width: 275px; display:inline-block; height:210px; overflow:hidden; *float:left;vertical-align: top;border-right:1px solid #DCDCDC;}
+.classes_cont .class_top dd {width: 96px;height: 96px;border-radius: 4px;border: 1px dashed #50BBFF;margin:0 auto}
+.classes_cont .class_top dd a{color: #50BBFF;display: block;overflow: hidden;height: 98px;text-align: center;}
+.classes_cont .class_top dd i{width: 34px;height: 34px;display: inline-block;margin: 20px 34px 13px 30px;}
+.classes_cont .class_top i:hover{width: 34px;height: 34px;display: inline-block;margin: 20px 34px 13px 30px;}
+.classes_cont .class_top dd:hover{background:#50BBFF; color:#FFF;border:none;width: 98px;height: 98px;}
+.classes_cont .class_top dd:hover a{color:#FFF !important}
+.classes_cont .class_top .class_book i {background: url(../images/ico.png) no-repeat -123px -2125px;}
+.classes_cont .class_top .class_test i {background: url(../images/ico.png) no-repeat -82px -2164px;}
+.classes_cont .class_top .class_answer i {background: url(../images/ico.png) no-repeat -42px -2125px;}
+.classes_cont .class_top .class_file i {background: url(../images/ico.png) no-repeat -2px -2164px;}
+.classes_cont .class_top .class_book:hover i {background: url(../images/ico.png) no-repeat -83px -2125px;}
+.classes_cont .class_top .class_test:hover i {background: url(../images/ico.png) no-repeat -122px -2164px;}
+.classes_cont .class_top .class_answer:hover i {background: url(../images/ico.png) no-repeat -2px -2125px;}
+.classes_cont .class_top .class_file:hover i {background: url(../images/ico.png) no-repeat -42px -2164px;}
+.classes_cont .class_top .statistics{padding:12px 0 0 0; height:110px;}
+.classes_cont .class_top .statistics div{ margin-left:0px;}
+.classes_cont .class_top .statistics div span{font-size:16px;padding-left:10px;}
+.classes_cont .class_top .statistics div p{display: inline-block;width: 125px;float: left;text-align: right;padding-right:10px}
+.classes_cont .class_top .statistics h4{display: inline-block;}
+.classes_cont .class_noboder{border-right:0px;}
+
+
+.fresh_things{margin-top:18px;background: #fff;float: left;}
+
+.fresh_things .class_members h4{float: left;width: 78px;height:27px;border:1px solid #D6F3FB;text-align:center;line-height: 27px;margin-top: 10px}
+.the_problem .topic{ border-bottom:1px dashed #7FCDF3;padding:0 0 11px 0; overflow:hidden;margin:0 0 11px 0;width:860px;}
+.the_problem .topic dd{width:70px;height:70px;float:left;margin-right:15px; border: 1px solid #E3E3E3;border-radius: 50%;}
+.the_problem .topic dd img{width:70px;height:70px;border-radius: 50%;}
+.the_problem .no_btm_border{border-bottom: 0px}
+.the_problem .topic dt{float:left;width:773px; overflow:hidden}
+.the_problem .topic dt em{color:#50BBFF}
+.the_problem .topic dt a:hover em{color:red}
+.the_problem .topic dt .date{ display:block;color:#989898}
+.the_problem .topic dt .topic_con a{width: 180px;height: 120px;border: 1px solid #7ECDF4;display: inline-block;margin-right: 18px;text-align: center;}
+
+.slider-box {width: 970px;position: relative;margin:0 10px 0 60px;}
+.slider-box .bd {width: 1015px;overflow: hidden;}
+.slider-box .bd ul { position: relative; width: 80000px; overflow:hidden}
+.slider-box .bd li {width: 180px;height: 122px;float: left; margin-right: 28px;border: 0px}    
+.slider-box .bd li img {width: 180px;height: 120px;border: solid 1px #7ECEF3;}   
+.slider-box a.btn {position: absolute;top: 50%;margin-top: -25px;width:10px;height:18px !important;z-index: 1}   
+.slider-box a.prev {left: -50px;background: url(../images/ico.png) -10px -560px;top:75px}    
+.slider-box a.next {right:-100px;background: url(../images/ico.png) -35px -560px;top: 75px;}   
+.slider-box .hd {position: absolute;top: 210px;width: 100%;text-align: center;}    
+.slider-box .hd ul li {width: 64px;height: 6px;text-indent: -9999px;margin-right: 12px;display: inline-block;cursor: pointer;overflow: hidden;background: #fff;}   
+.slider-box .hd ul li.on {background: #8BC83C;}
+.slider-box .bd .active{height: 94px;width: 130px; border:2px solid #4FBCFF;margin-right: 6px;}
+.slider-box .bd .active img{border:none}
+.class_members .teacher{ overflow:hidden;}
+.class_members .teacher .tch_list{padding:0 10px 10px 10px;float:left}
+.class_members .teacher .tch_list dd{width:40px;height: 40px;}
+.class_members .teacher .tch_list dd a{display: block;margin: 0 auto;padding-left: 2px}
+.class_members .teacher .tch_list dd a img{width: 40px;height:40px;border-radius: 50%;border:1px solid #ddd;}
+.class_members .teacher .tch_list dt{ text-align:center;width:56px; overflow:hidden;text-overflow:ellipsis;height:26px}
+.class_members .student{ overflow:hidden;}
+.class_members .student .student_list{height:100px}
+.class_members .student .stu_list{padding:0 10px 10px 10px;float:left}
+.class_members .student .stu_list dd{width:40px;height: 40px}
+.class_members .student .stu_list dd a{display: block;margin: 0 auto;padding-left: 2px}
+.class_members .student .stu_list dd a img{width: 40px;height:40px;border-radius: 50%;border:1px solid #ddd;}
+.class_members .student .stu_list dt{ text-align:center;width:56px; overflow:hidden;text-overflow:ellipsis;height:26px}
+.no_padding_form_list{margin:0 !important;}
+.head_portrait .row .form_l .tList_rg{width:78px;height:27px;border: 1px solid #D7F2FD;text-align:center;line-height: 27px;display: inline-block;}
+.head_portrait .sUI_user_list li{height:80px;}
+.head_portrait .sUI_user_list li img{height: 40px;width: 40px;border-radius: 50%;border: 1px solid #ECECEC}
+.classes_fresh_news li{border-bottom: 1px dotted #ACDFF8;border-top:0;border-right: 0;border-left: 0;padding:20px 20px 40px 105px;}
+.classes_fresh_news li img{width: 70px;height: 70px;border-radius: 50%;border: 1px solid #DFDFDF}
+.classes_fresh_news	.sUI_pannel_min{height: 24px;line-height: 12px;font-size: 12px;}
+.classes_fresh_news	.sUI_pannel_min h5{font-size: 16px;}
+.classes_fresh_news	.sUI_pannel_min h5 a{color: #17AFE6;font-size: 16px;}
+.classes_fresh_news	.sUI_pannel_min .pannel_l span{margin-top: 20px}
+.visitList{padding: 10px 0 0 15px;width: 245px;}
+.visitList ul{margin-top: 26px}
+.visitList ul li{float: left;padding-bottom: 10px;width: 70px;margin-right: 9px;height: 100px;text-align: center;color: #878787;line-height: 35px;}
+.visitList ul li a{float: left;width: 70px;height: 70px;border: 1px solid red;border-radius: 50%;}
+
+
+
+
+
+
+
+

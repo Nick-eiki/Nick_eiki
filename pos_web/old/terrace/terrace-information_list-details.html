@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/terrace.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+
+<script>
+$(function(){
+$('h3.Signature i').editPlus();	
+//搜索按钮切换	
+	$('.terrace_btn_js span').bind('click',function(){
+		$(this).addClass('s_btn').siblings('span').removeClass('s_btn');	
+		
+	})
+	
+	
+	
+	
+	
+})
+</script>
+<script type="text/javascript">
+$(function(){
+	//页面原本有的
+		$('.sendBtn').live('click',function(event){
+		if(event.type=='click')
+			{
+				var teVal=$(this).parents('.textareaBox').find('textarea').val();
+				var flower=$(this).siblings('.addFlower').find('input:checkbox');
+				if(teVal=="")
+				{
+					popBox.errorBox("内容不能为空!");		
+				}
+				else if(teVal.length>100)
+				{
+					popBox.errorBox("文字已超出!");
+				}
+				
+				else
+				{
+					var html='';
+					html+='<ul class="course_list">';
+					html+='	<li>';
+					html+='<span class="c_title_h"><img src="../images/user_s.jpg" alt=""></span>';
+					html+='<p class="p_name"><em class="name">孙武龙</em>针对<em class="name">追击问题</em>发表（好评/评论）：</p>';
+					html+='<p>'+ teVal  +'</p>';
+					html+='<p class="btn_parent">';
+						html+='<span>2014年06月3日 14：00 </span>';
+						html+='<a href="javascript:;" class="name">举报</a>';
+						html+='<span class="span_link"><a href="javascript:;" class="name reply_btn">回复</a><a href="javascript:;" class="name na_del">删除</a></span>';
+					html+='</p>';
+					html+='<div class="textareaBox  hide popo">';
+                html+='<textarea class="textarea checkTextarea"></textarea>';
+                html+='<span class="placeholder">提示信息</span>';
+                html+='<div class="btnArea"> <span class="addFace"><i class="addFaceBtn"></i>表情</span>';
+                  html+='<em class="txtCount">可以输入 <b class="num">140</b> 字</em>';
+                  html+='<button type="button" class="sendBtn2">回复</button>';
+                html+='</div>';
+              html+='</div>';
+					html+='<hr>';
+				html+='</li>';
+				  html+='</ul>'; 
+				$('.course_deta_list').append(html)	
+				 var _this=$('.sendBtn2');
+				 _this.parent('p').siblings('.counter').addClass('Newcounter');
+				 _this.parent('p').siblings('.counter').remove();
+					$(this).parent('.btnArea').siblings('.checkTextarea').val('');
+					//$(this).parents('.textareaBox').hide();
+					$('.addFlower input:checkbox').attr('checked',false);
+				}
+			}
+		})	
+//创建出来的JS
+$('.sendBtn2').live('click',function(event){
+		if(event.type=='click')
+			{
+				var teVal=$(this).parents('.textareaBox').find('textarea').val();
+				var flower=$(this).siblings('.addFlower').find('input:checkbox');
+				if(teVal=="")
+				{
+					popBox.errorBox("内容不能为空!");		
+				}
+				else if(teVal.length>100)
+				{
+					popBox.errorBox("文字已超出!");
+				}
+				
+				else
+				{
+					var html='';
+					
+					html+='	<li class="counter_style">';
+					html+='<span class="c_title_h"><img src="../images/user_s.jpg" alt=""></span>';
+					html+='<p class="p_name"><em class="name">孙武龙</em>针对<em class="name">追击问题</em>发表（好评/评论）：</p>';
+					html+='<p>'+ teVal  +'</p>';
+					html+='<p class="btn_parent">';
+						html+='<span>2014年06月3日 14：00 </span>';
+						html+='<a href="javascript:;" class="name">举报</a>';
+						html+='<span class="span_link"><a href="javascript:;" class="name reply_btn">回复</a><a href="javascript:;" class="name na_del">删除</a></span>';
+					html+='</p>';
+					html+='<div class="textareaBox  hide popo">';
+                html+='<textarea class="textarea checkTextarea"></textarea>';
+                html+='<span class="placeholder">提示信息</span>';
+                html+='<div class="btnArea"> <span class="addFace"><i class="addFaceBtn"></i>表情</span>';
+                  html+='<em class="txtCount">可以输入 <b class="num">140</b> 字</em>';
+                  html+='<button type="button" class="sendBtn2">回复</button>';
+                html+='</div>';
+              html+='</div>';
+					html+='<hr>';
+				html+='</li>';
+				//改动
+				  $(this).parents('.course_list').append(html); 
+				//$('.course_deta_list').append(html)	
+				 var _this=$('.sendBtn2');
+				 _this.parent('p').siblings('.counter').addClass('Newcounter');
+				 _this.parent('p').siblings('.counter').remove();
+					$(this).parent('.btnArea').siblings('.checkTextarea').val('');
+					$(this).parents('.textareaBox').hide();
+					$('.addFlower input:checkbox').attr('checked',false);
+				}
+			}
+		})	
+	
+	// 删除创建出来的列表
+	$('.na_del').live('click',function(){
+		$(this).parents('li').remove();	
+	})
+	
+	//单击小文字回复显示输入框
+	$('.reply_btn').live('click',function(){
+			$(this).parents('ul').find('.textareaBox').hide();
+			$(this).parents('.btn_parent').next('.textareaBox').show();	
+	})
+	
+	
+	
+	$(document).live("mousedown",function(e){
+		var target=$(e.target);
+		if(target.closest(".popo").length == 0){
+			$(".popo").hide();
+			$('.textarea_val').val('')
+			//$('.faceBox').remove();//删除表情窗口
+		}
+	})
+	
+	
+	/*$('.reply_btn').live('click',function(){
+		var Btn=$(this).parent('.btn_parent').next('textareaBox');
+		
+			if(Btn==show())
+			{
+				$(this).parents('ul').find('.textareaBox').hide();
+				$(this).parents('.btn_parent').next('.textareaBox').hide();	
+			}
+			else
+			{
+				$(this).parents('ul').find('.textareaBox').hide();
+				$(this).parents('.btn_parent').next('.textareaBox').show();		
+			}	
+	})*/
+	
+	
+	$('').click(function(){
+	/*修改听课计划弹窗*/
+$('#hear').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "举报",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#hear" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+})
+	
+})
+
+</script>
+<title>平台页面-资讯列表-详情</title>
+</head>
+
+<body id="body">
+<!--顶部开始-->
+<div class="min_head terrace_head">
+  <div class="cont24 terrace clearfix">
+    <div class="head_left terrace_left grid_6">
+    	<ul class="terrace_ul clearfix">
+        	<li><a href="#">题库</a></li>
+            <li><a href="#">资料库</a></li>
+            <li><a href="#">视频库</a></li>
+        </ul>
+    
+    </div>
+     <ul class="terrace_ul fl">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">免费登录</a></li>    
+     </ul>
+    
+    
+    <div class="userCenter grid_6 userCenter_R">
+      
+      <div class="userAccount userAccount2  grid_3 alpha omega"> <img src="../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg userMsg2 grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+      <div class="detail fr">
+      	<span><a href="#">通知</a></span>
+        <em>|</em>
+        <span><a href="#">收藏夹</a></span>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!--顶部结束-->
+<!--搜索开始--> 
+<div class="terrace_search ">
+	<div class="terrace_box clearfix">
+    	<div class="terrace_logo">
+    		<img src="../images/logo.png" alt="">
+        </div>
+        <div class="terrace_search">
+        	<p class="terrace_btn terrace_btn_js"><span class="mini_btn s_btn">试题</span><span class="mini_btn">试卷</span></p>
+            <div class="terrace_text">
+            	<em></em>
+                <input type="text" value="请输入题目关键字" class="text">
+                <button type="button" class="tye_btn">搜 索</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!--搜索结束-->  
+<!--主体内容开始-->
+
+<div class="mainBody cont24">
+    
+    <div class="main_cent">
+         <div class="mainNav terrace_Nav">
+            <ul class="terrace_nav">
+                <li class="terrace_nav_this"><a href="#">首页</a></li>
+                <li><a href="#">小学</a></li>
+                <li><a href="#">初中</a></li>
+                <li><a href="#">高中</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="deta_de">
+            <a href="#">首页</a>&gt;&gt;<a href="#" class="this">资讯详情</a>
+        </div>
+        <div class="class_c clearfix tch">
+          
+            <div class="centLeft">
+                <div class="notice information">
+                    <div class="noticeH noticeB clearfix">
+                        <h3 class="h3L">资讯详情</h3>
+                        <div class="new_not fr"> 
+                        	
+                        	<a href="javascript:;" class="new_bj B_btn120">发布信息</a> 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text_article">
+                    	
+                    	<h4>资讯标题资讯标题资讯标题资讯标题资讯标题资讯标题</h4>
+                        <p>2014年10月11日  14:00</p>	
+                        <div class="text_article_cent">
+                        	不用出门，在家打开就可以上课，不仅仅大大节省了路上来回将近两小时的时间，还免受雾霾侵袭，更不用担心可能发生的一些危险。整个
+学习过程中，可以通过打字和语音与老师实时互动。随时提出问题并得到解答。不用出门，在家打开就可以上课，不仅仅大大节省了路上来回将近
+两小时的时间，还免受雾霾侵袭，更不用担心可能发生的一些危险。整个学习过程中，可以通过打字和语音与老师实时互动。随时提出问题并得到
+解答。不用出门，在家打开就可以上课，不仅仅大大节省了路上来回将近两小时的时间，还免受雾霾侵袭，更不用担心可能发生的一些危险。整个
+学习过程中，可以通过打字和语音与老师实时互动。随时提出问题并得到解答。
+                        
+                        </div>
+                        <hr class="hr_d">
+                        <div class="paet clearfix">
+                        	<span class="sl">上一篇：<a href="#">资讯标题</a></span>
+                            <span class="sr">下一篇：<a href="#">资讯标题</a></span>
+                        </div>
+                       
+                    </div>
+                     <div class="discuss">
+                     	<h3>大家评论</h3>
+                        <hr class="hr_d">
+                        <div class="course_l ">
+                            <div class="textareaBox">
+                                <textarea class="textarea checkTextarea"></textarea>
+                                <span class="placeholder">提示信息</span>
+                                <div class="btnArea"> 
+                                	<span class="addFace"><i class="addFaceBtn"></i>表情</span> 
+                                	<em class="txtCount">可以输入 <b class="num">140</b> 字</em>
+                                  	<button type="button" class="sendBtn">回复</button>
+                                </div>
+							</div>
+                    		<hr>
+                            <!--改动-->
+                          <div class="course_deta_list">
+                            
+                          
+                          </div>           
+                
+                
+                     </div>
+                    </div>
+                </div>
+            </div>
+            <div class="centRight">
+                <div class="centRightT">
+                    <a href="classHandsin.html" class=" outAdd_btn B_btn120">设置手拉手班级</a> 
+                </div>
+                <div class="centRightT clearfix">
+                    <p class="title titleLeft"> <span>手拉手班级</span><i></i> </p>
+                    <hr>
+                    <dl class="list_dl clearfix">
+                        <dt><img src="../images/pic.png" alt="" width="90" height="90"></dt>
+                        <dd>
+                            <h3>177班</h3>
+                        </dd>
+                        <dd><span>学校：</span>北京人大附中</dd>
+                  
+                        <dd><span>成员：</span>30名学生</dd>
+                    </dl>
+                </div>
+                <div class="centRightT">
+                   
+                    <ul class="class_list clearfix">
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                        <li><a href="#"><img src="../images/user_s.jpg" alt="" title="北京"></a></li>
+                    </ul>
+                </div>
+                <div class="centRightT">
+                    <h3 class="clearfix">推荐视频</h3>
+                    <hr>
+                    <h4>资料名称资料名称资料名称资料名称......</h4>
+                    <dl class="y_list">
+                        <dt><a href="#"><img src="../images/teacher_m.jpg"></a></dt>
+                        <dd>
+                            <span>简介：</span>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+                        </dd>
+                        
+                    </dl>
+                    <ul class="info_list">
+                    	<li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                        <li><a href="#">资料名称资料名称料名称资料名称料名称资料名称资料名称资料名称</a></li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+
+<!--安排听课/修改听课计划-->
+<div id="hear" class=" popBox reportBox hide" title="举报">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                <li>
+                    <div class="formL">
+                        <label for="name"><i></i>原因：</label>
+                    </div>
+                    <div class="formR textareaBox_pro">
+                        <textarea class="textarea JS_textarea2"></textarea>
+                        <span class="counter">还可以输入<em class="JS_num2">140</em>字</span>
+                    </div>
+                </li>
+                
+            </ul>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

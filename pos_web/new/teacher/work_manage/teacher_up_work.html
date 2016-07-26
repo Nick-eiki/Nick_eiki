@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--作业管理-上传作业</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+
+<script>
+$(function(){
+	//上传试卷----------------------------------------------
+//$('.imgFile').imgFileUpload();
+
+//修改图片试卷
+	/*$('.imgFile .modifyBtn').toggle(
+	function(){
+		$('.previewBtn,.changeBtn').hide();
+	},
+	function(){
+		$('.previewBtn,.changeBtn').show();
+		//$(this).removeClass('bg_blue').text('修改试卷');	
+	}
+	);
+	$('.imgFile .changeBtn').toggle(
+		function(){
+			$('.previewBtn,.modifyBtn').hide();
+			$('.imgFile .subTitleBar_box').show();
+			$('.imgFile .up_test_list').hide();
+			$(this).addClass('bg_blue').text('保存修改');	
+		},
+		function(){
+			$('.previewBtn,.modifyBtn').show();
+			$('.imgFile .subTitleBar_box').hide();
+			$('.imgFile .up_test_list').show();
+			$(this).removeClass('bg_blue').text('更换试卷');	
+		}
+	);	*/
+	
+	$('.confirm').click(function(){
+		$(this).hide();
+		$('.amend').show();	
+		$('.up_test_list .delBtn').hide();
+		$('.up_test_list .more').hide();
+		$('.cancel').hide();
+		$('.previewBtn').show();
+	})
+	$('.amend').click(function(){
+		$(this).hide();
+		$('.confirm').show();	
+		$('.up_test_list .delBtn').show();
+		$('.up_test_list .more').show();
+		$('.previewBtn').hide();
+	})
+	
+	
+})
+</script>
+</head>
+
+<body class="teacher">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l">
+            <div class="clearfix item l_userInfo"> <img src="../../images/teacher_l.jpg">
+                    <a style="border-right:1px solid #ddd"><em>30</em><br>试卷</a>
+                    <a><em>300</em><br>课程</a>
+            </div>
+            <div class="item l_asideMenu">
+                <h4>我的档案</h4>
+                <ul class="setupMenu">
+                    <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">信息</a></li>
+                            <li><a href="#">通知</a></li>
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">考试管理</a></li>
+                            <li><a href="#">试卷管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">题目推送</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a class="ac" href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">班级统计</a></li>
+                            <li><a href="#">熊孩子管理器</a></li>
+                            <li><a href="#">个人统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">教研课题</a></li>
+                            <li><a href="#">教学计划</a></li>
+                            <li><a href="#">听课评课</a></li>
+                            <li><a href="#">教研组资料</a></li>
+                            <li><a href="#">教研日记</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                            <li><a href="#">资料袋</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">收藏的讲义</a></li>
+                            <li><a href="#">收藏的课程</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">暂无内容(空)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r">
+            <div class="notice main_cont test_up">
+               <div class="title">
+              	 <a href="#" class="txtBtn backBtn"></a>
+                    <h4>上传作业</h4>
+                </div>
+               
+                <div class="form_list no_padding_form_list teac_up">
+                     <div class="row" style="padding-top:27px;">
+                        <div class="formL">
+                            <label><i></i>作业名称</label>
+                        </div>
+                        <div class="formR">
+                          <span>2014年5月13作业</span>
+                        </div>
+                    </div>
+                     <div class="row teac_up_border">
+                        <div class="formL">
+                            <label><i>*</i>上传作业</label>
+                        </div>
+                        <div class="formR" style="width:68%;">
+                          <div class="imgFile">
+                                <ul class="up_test_list clearfix">
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一<span class="delBtn"></span>页</li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li class="more"></li>
+                                </ul>
+                               <!-- <button type="button" class="bg_blue_l w120 btn40 previewBtn">预览试卷</button>
+                       			<button type="button" class="bg_blue_l w120 btn40 modifyBtn">修改试卷</button>-->
+                           
+                                <div class="teacher_up_test"> 
+                                	<button type="button" class="bg_blue confirm w120  font14 btn40" style="margin-right:20px;">确定</button>
+                        	
+                       				<button type="button" class="bg_blue_l w120 btn40 modifyBtn hide amend" style="margin-right:20px;">修改试卷</button>
+                                    
+                                    
+                                    <button type="button" class="bg_blue_l w120 btn40 previewBtn hide">预览作业</button>
+                                    <!--<span>（试卷类型：jpg,png,bmp,doc,pdf,单文件大小4M以内）</span>-->
+                                </div>
+                               
+                        		<!--<button type="button" class="bg_blue_l w120 btn40 changeBtn">更换试卷</button>-->
+                            
+                            </div>
+                        </div>
+                    </div>
+                  
+                  
+                   
+                
+                
+            </div>
+             <div class="two_dimension_code">
+             	<h4 class="font12">扫一扫，轻松布置作业</h4>
+                <img src="../../images/two-dimension_code.png" alt="">
+             </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+
+</body>
+</html>

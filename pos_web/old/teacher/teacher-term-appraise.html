@@ -1,0 +1,912 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/teacher.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+ 
+<script>
+$(function(){
+	var check_num=0;//已选择数量  全选/选择2个以上会用到
+	var aTr=$('#totalTable tbody tr');
+	var aTh=$('#totalTable th');
+	var th_num=aTh.size();
+	var stu_obj={
+		sn_id:"",//学号
+		name:"",//姓名
+		yuwen:0,//语文
+		shuxue:0,//数学
+		yingyu:0,//英语
+		zcj:0, //总成绩
+		pm:0//排名
+		};
+	$('.test_name').text( $('.term h4').text());//弹出框--考试名称
+
+//选择两个以上,显示"批量评价"
+	aTr.each(function() {
+		var checkbox=$(this).find(':checkbox');
+		checkbox.click(function(){
+			if($(this).attr('checked')){
+				check_num++;
+			}
+			else{check_num--};
+			if(check_num>1){$('.p_btnjs').show();}
+			else{$('.p_btnjs').hide();}
+		})
+	})
+
+//全选	
+	$("#checkAll").checkAll($('#totalTable tbody :checkbox'));	
+	$("#checkAll").click(function(){
+		if(this.checked){
+			$('.p_btnjs').show();//显示"批量评价"
+			check_num=aTr.length;
+		}
+		else{
+			$('.p_btnjs').hide();//隐藏"批量评价
+			check_num=0;
+		}	
+	});
+
+
+//修改听课计划弹窗
+	$('.term .term_i').click(function(){
+		$('#general').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#general" ).dialog( "open" );
+		return false;
+	})
+	
+	
+$('.btnjs').click(function(){
+		$('#general2').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#general2" ).dialog( "open" );
+		return false;
+	})	
+	
+
+//单个评价学生(评价Ta/查看评价中的"编辑")
+	function edit_comt(btn){
+		var html="";
+		var oTr=btn.parents('tr');
+		var aTd=oTr.children('td');
+		$('.popBox .stu_name').text( aTd.eq(2).text() );//学生姓名;
+		for(i=3;i< th_num-3;i++){
+			html+=aTh.eq(i).text()+':'+aTd.eq(i).text()+'分&nbsp;&nbsp;&nbsp;&nbsp;';		
+		}
+		$('.popBox .score').empty().append(html);//成绩
+		var pm_num=th_num-3;//排名
+		html=aTh.eq(pm_num).text()+':'+aTd.eq(pm_num).text();
+		$('.popBox .ranking').empty().append(html);//排名
+		
+		$('#single').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#single" ).dialog( "open" );
+		return false;
+		
+	}
+	
+//点击"评价Ta",单个编辑评价	
+	$('.write_comt').click(function(){
+		edit_comt($(this));
+	});
+	
+	
+function edit_comt2(btn){
+		var html="";
+		var oTr=btn.parents('tr');
+		var aTd=oTr.children('td');
+		$('.popBox .stu_name').text( aTd.eq(2).text() );//学生姓名;
+		for(i=3;i< th_num-3;i++){
+			html+=aTh.eq(i).text()+':'+aTd.eq(i).text()+'分&nbsp;&nbsp;&nbsp;&nbsp;';		
+		}
+		$('.popBox .score').empty().append(html);//成绩
+		var pm_num=th_num-3;//排名
+		html=aTh.eq(pm_num).text()+':'+aTd.eq(pm_num).text();
+		$('.popBox .ranking').empty().append(html);//排名
+		
+		$('#single2').dialog({
+			autoOpen: false,
+			width:500,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+			]
+		});
+		$( "#single2" ).dialog( "open" );
+		return false;
+		
+	}	
+	
+		
+//修改评价
+$('.add_btn').die('click').live('click',function(){
+		
+	edit_comt2($(this));
+})
+
+
+
+//批量评价
+	$('#batchBox').dialog({
+		autoOpen: false,
+		width:550,
+		modal: true,
+		resizable:false,
+		buttons: [
+			{
+				text: "确定",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "取消",
+				click: function() {
+					$( this ).dialog( "close" );
+				} 
+			}
+		]
+	});
+	$('.p_btnjs').click(function(){
+			
+		var arr=[];
+		var html="";
+		aTr.each(function(index, element) {
+			var checkbox=$(this).find(':checkbox');
+			if(checkbox.attr('checked')){
+				stu_obj.name=$(this).find('.name').text();
+				stu_obj.zcj=$(this).find('.zcj').text();
+				stu_obj.pm=$(this).find('.pm').text();
+				html+="<tr>";
+				html+='<td class="tl" width="80">'+stu_obj.name+'</td>';
+				html+='<td class="tr" width="80">'+stu_obj.zcj+'</td>';
+				html+='<td class="tr" width="100">'+stu_obj.pm+'</td>';
+				html+='</tr>';
+				arr.push(stu_obj);
+			}
+		});
+		$('#termTable tbody').empty().append(html);
+			
+		$( "#batchBox" ).dialog( "open" );
+		return false;
+	})
+	
+	
+	
+//显示评价
+	var ajax_text='ajax请求回来的数据的数据的数据的数据的数据的数据据的数据的数据的数据';
+	function show_comt(comt_text){
+		$('.view_comt').click(function(){
+			var _this=$(this);
+			var top=_this.offset().top+20;
+			var left=_this.offset().left;
+			var html='<span class="add_btn" style="text-decoration:underline;color:red; margin-left:10px;cursor:pointer">编辑</span>';
+			$('.comtBox').html(comt_text+html).css({'top':top,'left':left}).show();
+			$('.comtBox span').click(function(){//再次编辑单个评价
+				edit_comt(_this);
+			})
+			return false;
+		})
+		
+	}
+
+//php调用	
+	show_comt(ajax_text)
+		
+	
+
+})
+</script>
+
+
+
+<title>教师-考试管理--学期总评</title>
+
+</head>
+
+<body>
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->  
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+    <div class="mainNav">
+        <ul class="mainNav_R clearfix">
+            <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                <ul class="tab hide">
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                </ul>
+            </li>
+            <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+            <li><i class="management"></i><span>个人管理中心</span></li>
+        </ul>
+    </div>
+    
+        <div class="currentLeft grid_5 push_1">
+            <div class="item l_userInfo clearfix">
+                <img src="../images/teacher_l.jpg">
+                <ul>
+                    <li><span>30</span>作业</li>
+                    <li><span>300</span>错题</li>
+                    <li><span>49</span>精品课程</li>
+                </ul>
+                
+            </div>
+            <div class="item l_asideMenu">
+            <ul class="setupMenu">
+                <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">基本信息</a></li>
+                        <li><a href="#">头像管理</a></li>
+                        <li><a href="#">密码管理</a></li>
+                        <li><a href="#">邮箱管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">我的通知</a></li>
+                        <li><a href="#">发短信</a></li>
+                        <li><a href="#">我的私信</a></li>
+                    </ul>
+                
+                </li>
+                <li><a class="lisD" href="javascript:;"><i></i>考试试卷和成绩</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">考试管理</a></li>
+                        <li><a href="#">学期总评</a></li>
+                        <li><a href="#">科目总评</a></li>
+                    </ul>
+                    
+                </li>
+                <li><a class="lisF" href="javascript:;"><i></i>教研工作</a>
+                    <ul class="subMenu hide">
+                        <li><a class="ac" href="#">教研课题</a></li>
+                        <li><a href="#">教学计划</a></li>
+                        <li><a href="#">听课评课</a></li>
+                        <li><a href="#">教研组资料</a></li>
+                        <li><a href="#">教研日记</a></li>
+                    </ul>
+                
+                </li>
+                <li><a class="lisG" href="javascript:;"><i></i>备课</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">个人教学计划</a></li>
+                        <li><a href="#">公文包(教案|讲义|经典视频)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>试卷与作业</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">组织测验</a></li>
+                        <li><a href="#">作业管理</a></li>
+                        <li><a href="#">题目管理</a></li>
+                        <li><a href="#">题目推送</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">课程管理</a></li>
+                        <li><a href="#">评论管理</a></li>
+                        <li><a href="#">课程总结</a></li>
+                        <li><a href="#">家长会管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>成绩统计表</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">收藏的讲义</a></li>
+                        <li><a href="#">收藏的课程</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>	
+        </div>
+    	<div class="currentRight grid_16 push_2 term_app">
+           <div class="notice manage">
+                <div class="noticeH clearfix noticeB">
+                    <h3 class="h3L">学期总评</h3>
+                    <div class="new_not fr">
+                    <em>我的班级：</em> 
+                    <select class="select_tab">
+                        <option value="001">001班</option>
+                        <option value="002">001班</option>             
+                    </select> 
+                    <button type="button" class="new_bj btn btnjs">本班总评</button>
+                   </div>
+                </div>
+               <hr>
+               <div class="term" style="display:block;">
+               		<!--此处本班点评内容，只有点击了右上角的本班点评评论后才回显出评论内容。若未点评，点击评论出现评价本班弹出框-->
+               		<h4>2013年下半学期期末考试</h4>
+                    <dl>
+                    	<dt>本班总评：<i class="term_i"></i></dt>
+                        <dd><span class="max title">最高分：<em>90分</em></span><span class="max">最低分：<em>70分</em></span></dd>
+                        <dd><span class="fraction title">分数段：<em>90-80分</em><em>10人</em></span><span class="fraction"><em>80-70分</em><em>10人</em></span></dd>
+                         <dd><span class="title">班内学习态度：</span><em>学班内学习态度班内学习态度班内学习态度</em></dd>
+                        <dd><span class="title">共性问题：</span><em>学期规划学期规划学期规划学期规划学期规划</em></dd>
+                        <dd><span class="title">改进建议：</span><em>学期规划学期规划学期规学期规划学期规划学期规学期规划学期规划学期规</em></dd>
+                    </dl>
+               </div>
+               	<table id="totalTable" width="100%">
+                	<colgroup>
+                    	<col style="width:30px">
+                        <col style="width:100px">
+                        <col style="width:60px">
+                        <col style="width:60px">
+                        <col style="width:60px">
+                        <col style="width:60px">
+                        <col style="width:60px">
+                        <col style="width:60px">
+                        <col style="width:120px">
+                    </colgroup>
+                	<thead>
+                    <tr height="34" bgcolor="#ddd">
+                        	<th><input type="checkbox" id="checkAll"></th>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>语文</th>
+                            <th>数学</th>
+                            <th>英语</th>
+                            <th>总成绩</th>
+                            <th>本班名次</th>
+                            <th>操作</th>
+                            <th>
+                            <em class="p_btn hide p_btnjs">批量评价</em>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data_id="">
+                        	<td><input type="checkbox"></td>
+                            <td class="sn_id">123456789</td>
+                            <td class="name">猪八戒</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">3</td>
+                            <td><span class="write_comt hide">评价Ta</span><span class="view_comt">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr data_id="">
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">唐僧</td>
+                            <td class="cj yuwen">50</td>
+                            <td class="cj shuxue">60</td>
+                            <td class="cj yingyu">70</td>
+                            <td class="zcj">222</td>
+                            <td class="pm">1</td>
+                            <td><span class="write_comt">评价Ta</span><span class="view_comt hide">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">孙悟空</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">2</td>
+                            <td><span class="write_comt">评价Ta</span><span class="view_comt hide">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">沙和尚</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">4</td>
+                            <td><span class="write_comt">评价Ta</span><span class="view_comt hide">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">沙和尚</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">4</td>
+                            <td><span class="write_comt">评价Ta</span><span class="view_comt hide">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">沙和尚</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">4</td>
+                            <td><span class="write_comt">评价Ta</span><span class="view_comt hide">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox"></td>
+                            <td>123456789</td>
+                            <td class="name">沙和尚</td>
+                            <td class="cj yuwen">99</td>
+                            <td class="cj shuxue">99</td>
+                            <td class="cj yingyu">99</td>
+                            <td class="zcj">87</td>
+                            <td class="pm">4</td>
+                            <td><span class="write_comt hide">评价Ta</span><span class="view_comt">查看评价</span></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+   
+</div>
+<!--主体内容结束-->
+</div>
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+<!--填写/修改本班总评-->
+<div id="general" class=" popBox generalBox hide" title="填写">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                <li>
+                    <div class="formL">
+                        <label>班级：</label>
+                    </div>
+                    <div class="formR">
+                        <div>101班（<em>第54班</em>）</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>考试名称：</label>
+                    </div>
+                    <div class="formR">
+                       <div>考试名称考试名称考试名称</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>最高-低分</label>
+                    </div>
+                    <div class="formR">
+                       <div><span class="max">最高分：<i>90分</i></span><span class="max">最低分：<i>64分</i></span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>分数段：</label>
+                    </div>
+                    <div class="formR">
+                        <div>
+                        		<span class="max">234-240<i>共10人</i></span><span class="max">241-250<i>共10人</i></span>
+                        		<span class="max">234-240<i>共10人</i></span><span class="max">241-250<i>共10人</i></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label for="name">班内学习状态：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>共性问题：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>改进建议：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<div id="general2" class=" popBox generalBox hide" title="修改本班总评">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                <li>
+                    <div class="formL">
+                        <label>班级：</label>
+                    </div>
+                    <div class="formR">
+                        <div>101班（<em>第54班</em>）</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>考试名称：</label>
+                    </div>
+                    <div class="formR">
+                       <div>考试名称考试名称考试名称</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>最高-低分</label>
+                    </div>
+                    <div class="formR">
+                       <div><span class="max">最高分：<i>90分</i></span><span class="max">最低分：<i>64分</i></span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>分数段：</label>
+                    </div>
+                    <div class="formR">
+                        <div>
+                        		<span class="max">234-240<i>共10人</i></span><span class="max">241-250<i>共10人</i></span>
+                        		<span class="max">234-240<i>共10人</i></span><span class="max">241-250<i>共10人</i></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label for="name">班内学习状态：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>共性问题：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>改进建议：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<!--单个评价学生-->
+<div id="single" class=" popBox generalBox hide" title="评价学生">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                <li>
+                    <div class="formL">
+                        <label>学生：</label>
+                    </div>
+                    <div class="formR stu_name">
+                        
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>考试名称：</label>
+                    </div>
+                    <div class="formR test_name">
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="formL">
+                        <label>Ta的成绩：</label>
+                    </div>
+                    <div class="formR">
+                        <div class="score">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>学生名次：</label>
+                    </div>
+                    <div class="formR ranking">
+                       
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>评价学生：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+               
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div id="single2" class=" popBox generalBox hide" title="修改评价">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                <li>
+                    <div class="formL">
+                        <label>学生：</label>
+                    </div>
+                    <div class="formR stu_name">
+                        
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>考试名称：</label>
+                    </div>
+                    <div class="formR test_name">
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="formL">
+                        <label>Ta的成绩：</label>
+                    </div>
+                    <div class="formR">
+                        <div class="score">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>学生名次：</label>
+                    </div>
+                    <div class="formR ranking">
+                       
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label>评价学生：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea></textarea>
+                    </div>
+                </li>
+               
+            </ul>
+        </form>
+    </div>
+</div>
+
+
+<!--批量评价学生-->
+<div id="batchBox" class=" popBox batchBox" title="批量评价学生">
+    <div class="impBox">
+        <form>
+            <ul class="form_list">
+                
+                <li>
+                    <div class="formL">
+                        <label>考试名称：</label>
+                    </div>
+                    <div class="formR test_name">
+                    </div>
+                </li>
+                
+                
+                <li>
+                    <div class="formL">
+                        <label>学生：</label>
+                    </div>
+                    <div class="formR" >
+                        <table>
+							<thead>
+                            	<th class="tl" width="80">姓名</th>
+                                <th class="tr" width="80">总成绩</th>
+                                <th class="tr" width="100">名次</th>
+                            </thead>
+                        </table>
+                        <div style=" max-height:150px; *height:150px; width:300px; overflow:auto" >
+                        	<table id="termTable" class="term_tabble">
+                        	<tbody >
+                            	<!--<tr height="24">
+                                	<td>猪八戒</td>
+                                    <td>207分</td>
+                                    <td>第1名</td>
+                                </tr>
+                                <tr height="24">
+                                	<td>猪八戒</td>
+                                    <td>207分</td>
+                                    <td>第1名</td>
+                                </tr>-->
+                            </tbody>
+                        
+                        </table>
+                        </div>
+                    </div>
+                </li>
+                <li style="margin:10px 0">
+                    <div class="formL">
+                        <label>评价学生：</label>
+                    </div>
+                    <div class="formR">
+                        <textarea class="div1" style="width:300px; height:80px"></textarea>
+                    </div>
+                </li>
+               
+            </ul>
+        </form>
+    </div>
+</div>
+<!--评价弹窗-->
+<div class="comtBox pop" style="width:200px;position:absolute; background:#ddd; z-index:100;border:1px solid #ddd; padding:5px; font-size:12px; line-height:18px">
+	内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容
+</div>
+<script type="text/javascript">
+$(function(){
+		
+	$('#div2').placeholder({"value":"部门名称","color":"#ccc"});	
+})
+
+
+</script>
+<input type="text" id="div2">
+</body>
+</html>

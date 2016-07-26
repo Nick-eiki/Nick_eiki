@@ -1,0 +1,301 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>学生-学霸养成记</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/student.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('.popBox').dialog({
+		autoOpen: false,
+		width:720,
+		modal: true,
+		resizable:false,
+			close:function(){$(this).dialog("close")}
+		});	
+	
+	$('.addmemor_btn').click(function(){
+		
+		/*记录成长弹框*/
+		 $( ".popBox" ).dialog( "open" );
+		 $('.popBox .eventName').blur().placeholder({value:"请输入事件名称"})
+		  return false;
+		
+	})
+	
+		
+		$('.up_pic_Js').live('click',function(){
+			$(this).siblings('.up_test_list').removeClass('hide');
+			$(this).addClass('hide');
+		})
+
+
+	
+})
+</script>
+</head>
+
+<body class="student Problem_management">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l l_stuInfo">
+            <div class="clearfix item l_userInfo "> <img src="../../images/stu.png">
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>30</em><br>作业</a>
+                    <a href="javascript:;" style="border-right:1px solid #ddd"><em>300</em><br>错题</a>
+                     <a href="javascript:;"><em>300</em><br>精品课程</a>
+            </div>
+            <div class="item l_asideMenu">
+               
+                <ul class="setupMenu">
+                   <li><a class="lisA ac" href="javascript:;"><i></i>信息</a>
+                        <ul class="subMenu">
+                            <li><a href="#">通知</a></li>
+                           
+                            <li><a href="#">系统消息</a></li>
+                            <li><a class="ac" href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>我的作业</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">004班</a></li>
+                            <li><a href="#">006班</a></li>
+                            <li><a href="#">007班</a></li>
+                            <li><a href="#">008班</a></li>
+                           
+                        </ul>
+                    </li>
+                  
+                    <li><a class="lisD" href="javascript:;"><i></i>考试管理</a>
+                        <ul class="subMenu hide">
+                          
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF noBg" href="javascript:;"><i></i>练练</a>
+                        
+                    </li>
+                    <li><a class="lisG noBg" href="javascript:;"><i></i>学霸养成记</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>错题管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">错题集</a></li>
+                            <li><a href="#">题目录入</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li><a class="lisH noBg" href="javascript:;"><i></i>答疑管理(提问)</a>
+                       
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>学习时间轴</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">学习时间轴</a></li>
+                            <li><a href="#">成绩统计表</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r cultivate">
+            <div class="main_cont student_home pr ">
+                <div class="title">
+                    <h4>学霸养成记</h4>
+                    <div class="title_r"><a class="btn btn40 bg_green w120 addmemor_btn">记录成长</a></div>
+                </div>
+                <div class="memorabilia_QA_list">
+            	<dl class="QA_list">
+                	<dt><em>2014</em>05</dt>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>[ <span>英语预习</span> ] 第三单元第二课</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                           <div class="row">
+                                    <div class="formL">
+                                        <label>详情:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" ">
+                                    </div>
+                                </div>
+                                <div class="row row_font">
+                                    <div class="formL">
+                                        <label>结果:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">有人说，鸡冠子是鸡身上最毒的地方，鸡冠子真的这么恐怖吗？</span>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </dd>
+                    <dd>
+                    	<div class="dot_line first_dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>[ <span>英语复习</span> ] 第三单元第二课</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                           <div class="row">
+                                    <div class="formL">
+                                        <label>详情:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" ">
+                                    </div>
+                                </div>
+                                <div class="row row_font">
+                                    <div class="formL">
+                                        <label>归纳：</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">有人说，鸡冠子是鸡身上最毒的地方，鸡冠子真的这么恐怖吗？有人说，鸡冠子是鸡身上最毒的地方，鸡冠子真的这么恐怖吗？</span>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="QA_list">
+                	<dt><em>2014</em>06</dt>
+                    <dd>
+                    	<div class="dot_line"><i></i></div>
+                    	<div class="QA_cont">
+                        	<span class="arrow"></span>
+                        	<h5>[ <span>英语预习</span> ] 第三单元第二课</h5>
+                            <p class="gray_d time">2014-05-04 18:00</p>
+                        	<div class="form_list">
+                           <div class="row">
+                                    <div class="formL">
+                                        <label>详情:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" "><img src="../../images/memorabilia_left_1.png" alt=" ">
+                                    </div>
+                                </div>
+                                <div class="row row_font">
+                                    <div class="formL">
+                                        <label>结果:</label>
+                                    </div>
+                                    <div class="formR">
+                                    	<span class="gray_555">有人说，鸡冠子是鸡身上最毒的地方，鸡冠子真的这么恐怖吗？</span>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="moreQA">更多</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+<!--记录成长-->
+<div class="popBox hide pushNotice memor_popbox" title="记录成长" id="addMemor">
+    <div class="popCont">
+        <div class="new_tch_group">
+            <form>
+                <div class="form_list">
+                    <div class="row">
+                            <div class="formL">
+                                <label><span style="color: red;vertical-align: middle;">* </span>事件名称：</label>
+                            </div>
+                            <div class="formR">
+                                <input type="text" class="text eventName">
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="formL">
+                                <label><span style="color: red;vertical-align: middle;">* </span>类型：</label>
+                            </div>
+                            <div class="formR">
+                            <span class="selectWrap big_sel">
+                           	<i></i>
+                           	<em>请选择</em>
+                            	<select data-validation-engine="validate[required]" data-prompt-target="new_department" data-prompt-position="inline" name="UserForm[department]" id="UserForm_department">
+                                    <option value="2015">请选择</option>
+                                    <option value="2015">预习</option>
+                                    </select>
+                            </span>
+                            <span class="selectWrap big_sel">
+                           	<i></i>
+                           	<em>请选择</em>
+                            	<select data-validation-engine="validate[required]" data-prompt-target="new_department" data-prompt-position="inline" name="UserForm[department]" id="UserForm_department">
+                                    <option value="2015">请选择</option>
+                                    <option value="5">语文</option>
+                                    </select>
+                            </span>
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="formL">
+                                <label><span style="color: red;vertical-align: middle;">* </span>详情：</label>
+                            </div>
+                            <div class="formR personal">
+                            	<button type="button" class="bg_green btn w140 btn40 up_pic_Js">上传图片</button>
+                                <ul class="up_test_list clearfix hide">
+                                    <li><img src="../../images/test_img.png" alt=""><span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt=""><span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt=""><span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt=""><span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt=""><span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt=""><span class="delBtn"></span></li>
+                                    <li class="more"></li>
+                                </ul>
+                            </div>
+                      </div>
+                    <div class="row" style="margin-top:-10px">
+                        <div class="formL">
+                            <label>总结：</label>
+                        </div>
+                        <div class="formR">
+                            <div class="textareaBox">
+                           <textarea class="textarea"></textarea>
+                           <span class="placeholder"></span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+</body>
+</html>

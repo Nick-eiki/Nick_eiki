@@ -1,0 +1,422 @@
+﻿<!doctype html>
+<html id="html">
+
+<head>
+    <meta charset="utf-8">
+    <title>班级-文件</title>
+    <link href="../css/base.css" rel="stylesheet" type="text/css">
+    <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../css/popBox.css" rel="stylesheet" type="text/css">
+    <link href="../css/classes.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../js/fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../js/base.js" type="text/javascript"></script>
+    <script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+    <script src="../js/fancyBox/source/jquery.fancybox.js" type="text/javascript"></script>
+    <script src="../js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+    <script>
+    $(function() {
+        //$('.fancybox').fancybox();
+
+        $('.file_list li').hover(
+                function() {
+                    $(this).children('.mask_link').show();
+                },
+                function() {
+                    $(this).children('.mask_link').hide();
+                }
+
+            )
+            //截取右侧班级成员10个显示
+        $('.ta_student_list').children('li:gt(9)').hide();
+        //点击展开
+        $(".interlink .all").click(function() {
+            if ($(this).text() == "查看全部30位成员") {
+                $(".student_list").css("height", "auto");
+                $(this).text("收起");
+            } else {
+                $(".student_list").css("height", 100);
+                $(this).text("查看全部30位成员");
+            }
+        });
+        $(".fancybox").fancybox({
+            'zoomSpeedIn': 300,
+            'zoomSpeedOut': 300,
+            'overlayShow': false
+        });
+    })
+    </script>
+</head>
+
+<body class="classes" style=" background:#42A4DB">
+    <div class="head">
+        <input type="radio">
+    </div>
+    <!--top_end-->
+    <!--主体-->
+    <div class="cont24 homepage classes_home">
+        <div class="grid_24 myInfo class_home_info">
+            <div class="infoBar pr">
+                <dl class="classes_head clearfix">
+                    <dt class="fl"><img src="../images/class.png" alt=""></dt>
+                    <dd class="">
+                        <h2>人大附中147班</h2>
+                    </dd>
+                    <dd class="">
+                        <div id="revise">
+                            <p class="class_opacity"></p>
+                            <p class="class_title">用所有热情换回时间，让青春烈火燃烧永恒</p>
+                            <i class="ico"></i> </div>
+                    </dd>
+                </dl>
+                <dl class="classes_code">
+                    <dt>
+                        <div class="img_code"> <img src="../images/QRCode.png"> </div>
+                    </dt>
+                    <dd>
+                        <p class="text_code">扫描二维码下载手机APP</p>
+                    </dd>
+                </dl>
+                <div class="class_nav">
+                    <div class="class_nav_opacity"></div>
+                    <p class="class_top"></p>
+                    <ul class="class_nav_list clearfix">
+                        <li class="ac"><a href="#">首页</a></li>
+                        <li><a href="#">作业</a></li>
+                        <li><a href="#">考试</a></li>
+                        <li><a href="#">班级成员</a></li>
+                        <li><a href="#">班级文件</a></li>
+                        <li><a href="#">班内答疑</a></li>
+                        <li><a href="#">大事记</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid_24 main  classes_members classes_paper">
+            <div class="grid_24 alpha omega main_l classesCon">
+                <div class="main_cont">
+                    <div class="title">
+                        <h4>班级首页</h4>
+                    </div>
+                    <div class="classes_cont">
+                        <dl class="class_top">
+                            <dd class="class_book"> <a href="#"><i></i>作业</a> </dd>
+                            <dt class="statistics">
+                                <div>
+                                    <p>作业统计</p>
+                                    :<span>12345</span>份</div>
+                                <div>
+                                    <p>已截止</p>
+                                    :<span>1230</span>次</div>
+                                <div>
+                                    <p>未截止</p>
+                                    :<span>5</span>个</div>
+                            </dt>
+                        </dl>
+                        <dl class="class_top">
+                            <dd class="class_test"> <a href="#"><i></i>考试</a> </dd>
+                            <dt class="statistics">
+                                <div>
+                                    <p>作业统计</p>
+                                    :<span>12345</span>份</div>
+                                <div>
+                                    <p>已截止</p>
+                                    :<span>1230</span>次</div>
+                                <div>
+                                    <p>未截止</p>
+                                    :<span>5</span>个</div>
+                            </dt>
+                        </dl>
+                        <dl class="class_top">
+                            <dd class="class_answer"> <a href="#"><i></i>答疑</a> </dd>
+                            <dt class="statistics">
+                                <div>
+                                    <p>作业统计</p>
+                                    :<span>12345</span>份</div>
+                            </dt>
+                        </dl>
+                        <dl class="class_top">
+                            <dd class="class_file"> <a href="#"><i></i>文件</a> </dd>
+                            <dt class="statistics">
+                                <div>
+                                    <p>作业统计</p>
+                                    :<span>12345</span>份</div>
+                                <div>
+                                    <p>已截止</p>
+                                    :<span>1230</span>次</div>
+                            </dt>
+                        </dl>
+                    </div>
+                    <div class="fresh_things">
+                        <div class="title">
+                            <h4 class="font16">班级新鲜事</h4>
+                            <div class="title_r"> <a href="../setup/change_pwd.html" class="gray_d underline">换一换</a> </div>
+                        </div>
+                        <div class="the_problem">
+                            <dl class="topic">
+                                <dd><img src="../images/answerqu03.png"></dd>
+                                <dt> 唐僧老师布置了一份新作业 <a href="#"><em>"牛顿第二定律的应用"</em></a> <span class="date">2014-03-04&nbsp;14:00</span> </dt>
+                            </dl>
+                            <dl class="topic">
+                                <dd><img src="../images/answerqu03.png"></dd>
+                                <dt> 八戒头像提出了一个新问题 <a href="#"><em>"机智的小伙伴们，求这道题的详细解法，快来帮帮我吧。多谢啦。"</em></a>
+                                    <br> 题目如图:
+                                    <div class="topic_con">
+                                        <a href="http://pic15.nipic.com/20110720/7434631_111124480000_2.jpg" data-lightbox="light-group2"><img src="../images/text_img1.png"></a>
+                                        <a href="http://pic15.nipic.com/20110720/7434631_111124480000_2.jpg" data-lightbox="light-group3"><img src="../images/text_img1.png"></a>
+                                    </div>
+                                    <span class="date">2014-03-04&nbsp;14:00</span> </dt>
+                            </dl>
+                            <dl class="topic">
+                                <dd><img src="../images/answerqu03.png"></dd>
+                                <dt> 唐老师添加了一份班级大事记<em>"冬季运动会，我们班是第一名，嘎嘎。"</em>
+                                    <br> 感谢同学们在此次运动会中尤其的表现，在大家共同努力的情况下，我们班获得了第一名。再接再厉，争取下次我们吃大餐去。
+                                    <div class="topic_con">
+                                        <a href="http://pic15.nipic.com/20110720/7434631_111124480000_2.jpg" data-lightbox="light-group2"><img src="../images/text_img1.png"></a>
+                                        <a href="http://pic15.nipic.com/20110720/7434631_111124480000_2.jpg" data-lightbox="light-group3"><img src="../images/text_img1.png"></a>
+                                    </div>
+                                    <span class="date">2014-03-04&nbsp;14:00</span> </dt>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="fresh_things class_event">
+                        <div class="title">
+                            <h4 class="font16">班级大事记</h4>
+                            <div class="title_r"> <a href="../setup/change_pwd.html" class="gray_d underline">查看更多</a> </div>
+                        </div>
+                        <div class="big_events">
+                            <div class="slider-box">
+                                <a class="btn prev" href="javascript:void(0);"></a>
+                                <div class="bd">
+        <ul class="image-row">
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="fancybox" href="../images/class_right_2.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="../images/boy1.jpg" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a class="btn next" href="javascript:void(0);"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fresh_things members">
+                        <div class="title">
+                            <h4 class="font16">班级成员</h4>
+                            <div class="title_r"> <a href="../setup/change_pwd.html" class="gray_d underline">查看更多</a> </div>
+                        </div>
+                        <div class="class_members">
+                            <div class="teacher">
+                                <h4>教师</h4>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                                <dl class="tch_list">
+                                    <dd>
+                                        <a href="#"><img src="../images/answerqu03.png"></a>
+                                    </dd>
+                                    <dt>孙尚香</dt>
+                                </dl>
+                            </div>
+                            <div class="student">
+                                <h4>学生</h4>
+                                <div class="student_list">
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                    <dl class="stu_list">
+                                        <dd>
+                                            <a href="#"><img src="../images/answerqu03.png"></a>
+                                        </dd>
+                                        <dt>孙尚香</dt>
+                                    </dl>
+                                </div>
+                                <div class="interlink"><a href="javascript:;" class="all">查看全部30位成员</a><i></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主体end-->
+</body>
+
+</html>

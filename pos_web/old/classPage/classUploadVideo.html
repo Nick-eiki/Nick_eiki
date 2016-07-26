@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/classPage.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+
+<title>班级--每周一课上传</title>
+<script type="text/javascript">
+$(function(){
+
+//选择老师弹窗
+	$('.teacherListBox').dialog({
+		autoOpen:false,
+		width:500,
+		modal: true,
+		resizable:false,
+		buttons: [
+				{
+					text: "确定",
+					click: function() {
+						$('.sel_teacher .btn').prev('span').css('margin-right',20).text($( ".teacherListBox .ac").text());
+						$('.sel_teacher .btn').text('重新选择');
+						$( this ).dialog('close');
+					}
+				},
+				{
+					text: "取消",
+					click: function() {
+						$( this ).dialog('close');
+					} 
+				}
+			]
+		});	
+	$('.sel_teacher .btn').live('click',function(){
+		var _this=$(this);
+		$( ".teacherListBox" ).dialog( "open" );
+		$( ".teacherListBox li").click(function(){
+			$(this).addClass('ac').siblings().removeClass('ac');
+		})
+	})
+})
+</script>
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+	<div class="cont24 clearfix">
+    	<div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登陆</a><a class="userReg" href="#">免费注册</a></div>
+            
+            <div class="userAccount hide grid_3 alpha omega">
+            	<img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+            	<h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束-->
+<!--主体内容开始-->
+
+	<div class="mainBody cont24">
+        <div class="main_head">
+            <h2 class="class_t">
+            	<span class="classFocus">人大附中147班</span><i class="class_btn"></i>
+            	
+            </h2>
+            <h3 class="Signature">
+            	<span>我不是最好的，但却是唯一的向前冲，让我们与众不同</span><i></i>
+            </h3>
+            
+        </div>
+        <div class="main_cent">
+        	<div class="mainNav clearfix">
+            	<ul class="mainNav_L">
+                	<li><a href="#">首页</a></li>
+                    <li><a href="#">班级公告</a></li>
+                    <li class="ac"><a href="#">每周一课</a></li>
+                    <li><a href="#">大事记</a></li>
+                    <li><a href="#">班级成员</a></li>
+                </ul>
+                <ul class="mainNav_R">
+                	<li>
+                    	<i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                     	<ul class="tab hide">
+                        	<li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                            <li>零食</li>
+                        </ul>   
+                     </li>
+                    <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                    <li><i class="management"></i><span>个人管理中心</span></li>
+                </ul>
+            </div>
+            <div class="class_c clearfix">
+            	<div class="crumbs"><a href="#">每周一课</a> >> 上传视频</div>
+                <div class="centLeft">
+            	<div class="uv_title pr">
+					<h3>上传视频</h3>
+                	<hr>
+                </div>
+				<form>
+                	<ul class="form_list">
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>课程名称：</label>
+                                </div>
+                                <div class="formR">
+                                    <input type="text" class="text">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>地区：</label>
+                                </div>
+                                <div class="formR">
+                                    <select class="mySel">
+                                        <option value="选择省">选择省</option>
+                                    </select>
+                                    <select class="mySel">
+                                        <option value="选择地区">选择地区</option>
+                                    </select>
+                                    <select class="mySel">
+                                        <option value="选择县">选择县</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>年级：</label>
+                                </div>
+                                <div class="formR">
+                                    <select class="mySel">
+                                        <option value="一年级">一年级</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>科目：</label>
+                                </div>
+                                <div class="formR">
+                                    <select class="mySel">
+                                        <option value="一年级">语文</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>教材版本：</label>
+                                </div>
+                                <div class="formR">
+                                    <select class="mySel">
+                                        <option value="人教版">人教版</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label><i></i>上传视频：</label>
+                                </div>
+                                <div class="formR">
+                                    <div class="up_pic"> 
+                                        <p class="addPic btn">
+                                            <a href="javascript:;" class="id_btn" style="color:#FFF;">添加视频</a>
+                                            <input id="fileupload" type="file" name="files[]" multiple class="file">
+                                         </p>
+                     				</div>
+                                    <div class="up_img"> <img src="../images/ivo.png" alt="" width="120" height="90"> </div>
+                                </div>
+                            </li>
+                                                <li class="look_z">
+                        <div class="formL">
+                            <label>授课老师：</label>
+                        </div>
+                        <div class="formR sel_teacher"> <span></span>
+                            <button type="button" class="btn">选择老师</button>
+                        </div>
+                    </li>
+
+                            <li>
+                                <div class="formL">
+                                    <label>设置权限：</label>
+                                </div>
+                                <div class="formR">
+                                	<p class="fomr_p">
+                                        <label>
+                                            <input type="checkbox">
+                                            本班学生可见</label>
+                                        <label>
+                                            <input type="checkbox">
+                                            教研组同事可见</label>
+                                        <label>
+                                            <input type="checkbox">
+                                            部门同事可见</label>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="formL">
+                                    <label>课程介绍：</label>
+                                </div>
+                                <div class="formR">
+                                    <div>副文本编辑器</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="conserve">
+                            <button type="button" class="B_btn110">确&nbsp;&nbsp;定</button>
+                        </p>
+				</form>
+                </div>
+            </div>
+            
+        </div>
+
+	</div>
+<!--主体内容结束-->
+
+
+<div class="footWrap">
+	<div class="foot">
+    	<dl>
+        	<dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+        	<dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+        	<dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+        	<dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+
+
+</div>
+
+<div class="popBox teacherListBox hide" title="选择教师">
+    <ul>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>张三</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>李四</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>张三</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>李四</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>张三</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>李四</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>张三</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>李四</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>张三</li>
+        <li><img src="../images/teacher_s.jpg" width="40" height="40" alt=""/>李四</li>
+    </ul>
+    <div class="page minipage"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+</div>
+
+</body>
+</html>

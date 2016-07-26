@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/main.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src='../../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<link href="../../css/base.css" type="text/css" rel="stylesheet">
+<link href="../../css/student.css" type="text/css" rel="stylesheet">
+<link href="../../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+
+<script>
+
+$(function(){
+	
+/*删除按钮*/	
+$('.minute li i').live('click',function(){
+	$(this).parent().remove();	
+})
+
+//选择老师
+
+$('.up_popo').click(function(){
+/*上传试卷*/
+$('#up-manage').dialog({
+			autoOpen: false,
+			width:600,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "确定",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#up-manage" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+	})
+	
+	
+	
+	
+
+/*删除添加的试卷*/
+	$('.up_img_js li').live('mouseover',function(){
+		$(this).children('i').show();	
+	});
+	$('.up_img_js li').live('mouseout',function(){
+		$(this).children('i').hide();	
+	})
+	$('.up_img_js li i').live('click',function(){
+		$(this).parent().remove();	
+	})
+
+//更多图片
+	$('.more_js').toggle(function(){
+		$(this).parent('ul').css('height','auto')	
+	},
+	function(){
+		$(this).parent('ul').css('height','50px')	
+	}
+	
+	)
+
+})
+</script>
+
+
+<title>学生-上传试卷</title>
+</head>
+
+<body>
+
+<!--顶部开始-->
+<div class="min_head">
+  <div class="cont24 clearfix">
+    <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+    <div class="userCenter grid_6 push_12 pr">
+      <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+      <div class="userAccount hide grid_3 alpha omega"> <img src="../../images/user01.jpg">
+        <h5>张三疯<i></i></h5>
+        <ul class="hide">
+          <li><a class="tB" href="#">我的设置</a></li>
+          <li><a class="tC" href="#">我的学校</a></li>
+          <li><a class="tC" href="#">我的班级</a></li>
+          <li><a class="quit" href="#">退出</a></li>
+        </ul>
+      </div>
+      <div class="userMsg grid_2 hide alpha omega">
+        <h5><i></i><em>(3)</em></h5>
+        <ul class="subMenu hide">
+          <li><a class="tB" href="#">我的私信(2)</a></li>
+          <li><a class="tC" href="#">我的品论(3)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+  <div class="mainNav">
+    <ul class="mainNav_R clearfix">
+      <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+        <ul class="tab hide">
+          <li>零食</li>
+          <li>零食</li>
+          <li>零食</li>
+          <li>零食</li>
+        </ul>
+      </li>
+      <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+      <li><i class="management"></i><span>个人管理中心</span></li>
+    </ul>
+  </div>
+  <div class="currentLeft grid_5 push_1">
+    <div class="item l_userInfo clearfix"> <img src="../../images/teacher_l.jpg">
+      <ul>
+        <li><span>30</span>作业</li>
+        <li><span>300</span>错题</li>
+        <li><span>49</span>精品课程</li>
+      </ul>
+    </div>
+    <div class="item l_asideMenu">
+      <ul class="setupMenu">
+        <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+          <ul class="subMenu hide">
+            <li><a class="ac" href="../student/stu_setup_info.html">基本信息</a></li>
+            <li><a href="../stu_setup_headPic.html">头像管理</a></li>
+            <li><a href="../stu_setup_changePassword.html">密码管理</a></li>
+            <li><a href="../stu_setup_email.html">邮箱管理</a></li>
+          </ul>
+        </li>
+        <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+          <ul class="subMenu hide">
+            <li><a href="../stu-msg_my_notice.html">我的通知</a></li>
+            <li><a href="../stu-msg_dialogue.html">发私信</a></li>
+            <li><a href="../stu-msg_msgList.html">我的私信</a></li>
+          </ul>
+        </li>
+        <li><a class="lisM" href="javascript:;"><i></i>我的作业</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+        <li><a class="lisS" href="javascript:;"><i></i>考试试卷和成绩</a>
+          <ul class="subMenu hide">
+            <li><a href="../stu-examination-manage.html">考试试卷管理</a></li>
+          </ul>
+        </li>
+        <li><a class="lisN" href="javascript:;"><i></i>学习时间轴</a>
+          <ul class="subMenu hide">
+            <li><a href="#">学习时间轴</a></li>
+            <li><a href="#">成绩统计表</a></li>
+          </ul>
+        </li>
+        <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+        <li><a class="lisP" href="javascript:;"><i></i>测验管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">日常测验</a></li>
+            <li><a href="#">推送题目</a></li>
+          </ul>
+        </li>
+        <li><a class="lisQ" href="javascript:;"><i></i>错题管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">错题集</a></li>
+            <li><a href="#">题目录入</a></li>
+          </ul>
+        </li>
+        <li><a class="lisI" href="javascript:;"><i></i>课程管理</a>
+          <ul class="subMenu hide">
+            <li><a href="#">课程管理</a></li>
+            <li><a href="#">评论管理</a></li>
+            <li><a href="#">课程总结</a></li>
+            <li><a href="#">家长会</a></li>
+          </ul>
+        </li>
+        <li><a class="lisK" href="javascript:;"><i></i>我的收藏</a>
+          <ul class="subMenu hide">
+            <li><a href="#">收藏的讲义</a></li>
+            <li><a href="#">收藏的课程</a></li>
+          </ul>
+        </li>
+        <li><a class="lisL" href="../stu-testpaper-answer.html"><i></i>答疑管理(提问)</a>
+          <ul class="subMenu hide">
+            <li><a href="#">暂无内容(空)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="currentRight grid_16 push_2 up_work_details">
+    <div class="noticeH clearfix noticeB">
+      <h3>测验名称</h3>
+      
+      
+    </div>
+    <hr>
+    <div class="work_detais_cent">
+      	<h4>测验名称</h4>
+      	<ul class="detais_list">
+        	<li>
+            	<span>地区：<i>北京 海淀区</i></span><span>年级：<i>一年级</i></span><span>科目：<i>数学</i></span><span>版本：<i>人教版</i></span>
+           </li>
+           <li><span>知识点：<i>追击问题，相遇问题</i></span></li>
+           <li><span>试卷简介：<i>试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介试卷简介</i></span></li>
+        </ul>
+        <div class="details_b" id="details_b">
+                <div class="species clearfix">
+                	<p>试卷内容：</p>
+                    <div class="species_Right">
+                    	<ul class="minute minute70 clearfix ">
+                       	 	<li>
+                                <span>
+                                	<img alt="" src="../../images/12.png">
+                                    <em><a href="../teacher-testpaper-work_preview.html">试卷预览</a></em>
+                                </span>
+                                <i></i>	
+                            </li>
+                             <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                                <i></i>
+                            </li>
+                             <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                                <i></i>
+                            </li>
+                             <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                                
+                            </li>
+                             <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                                <i></i>
+                            </li>
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                              <li class="add">
+                                <span class="more_btn03"><img alt="" src="../../images/more.png"></span>
+                               
+                            </li>  
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                            
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                           
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li>
+                            <li>
+                                <span><img alt="" src="../../images/12.png"></span>
+                               <i></i>
+                            </li> 
+                    	</ul>
+                    </div>
+                 
+                </div>
+                <hr class="hr_sp">
+                <div class="exa">
+                	<dl class="exa_list">
+                    	<dt>
+                        	<p class="paper_btn">
+                            	<!--当已经上传一些东西时，上传按钮的文字会变成继续上传!-->
+                                <button type="button" class="mini_btn exa_btn up_popo">上传答案</button>
+                                <button type="button" class="mini_btn exa_btn">上传完毕</button>
+                                <button type="button" class="mini_btn exa_btn">修改答案</button>
+                            </p>
+                        
+                        </dt>
+                        <dd>
+                        	<ul class="anlist clearfix" style="height:50px; overflow:hidden;">
+                            	<li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                 <li class="more more_js" title="点击这里查看更多"><img src="../../images/more.png" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                               
+                                <li><img src="../../images/teacher_s.jpg" alt=""></li>
+                            </ul>
+                        	
+                            
+                         </dd>
+                        
+                        <dd class="answer">
+                            <p class="clearfix"><strong>我的答案<i>(已批阅)</i></strong><span>总成绩：90</span></p>
+                            <ul class="ul_list clearfix" style="height:50px; overflow:hidden;">
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class="more more_js"><img src="../../images/more.png" alt=""></li>
+                            </ul>
+                            <p><a href="stu_test_look_over.html"class="exa_btn mini_btn">查看批改</a></p>
+                        </dd>
+                        <dd class="answer">
+                            <p class="clearfix"><strong>王晓明的答案<i>(未批改)</i></strong></p>
+                            <ul class="ul_list clearfix" style="height:50px; overflow:hidden;">
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class=""><img src="../../images/picture.png" alt=""></li>
+                                <li class="more more_js"><img src="../../images/more.png" alt=""></li>
+                            </ul>
+                            <p><a href="../stu-mistake-correctPaper.html" class="exa_btn mini_btn">我要批改</a></p>
+                        </dd>
+                    </dl>
+                   
+                	
+                </div>
+                
+               
+                
+                
+        
+        </div>
+       
+        
+        <div class="page"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+      </div>
+    
+    
+  </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+  <div class="foot">
+    <dl>
+      <dt>关于我们</dt>
+      <dd><a href="#">关于班海</a></dd>
+      <dd><a href="#">招聘启事</a></dd>
+      <dd><a href="#">法律声明</a></dd>
+      <dd><a href="#">网站地图</a></dd>
+    </dl>
+    <dl>
+      <dt>商务合作</dt>
+      <dd><a href="#">商务合作</a></dd>
+      <dd><a href="#">友情链接</a></dd>
+      <dd><a href="#">资源合作</a></dd>
+      <dd><a href="#">视频合作</a></dd>
+    </dl>
+    <dl>
+      <dt>联系我们</dt>
+      <dd><a href="#">在线客服</a></dd>
+      <dd><a href="#">官方微博</a></dd>
+      <dd><a href="#">意见反馈</a></dd>
+      <dd><a href="#">关注微信</a></dd>
+    </dl>
+    <dl>
+      <dt>问题帮助</dt>
+      <dd><a href="#">常见问题</a></dd>
+      <dd><a href="#">用户答疑</a></dd>
+    </dl>
+    <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+      京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+  </div>
+</div>
+<!--上传试卷-->
+<div id="up-manage" class=" popBox up-manage hide" title="上传试卷">
+    <div class="impBox">
+    	 <ul class="form_list">
+               <!--弹窗的名称是对应页面里面的名称的-->
+                <li>
+                    <div class="formL">
+                        <label for="name"><i></i>考试名称：</label>
+                    </div>
+                    <div class="formR">
+                        <span>考试名称</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="formL">
+                        <label for="name"><i></i>考试试卷：</label>
+                    </div>
+                    <div class="formR">
+                       
+                             <div class=" clearfix" style="width:400px;">
+                             	<p class="addPic">
+                                <a href="javascript:;" class="id_btn" style="color:#FFF;">上传试卷</a>
+                               
+                                <input id="fileupload" type="file" name="files[]" multiple class="file">
+                             </p>
+                              <em class="em_text">文件格式限定为jpg,png,bmp</em> 
+                             
+                             </div>
+                             <ul class="up_img up_img_js clearfix"> 
+                                <li><img src="../../images/ivo.png" alt="" width="120" height="90"><i class="hide"></i></li>
+                            </ul>
+                            <div class="c_text"><em>试卷名称.jpg</em> <i>(25.7KB)</i><span class="Progress"><i class="Progress_i"></i></span></div>
+                            
+                         
+                    </div>
+                </li>
+                
+                
+            </ul>
+    </div>
+</div>
+</body>
+</html>

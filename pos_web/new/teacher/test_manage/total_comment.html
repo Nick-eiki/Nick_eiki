@@ -1,0 +1,670 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--个人中心--考试管理-科目总评</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/echarts/echarts.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+//统计图-------------------------------------	
+	// 路径配置
+	require.config({
+		paths: {echarts: '../../js/echarts'}
+	});
+	//饼图
+	var opts={
+			option1:{
+					title : {
+						text: '成绩公布图',
+						
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				},
+				option2: {
+					title : {
+						text: '本站满意度调查',
+						subtext: '纯属虚构',
+						x:'center'
+					},
+					tooltip : {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						orient : 'vertical',
+						x : 'left',
+						data:['0-59','60-69','70-79','80-89','90-100']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {
+								show: true, 
+								type: ['pie', 'funnel'],
+								option: {
+									funnel: {
+										x: '25%',
+										width: '50%',
+										funnelAlign: 'left',
+										max: 1548
+									}
+								}
+							},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					series : [
+						{
+							name:'成绩',
+							type:'pie',
+							radius : '55%',
+							center: ['50%', '60%'],
+							data:[
+								{value:10, name:'0-59'},
+								{value:20, name:'60-69'},
+								{value:20, name:'70-79'},
+								{value:30, name:'80-89'},
+								{value:20, name:'90-100'}
+							]
+						}
+					]
+				}
+		
+		
+		}
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init( document.getElementById('echarts04') );
+                // 为echarts对象加载数据 
+                myChart.setOption(opts.option1); 
+            }
+        );
+	
+	
+//知识树	
+	var zNodes =[
+		{ id:1, pId:0, name:"语文"},
+		{ id:11, pId:1, name:"拼音"},
+		{ id:111, pId:11, name:"声母"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+	];
+	
+	$('.addPoint').live('click',function(){
+		popBox.pointTree(zNodes,$(this))
+	
+	})
+	
+//打开编辑区域
+$('.test_class_this button').click(function(){
+	$(this).parent().hide().next().show();
+});
+
+
+//编辑科目总评
+;(function(){
+	var state=true;	
+	$('.commentCont .cancelBtn').click(function(){
+		if(state==true){
+			$(this).parents('.commentCont').hide().prev('.test_class_this').show();
+		}
+		else{
+			$('.commentCont input:text, .commentCont textarea').each(function(index, element) {
+				$(this).prev('span').text($(this).val()).show();
+				$(this).hide();
+				$('.amend_ico').show();
+			});	
+			$('.addPoint').hide();
+			$(this).parent().hide();
+		}
+	});
+
+	$('.commentCont .okBtn').click(function(){
+		state=false;
+		$('.commentCont input:text, .commentCont textarea').each(function(index, element) {
+			$(this).prev('span').text($(this).val()).show();
+			$(this).hide();
+			$('.amend_ico').show();
+		});	
+		$('.addPoint').hide();
+		$(this).parent().hide();
+	});
+
+	$('.amend_ico').click(function(){//编辑
+		state=false;
+		$('.commentCont span').each(function(index, element) {
+			$(this).next('input,textarea').show().val($(this).text());
+			$(this).hide();
+			$('.addPoint,.commentCont .submitBtnBar').show();
+		});	
+	});
+})();
+
+//修改成绩
+$('.testpaperList .editBtn').click(function(){
+	var pa=$(this).parent('.testpaperList');
+	var _this=$(this);
+	$(this).hide();
+	pa.children('.score').hide();
+	pa.find('.text').val(pa.children('.score').text());
+	pa.children('.inputbar').show();
+	pa.find('.text').placeholder({value:"分数"});
+	
+	function modify(){
+		var score=pa.find('.text').val();
+		if(!isNaN(score) && score<999){
+			_this.show();
+			pa.children('.score').show().text(pa.find('.text').val());
+			pa.children('.inputbar').hide();
+		}
+		else{
+			popBox.errorBox('请输入3位以内数字');
+		}
+	};
+	
+	$(document).keyup(function(event){
+	  	if(event.keyCode ==13)modify()//确定
+	});
+	
+	$(document).keyup(function(event){
+	  if(event.keyCode ==27){//esc
+	  	_this.show();
+		pa.children('.score').show();
+		pa.children('.inputbar').hide();
+		pa.children('.text').hide().val("");
+	  };
+	});
+	$('.testpaperList .scoreOkBtn').click(function(){
+		modify()
+	});
+});
+
+
+//更换电子试卷
+	$('.digtalFile .modifyBtn').click(function(){
+		$('.digtalFile h6').hide();
+		$('.digtalFile .subTitleBar_box').show();
+	});
+	$('.digtalFile .subTitleBar_box li').click(function(){
+		var txt=$(this).text();
+		$('.digtalFile h6').show()
+		$('.digtalFile h6 a').text(txt);
+		$('.digtalFile .subTitleBar_box').hide();
+	});
+
+//考试名称修改
+$('.popBox').dialog({
+	autoOpen:false,
+	width:480,
+	modal: true,
+	resizable:false,
+	close:function(){$(this).dialog("close")}
+});
+
+$('.ChangetestNameBox .okBtn').click(function(){
+	alert(55555);
+	$(this).parents('.popBox').dialog("close");
+});
+
+
+	
+})
+
+
+
+</script>
+</head>
+
+<body class="teacher">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l">
+            <div class="clearfix item l_userInfo"> <img src="../../images/teacher_l.jpg"> <a style="border-right:1px solid #ddd"><em>30</em><br>
+                试卷</a><a><em>300</em><br>
+                课程</a> </div>
+            <div class="item l_asideMenu">
+                <h4>我的档案</h4>
+                <ul class="setupMenu">
+                    <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">信息</a></li>
+                            <li><a href="#">通知</a></li>
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">考试管理</a></li>
+                            <li><a href="#">试卷管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">题目推送</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a class="ac" href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">班级统计</a></li>
+                            <li><a href="#">熊孩子管理器</a></li>
+                            <li><a href="#">个人统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">教研课题</a></li>
+                            <li><a href="#">教学计划</a></li>
+                            <li><a href="#">听课评课</a></li>
+                            <li><a href="#">教研组资料</a></li>
+                            <li><a href="#">教研日记</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                            <li><a href="#">资料袋</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">收藏的讲义</a></li>
+                            <li><a href="#">收藏的课程</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">暂无内容(空)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid_19 main_r">
+            <div class="main_cont test justifying">
+                <div class="title"> <a href="#" class="txtBtn backBtn"></a>
+                    <h4>科目总评</h4>
+                    <div class="title_r">
+                    	考试时间:2014-05-12
+                    </div>
+                </div>
+                <div class="title item_title noBorder">
+                    <h4>统计数据分析</h4>
+                </div>
+                <div class="test_statistics">
+                    <div class="echarts">
+                        <div id="echarts04" class="echarts" style="width:100%; height:300px; margin-bottom:30px; padding-bottom:20px"></div>
+                        <div class="tc">
+                            <button type="button" class="bg_blue w120">确定</button>
+                            <button type="button" class="bg_blue_l w120">取消</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="comment">
+                	<div class="title item_title noBorder">
+                        <h4>科目总评<em class="amend_ico hide"></em></h4>
+                    </div>
+                	<div class="test_class_this">
+                        <span>您还没有填写本次考试的科目总评,现在就</span>
+                        <button type="button" class="w160 btn50 bg_green c_Btn">科目总评</button>
+                    </div>
+                	<div class="form_list  commentCont hide">
+                    <div class="row">
+                        <div class="formL">
+                            <label>班级</label>
+                        </div>
+                        <div class="formR">名称</div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>最高分</label>
+                        </div>
+                        <div class="formR">28 </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>最低分</label>
+                        </div>
+                        <div class="formR">454</div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>分数段</label>
+                        </div>
+                        <div class="formR">
+                            <ul class="">
+                                <li>0至40%共10人</li>
+                                <li>40%至60%共10人</li>
+                                <li>60%至80%共10人</li>
+                                <li>80%至100%共10人 </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>试卷难点</label>
+                        </div>
+                        <div class="formR">
+                        	<span></span>
+                            <div id="tree_0" class="treeParent">
+                                <button class="addPoint">+ 编辑知识点</button>
+                                <div class="pointArea hide">
+                                    <input class="hidVal" type="hidden" value="">
+                                    <h6>已选中知识点：</h6>
+                                    <ul class="labelList clearfix">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>学习情况</label>
+                        </div>
+                        <div class="formR">
+                            <span></span><textarea class=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label></label>
+                        </div>
+                        <div class="formR submitBtnBar">
+                            <button type="button" class="bg_blue btn40 okBtn">确定</button>
+                            <button type="button" class="bg_blue_l btn40 cancelBtn">取消</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <br>
+                <hr>
+                <div class="testpaper_and_score">
+                	 <div class="title item_title noBorder">
+                        <h4>学生试卷与成绩</h4>
+                        <div class="title_r">
+                        	<a href="javascript:;" class="bg_blue w100 a_button">批量录入成绩</a>
+                        </div>
+                    </div>
+                    <div class="test_class_this">
+                        <span>您还没有录入学生成绩,现在就</span>
+                        <button type="button" class="w160 btn50 bg_green c_Btn">录入成绩</button>
+                    </div>
+                    <div class="form_list hide">
+                        <div class="row">
+                            <div class="formL">
+                                <label title="学生一023424">学生一023424</label>
+                            </div>
+                            <div class="formR testpaperList">
+                         	<a href="#"><img src="../../images/test_img02.png" width="120" height="90">答卷第一页</a> 
+                        	<a href="#"><img src="../../images/test_img02.png" width="120" height="90">答卷第一页</a>  
+                         	<a href="#"><img src="../../images/test_img02.png" width="120" height="90">答卷第一页</a>  
+                                
+                                 <span class="score">750</span><span class="inputbar hide"><input type="text" class="text"><button type="button" class="bg_blue scoreOkBtn">确定</button></span> <i class="editBtn"></i>
+                                 <a href="#" class="btn bg_blue w100">批改试卷</a>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="formL">
+                                <label title="学生忘二023424">学生忘二023424</label>
+                            </div>
+                            <!--test_img-->
+                            <div class="formR testpaperList digitalFile">
+                                <h6>客观题答案</h6>
+                                <p>
+                                	<span class="correct">1. A<i class="right"></i></span>
+                                	<span class="correct">2. B<i class="wrong"></i></span>
+                                    <span class="correct">3. A<i class="wrong"></i></span>
+                                    <span class="correct">1. A<i class="right"></i></span>
+                                </p>
+                                <h6>主观题答案</h6>
+                            <a href="#"><img src="../../images/test_img.png" width="120" height="90">答卷第一页</a> 
+                        	<a href="#"><img src="../../images/test_img.png" width="120" height="90">答卷第一页</a>  
+                         	<a href="#"><img src="../../images/test_img.png" width="120" height="90">答卷第一页</a>  
+                                 <span class="score">750</span><span class="inputbar hide"><input type="text" class="text"><button type="button" class="bg_blue scoreOkBtn">确定</button></span> <i class="editBtn"></i>
+                                 <a href="#" class="btn bg_blue w100">批改试卷</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="original_testpaper">
+                	<div class="title item_title noBorder">
+                        <h4>原始试卷</h4>
+                    </div>
+                    <div class="test_class_this">
+                        <span>您还没有上传原始试卷,现在就</span>
+                        <button type="button" class="w160 btn50 bg_green c_Btn">上传试卷</button>
+                    </div>
+                    <div class="selectFileTab ">
+                    	<div class="tab" style="margin-bottom:20px">
+                        <ul class="tabList clearfix">
+                            <li><a href="javascript:;" class="ac">上传试卷</a></li>
+                            <li><a href="javascript:;">使用试卷</a></li>
+                        </ul>
+                        <div class="tabCont select_test_tab">
+                            <div class="tabItem imgFile">
+                                <ul class="up_test_list clearfix">
+                                    <!--<li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一<span class="delBtn"></span>页</li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>-->
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li class="more"><input type="file"></li>
+                                </ul>
+                                <!--<button type="button" class="bg_blue w120 btn40 modifyBtn">修改</button>
+                                <button type="button" class="bg_blue w120 btn40 finishBtn">上传完毕</button>-->
+                            </div>
+                            <div class="tabItem use_test hide">
+                                <div class="subTitleBar">
+                                    <div class="subTitle_r pr">
+                                        <input type="text" class="text searchText" id="sclName" value="">
+                                        <button type="button" class="hideText searchBtn subTitle_Btn">搜索</button>
+                                    </div>
+                                    <div class="subTitleBar_box">
+                                        <ul class="resultList clearfix">
+                                            <li class="ac">考试名称</li>
+                                            <li>金州区第一重点中学</li>
+                                            <li>金州区第一重点中学</li>
+                                            <li>金州区第一重点中学</li>
+                                            <li>金州区第一重点中学</li>
+                                            <li>金州区第一重点中学</li>
+                                        </ul>
+                                        <div class="page"><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    	<button type="button" class="bg_blue w120 btn40">确定</button>
+                        <button type="button" class="bg_blue_l w120 btn40">取消</button>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="choose_original_testpaper ">
+                	<div class="title item_title noBorder">
+                        <h4>原始试卷</h4>
+                    </div>
+                    <div>
+                        <div class="imgFile">
+                        	<h5>试卷名称</h5>
+                                <ul class="up_test_list clearfix">
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一<span class="delBtn"></span>页</li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li><img src="../../images/test_img02.png" alt="">试卷第一页<span class="delBtn"></span></li>
+                                    <li class="more"></li>
+                                </ul>
+                                <button type="button" class="bg_blue_l w120 btn40 previewBtn">预览试卷</button>
+                       			<button type="button" class="bg_blue_l w120 btn40 modifyBtn">修改试卷</button>
+                                <button type="button" class="bg_blue w120 btn40 finishBtn">上传完成</button>
+                                <button type="button" class="bg_blue_l w120 btn40 cancelBtn">取 消</button>
+                        		<button type="button" class="bg_blue_l w120 btn40 changeBtn">更换试卷</button>
+                            
+                            </div>
+                        <div class="subTitleBar_box">
+                            <ul class="resultList clearfix">
+                                <li class="ac">考试名称</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                            </ul>
+                            <div class="page"><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                            <br>
+                        </div>
+                        
+                    </div>
+                    <div class="digtalFile">
+                    	<h6><a href="#" class="blue_d font16">电子试卷名称电子试卷名称试卷名称试卷名称试卷名称</a></h6>
+                        <div class="subTitleBar_box hide">
+                            <ul class="resultList clearfix">
+                                <li class="ac">考试名称</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                                <li>金州区第一重点中学</li>
+                            </ul>
+                            <div class="page"><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                        </div>
+                        <br>
+                        <button type="button" class="bg_blue_l w120 btn40 modifyBtn">更换试卷</button>
+                        <button type="button" class="bg_blue w120 btn40 okBtn">确定更换</button>
+                         <button type="button" class="bg_blue_l w120 btn40 cancelBtn">取 消</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--主体end-->
+
+<!--弹窗-->
+<div class="popBox ChangetestNameBox hide" title="考试名称">
+    <div class="popCont">
+    	<div class="pr al">
+        	<p class="warningTxt">操作提示：由于目前修改的试卷，同时被另外一次考试XXXX,使用为了保持数据的一致性与完成性，需要您为本次考试中的相应试卷重新命名：</p>
+        </div>
+        <div class="form_list no_padding_form_list">
+            <div class="row">
+                <div class="formL">
+                    <label class="w80">试卷名称</label>
+                </div>
+                <div class="formR w310">
+                	<input type="text" class="text ChgeNameText">
+                </div>
+            </div>
+		</div>
+        
+    </div>
+    <div class="popBtnArea">
+        <button type="button" class="okBtn">确定</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+
+
+</body>
+</html>

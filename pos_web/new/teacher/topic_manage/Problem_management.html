@@ -1,0 +1,697 @@
+﻿<!doctype html>
+<html id="html">
+
+	<head>
+		<meta charset="utf-8">
+		<title>教师--试卷管理-题目管理-知识点</title>
+		<link href="../../css/base.css" rel="stylesheet" type="text/css">
+		<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+		<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+		<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+		<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+		<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+		<script src="../../js/base.js" type="text/javascript"></script>
+		<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+		<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+		<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+
+		<script>
+			var q_data = {
+				"currPage": "当前页码",
+				"totalPages": "总页数",
+				"countSize": "总记录数",
+				"pageSize": "每页数据的条数",
+				"questionList": [{
+					"id": "01", //题目id
+					"provience": "北京", //地区1
+					"city": "北京", //地区2
+					"country": "北京", //地区3
+					"gradeid": "三年级", //适用年级
+					"gradename": "三年级", //适用年级名称
+					"subjectid": "shuxue", //科目
+					"subjectname": "数学", //科目名称
+					"versionid": "renjiao", //版本
+					"versionname": "人教版", //版本名称
+					"kid": "钟表,时间", //知识点
+					"tqtid": "tiankong", // 题型
+					"showTypeId": "填空", //题目显示类型
+					"questiontypename": "填空题", // 题型名称
+					"provenance": "", //出处
+					"provenanceName": "", //出处名称
+					"year": "2012", //年份
+					"school": "", //名校
+					"schoolName": "", //名校名称
+					"complexity": "5", //难易程度
+					"capacityText": "", //能力提升
+					"capacity": "", //能力提升id
+					"capacityText": "", //能力提升
+					"Tags": "", //自定义标签
+					"content": "", //题目
+					"operater": "stu002", //录入人id
+					"operaterName": "李清", //录入人
+					"createTime": "", //创建时间
+					"updateTime": "", //更新时间
+					"tqName": "人教版小学三年级数学上册第五单元《时、分、秒》测试题", //题目名称
+					"analytical": "", //解析
+					" answerOption": "", //选择题答案
+					"answerContent": "", //答案
+					"questionPrice": "20", //价格
+					" childnum": "3", //小题数量
+					"childQues": [ //小题
+						{
+							"id": 1017,
+							"tqtid": "01", // 题型
+							"questiontypename": "填空题", // 题型名称
+							"content": "",
+							"answerOption": "",
+							"answerContent": "xiao 1 daan",
+							"analytical": "",
+							"childnum": 0,
+							"childQues": [] //小小题
+						}
+					],
+					"status": "" //题目状态(0待审核,1通过,2禁用)
+				}, ],
+				"resCode": "000000",
+				"resMsg": "成功"
+			}
+			$(function() {
+				//选择课程
+				$('.hotWord').click(function() {
+					$('.hotWordList').show();
+					return false
+				})
+				$('.hotWordList').mouseleave(function() {
+						$(this).hide()
+					})
+					//
+				$('.hotWordList dd').live('click', function() {
+					$('.hotWordList dd').removeClass('ac')
+					$(this).addClass('ac');
+				});
+				//试卷中的题目 fixed	
+				$('.tree').tree({
+					expandAll: true,
+					operate: false
+				});
+				$('.knowledge').itemFixed({
+					fixTop: 50,
+					fixWidth: 230,
+					fixHeight: 600,
+					fixAdaptive: true,
+					fix_zIndex: 90,
+					margin_left: 0,
+					scroll_top: 50
+				});
+			})
+			//初始化弹窗
+    $(function() {
+        $('#popBox1').dialog({
+            autoOpen: false,
+            width: 720,
+            modal: true,
+            resizable: false,
+
+            buttons: [{
+                    text: "确定",
+                    click: function() {
+                      $("#popBox2").dialog("open");
+					  $(this).dialog("close");
+                    }
+                }, {
+                    text: "取消",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+
+            ]
+        });
+		$('#popBox2').dialog({
+            autoOpen: false,
+            width: 720,
+            modal: true,
+            resizable: false,
+            buttons: [{
+                    text: "确定",
+                    click: function() {
+                       $(this).dialog("close");
+                    }
+                }
+
+            ]
+        });
+        function placeholder(obj, defText) {
+            obj.val(defText)
+                .css("color", "#ccc")
+                .focus(function() {
+                    if ($(this).val() == defText) {
+                        $(this).val("").css("color", "#333");
+                    }
+                }).blur(function() {
+                    if ($(this).val() == "") {
+                        $(this).val(defText).css("color", "#ccc");
+                    }
+                });
+        }
+        /*我要纠错弹窗*/
+        $('#Ercorrection').click(function() {
+            $("#popBox1").dialog("open");
+        });
+		 
+    });
+	 $(function(){
+			 $('.textareaBox').speak('请输入您的错误描述',500);
+			 $(".myclass_table dt").mouseover(function(){
+				$(this).parent().addClass("ac");
+			})
+			.mouseout(function(){
+				$(this).parent().removeClass("ac");
+			});
+			
+		});
+		</script>
+	</head>
+<body class="teacher">
+	<div class="head"></div>
+<!--top_end-->
+	<!--主体-->
+	<div class="cont24">
+      <div class="grid24 main">
+        <div class="grid_24 main_r">
+          <div class="main_cont tezhagnhaioast_problem">
+             <div class="title">
+                          <h4>题目管理</h4>
+                      </div>
+             <div class="form_list no_padding_form_list">
+                <div class="row">
+                              <div class="formL">
+                                  <label>选题方式：</label>
+                              </div>
+                              <div class="formR">
+                                  <ul class="resultList clearfix">
+                                      <li><a href="#">知识点选题</a>
+                                      </li>
+                                      <li class="ac"><a href="#">同步章节选题</a>
+                                      </li>
+                                      <li><a href="#">试卷选题</a>
+                                      </li>
+                                      <li><a href="Problem_management-search.html">搜索选题</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                <div class="course">
+                              <a href="javascript:;" class="cour_btn hotWord">小学语文<i></i></a>
+                              <div class="course_box hotWordList hide">
+                                  <i class="arrow course_box_arrow"></i>
+                                  <dl class="clearfix">
+                                      <dt>小学</dt>
+                                      <dd class="ac">语文</dd>
+                                      <dd>数学</dd>
+                                      <dd>英语</dd>
+                                  </dl>
+                                  <dl class="clearfix">
+                                      <dt>初中</dt>
+                                      <dd>语文</dd>
+                                      <dd>数学</dd>
+                                      <dd>化学</dd>
+                                      <dd>生物</dd>
+                                      <dd>理综</dd>
+                                      <dd>文综</dd>
+                                      <dd>政治</dd>
+                                  </dl>
+                                  <dl class="clearfix">
+                                      <dt>高中</dt>
+                                      <dd>语文</dd>
+                                      <dd>数学</dd>
+                                      <dd>化学</dd>
+                                      <dd>理综</dd>
+                                      <dd>文综</dd>
+                                      <dd>政治</dd>
+                                  </dl>
+                              </div>
+                          </div>         
+             </div>
+             <hr>
+             <div class="form_list no_padding_form_list">
+                <div class="row ">
+                              <div class="formR">
+                                  <ul class="resultList clearfix testClsList ">
+                                      <li><a>全部题型</a>
+                                      </li>
+                                      <li class="ac"><a>选择题</a>
+                                      </li>
+                                      <li><a>填空题</a>
+                                      </li>
+                                      <li><a>书写题</a>
+                                      </li>
+                                      <li><a>阅读</a>
+                                      </li>
+                                      <li><a>语言表达</a>
+                                      </li>
+                                      <li><a>写作</a>
+                                      </li>
+                                      <li><a>作图题</a>
+                                      </li>
+                                      <li><a>回答题</a>
+                                      </li>
+                                      <li><a>口算题</a>
+                                      </li>
+                                      <li><a>应用题</a>
+                                      </li>
+                                      <li><a>其他</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                <div class="row">
+
+                              <div class="formR">
+                                  <ul class="resultList testClsList">
+                                      <li><a>全部难度</a>
+                                      </li>
+                                      <li class="ac"><a>容易</a>
+                                      </li>
+                                      <li><a>较易</a>
+                                      </li>
+                                      <li><a>一般</a>
+                                      </li>
+                                      <li><a>较难</a>
+                                      </li>
+                                      <li><a>困难</a>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                          </div>
+             </div>
+             <div class="problem_box clearfix problem_boxcon">
+                <div class="grid_5 alpha knowledge" style="overflow:auto">
+                              <div class="problem_tree_cont">
+                                  <h4>基本知识</h4>
+                                  <a href="#" class="resetting">重置知识点</a>
+                                  <div id="problem_tree">
+                                      <ul class="tree pointTree ">
+                                          <li><a href="javascript:;">第一级</a>
+                                              <ul class="subMenu">
+                                                  <li><a href="javascript:;" class="hasSubMenu">第二级</a>
+                                                      <ul class="subMenu">
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                      <ul class="subMenu">
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                      <ul class="subMenu">
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                          <li><a href="javascript:;">第三级</a>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                  </li>
+                                                  <li><a href="javascript:;">第二级</a>
+                                                  </li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="javascript:;">第一级</a>
+                                          </li>
+                                          <li><a href="javascript:;">第一级</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+
+                          </div>
+                <div class="problem_r grid_18 omega alpha">
+                    <div class="problem_r_list">
+                        <h5>增加题目<i></i></h5>
+                        <ul class="hot" style="display:none;">
+                            <li><a class="t_ico" href="javascript:;">增加题目<i></i></a>
+                            </li>
+                            <li class="list this "><a class="" href="testpaper_topic_inputA.html">录入新题</a>
+                            </li>
+                            <li class="list"><a class="" href="camera_upload_new_topic.html">上传新题</a>
+                            </li>
+                        </ul>
+                    </div>          
+                    <div class="tab fl">
+                        <ul class="tabList clearfix">
+                            <li><a href="javascript:;" class="ac">我的题库</a>
+                            </li>
+                            <li><a href="javascript:;">平台题库</a>
+                            </li>
+                            <li><a href="javascript:;">我收藏的题目</a>
+                            </li>
+                        </ul>
+                        <div class="tabCont problem_tab_r">
+                          <div class="tabItem">
+                              <div class="schResult">
+                                  <div class="test_paper_sort clearfix">
+                                      <ul class="resultList">
+                                          <li class="ac">上传的题目</li>
+                                          <li>录入的题目</li>
+                                      </ul>
+                                  </div>
+                                  <div class="testPaperView pr">
+                                      <div class="paperArea">
+                                          <div class="paper">
+                                              <!--<button type="button"  id="c10" pid="Q_chodddose" class="editBtn addBtn  fixedItem">组题</button>   保留-->
+                                              <div class="paper_r">
+                                                  <a href="javascript:;" id="Ercorrection" class="error_correction">我要纠错</a>
+                                                  <a href="javascript:;" class="page_modify"><i></i>修改</a>
+                                                  <a href="javascript:;" class="page_del"><i></i>删除</a>
+                                                  <a href="javascript:;" class="page_fav"><i></i>收藏</a>
+                                                  <a href="javascript:;" class="page_cancel_fav"><i></i>取消收藏</a>
+                                              </div>
+                                              <h5>题目1:</h5>
+                                              <h6>来源来源来源来源来源来源来源来源</h6>
+                                              <p class="q_content">题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                                              <div class="checkArea">
+                                                  <input id="r01" type="radio" class="radio" name="aaa">
+                                                  <label for="r01"><em>A</em>
+                                                      <p>
+                                                          <img src="../../images/homePageBG.jpg" width="300" height="200">
+                                                      </p>
+                                                  </label>
+                                                  <input id="r02" type="radio" class="radio" name="aaa">
+                                                  <label for="r02"><em>B</em>
+                                                      <p>
+                                                          fss sdf sf s s s sdf sdf sdf
+                                                      </p>
+                                                  </label>
+                                                  <input type="radio" class="radio" name="aaa">
+                                                  <label><em>C</em>
+                                                      <p>
+                                                          fss sdf sf s s s sdf sdf sdf
+                                                      </p>
+                                                  </label>
+                                                  <input type="radio" class="radio" name="aaa">
+                                                  <label><em>D</em>
+                                                      <p>
+                                                          fss sdf sf s s s sdf sdf sdf
+                                                      </p>
+                                                  </label>
+                                              </div>
+                                              <ul class="sub_Q_List">
+                                                  <li class="clearfix">
+                                                      <p><span>小题1:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</p>
+                                                      <div class="checkArea clearfix">
+                                                          <input id="r01" type="radio" class="radio" name="aaa">
+                                                          <label for="r01"><em>A</em>
+                                                              <p>
+                                                                  <img src="../../images/homePageBG.jpg" width="300" height="200">
+                                                              </p>
+                                                              <p>
+                                                                  <img src="../../images/homePageBG.jpg" width="300" height="200">
+                                                              </p>
+                                                          </label>
+                                                          <input id="r02" type="radio" class="radio" name="aaa">
+                                                          <label for="r02"><em>C</em>
+                                                              <p>
+                                                                  fss sdf sf s s s sdf sdf sdf
+                                                              </p>
+                                                          </label>
+                                                          <input type="radio" class="radio" name="aaa">
+                                                          <label><em>C</em>
+                                                              <p>
+                                                                  fss sdf sf s s s sdf sdf sdf
+                                                              </p>
+                                                          </label>
+                                                          <input type="radio" class="radio" name="aaa">
+                                                          <label><em>D</em>
+                                                              <p>
+                                                                  fss sdf sf s s s sdf sdf sdf
+                                                              </p>
+                                                          </label>
+                                                      </div>
+                                                  </li>
+                                                  <li>
+                                                      <p><span>小题2:</span>问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题问答题容小题内容</p>
+                                                      <div class="checkArea">
+                                                          <label>回答:</label>
+                                                          <textarea></textarea>
+                                                      </div>
+                                                  </li>
+                                                  <li>
+                                                      <p><span>小题3:</span>完型填空__(1)__小题内容小__(2)__题内容__(3)__小题内容小题内容小题内容小题内容小题内容小题内容</p>
+                                                      <div class="checkArea">
+                                                          <p>
+                                                              <label>填空1:</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案1</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案2</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案3</label>
+                                                          </p>
+                                                          <p>
+                                                              <label>填空2:</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案1</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案2</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案3</label>
+                                                          </p>
+                                                          <p>
+                                                              <label>填空3:</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案1</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案2</label>
+                                                              <input type="radio" class="radio" name="aaa">
+                                                              <label>答案3</label>
+                                                          </p>
+                                                      </div>
+                                                  </li>
+                                                  <li>
+                                                      <p><span>小题4:</span>普通填空____小题内容小_____题内容_____小题内容小题内容小题内容小题内容小题内容小题内容</p>
+                                                      <div class="checkArea">
+                                                          <p>
+                                                              <label>填空1</label>
+                                                              <input type="text" class="text">
+                                                          </p>
+                                                          <p>
+                                                              <label>填空2</label>
+                                                              <input type="text" class="text">
+                                                          </p>
+                                                          <p>
+                                                              <label>填空3</label>
+                                                              <input type="text" class="text">
+                                                          </p>
+                                                      </div>
+                                                  </li>
+                                              </ul>
+                                              <div class="btnArea clearfix"> <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span> <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span> </div>
+                                              <div class="answerArea hide">
+                                                  <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span>
+                                                  </p>
+                                                  <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                                              </div>
+                                          </div>
+                                          <hr>
+                                          <div class="paper">
+                                              <h5>题目2:</h5>
+                                              <h6>【2013年】 高考 多选题</h6>
+                                              <p class="q_content">题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                                              <div class="checkArea">
+                                                  <button type="button" class="uploadBtn">上传答案</button>
+                                                  <dl class="userAnswerList clearfix">
+                                                      <dt>您上传的答案:</dt>
+                                                      <dd>
+                                                          <img src="../../images/answer.png" alt="" />
+                                                      </dd>
+                                                  </dl>
+                                              </div>
+
+                                              <div class="btnArea clearfix">
+                                                  <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span>
+                                                  <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span>
+                                              </div>
+                                              <div class="answerArea  hide">
+                                                  <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span>
+                                                  </p>
+                                                  <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+                                              </div>
+                                          </div>
+                                          <hr>
+          <!--<div class="paper">
+          <h5>题目1:</h5>
+          <h6>【2013年】 高考 多个小题</h6>
+          <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+          <ul class="sub_Q_List">
+             <li><span>小题1:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+             <li><span>小题2:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+             <li><span>小题3:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容</li>
+         </ul>
+         <dl class="userUploadAnswerList clearfix">
+              <dt>您上传的答案:</dt>
+              <dd>1. <img src="../images/answer.png" alt=""/></dd>
+              <dd>2. <img src="../images/answer.png" alt=""/></dd>
+              <dd>3. <img src="../images/answer.png" alt=""/></dd>
+          </dl>
+          <div class="btnArea clearfix">
+              <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span>
+              <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span>
+          </div>
+          <div class="answerArea  hide">
+              <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+              <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+          </div>
+      </div>
+      <hr>
+      <div class="paper">
+          <h5>题目1:</h5>
+          <h6>【2013年】 高考 问答题</h6>
+          <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+          <dl class="userUploadAnswerList  clearfix">
+              <dt>您上传的答案:</dt>
+              <dd><img src="../images/answer.png" alt=""/></dd>
+          </dl>
+          <div class="btnArea clearfix">
+              <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span>
+              <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span>
+          </div>
+          <div class="answerArea  hide">
+              <p><em>答案:</em><span>正确答案内容内容内容内容内容内容</span></p>
+              <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+          </div>
+      </div>
+      <hr>
+      <div class="paper">
+          <h5>题目1:</h5>
+          <h6>【2013年】 高考 完型填空</h6>
+          <p>题干部__1__分题干部分题干部分题干部分题__2__干部分题干部分题干部分题__3__干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+          <div class="checkArea">
+              <ul>
+                  <li><i>1.</i><input type="radio" class="radio" name="q1" checked><label>A 备选项1</label><input type="radio" class="radio"  name="q1"><label>B 备选项2</label><input type="radio" class="radio"  name="q1"><label>C 备选项3</label>
+                  </li>
+                  <li><i>2.</i><input type="radio" class="radio"  name="q2"><label>A 备选项1</label><input type="radio" class="radio"  name="q2"><label>B 备选项2</label><input type="radio" class="radio" name="q2"><label>C 备选项3</label>
+                  </li>
+                  <li><i>3.</i><input type="radio" class="radio" name="q3"><label>A 备选项1</label><input type="radio" class="radio" name="q3"><label>B 备选项2</label><input type="radio" class="radio" name="q3"><label>D 备选项3</label>
+                  </li>
+              </ul>
+          </div>
+          <div class="btnArea clearfix">
+              <span class="openAnswerBtn fl">查看答案与解析<i class="open"></i></span>
+              <span class="r_btnArea fr">难度:<em>5</em>&nbsp;&nbsp;&nbsp;录入:admin</span>
+          </div>
+          <div class="answerArea  hide">
+              <p><em>答案:</em><span>1.答案</span><span>2.答案</span><span>3.答案</span></p>
+              <p><em>解析:</em>解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容解析内容</p>
+          </div>
+      </div>-->
+  </div>
+</div>
+ <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a>
+ </div>
+</div>
+
+                      </div>
+                      <div class="tabItem hide">
+
+                      </div>
+                      <div class="tabItem hide">
+                      </div>
+                   </div>
+                </div>          
+            </div>
+         </div>
+      </div>        
+    </div>      
+  </div>
+</div>
+		<!--主体end-->
+        <!--我要纠错弹出层-->
+    <div id="popBox1" class="popBox popBox_hand hide" title="题目纠错">
+        <div class="popCont  work_form_list">
+            <div class="new_tch_group">
+                <form>
+                    <div class="form_list">
+                        <div class="row">
+                            <div class="formL">
+                                <label>错误类型:</label>
+                            </div>
+                            <div class="formR personal topic_opt">
+                                <input type="checkbox" class="chked hide" id="ch3" name="act_type">
+                                <label class="chkLabel stuZ" for="ch3">题目类型</label>
+                                <input type="checkbox" class="chked hide" id="ch4" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch4">题目答案</label>
+                                <input type="checkbox" class="chked hide" id="ch5" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch5">题目解析</label>
+                                <input type="checkbox" class="chked hide" id="ch6" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch6">题目知识点</label>
+                                <input type="checkbox" class="chked hide" id="ch7" name="act_type">
+                                <label class="chkLabel patriarchZ" for="ch7">其它</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="formL">
+                                <label>错误描述:</label>
+                            </div>
+                            <div class="formR">
+                            <div class="textareaBox text_correction">
+                                <textarea class="textarea"></textarea>
+                                <span class="placeholder" style="display: block;">请输入您的错误描述</span>
+                                <div class="btnArea">
+                                <em class="txtCount">可以输入 <b class="num">300</b> 字</em>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--确定弹出层-->
+    <div id="popBox2" class="popBox popBox_hand hide" title="系统提示">
+        <div class="popCont">
+            <div class="">
+                <form>
+                    <div class="form_list">
+                        <div class="row work_row clearfix">
+                            <div class="formL formL_face">
+                                <label class="face_pic"><img src="../../images/face_pic.png" alt=""></label>
+                            </div>
+                            <div class="formR formR_text">
+                            非常感谢您的纠错，我们会持续改进的。
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+	</body>
+
+</html>

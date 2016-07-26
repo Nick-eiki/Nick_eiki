@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://www.banhai.com/student/managetask/details?relId=822 -->
+<html id="html" xmlns="http://www.w3.org/1999/html" class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7;IE=9;IE=8;IE=10;IE=11;IE=Edge">
+<title>班海-在线答题</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/student.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script>
+	
+$(function(){
+	//var topic=[["A","B"],["A"],["A","B","C"],["B"]];
+	var topicArr=[];
+	$('.paper').each(function(index, element) {
+		var _this=$(this);
+		_this.attr('data-index',index);
+		var isSub=_this.find('.paper').size();
+		var zhuguan=_this.find('.checkArea').size();
+		_this.addClass('paper_topic');
+		topicArr[index]="空";
+		if(zhuguan==0){//是否为主观题
+			_this.addClass('zhuguan');
+			topicArr[index]="zhuguan";
+		} 
+		else if(isSub){//是否有小题
+			_this.removeClass('paper_topic');
+			topicArr[index]="hasSub";
+		}
+		else if(isSub || !zhuguan){
+			return true;// 如果有小题,本题跳过,直接排列小题
+		} 
+    });
+	$('.paper_topic').each(function(index, element) {
+        $(this).attr('data-index',index);
+    });
+	
+	function setOnwser(){
+		var html='';
+		for(var i=0; i<topicArr.length; i++){
+			if(topicArr[i]=='hasSub') topicArr.splice(i, 1);	
+			if(topicArr[i]=='zhuguan'){
+				continue;
+			}
+			else{
+			html+='<span>题'+(i+1)+': '+topicArr[i]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			}
+		}
+		$('#keguan_answer').empty().html(html);
+	};
+	setOnwser();
+	$('.paper input').click(function(){
+		var pa=$(this).parents('.paper_topic');
+		var topicIndex=pa.attr('data-index');
+		var input_a=[];
+		pa.find('input').each(function(index, element) {
+            $(this).is(':checked') && input_a.push($(this).next().text());
+        });
+		console.log(input_a)
+		topicArr[topicIndex]=input_a;
+		setOnwser();
+		console.log(topicArr)
+	})
+})
+
+
+</script>
+</head>
+
+<body class="student">
+<div class="head">
+    <div class="cont24">
+        <h1>班海网</h1>
+        <ul class="head_nav">
+            <li><a class="" href="http://www.banhai.com/terrace/videopaper">视频库</a> </li>
+            <li><a class="" href="http://www.banhai.com/terrace/answer/index">平台答疑</a> </li>
+            <li><a class="" href="http://www.banhai.com/school/2021056/index">学校</a> </li>
+            <li><a class="has_subMenu ">班级帮</a>
+                <ul class="subMenu hide">
+                    <li>
+                        <dl>
+                            <dt>我的班级</dt>
+                            <dd><a href="http://www.banhai.com/class/10170521/index" title="2013年2班">2013年2班</a></dd>
+                        </dl>
+                        <dl class="hand_in_hand_classes_list">
+                            <dt class="pr">手拉手班级</dt>
+                            <!--<a href="../classes/classes_add_hand_in_hand.html" class=" hideText editLink"></a>-->
+                        </dl>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="userCenter">
+            <div class="userChannel"><a class="userName" href="http://www.banhai.com/student/setting/my-center" title="王高岭4"><i></i>王高岭4 </a></div>
+            <a href="http://www.banhai.com/site/logout" class="logOff">退出</a>
+            <div class="msgAlert hasMsg"> <a href="javascript:;">(<b id="messageCount">53</b>)</a>
+                <ul class="msgList hide ">
+                    <span class="arrow"></span>
+                    <li><a href="http://www.banhai.com/student/message/notice">通知(<b id="messageNotice">53</b>)</a></li>
+                    <li><a href="http://www.banhai.com/student/message/sys-msg">系统消息(<b id="messageSys">0</b>)</a></li>
+                    <!--                            <li><a href="--><!--?//= url('student/message/message-list'); ?--><!--">我的私信(<b id="messageMsg">0</b>)</a>--> 
+                    <!--                            </li>-->
+                </ul>
+            </div>
+            <a class="help" href="http://www.banhai.com/pub/help/focus_map_video.html" title="帮助"></a> </div>
+    </div>
+</div>
+
+<!--top_end--> 
+<!--主体-->
+
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l l_stuInfo">
+            <div class="clearfix item l_userInfo " style="height: auto;"><img data-type="header"  width="230" height="230" src="./班海-在线答题_files/144921277138710.jpg"> 
+                <!--        <a href="javascript:;" style="border-right:1px solid #ddd"><em>--><!--</em><br>作业</a>--> 
+                <!--        <a href="--><!--" style="border-right:1px solid #ddd"><em>--><!--</em><br>错题</a>--> 
+                <!--        <a href="javascript:;"><em>--><!--</em><br>精品课程</a>--> 
+            </div>
+            <div class="item l_asideMenu">
+                <ul class="setupMenu">
+                    <li><a class="noBg " href="http://www.banhai.com/student/setting/my-center"><i></i>个人中心</a></li>
+                    <li><a class="lisA" href="javascript:"><i></i>我的积分</a>
+                        <ul class="subMenu hide">
+                            <li> <a class="" href="http://www.banhai.com/student/integral/income-details">收入明细</a></li>
+                            <li> <a class="" href="http://www.banhai.com/student/integral/my-ranking">我的等级</a></li>
+                            <li> <a class="" href="http://www.banhai.com/student/integral/integral-exchange">积分兑换</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisA" href="javascript:;"><i></i>信息</a>
+                        <ul class="subMenu hide">
+                            <li> <a class="" href="http://www.banhai.com/student/message/notice">我的通知</a></li>
+                            <li><a class="" href="http://www.banhai.com/student/message/sys-msg">系统消息</a></li>
+                            <!--                    <li><a class="--><!--"--> 
+                            <!--                           href="--><!--">我的私信</a></li>-->
+                        </ul>
+                    </li>
+                    <li><a class="lisB close" href="javascript:;"><i></i>作业</a>
+                        <ul class="subMenu hide" style="display: block;">
+                            <li><a class="ac" href="http://www.banhai.com/student/managetask/work-manage?classid=10170521">2013年2班</a></li>
+                        </ul>
+                    </li>
+                    <li> <a class="noBg " href="http://www.banhai.com/student/exam/manage">考务管理</a> </li>
+                    <li><a class="noBg " href="http://www.banhai.com/student/managepaper/topic-push">练一练</a> </li>
+                    <li> <a class="noBg " href="http://www.banhai.com/student/answer/answer-questions">答疑</a> </li>
+                    <!--<li><a class="lisH" href="javascript:;"><i></i>答疑</a>
+				<ul class="subMenu hide">
+					<li><a class=""
+						   href="">我要提问</a></li>
+
+					<li>
+						<a class=""
+						   href="">答疑管理</a></li>
+				</ul>
+            </li>-->
+                    <li><a class="lisG noBg " href="http://www.banhai.com/student/super/curve-wrecker"><i></i>学霸养成记</a> </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>错题管理</a>
+                        <ul class="subMenu hide">
+                            <li> <a class="" href="http://www.banhai.com/student/wrongtopic/manage">错题集</a></li>
+                            <li> <a class="" href="http://www.banhai.com/student/wrongtopic/take-photo-topic">拍照录题</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!--<li><a class="lisG" href="javascript:;"><i></i>学霸养成记</a>
+
+            </li>
+            <li><a class="lisH" href="javascript:;"><i></i>学习时间轴</a>
+                <ul class="subMenu hide">
+                    <li><a href="#">学习时间轴</a></li>
+                    <li><a href="#">成绩统计表</a></li>
+                </ul>
+            </li>
+            <li><a class="lisH" href="javascript:;"><i></i>课程管理</a>
+                <ul class="subMenu hide">
+                    <li><a href="#">课程管理</a></li>
+                    <li><a href="#">评论管理</a></li>
+                    <li><a href="#">课程总结</a></li>
+                    <li><a href="#">家长会</a></li>
+                </ul>
+            </li>-->
+                </ul>
+            </div>
+        </div>
+        
+        <!--主体-->
+        <div class="grid_19 main_r">
+            <div class="main_cont online_answer">
+                <div class="title"> <a href="javascript:;" class="txtBtn backBtn" onclick="window.history.go(-1);"></a>
+                    <h4>在线答题</h4>
+                    <div class="title_r"><span>交作业期限：2015-12-05</span></div>
+                </div>
+                <div class="work_detais_cent" style="position:relative;">
+                    <h4>[提升能力]第五单元 化学方程式 课题3  利用化学方程式的简单计算（初中化学人教版九年级上）</h4>
+                    <span class="z">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初三&nbsp;&nbsp;化学&nbsp;&nbsp;人教版</span>
+                    <form id="form-homework" action="http://www.banhai.com/student/managetask/finish-answer?relId=822">
+                        <div class="testPaperView">
+                <div class="paperArea">
+                    
+
+<div class="paper">
+    <input type="hidden" class="bigType" value="5">
+    <input type="hidden" class="bigTitleID" name="answer[10057702]" value="">
+    <h5>题  </h5>
+    <h6>【2014        年】   完形填空</h6>
+
+    
+            <p></p><p>It was the district sports meet. My foot still hadn’t healed(痊愈)from a(n)<span style="text-decoration:underline;">　　</span>injury. I had<span style="text-decoration:underline;">　　</span>whether or not I should attend the meet. But there I was, <span style="text-decoration:underline;">　　</span>for the 3, 000-meter run. <br>“Ready. . . set. . . ”The gun popped and we were off. The other girls rushed<span style="text-decoration:underline;">　　</span>me. I felt<span style="text-decoration:underline;">　　</span>as I fell farther and farther behind. <br>“Hooray! ”shouted the crowd. It was the loudest<span style="text-decoration:underline;">　　</span>I had ever heard at a meet. The first-place runner was two laps(圈)ahead of me when she crossed the finish line. “Maybe I should<span style="text-decoration:underline;">　　</span>, ”I thought as I moved on. <span style="text-decoration:underline;">　　</span>, I decided to keep going. During the last two laps, I ran<span style="text-decoration:underline;">　　</span>and decided not to<span style="text-decoration:underline;">　　</span>in track next year. It wouldn’t be<span style="text-decoration:underline;">　　</span>it, even if my foot did heal. <br>When I finished, I heard a cheer—<span style="text-decoration:underline;">　　</span>than the one I’d heard earlier. I turned around and<span style="text-decoration:underline;">　　</span>enough, the boys were preparing for their race. “They must be cheering for the boys. ”I was leaving<span style="text-decoration:underline;">　　</span>several girls came up to me. “Wow, you’ve got courage! ”one of them told me. <br>“Courage? I just<span style="text-decoration:underline;">　　</span>a race! ”I thought. “I would have given up on the first lap, ”said another girl. “We were cheering for you. Did you hear us? ”<br>Suddenly I regained<span style="text-decoration:underline;">　　</span>. I decided to<span style="text-decoration:underline;">　　</span>track next year. I realized strength and courage aren’t always<span style="text-decoration:underline;">　　</span>in medals and victories, but in the<span style="text-decoration:underline;">　　</span>we overcome(战胜). The strongest people are not always the people who win, <span style="text-decoration:underline;">　　</span>the people who don’t give up when they lose.&nbsp;</p><p></p>
+            <ul class="sub_Q_List">
+            <li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225545]" value="">
+    
+        <p><span>小题1</span>
+            : </p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题1】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr class=""><td width="25%">A．slighter　　</td><td width="25%">B．worse　　</td><td width="25%">C．earlier　　</td><td width="25%">D．heavier</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225545" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225545]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225545]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225545]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225545]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225546]" value="">
+    
+        <p><span>小题2</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题2】</td><td width="100%"><br></td></tr><tr><td width="50%">A．expected</td><td width="50%">B．supposed</td></tr><tr><td width="50%">C．imagined</td><td width="50%">D．doubted</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225546" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225546]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225546]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225546]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225546]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225547]" value="">
+    
+        <p><span>小题3</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题3】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．late</td><td width="25%">B．eager</td><td width="25%">C．ready</td><td width="25%">D．thirsty</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225547" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225547]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225547]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225547]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225547]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225548]" value="">
+    
+        <p><span>小题4</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题4】</td><td width="100%"><br></td></tr><tr><td width="50%">A．from behind</td><td width="50%">B．ahead of</td></tr><tr><td width="50%">C．next to</td><td width="50%">D．close to</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225548" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225548]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225548]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225548]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225548]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225549]" value="">
+    
+        <p><span>小题5</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题5】</td><td width="100%"><br></td></tr><tr><td width="50%">A．ashamed</td><td width="50%">B．astonished</td></tr><tr><td width="50%">C．excited</td><td width="50%">D．frightened</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225549" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225549]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225549]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225549]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225549]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225550]" value="">
+    
+        <p><span>小题6</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题6】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．cheer</td><td width="25%">B．shout</td><td width="25%">C．cry</td><td width="25%">D．noise</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225550" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225550]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225550]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225550]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225550]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225551]" value="">
+    
+        <p><span>小题7</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题7】</td><td width="100%"><br></td></tr><tr><td width="50%">A．slow down</td><td width="50%">B．drop out</td></tr><tr><td width="50%">C．go on</td><td width="50%">D．speed up</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225551" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225551]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225551]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225551]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225551]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225552]" value="">
+    
+        <p><span>小题8</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题8】</td><td width="100%"><br></td></tr><tr><td width="50%">A．Therefore</td><td width="50%">B．Otherwise</td></tr><tr><td width="50%">C．Besides</td><td width="50%">D．However</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225552" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225552]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225552]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225552]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225552]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225553]" value="">
+    
+        <p><span>小题9</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题9】</td><td width="100%"><br></td></tr><tr><td width="50%">A．with delight</td><td width="50%">B．with fear</td></tr><tr><td width="50%">C．in pain</td><td width="50%">D．in advance</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225553" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225553]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225553]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225553]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225553]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225554]" value="">
+    
+        <p><span>小题10</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题10】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．play</td><td width="25%">B．arrive</td><td width="25%">C．race</td><td width="25%">D．attend</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225554" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225554]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225554]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225554]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225554]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225555]" value="">
+    
+        <p><span>小题11</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题11】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．worth</td><td width="25%">B．good</td><td width="25%">C．valuable</td><td width="25%">D．close</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225555" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225555]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225555]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225555]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225555]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225556]" value="">
+    
+        <p><span>小题12</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题12】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．weaker</td><td width="25%">B．longer</td><td width="25%">C．lower</td><td width="25%">D．louder</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225556" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225556]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225556]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225556]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225556]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225557]" value="">
+    
+        <p><span>小题13</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题13】</td><td width="100%"><br></td></tr><tr><td width="50%">A．well</td><td width="50%">B．sure</td></tr><tr><td width="50%">C．surprisingly</td><td width="50%">D．strangely</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225557" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225557]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225557]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225557]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225557]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225558]" value="">
+    
+        <p><span>小题14</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题14】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．while</td><td width="25%">B．when</td><td width="25%">C．as</td><td width="25%">D．since</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225558" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225558]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225558]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225558]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225558]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225559]" value="">
+    
+        <p><span>小题15</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题15】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．finished</td><td width="25%">B．won</td><td width="25%">C．passed</td><td width="25%">D．lost</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225559" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225559]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225559]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225559]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225559]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225560]" value="">
+    
+        <p><span>小题16</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题16】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．cheer</td><td width="25%">B．hope</td><td width="25%">C．interest</td><td width="25%">D．experience</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225560" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225560]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225560]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225560]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225560]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225561]" value="">
+    
+        <p><span>小题17</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题17】</td><td width="100%"><br></td></tr><tr><td width="50%">A．hold on</td><td width="50%">B．turn to</td></tr><tr><td width="50%">C．begin with</td><td width="50%">D．stick with</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225561" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225561]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225561]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225561]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225561]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225562]" value="">
+    
+        <p><span>小题18</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题18】</td><td width="100%"><br></td></tr><tr><td width="50%">A．measured</td><td width="50%">B．praised</td></tr><tr><td width="50%">C．tested</td><td width="50%">D．increased</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225562" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225562]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225562]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225562]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225562]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225563]" value="">
+    
+        <p><span>小题19</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题19】</td><td width="100%"><br></td></tr><tr><td width="50%">A．sadness</td><td width="50%">B．struggles</td></tr><tr><td width="50%">C．diseases</td><td width="50%">D．tiredness</td></tr></tbody></table><p><br></p><br><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225563" tpid="1"><label><input type="radio" class="radio" name="answer[10057702][item][80544225563]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225563]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225563]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057702][item][80544225563]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li><li class="paper"><div class="middleTitle">
+    <input type="hidden" class="middleTitleID" name="answer[10057702][item][80544225564]" value="">
+    
+        <p><span>小题20</span>
+            : <br></p><p><br></p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td style="white-space:nowrap;">【小题20】</td><td width="100%"><br></td><td width="100%"><br></td><td width="100%"><br></td></tr><tr><td width="25%">A．or</td><td width="25%">B．nor</td><td width="25%">C．and</td><td width="25%">D．but</td></tr></tbody></table><p></p>
+        <div class="checkArea">
+            <div class="checkArea"><div class="radio alternative" qid="80544225564" tpid="1"><label><input type="checkbox" class="checkbox" name="answer[10057702][item][80544225564]" value="0"> <em>A</em></label>&nbsp;<label><input type="checkbox" class="checkbox" name="answer[10057702][item][80544225564]" value="1"> <em>B</em></label>&nbsp;<label><input type="checkbox" class="checkbox" name="answer[10057702][item][80544225564]" value="2"> <em>C</em></label>&nbsp;<label><input type="checkbox" class="checkbox" name="answer[10057702][item][80544225564]" value="3"> <em>D</em></label></div></div>        </div>
+    
+    
+    
+</div>
+
+
+</li>    </ul>
+    
+
+            </div>
+<hr>
+
+
+<div class="paper">
+    <input type="hidden" class="bigType" value="1">
+    <input type="hidden" class="bigTitleID" name="answer[10057895]" value="">
+    <h5>题 21 </h5>
+    <h6>【2014        年】   单选题</h6>
+
+            <p></p><p>Several of the passengers were hurt and one was taken to hospital.Luckily ________ was killed.</p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td width="50%">A．no one</td><td width="50%">B．not all</td></tr><tr><td width="50%">C．none</td><td width="50%">D．no other</td></tr></tbody></table><p></p>
+
+                    <div class="checkArea">
+                <div class="checkArea"><div class="radio alternative" qid="10057895" tpid="1"><label><input type="radio" class="radio" name="answer[10057895]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057895]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057895]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057895]" value="3"> <em>D</em></label></div></div>            </div>
+        
+    
+    
+
+            </div>
+<hr>
+
+
+
+<div class="paper">
+    <input type="hidden" class="bigType" value="1">
+    <input type="hidden" class="bigTitleID" name="answer[10057971]" value="">
+    <h5>题 22 </h5>
+    <h6>【2014        年】   单选题</h6>
+
+            <p></p><p>________ the opportunity to speak at the graduation ceremony made him overjoyed.</p><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="firstRow"><td width="50%">A．Being offered</td><td width="50%">B．To offer</td></tr><tr class=""><td width="50%">C．Having offered</td><td width="50%">D．Offered</td></tr></tbody></table><p></p>
+
+                    <div class="checkArea">
+                <div class="checkArea"><div class="radio alternative" qid="10057971" tpid="1"><label><input type="radio" class="radio" name="answer[10057971]" value="0"> <em>A</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057971]" value="1"> <em>B</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057971]" value="2"> <em>C</em></label>&nbsp;<label><input type="radio" class="radio" name="answer[10057971]" value="3"> <em>D</em></label></div></div>            </div>
+        
+    
+    
+
+            </div>
+<hr>
+
+
+                </div>
+                <div class="upLoad_answerBar">
+
+                    <h5>答题区</h5>
+                                        <h6>客观题</h6>
+
+                    <p id="keguan_answer"><span>题1: A</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题2: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题3: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题4: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题5: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题6: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题7: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题8: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题9: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题10: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题11: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题12: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题13: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题14: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题15: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题16: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题17: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题18: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题19: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题20: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题21: 空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>题22: D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                                            <br>
+                                    </div>
+                <div class="btnD">
+                    <button class=" bg_blue btn btn_js w120" id="finish">完成答题</button>
+                </div>
+            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!--主体end--> 
+        
+        <!--答题弹窗--> 
+        <!--注意---后台自己去判断是否答题完毕在显示相应的的提示-->
+        <div id="dati" class="popBox dati hide" title="完成答题"> 
+            <!--完成答题-->
+            <div class="impBox">
+                <p style="margin-top:20px; text-align:center; margin-bottom:30px;">您确定提交作业吗？</p>
+                <p class="hide">您的答题情况：本试卷共计 <i class="b">5</i> 道小题，您共完成 <i class="r">2</i> 道题</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主体end-->
+<div class="home_foot">
+    <div class="home_foot_BG"></div>
+    <div class="foot">
+        <p>北京三海教育科技有限公司 ©版权所有&nbsp;&nbsp;&nbsp;联系电话 : 400 8986 838</p>
+        <p><a class="icpCode" href="http://bcainfo.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=59A2EACE6ECB3C9C9494C2DB117B742F">京ICP备14022510号</a> &nbsp;&nbsp; 京公网安备 11010802017286</p>
+    </div>
+</div>
+<div class="backTop hide" style="display: block;"></div>
+<a href="http://www.banhai.com/common/about/suggestion" class="feedback"></a>
+<div class="signIn"></div>
+<a href="http://info.banhai.com/" class="game_subject_link"><span>首届全国中小学教师课件大赛</span></a>
+<div class="QQonlineServ"><a title="3022300389" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3022300389&site=qq&menu=yes">在线客服一</a><a title="3024007911" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3024007911&site=qq&menu=yes">在线客服二</a><a title="3338450295" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3338450295&site=qq&menu=yes">在线客服三</a><a title="3307600568" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3307600568&site=qq&menu=yes">在线客服四</a><a class="QQhand" href="javascript:;"></a></div>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src='../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<link href="../css/base.css" type="text/css" rel="stylesheet">
+<link href="../css/tch_group.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script>
+$(function(){
+	$('h3.Signature i').editPlus();	
+	
+//点击更多显示全部
+	$('.morejs').live('click',function(){
+		$('.morehide').show();
+	})
+	$('.class_time .click_btn').live('mouseover',function(){
+		$(this).siblings('.tch_popo').show();	
+	})
+
+//安排听课/修改听课 弹出框	
+	$('#hear,#hear2').dialog({
+		autoOpen: false,
+		width:600,
+		modal: true,
+		resizable:false,
+		buttons: [
+			{
+				text: "确定",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "取消",
+				click: function() {
+					$( this ).dialog( "close" );
+				} 
+			}
+		]
+	});
+	
+/*安排听课的弹窗*/	
+	$('.newBtnJs').click(function(){
+		$( "#hear" ).dialog( "open" );
+		return false;
+	})
+
+/*修改听课计划弹窗*/
+	$('.class_time h4 i').click(function(){
+		$( "#hear2" ).dialog( "open" );
+		return false;
+	})
+	
+//知识树1
+	var id_arr=[];//后台要的id
+	var setting = {
+		check:{enable:true,chkboxType:{"Y" : "", "N" : ""} },
+		data:{simpleData: {	enable: true} },
+		callback: {onCheck:zTreeOnCheck},
+		view:{showIcon:false,showLine:false,}
+	};
+
+	var zNodes =[
+		{ id:1, pId:0, name:"语文", },
+		{ id:11, pId:1, name:"拼音",},
+		{ id:111, pId:11, name:"声母",},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:113, pId:11, name:"语法",},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句",checked:true},
+		{ id:14, pId:1, name:"语法",checked:true},
+	];
+	$.fn.zTree.init($("#treeList"), setting, zNodes);
+	
+	//查看树上是否有被checked的,添加li
+	var treeObj=$.fn.zTree.getZTreeObj("treeList");
+	var sNodes = treeObj.getCheckedNodes(true);
+	//console.log(sNodes)
+	$('#hear #point_chapt .pointArea').show();
+	for(var i=0;i<sNodes.length;i++){
+	$('#hear #point_chapt .labelList').append('<li val="'+sNodes[i].id+'"  index="'+sNodes[i].tId+'">'+sNodes[i].name+'</li>');
+	}
+	
+			
+	
+	//点击树上的checkbox
+	function zTreeOnCheck(event, treeId, treeNode){
+		if(treeNode.checked==true){
+			$('#hear #point_chapt .pointArea').show();
+			$('#hear #point_chapt .labelList').append('<li val="'+treeNode.id+'"  index="'+treeNode.tId+'">'+treeNode.name+'</li>');
+			id_arr.push(treeNode.id);
+			$('#hear #point_chapt .hidVal').val(id_arr);
+			return false;
+		}
+		else{
+			$('#hear #point_chapt .labelList li[index='+treeNode.tId+']').remove();
+			id_arr.remove(treeNode.id)//base.js中定义的arr方法
+			$('#hear #point_chapt .hidVal').val(id_arr);
+			return false;
+			}
+	}
+	
+//知识树2
+	var id_arr2=[];//后台要的id
+	var setting2 = {
+		check:{enable:true,chkboxType:{"Y" : "", "N" : ""} },
+		data:{simpleData: {	enable: true} },
+		callback: {onCheck:zTreeOnCheck2},
+		view:{showIcon:false,showLine:false,}
+	};
+
+	var zNodes2 =[
+		{ id:1, pId:0, name:"语文",},
+		{ id:11, pId:1, name:"拼音",},
+		{ id:111, pId:11, name:"声母"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:113, pId:11, name:"语法"},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+	];
+	$.fn.zTree.init($("#treeList2"), setting2, zNodes2);
+	
+	//点击树上的checkbox
+	function zTreeOnCheck2(event, treeId, treeNode){
+		if(treeNode.checked==true){
+			$('#hear2 #point_chapt .pointArea').show();
+			$('#hear2 #point_chapt .labelList').append('<li val="'+treeNode.id+'"  index="'+treeNode.tId+'">'+treeNode.name+'</li>');
+			id_arr2.push(treeNode.id);
+			$('#hear2 #point_chapt .hidVal').val(id_arr2);
+			return false;
+		}
+		else{
+			$('#hear2 #point_chapt .labelList li[index='+treeNode.tId+']').remove();
+			id_arr2.remove(treeNode.id)//base.js中定义的arr方法
+			$('#hear2 #point_chapt .hidVal').val(id_arr2);
+			return false;
+			}
+	}
+	
+	
+	$('#updata_pop').dialog({
+		autoOpen: false,
+		width:600,
+		modal: true,
+		resizable:false,
+		buttons: [
+			{
+				text: "确定",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "取消",
+				click: function() {
+					$( this ).dialog( "close" );
+				} 
+			}
+		]
+	});
+	
+	/*听课上传讲义的弹窗*/	
+	$('.up_btn_js').click(function(){
+		$( "#updata_pop" ).dialog( "open" );
+		return false;
+	})
+	
+	
+	
+/**删除添加的图片*/
+$('.addPicUl2 li i').live('click',function(){
+		$(this).parent().remove();	
+	})
+
+	
+	
+})
+
+
+
+</script>
+<title>教研组-听课-评课</title>
+</head>
+
+<body style="background:#94c1ea;">
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登陆</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+
+<div class="mainBody cont24">
+    <div class="main_head">
+        <h2 class="class_t"> <span class="classFocus">语文教研组</span></i> </h2>
+        <h3 class="Signature fot_z"> <span>人大附中&nbsp;&nbsp;&nbsp;&nbsp;初中部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="edit">宋江老师(教研组长)</span><i></i> </h3>
+    </div>
+    <div class="main_cent">
+        <div class="mainNav clearfix">
+            <ul class="mainNav_L">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">教学计划</a></li>
+                <li><a href="#">教研课题</a></li>
+                <li class="ac"><a href="tch-hear-comment.html">听课评课</a></li>
+                <li><a href="#">教研资料</a></li>
+            </ul>
+            <ul class="mainNav_R">
+                <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                    <ul class="tab hide">
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                        <li>零食</li>
+                    </ul>
+                </li>
+                <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+                <li><i class="management"></i><span>个人管理中心</span></li>
+            </ul>
+        </div>
+        <div class="class_c clearfix tch ">
+            <div class="centLeft hear">
+                <div class="notice">
+                    <div class="noticeH clearfix noticeB">
+                        <h3 class="h3L">听课安排</h3>
+                        <div class="new_not fr">
+                            <select class="mySel">
+                                <option value="我主讲的课程">我主讲的课程</option>
+                                <option value="我参与的课程">我参与的课程</option>
+                            </select>
+                            <a href="javascript:;" class="new_hearBtn newBtnJs">安排听课</a> </div>
+                    </div>
+                    <div class="tchHear"> 
+                        <!--时间轴-->
+                        <div class="class_B">
+                            <dl class="class_time">
+                                <dt> <span>2014年05月<i></i></span>
+                                    <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇<b></b></span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="tch-hear-comment-details.html">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="class_time">
+                                <dt>
+                                    <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="#">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="class_B">
+                            <dl class="class_time">
+                                <dt> <span>2014年05月<i></i></span>
+                                    <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="#">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="class_time">
+                                <dt>
+                                    <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="#">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="class_B">
+                            <dl class="class_time">
+                                <dt> <span>2014年03月<i></i></span>
+                                <!--听课评课标题上面加一个title，标明此课程已结束，出现上传资料按钮-->
+                                <!--讲完课显示上传资料出弹窗，弹窗里面的内容都是非必填，不上传东西只填写课程介绍其内容回显到标题下方。
+                                	如果及上传东西又写课程介绍，跳转到讲义详情和视频详情页面
+                                	上传完后，显示查看讲义和视频，跳转到讲义详情和视频详情页面-->
+                                    <h4>
+                                    	<a href="#"><em title="此课程已结束">[唐僧教师]&nbsp;章节名称章节名称</em></a>
+                                        <em class="time">2014-05-15</em>
+                                        <p class="btn_box">
+                                        	<a href="javascript:;" class="up_btn mini_btn up_btn_js"><b></b>上传资料</a>
+                                            <a href="javascript:;" class="mini_btn">查看讲义</a>
+                                            <a href="javascript:;" class="mini_btn">查看视频</a>
+                                        </p>
+                                    </h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd class="look_over" title="显示全部内容">sdasdasdaasdasdaasdasdaasdasdaasdas</dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="#">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="class_time">
+                                <dt>
+                                    <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                </dt>
+                                <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                    <div class="tch_popo pop"> <em></em>
+                                        <ul class="clearfix">
+                                            <li><a href="#">教师1的听课报告</a></li>
+                                            <li><a href="#">教师2的听课报告</a></li>
+                                            <li><a href="#">教师3的听课报告</a></li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="addMore morejs"> <span>更多&gt;&gt;</span> </div>
+                        <div class="morehide hide">
+                            <div class="class_B">
+                                <dl class="class_time">
+                                    <dt> <span>2014年05月<i></i></span>
+                                        <h4><a href="#"><em>[唐僧教师]&nbsp;章节名称章节名称</em></a><span></span><i></i><em class="time">2014-05-15</em></h4>
+                                    </dt>
+                                    <dd><a href="javascript:;">标题标题标题标题标题标题标题标题</a></dd>
+                                    <dd>听课人<span style="margin-left:10px;">教师1</span><span>教师2</span><span>教师3</span><span>教师4</span></dd>
+                                    <dd> 听课报告<span class="click_btn">共<i>5</i>篇</span> <a href="../teacher/teacher_write-diary.html" class="blue">去评课</a>
+                                        <div class="tch_popo pop"> <em></em>
+                                            <ul class="clearfix">
+                                                <li><a href="#">教师1的听课报告</a></li>
+                                                <li><a href="#">教师2的听课报告</a></li>
+                                                <li><a href="#">教师3的听课报告</a></li>
+                                            </ul>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        <!--时间轴--> 
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="centRight"></div>
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+
+
+
+<!--安排听课-->
+<div id="hear" class="popBox hearBox hide clearfix" title="安排听课"> 
+    <!--知识数-->
+    <div class="hearLeft">
+        <h2>章节树</h2>
+        <span class="sol"></span>
+        <div class="hear_tree">
+           <ul id="treeList" class="clearfix ztree"></ul>
+        </div>
+    </div>
+    <div class="impBox">
+        <ul class="form_list">
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>章节：</label>
+                </div>
+                <div class="formR">
+                    <div id="point_chapt" class="treeParent"> <i class="ico"></i> 选择章节
+                        <div class="pointArea hide">
+                            <input class="hidVal" type="hidden" value="">
+                            <h5>已选中知识点:</h5>
+                            <ul class="labelList">
+                                    <!--<li>语文</li>
+                                    <li>造句</li>
+                                    <li>形容词</li>
+                                    <li>语文</li>
+                                    <li>造句</li>
+                                    <li>形容词</li>-->
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>主持人：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>标题：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>听课时间：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>听课人：</label>
+                </div>
+                <div class="formR">
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--修改听课-->
+<div id="hear2" class="popBox hearBox hide clearfix" title="修改听课"> 
+    <!--知识数-->
+    <div class="hearLeft">
+        <h2>章节树</h2>
+        <div class="hear_tree">
+            <ul id="treeList2" class="clearfix ztree"></ul>
+        </div>
+    </div>
+    <div class="impBox">
+        <ul class="form_list">
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>章节：</label>
+                </div>
+                <div class="formR">
+                    <div id="point_chapt2" class="treeParent"> <i class="ico"></i> 选择章节
+                        <div class="pointArea hide">
+                            <input class="hidVal" type="hidden" value="">
+                            <h5>已选中知识点:</h5>
+                            <ul class="labelList">
+                                    <!--<li>语文</li>
+                                    <li>造句</li>
+                                    <li>形容词</li>
+                                    <li>语文</li>
+                                    <li>造句</li>
+                                    <li>形容词</li>-->
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>主持人：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>标题：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>听课时间：</label>
+                </div>
+                <div class="formR">
+                    <input id="name" type="text" class="text">
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name"><i></i>听课人：</label>
+                </div>
+                <div class="formR">
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                    <label>
+                        <input type="checkbox">
+                        唐僧师傅</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--上传资料-->
+<div id="updata_pop" class="popBox updata_pop hide clearfix" title="上传资料"> 
+    
+    <div class="impBox">
+        <ul class="form_list">
+            <li>
+                <div class="formL">
+                    <label for="name">课题名称：</label>
+                </div>
+                <div class="formR">
+                   章节名称
+                </div>
+            </li>
+            <li>
+                <div class="formL">
+                    <label for="name">上传资料：</label>
+                </div>
+                <div class="formR">
+                	<div class="newUp">
+                        <div class="t_box">
+                        	<p class="addPic btn">
+                                <a href="javascript:;" class=" id_btn mini_btn">上传讲义</a>
+                                <input id="fileupload" type="file" name="files[]" multiple class="file">
+                             </p>
+                            <em class="txtn">文件格式限定为doc,docx或pdf</em>
+                        </div>
+                    
+                     <ul class="addPicUl2">
+                     	<li>
+                        	<img src="../images/jqueryUI/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="">
+							<span><em>教学计划.docx</em>(25.7KB)</span>
+                        	<i>删除</i>
+                        </li>
+                        <li>
+                        	<img src="../images/jqueryUI/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="">
+							<span><em>教学计划.docx</em>(25.7KB)</span>
+                        	<i>删除</i>
+                        </li>
+                        
+                     </ul>
+                    </div> 
+                     <div class="newUp">
+                        <div class="t_box">
+                        	<p class="addPic btn">
+                                <a href="javascript:;" class=" id_btn mini_btn">上传视频</a>
+                                <input id="fileupload" type="file" name="files[]" multiple class="file">
+                             </p>
+                            <em class="txtn">文件格式限定为doc,docx或pdf</em>
+                        </div>
+                    
+                     <ul class="addPicUl2 addPicUl3">
+                     	<li>
+                        	<img src="../images/jqueryUI/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="">
+							<span><em>教学计划.avi</em>(25.7KB)</span>
+                        	<i>删除</i>
+                        </li>
+                        <li>
+                        	<img src="../images/jqueryUI/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="">
+							<span><em>教学计划.avi</em>(25.7KB)</span>
+                        	<i>删除</i>
+                        </li>
+                        
+                     </ul>
+                    </div> 
+          
+                    
+              </div>
+            </li>
+            
+           
+            <li>
+                <div class="formL">
+                    <label for="name">课题介绍：</label>
+                </div>
+                <div class="formR">
+                    <textarea></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        a{text-decoration: none; margin: 0; padding: 0;}
+        a{width: 31px; height: 29px;border-radius: 2px;margin: 0 6px 0 0; border: 1px solid #dfe2e6;background: #fefeff;color: #fff;display: inline-block;line-height: 29px; font-weight: 600;text-transform: uppercase;overflow: hidden; font-size: 11px; -webkit-transition: width 200ms ease; transition: width 200ms ease; position: relative;}
+        .button1:before{
+            content: "";
+            overflow: hidden;
+            display: block;
+            width: 9px;
+            height: 14px;
+            margin: 7px 0 0 11px;
+            background-color: #ccc;
+            position: absolute;
+            left: 0; top: 0;
+        }
+        .button2:before{
+            content:"" ;
+            overflow: hidden;
+            display: block;
+            width: 9px;
+            height: 14px;
+            margin: 7px 0 0 11px;
+            background-color: #ccc;
+            position: absolute;
+            left: 0; top: 0;
+        }
+        .button1:hover{background: #1e81d6;border-color: #1e81d6;width: 75px;}
+        .button1:hover:before{background-color: #000;}
+        .button2:hover{background: #4bbc73;border-color: #4bbc73;width: 99px;}
+        .button2:hover:before{background-color: #000;}
+        span{margin: 0 10px 0 30px;}
+        
+    </style>
+</head>
+<body>
+   <div>
+        <a href="" class="button1"><span>Share</span></a><a href="" class="button2"><span>LiveShare</span></a>
+    </div>
+</body>
+</html>

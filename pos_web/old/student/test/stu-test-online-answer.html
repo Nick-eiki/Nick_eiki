@@ -1,0 +1,465 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/main.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src='../../js/jquery-ui.min.js' type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<link href="../../css/base.css" type="text/css" rel="stylesheet">
+<link href="../../css/student.css" type="text/css" rel="stylesheet">
+<link href="../../css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="../../css/popBox.css" type="text/css" rel="stylesheet">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script>
+
+$(function(){
+	
+/*删除按钮*/	
+$('.minute li i').live('click',function(){
+	$(this).parent().remove();	
+})
+
+//完成答题
+
+$('.btn_js').click(function(){
+/*上传试卷*/
+$('#dati').dialog({
+			autoOpen: false,
+			width:600,
+			modal: true,
+			resizable:false,
+			buttons: [
+				{
+					text: "完成测试",
+					
+					click: function() {
+						if($('#mySchoolPop .text').val()==1){
+							$( this ).dialog( "close" );
+						}
+						else{
+							alert(4545)
+						}
+						
+					}
+				},
+				{
+					text: "取消",
+					
+					click: function() {
+						$( this ).dialog( "close" );
+					} 
+				}
+				
+			]
+		});
+		$( "#dati" ).dialog( "open" );
+		//event.preventDefault();
+		return false;
+	})
+	
+	
+	
+	
+
+/*删除添加的试卷*/
+	$('.up_img_js li').live('mouseover',function(){
+		$(this).children('i').show();	
+	});
+	$('.up_img_js li').live('mouseout',function(){
+		$(this).children('i').hide();	
+	})
+	$('.up_img_js li i').live('click',function(){
+		$(this).parent().remove();	
+	})
+
+//更多图片
+	$('.more_js').toggle(function(){
+		$(this).parent('ul').css('height','auto')	
+	},
+	function(){
+		$(this).parent('ul').css('height','50px')	
+	}
+	
+	)
+
+})
+</script>
+<script type="text/javascript">
+$(function(){
+	//显示选中的值--单选
+	var radio=$(".alternative")
+	var arr_d=[];
+	radio.live('click',function(){
+		$(this).parents('dd').siblings('.stu_answer').text('');
+		
+		if(this.checked==true)
+		{	arr_d.push(arr_d);
+			var text= $(this).siblings('i').text();
+			$(this).parents('dd').siblings('.stu_answer').append('<em>'+  text +'</em>');
+		}
+		
+		
+		
+	})
+	
+	//显示选中的值--多选
+	var ck=$(".checkbox")
+	var arr_select = [];
+			ck.live('click', function () {
+				//显示放答案的标签
+				$(this).parents('dd').next('.stu_answer').show();
+				//先清空掉
+				$(this).parents('dd').siblings('.stu_answer').children('em').text('');
+				//$(this).parents('dd').siblings('.stu_answer').text('');
+				
+				var text = $(this).siblings('i').text();
+				if (this.checked == true) {
+					//arr.push(text);
+					
+					//如果数组里面没有找到text   就让他插入一个
+					if(arr_select.indexOf(text) == -1){
+						arr_select.push(text);
+					}
+				}
+				else{
+					//否则的话 就删掉你现在取消掉的这个东西
+					if (!('indexOf' in Array.prototype)) {
+						Array.prototype.indexOf= function(find, i /*opt*/) {
+							if (i===undefined) i= 0;
+							if (i<0) i+= this.length;
+							if (i<0) i= 0;
+							for (var n= this.length; i<n; i++)
+								if (i in this && this[i]===find)
+									return i;
+							return -1;
+						};
+					}
+					
+					arr_select.splice(arr_select.indexOf(text),1);
+				}
+				document.title = arr_select;
+				
+				
+				//插入数组里面的东西
+				for(var i=0;i<arr_select.length;i++){		
+					$(this).parents('dd').siblings('.stu_answer').append('<em>' + arr_select[i] + '</em>')
+				}
+			})
+	
+	
+	//显示选中的值--完形单选
+	var radio=$('.alternative');
+	var arr_d=[];
+	radio.live('click',function(){
+		$(this).parents('.an_ul').next('.answer').text('');
+		
+		if(this.checked==true)
+		{	arr_d.push(arr_d);
+			var text= $(this).siblings('i').text();
+			$(this).parents('.an_ul').next('.answer').append('<em>您的答案是：'+  text +'</em>');
+		}
+		
+		
+		
+	})
+	
+	
+	
+	
+	
+	/*移入显示删除按钮*/		
+	$('.minute li').live('mouseover mouseout',function(event){
+		
+			if (event.type == 'mouseover') {
+			$(this).children('i').show();
+		  } else {
+			$(this).children('i').hide();
+		  }
+	});
+	/*删除按钮*/	
+	$('.minute li i').live('click',function(){
+		$(this).parent().remove();	
+	})
+	
+})
+</script>
+<script type="text/javascript">
+var intDiff = parseInt(10);//倒计时总秒数量
+function timer(intDiff){
+    window.setInterval(function(){
+	var day_show=$('#day_show');//天
+	var hours=$('#hour_show');//小时
+	var minutes=$('#minute_show');//分钟
+	var seconds=$('#second_show');//秒
+    var day=0,
+        hour=0,
+        minute=0,
+        second=0;//时间默认值        
+    if(intDiff > 0){
+        //day = Math.floor(intDiff / (60 * 60 * 24));
+        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+    }
+    if (minute <= 9) minute = '0' + minute;
+    if (second <= 9) second = '0' + second;
+	if(second==0)
+	{
+		alert('不要意思，时间到');
+	}
+    //day_show.html(day+"天");
+    hours.html('<s id="h"></s>'+hour+'时');
+    minutes.html('<s></s>'+minute+'分');
+   seconds.html('<s></s>'+second+'秒');
+    intDiff--;
+    }, 1000);
+	
+	
+	
+} 
+$(function(){
+    $('#btn_line_js').bind('click',function(){
+		$(this).css('background','#ccc')
+		timer(intDiff);	
+		
+	})
+	
+}); 
+</script>
+<title>学生-在线答题</title>
+</head>
+
+<body>
+
+<!--顶部开始-->
+<div class="min_head">
+    <div class="cont24 clearfix">
+        <div class="head_left grid_6"><i class="io"></i>欢迎来到班海网！</div>
+        <div class="userCenter grid_6 push_12 pr">
+            <div class="login"><a class="loginBtn" href="#">登录</a><a class="userReg" href="#">免费注册</a></div>
+            <div class="userAccount hide grid_3 alpha omega"> <img src="../../images/user01.jpg">
+                <h5>张三疯<i></i></h5>
+                <ul class="hide">
+                    <li><a class="tB" href="#">我的设置</a></li>
+                    <li><a class="tC" href="#">我的学校</a></li>
+                    <li><a class="tC" href="#">我的班级</a></li>
+                    <li><a class="quit" href="#">退出</a></li>
+                </ul>
+            </div>
+            <div class="userMsg grid_2 hide alpha omega">
+                <h5><i></i><em>(3)</em></h5>
+                <ul class="subMenu hide">
+                    <li><a class="tB" href="#">我的私信(2)</a></li>
+                    <li><a class="tC" href="#">我的品论(3)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部结束--> 
+<!--主体内容开始-->
+
+<div class="main cont24  clearfix">
+    <div class="mainNav">
+        <ul class="mainNav_R clearfix">
+            <li> <i class="set"></i><span class="bColor setJs">个人设置<i class="Triangle"></i></span>
+                <ul class="tab hide">
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                    <li>零食</li>
+                </ul>
+            </li>
+            <li><i class="dressUp"></i><span class="dress_k">装扮空间</span></li>
+            <li><i class="management"></i><span>个人管理中心</span></li>
+        </ul>
+    </div>
+    <div class="currentLeft grid_5 push_1">
+        <div class="item l_userInfo clearfix"> <img src="../../images/teacher_l.jpg">
+            <ul>
+                <li><span>30</span>作业</li>
+                <li><span>300</span>错题</li>
+                <li><span>49</span>精品课程</li>
+            </ul>
+        </div>
+        <div class="item l_asideMenu">
+            <ul class="setupMenu">
+                <li><a class="lisA" href="javascript:;"><i></i>个人设置</a>
+                    <ul class="subMenu hide">
+                        <li><a class="ac" href="../student/stu_setup_info.html">基本信息</a></li>
+                        <li><a href="../stu_setup_headPic.html">头像管理</a></li>
+                        <li><a href="../stu_setup_changePassword.html">密码管理</a></li>
+                        <li><a href="../stu_setup_email.html">邮箱管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisC" href="javascript:;"><i></i>消息中心</a>
+                    <ul class="subMenu hide">
+                        <li><a href="../stu-msg_my_notice.html">我的通知</a></li>
+                        <li><a href="../stu-msg_dialogue.html">发私信</a></li>
+                        <li><a href="../stu-msg_msgList.html">我的私信</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisM" href="javascript:;"><i></i>我的作业</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisS" href="javascript:;"><i></i>考试试卷和成绩</a>
+                    <ul class="subMenu hide">
+                        <li><a href="../stu-examination-manage.html">考试试卷管理</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisN" href="javascript:;"><i></i>学习时间轴</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">学习时间轴</a></li>
+                        <li><a href="#">成绩统计表</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisB" href="javascript:;"><i></i>我的档案</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisP" href="javascript:;"><i></i>测验管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">日常测验</a></li>
+                        <li><a href="#">推送题目</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisQ" href="javascript:;"><i></i>错题管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">错题集</a></li>
+                        <li><a href="#">题目录入</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisI" href="javascript:;"><i></i>课程管理</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">课程管理</a></li>
+                        <li><a href="#">评论管理</a></li>
+                        <li><a href="#">课程总结</a></li>
+                        <li><a href="#">家长会</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisK" href="javascript:;"><i></i>我的收藏</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">收藏的讲义</a></li>
+                        <li><a href="#">收藏的课程</a></li>
+                    </ul>
+                </li>
+                <li><a class="lisL" href="../stu-testpaper-answer.html"><i></i>答疑管理(提问)</a>
+                    <ul class="subMenu hide">
+                        <li><a href="#">暂无内容(空)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="currentRight grid_16 push_2 online_answer">
+        <div class="noticeH clearfix noticeB">
+            <h3>在线答题</h3>
+            <p> <span>组卷人：唐僧</span> <span>时间：2014-08-09</span> </p>
+        </div>
+        <hr>
+        <div class="work_detais_cent">
+            <h4>测验名称</h4>
+            <ul class="ul_list">
+                <li><span>1、</span>考察知识点：知识点一    知识点二    知识点三  知识点四</li>
+                <li><span>2、</span>本试卷共包含10道题目，其中选择4题，填空4题，应用2题</li>
+                <li><span>3、</span>各题目分值情况：1--10分，2--10分，共计100分</li>
+                <li><span>4、</span>答题时间控制在 40 分钟内，其中选择题必须在线回答，填空题与应用题提交手写答案</li>
+            </ul>
+            <div class="btn_online">
+                <button type="button" class="mini_btn btn_line" id="btn_line_js">开始答题</button>
+                <div class="time-item"> 
+                    <!-- <span id="day_show">0天</span>--> 
+                    <strong id="hour_show">0时</strong> <strong id="minute_show">0分</strong> <strong id="second_show">0秒</strong> </div>
+            </div>
+            <div class="testPaperView">
+                <div class="paperArea">
+                    <div class="paper"><!--多个小题--> 
+                        <h5>题目1:</h5>
+                        <h6>【2013年】 高考 多个小题</h6>
+                        <p>题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分题干部分</p>
+                        <ul class="sub_Q_List">
+                            <li> <span>小题 1:</span>小题内容小题_____填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题填空题题内容?
+                       		<button type="button" class="uploadBtn">上传答案</button>
+                            <dl class="userAnswerList clearfix">
+                   		<dt>您上传的答案:</dt>
+                    	<dd><img src="../../images/answer.png" alt=""/></dd>
+                    </dl>   
+                            </li>
+                            <li> <span>小题 2:</span>小题选择题选择题选择题选择题选择题选择题选择题?
+                                <div class="checkArea">
+                                请选择:　　<input type="radio" class="radio" name="aaa">
+                                    <label>A 备选项1</label>
+                                    <input type="radio" class="radio"  name="aaa">
+                                    <label>B 备选项2</label>
+                                    <input type="radio" class="radio"  name="aaa">
+                                    <label>C 备选项3</label>
+                                    <input type="radio" class="radio"  name="aaa">
+                                    <label>D 备选项4</label>
+                                </div>
+                                <dl class="userAnswerList clearfix">
+                                    <dt>您的答案:</dt>
+                                    <dd>B</dd>
+                                </dl>   
+                            </li>
+                            <li><span>小题 3:</span>小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容小题内容?</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btnD">
+                    <button class="mini_btn btn btn_js">完成答题</button>
+                </div>
+            </div>
+            <div class="page"><a class="jumpBtn">首页</a><a class="jumpBtn">上一页</a><a class="current">1</a><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn">下一页</a><a class="jumpBtn">末页</a></div>
+        </div>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<div class="footWrap">
+    <div class="foot">
+        <dl>
+            <dt>关于我们</dt>
+            <dd><a href="#">关于班海</a></dd>
+            <dd><a href="#">招聘启事</a></dd>
+            <dd><a href="#">法律声明</a></dd>
+            <dd><a href="#">网站地图</a></dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd><a href="#">商务合作</a></dd>
+            <dd><a href="#">友情链接</a></dd>
+            <dd><a href="#">资源合作</a></dd>
+            <dd><a href="#">视频合作</a></dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd><a href="#">在线客服</a></dd>
+            <dd><a href="#">官方微博</a></dd>
+            <dd><a href="#">意见反馈</a></dd>
+            <dd><a href="#">关注微信</a></dd>
+        </dl>
+        <dl>
+            <dt>问题帮助</dt>
+            <dd><a href="#">常见问题</a></dd>
+            <dd><a href="#">用户答疑</a></dd>
+        </dl>
+        <p>@ 2014 班海 http://www.banhai.com 北京三海教育科技有限公司 版权所有<br>
+            京ICP证080367号 京ICP备08103829号  北京市公安局海淀分局备案号1101081714 </p>
+    </div>
+</div>
+<!--答题弹窗--> 
+<!--注意---后台自己去判断是否答题完毕在显示相应的的提示-->
+<div id="dati" class="popBox dati hide" title="完成答题"> 
+    <!--完成答题-->
+    <div class="impBox">
+        <p class="hide">您的题目已全部回答完毕，是否提交？</p>
+        <p>您的答题情况：本试卷共计 <i class="b">5</i> 道小题，您共完成 <i class="r">2</i> 道题</p>
+    </div>
+</div>
+</body>
+</html>

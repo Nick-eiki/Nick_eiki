@@ -1,0 +1,128 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>视频详情</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/platform.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script src="../../js/jwplayer/jwplayer.js" type="text/javascript"></script>
+<script src="../../js/jwplayer/jwplayer.html5.js" type="text/javascript"></script>
+<script>
+$(function() {
+		jwplayer("sh_video").setup({
+		flashplayer:"../../js/jwplayer/jwplayer.swf",
+		width:870,
+		height:640,
+        file: "http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/F029E2DADD941D486B6B1DC6E8ECA550.mp4",
+        image: "../../js/jwplayer/player.jpg"
+    });
+	$('#videoList li').click(function(){
+		$(this).addClass('play').siblings().removeClass('play');
+		var video_src=$(this).children('em').attr('title');
+		jwplayer("sh_video").setup({
+			flashplayer:"../../js/jwplayer/jwplayer.swf",
+			width:870,
+			height:640,
+			file:video_src,
+			events: {
+                  onReady:function() {this.play()}
+          		}
+			})
+	})
+});
+</script>
+</head>
+
+<body class="platform">
+<div class="head"> </div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="video_topics">
+            <div class="title"> <a href="#" class="txtBtn backBtn larrow"></a>
+                <h4>视频详情</h4>
+            </div>
+            <div class="video_topics_con">
+                <div class="form_list video_detail_form">
+                    <div class="formL">
+                        <div id="sh_video">Loading the player...</div>
+                    </div>
+                    <div class="formR">
+                        <h5> 目录</h5>
+                        <ul id="videoList" class="menu clearfix">
+                            <li class="play"><i></i><span>03</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/98FD24AA3D8237F715B6938D8CDE335D.mp4">身体的变形</em></li>
+                            <li><i></i><span>04</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/4EFF11EDB2A1F65DF85DFCF7BD02FF36.mp4">头发的画法以及描绘色彩</em></li>
+                            <li><i></i><span>05</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/65FE1859F210DD98698FEAA8E46B1.mp4">画个小羽</em></li>
+                            <li><i></i><span>01</span><em>今天你吃酸菜鱼了吗？</em></li>
+                            <li><i></i><span>02</span><em>概括和替换</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                            <li><i></i><span>05</span><em title="">画个小羽</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="paper clearfix"> <span class="asnumber blue">03:</span>
+                    <p> <span class="blue">【题文】</span>如图,在△ABC中,∠ABC=90°,AB=4,BC=3. 点O是边AC上的一个动点,以点O为圆心作半圆,与边AB相切于点D,交线段OC于点E.作EP⊥ED,交射线AB于点P,交射线CB于点F。（&nbsp;&nbsp;&nbsp;） <br>
+                        <img src="../../images/smallt.jpg" style="vertical-align: middle;" alt="1410024861-7526.png"> <img src="../../images/smallt.jpg" style="vertical-align: middle;" alt="1410024861-7526.png"> <img src="../../images/smallt.jpg" style="vertical-align: middle;" alt="1410024861-7526.png"> </p>
+                    <p class="pass"> A．AB//CD <br>
+                        B．AD//CD <br>
+                        C．AC//CD <br>
+                        D．AF//CB <br>
+                    </p>
+                </div>
+                <div class="paper clearfix"> <span class="asnumber">03:</span>
+                    <p> <span class="blue">【题文】</span>我想起泰戈尔在《新月集》里写过的诗句：“只要他肯把他的船借给我……我将带我的朋友快快乐乐地航行于仙人世界。”那么，就把自己放逐一次吧，就借来别人的 船张帆出发吧。 只有年轻时去远方，才会拥有充满泰戈尔童话般色彩的经历和收益，那不仅是他书写在心灵中的诗句，也是你镌刻在生命里的年轮。请回答以下问题： <br>
+                        <span class="blue mrow"> （1）．文章开头写儿子在美国漫游，在结构和内容表达上有什么作用?请分别概括。<br>
+                        （2）．作者叙述中国留学生在西柏林和“我”在北大荒这两件事，各侧重说明了什么?<br>
+                        （3）．第6段画线的句子表达在了什么意思?语言上有什么特点?<br>
+                        （4）．文中多处流露出了作者对“去远方”的情感态度，请简要概括。<br>
+                        （5）．细读全文，结合自己的认识，谈谈你怎样正确理解作者反复强调的“年轻时就要去远方”的观点。 </span> </p>
+                </div>
+                <div class="paper clearfix">
+                    <div class="par_content"> <span class="asnumber">03:</span>
+                        <p> <span class="blue">【题文】</span>最妙的是下点小雪呀。看吧，山上的矮松越发的青黑，树尖上顶着一髻儿白花，好像日本看护妇。山尖全白了，给蓝天镶上一道银边。山坡上，有的地方雪厚点儿， 有的地方草色还露着；这样，一道儿白，一道儿暗黄，给山们穿上一件带水纹的花衣；看着看着，这件花衣好像被风儿吹动，叫你希望看见一点更美的山的肌肤。等到快日落 时候，微黄的阳光斜射在山腰上，那点薄雪好像忽然害了羞，微微露出点粉色。就是下小雪吧，济南是受不住大雪的，那些小山太秀气！ </p>
+                        <span class="answerscon"> （1）．用“‖”把这段文章划分为三层。 <br>
+                        （2）．文中描写景物的顺序是：①________②________③________④________ <br>
+                        （3）．划横线一句用的是比喻的修辞手法，它的本体、喻体分别是 （ ） <br>
+                        <p class="pass"> A. 本体是白花，喻体是日本看护妇。 <br>
+                            B. 本体是树尖上顶的白雪，喻体是日本看护妇。 <br>
+                            C. 本体是树尖上顶的白雪，喻体是白花。 <br>
+                            D. 本体是顶着白雪的树的样子，喻体是日本看护妇。 <br>
+                        </p>
+                        （4）．用“ ”线在文中画出两处运用了拟人修辞方法的地方。 <br>
+                        （5）．对加粗的两个句子的含义理解正确的一项是 （ ） <br>
+                        <p class="pass"> A. 描写黄白相间的山坡，春风化雪，不久人们就会见到山坡原有的颜色。 <br>
+                            B. 表现济南冬天的温和，雪化了，有水在山坡流动；“山的肌肤”指山坡的草地。 <br>
+                            C. 描写济南冬天的温和，有水蒸气蒸发升腾的美景，不久雪就会全化了，山坡上原有的颜色比雪色更美。 <br>
+                            D. 描绘了雪色与草色相同的美景，像穿着好看的衣服；“山的肌肤”指春天来临后满山的花草。 <br>
+                        </p>
+                        （6）．这个语段主要是写 （ ） <br>
+                        <p class="pass"> A. 小雪后山色 <br>
+                            B. 小山太秀气 <br>
+                            C. 小雪最妙 <br>
+                            D. 山的肌肤 <br>
+                        </p>
+                        </span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主体end-->
+</body>
+</html>

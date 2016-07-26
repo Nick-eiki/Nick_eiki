@@ -1,0 +1,260 @@
+﻿<!doctype html>
+<html id="html">
+
+<head>
+    <meta charset="utf-8">
+    <title>积分兑换</title>
+    <link href="../../css/base.css" rel="stylesheet" type="text/css">
+    <link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+    <link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+    <link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+    <script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../../js/base.js" type="text/javascript"></script>
+    <script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+    <script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+    <script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+    <script>
+    $(function() {
+        $('.tree').tree({
+            openSubMenu: true,
+            operate: false
+        });
+        $('.orderBar span').click(function() {
+            $(this).addClass('ac').siblings().removeClass('ac');
+        });
+		$('.popBox').dialog({
+                autoOpen: false,
+                width: 720,
+                modal: true,
+                resizable: false,
+                close: function() { $(this).dialog("close") }
+         });
+		/*去兑换弹框*/
+		$('.ex').click(function() {
+			$(".score_rule_box").dialog("open");
+		});
+		$('#popBox .ex').click(function() {
+			$("#popBox").dialog("close");
+			return false;
+		});
+    })
+    </script>
+</head>
+
+<body class="platform">
+    <div class="head">
+    </div>
+    <!--top_end-->
+    <!--主体-->
+    <div class="cont24">
+        <div class="grid24 main">
+            <div class="grid_5 main_l">
+                <div class="clearfix item l_userInfo"> <img src="../../images/photo.jpg"> <a style="border-right:1px solid #ddd"><em>30</em><br>
+                试卷</a><a><em>300</em><br>
+                课程</a> </div>
+                <div class="item l_asideMenu">
+                    <h4>我的档案</h4>
+                    <ul class="setupMenu">
+                        <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                            <ul class="subMenu">
+                                <li><a href="#">信息</a></li>
+                                <li><a class="ac" href="#">通知</a></li>
+                                <li><a href="#">系统消息</a></li>
+                                <li><a href="#">我的私信</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">考试管理</a></li>
+                                <li><a href="#">试卷管理</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">题目管理</a></li>
+                                <li><a href="#">题目推送</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                            <ul class="subMenu hide">
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                                <li><a href="#">1403班</a></li>
+                                <li><a href="#">1404班</a></li>
+                                <li><a href="#">1405班</a></li>
+                                <li><a href="#">1406班</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                            <ul class="subMenu hide">
+                                <li><a class="ac" href="#">课程管理</a></li>
+                                <li><a href="#">评论管理</a></li>
+                                <li><a href="#">课程总结</a></li>
+                                <li><a href="#">家长会管理</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">班级统计</a></li>
+                                <li><a href="#">熊孩子管理器</a></li>
+                                <li><a href="#">个人统计</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">教研课题</a></li>
+                                <li><a href="#">教学计划</a></li>
+                                <li><a href="#">听课评课</a></li>
+                                <li><a href="#">教研组资料</a></li>
+                                <li><a href="#">教研日记</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                                <li><a href="#">资料袋</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">收藏的讲义</a></li>
+                                <li><a href="#">收藏的课程</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                            <ul class="subMenu hide">
+                                <li><a href="#">暂无内容(空)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grid_18 main_r mainbox_r">
+                <div class="main_cont score_library">
+                    <div class="title">
+                        <h4>我的积分</h4>
+                    </div>
+                    <div class="form_list no_padding_form_list">
+                        <div class="row">
+                            <div class="formR">
+                                <ul class="resultList">
+                                    <li><a href="./my_points.html">积分排行</a></li>
+                                    <li><a href="./income_detail.html">收入明细</a></li>
+                                    <li><a href="./use_detail.html">使用明细</a></li>
+                                    <li><a href="./my_grade.html">我的等级</a></li>
+                                    <li class="ac"><a href="./integral_exchange.html">积分兑换</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab my_pointsbox">
+                        <div class="title item_title noBorder score_title">
+                            <h5>累计使用积分:<span class="blue_d">0</span></h5>
+                            <h5 class="pd28">剩余可用积分:<span class="blue_d">145</span></h5>
+                            <a href="#" class="view_link">去兑换</a>
+                        </div>
+                        <div class="score_table">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <th width="148px">序号</th>
+                                    <th width="146px">礼品名称</th>
+                                    <th width="350px">内容教师所需积分</th>
+                                    <!--<th>学生所需积分</th>-->
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>平板电脑</td>
+                                    <!--<td>教师积分排名前10名</td>-->
+                                    <td>
+                                    学生积分排名前10名
+                                    <a class="ex">去兑换</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>小米手环</td>
+                                    <td>5000<a class="ex">去兑换</a></td>
+                                    <!--<td>2500</td>-->
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>充电宝</td>
+                                    <td>3600<a class="ex">去兑换</a></td>
+                                    <!--<td>1800</td>-->
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>u盘</td>
+                                    <td>2000<a class="ex">去兑换</a></td>
+                                    <!--<td>1000</td>-->
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>手机充值卡50元</td>
+                                    <td>1800<a class="ex">去兑换</a></td>
+                                    <!--<td>900</td>-->
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>手机充值卡30元</td>
+                                    <td>1200<a class="ex">去兑换</a></td>
+                                    <!--<td>600</td>-->
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>手机充值卡10元</td>
+                                    <td>600<a class="ex">去兑换</a></td>
+                                    <!--<td>300</td>-->
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>课海代金券100元</td>
+                                    <td>600<a class="ex">去兑换</a></td>
+                                    <!--<td>300</td>-->
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>课海代金券50元</td>
+                                    <td>400<a class="ex">去兑换</a></td>
+                                    <!--<td>200</td>-->
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>课海代金券20元</td>
+                                    <td>200
+                                    <a class="ex">去兑换</a></td>
+                                    <!--<td>100</td>-->
+                                    
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主体end-->
+    <!--去兑换弹窗-->
+	<div class="popBox score_rule_box" title="系统提醒">
+    <div class="popCont">
+        <div class="score_table">
+        <div class="ex_goods">
+            您选择兑换的物品为<span class="res">小米手环</span>，需要消耗<span class="number">5000</span>积分
+            。<br>点击下方"确定兑换"后，会有工作人员跟您联系,为您发放礼品
+        </div>
+        </div>
+    </div>
+    <div class="popBtnArea exBtn">
+        <button type="button" class="cancelBtn">确定兑换</button>
+        <button type="button" class="cancelBtn">取消</button>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>班级-成员</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../css/classes.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../js/base.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script>
+$(function(){
+	$('.editInfoBtn').click(function(){
+		$(this).parents('li').find('.editBar').show();
+	});
+	
+	//编辑教师信息
+	$('.editOKbtn').click(function(){
+		var pa=$(this).parents('li');
+		var n_obj=pa.find('select:eq(0) option:selected').text();
+		var n_identity=pa.find('select:eq(1) option:selected').text();
+		pa.find('span:eq(1)').text(n_obj);
+		pa.find('span:eq(2)').text(n_identity);
+		pa.find('.editBar').hide();
+	})
+	
+	
+	//编辑学生信息
+	$('.mem_student_table .editInfoBtn').live('click',function(){
+		var pa=$(this).parents('tr');
+		pa.find('.opBtn').addClass('hide');
+		pa.find('input:text,.selBar').show().prev().hide();
+		pa.find('.okBtn,.cancelBtn').show();
+		pa.find('input:text').each(function(index, element) {
+            $(this).val($(this).prev().text());
+        });
+		var sel=pa.find('select');
+		sanhai_tools.setSelect(sel,pa.find('.identity').text())
+		
+		$(document).keyup(function(event){
+			if(event.keyCode==27){
+				pa.find('.oldVal').each(function(index, element) {
+					$(this).show();
+					pa.find('.opBtn').removeClass('hide');
+					pa.find('input:text,.selBar,.okBtn,.cancelBtn').hide();
+				});
+			}
+		});
+		
+		pa.find('.cancelBtn').click(function(){
+			pa.find('.oldVal').each(function(index, element) {
+				$(this).show();
+				pa.find('.opBtn').removeClass('hide');
+				pa.find('input:text,.selBar,.okBtn').hide();
+			});
+			$(this).hide();
+		});
+	});
+	
+	$('.mem_student_table .okBtn').live('click',function(){
+		var pa=$(this).parents('tr');
+		var sel=pa.find('select');
+		var stu_name= pa.find('.stu_name');
+		var stu_number=pa.find('.stu_number');
+		var identity=pa.find('.identity');
+		var new_number=stu_number.next('input').val();
+		var new_name=stu_name.next('input').val();
+		if(new_name!="" && new_number!=""){
+			stu_number.text(new_number).show();
+			stu_name.text(new_name).show();
+			identity.text(sanhai_tools.setSelect(sel)).show();
+			pa.find('input:text,.selBar,.okBtn,.cancelBtn').hide();
+			pa.find('.opBtn').removeClass('hide');
+			pa.find('.delNewAddBtn').remove();
+		}
+		else{popBox.errorBox('不能为空!!')}
+	});
+	
+	$('.mem_student_table .delInfoBtn,.delNewAddBtn').live('click',function(){
+		$(this).parents('tr').remove();
+	});
+	
+	
+	//添加学生
+	$('#addNewStuBtn').click(function(){
+		var html='<tr>';
+			html+='<td><span class="oldVal stu_name hide"></span><input type="text" class="text w60"></td>';
+            html+='<td><span class="oldVal stu_number hide">10003</span><input type="text" class="text w60"></td>';html+='<td><span class="oldVal identity hide">学生</span><span class="selBar"><span class="selectWrap big_sel"> <i></i> <em>学生</em><select><option value="1">学生</option><option value="2">班长</option></select></span></span></td>';	
+            html+='<td>未加入</td>';                
+            html+='<td class="edit"><em title="编辑" class="opBtn editInfoBtn hide">编辑</em><em title="删除" class="opBtn delInfoBtn hide">删除</em><button type="button" class="w80 bg_blue btn50 okBtn">确定<button type="button" class="w80 bg_blue btn50 hide cancelBtn">取消</button><button type="button" class="w80 bg_blue btn50 delNewAddBtn">取消</button></td>';
+			html+='</tr>';   
+		html+='';
+		$('.mem_student_table tbody').append(html);	
+	});
+	
+	/*$('.delNewAddBtn').live('click',function(){
+		$(this).parents('tr').remove();
+	})*/
+
+})
+</script>
+</head>
+
+<body class="classes">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24 homepage classes_home">
+    <div class="grid_24 myInfo class_home_info">
+        <div class="infoBar pr">
+       		<dl class="classes_head clearfix">
+            	<dt class="fl"><img src="../images/class.png" alt=""></dt>
+                <dd class=""><h2>人大附中147班</h2></dd>
+            	<dd class="">
+                	<div id="revise">
+                    	<p class="class_opacity"></p>
+                    	<p class="class_title fl">用所有热情换回时间，让青春烈火燃烧永恒</p><i class="ico"></i>
+                    	
+                    </div>
+                </dd>
+            </dl>
+            <div class="class_nav">
+            	<div class="class_nav_opacity"></div>
+            	
+           		<ul class="class_nav_list clearfix">
+                	<li class="ac"><a href="#" >首页</a></li>
+                    <li><a href="#">作业</a></li>
+                    <li><a href="#">考试</a></li>
+                    <li><a href="#">班级成员</a></li>
+                    <li><a href="#">班级文件</a></li>
+                    <li><a href="#">班内答疑</a></li>
+                    <li><a href="#">大事记</a></li>
+                
+                </ul> 
+            </div>
+        	
+        </div>
+        
+        
+        
+    </div>
+    <div class="grid_24 main  classes_members">
+        <div class="grid_16 alpha omega main_l">
+            <div class="main_cont">
+            	<div class="title">
+                    <h4>班级人员</h4>
+                    <div class="title_r">
+                        <span class="gray_d">教师: 5人 学生: 22人</span>
+                    </div>
+                </div>
+                <div class="mem_item mem_teacher">
+                	<div class="title item_title noBorder">
+                        <h4>老师</h4>
+                        <div class="title_r"></div>
+                	</div>
+                	<ul class="mem_teacher_list clearfix">
+                    	<div class="empty"><i></i>啥也没有</div>
+                    	<li>
+                        	<img src="../images/answerqu03.png">
+                            <p class="teacher_info">
+                            <span><a href="../teacher/teacher_home.html">张三</a></span>
+                            <span>数学</span>
+                            <span>班主任</span>
+                            <em title="编辑" class="opBtn editInfoBtn">编辑</em>
+                            <em title="删除" class="opBtn delInfoBtn">删除</em>
+                            </p>
+                            <div class="editBar hide">
+                            	<span class="selectWrap big_sel"> <i></i> <em>数学</em>
+                            <select>
+                                <option value="1">数学</option>
+                                <option value="2">语文</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span><span class="selectWrap big_sel"> <i></i> <em>班主任</em>
+                            
+                            <select>
+                                <option value="1">班主任</option>
+                                <option value="2">任课老师</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span>
+                            <button type="button" class="bg_blue btn50 editOKbtn">确定</button>
+                            </div>
+                        </li>
+                        <li>
+                        	<img src="../images/answerqu03.png">
+                            <p class="teacher_info">
+                            <span><a href="../teacher/teacher_home.html">张三</a></span>
+                            <span>数学</span>
+                            <span>班主任</span>
+                           <em title="编辑" class="opBtn editInfoBtn">编辑</em>
+                            <em title="删除" class="opBtn delInfoBtn">删除</em>
+                            </p>
+                            <div class="editBar hide">
+                            	<span class="selectWrap big_sel"> <i></i> <em>数学</em>
+                            <select>
+                                <option value="1">数学</option>
+                                <option value="2">语文</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span><span class="selectWrap big_sel"> <i></i> <em>班主任</em>
+                            
+                            <select>
+                                <option value="1">班主任</option>
+                                <option value="2">任课老师</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span>
+                            
+                            <button type="button" class="bg_blue btn50 editOKbtn">确定</button>
+                            </div>
+                        </li>
+                        <li>
+                        	<img src="../images/answerqu03.png">
+                            <p class="teacher_info">
+                            <span><a href="../teacher/teacher_home.html">张三</a></span>
+                            <span>数学</span>
+                            <span>班主任</span>
+                           <em title="编辑" class="opBtn editInfoBtn">编辑</em>
+                            <em title="删除" class="opBtn delInfoBtn">删除</em>
+                            </p>
+                            <div class="editBar hide">
+                            	<span class="selectWrap big_sel"> <i></i> <em>数学</em>
+                            <select>
+                                <option value="1">数学</option>
+                                <option value="2">语文</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span><span class="selectWrap big_sel"> <i></i> <em>班主任</em>
+                            
+                            <select>
+                                <option value="1">班主任</option>
+                                <option value="2">任课老师</option>
+                            </select>
+                            <span id="" class="errorTxt"></span> </span>
+                            <button type="button" class="bg_blue btn50 editOKbtn">确定</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mem_item mem_student">
+                	<div class="title item_title noBorder">
+                        <h4>学生</h4>
+                        <div class="title_r"></div>
+                	</div>
+                	<table class="mem_student_table">
+                    	<thead>
+                        	<tr>
+                        	<th style="width:80px">姓名</th>
+                            <th>学号</th>
+                            <th style="width:120px">身份</th>
+                            <th style="width:120px">状态</th>
+                            <th style="width:160px">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<tr>
+                        	<td><a href="../student/student_home.html" class="oldVal stu_name">张三</a><input type="text" class="text w60" style="display:none"></td>
+                            <td><span class="oldVal stu_number">10003</span><input type="text" class="text w60" style="display:none"></td>
+                            <td>
+                            	<span class="oldVal identity">班长</span>
+                            	<span class="selBar hide">
+                                	<span class="selectWrap big_sel"> <i></i> <em>班长</em>
+                                        <select>
+                                            <option value="1">班长</option>
+                                            <option value="2">学生</option>
+                                        </select>
+                                    </span>
+                                </span>
+                            </td>
+                            <td>已加入</td>
+                            <td class="edit"><em title="编辑" class="opBtn editInfoBtn">编辑</em>
+                            <em title="删除" class="opBtn delInfoBtn">删除</em><button type="button" class="w80 bg_blue btn50 hide okBtn">确定<button type="button" class="w80 bg_blue btn50 hide cancelBtn">取消</button></button></td>
+                            </tr>
+                            <tr>
+                        	<td><a href="../student/student_home.html" class="oldVal stu_name">张三</a><input type="text" class="text w60" style="display:none"></td>
+                            <td><span class="oldVal stu_number">10003</span><input type="text" class="text w60" style="display:none"></td>
+                            <td>
+                            	<span class="oldVal identity">学生</span>
+                            	<span class="selBar hide"><span class="selectWrap big_sel"> <i></i> <em>班长</em>
+                                    <select>
+                                        <option value="1">班长</option>
+                                        <option value="2">学生</option>
+                                    </select>
+                                </span></span>
+                            </td>
+                            <td>已加入</td>
+                            <td class="edit"><em title="编辑" class="opBtn editInfoBtn">编辑</em>
+                            <em title="删除" class="opBtn delInfoBtn">删除</em><button type="button" class="w80 bg_blue btn50 hide okBtn">确定</button><button type="button" class="w80 bg_blue btn50 hide cancelBtn">取消</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="dashde">
+                <br>
+                <button id="addNewStuBtn" type="button" class="bg_green btn40 w140">添加学生</button>
+            	
+            </div>
+        </div>
+        <div class="grid_8 alpha omega main_r">
+            <div class="main_cont">
+                <div class="mainContBorder">
+                    <div class="item"> 
+                        <ul class="total_QA_list clearfix">
+                        	<li>
+                            	<span>作业<em class="font16">200</em></span>
+                            </li>
+                            <li>
+                            	<span>考试<em class="font16">200</em></span>
+                            </li>
+                            <li>
+                            	<span>疑问<em class="font16">200</em></span>
+                            </li>
+                        </ul>
+                        <div class="hand_div pr">
+                        	<h4>手拉手班级</h4>
+                            <a class="more hand_ico"></a>
+                            <ul class="hand_list">
+                            	<li>
+                                	<img src="../images/class_right_1.png" alt=" ">
+                                    <h5><span>146班</span>人大附中</h5>
+                                    <p class="gray_d">班主任：张茜茜老师</p>
+                                    <p class="gray_d">成员：30名学生  10名教师</p>
+                                </li>
+                            </ul>
+                            <ul class="hand_list">
+                            	<li>
+                                	<img src="../images/class_right_1.png" alt=" ">
+                                    <h5><span>146班</span>人大附中</h5>
+                                    <p class="gray_d">班主任：张茜茜老师</p>
+                                    <p class="gray_d">成员：30名学生  10名教师</p>
+                                </li>
+                            </ul>
+                            <p class="gray_d" style="margin-bottom:10px">本班还有没有手拉手班级</p>
+                            <button type="button" class="btn bg_green w130">设置手拉手班级</button>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h4>班级成员</h4>
+                        <ul class="ta_student_list clearfix">
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                            <li> <img src="../images/answerqu03.png" width="50" height="50" alt=""/> 孙尚香 </li>
+                        </ul>
+                        <a href="#" class="blue underline">查看全部 200 位成员 》</a> </div>
+                    <div class="item noBorder pr">
+                        	<h4>本班大记事</h4>
+                            <a class="more">更多</a>
+                            <ul class="memorabilia_list">
+                            	<li>
+                                	<div class="memor_list_top clearfix">
+                                    	<span class="time_block gray_d font12">2015年<span class="font20 blue">03</span> 月</span>
+                                        <h5>学校运动会，我班总积分第一名学校运动会我班总积分第一</h5>
+                                        <p class="font12 gray_d">2015年04月18日</p>
+                                    </div>
+                                    <p class="gray_d">简介：全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。</p>
+                                </li>
+                            	<li class="li_last">
+                                	<div class="memor_list_top clearfix">
+                                    	<span class="time_block gray_d font12">2015年<span class="font20 blue">04</span> 月</span>
+                                        <h5>学校运动会，我班总积分第一名</h5>
+                                        <p class="font12 gray_d">2015年04月18日</p>
+                                    </div>
+                                    <p class="gray_d">简介：全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。</p>
+                                    <img src="../images/class_right_2.png" alt=" "><img src="../images/class_right_2.png" alt=" "><img src="../images/class_right_2.png" alt=" ">
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+
+</body>
+</html>

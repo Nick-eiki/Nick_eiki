@@ -1,0 +1,399 @@
+<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>教师--试卷管理-列表</title>
+<link href="../../css/base.css" rel="stylesheet" type="text/css">
+<link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="../../css/popBox.css" rel="stylesheet" type="text/css">
+<link href="../../css/teacher.css" rel="stylesheet" type="text/css">
+<link href="../../js/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="../../js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../js/base.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine.min.js" type="text/javascript"></script>
+<script src="../../js/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="../../js/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+
+<script>
+var q_data= {
+	"currPage":"当前页码",
+	"totalPages":"总页数",
+	"countSize":"总记录数",
+	"pageSize":"每页数据的条数",
+	"questionList": [
+		{
+		"id":"01",//题目id
+		"provience":"北京",//地区1
+		"city":"北京",//地区2
+		"country":"北京",//地区3
+		"gradeid":"三年级",//适用年级
+		"gradename":"三年级",//适用年级名称
+		"subjectid":"shuxue",//科目
+		"subjectname":"数学",//科目名称
+		"versionid":"renjiao",//版本
+		"versionname":"人教版",//版本名称
+		"kid":"钟表,时间",//知识点
+		"tqtid":"tiankong",// 题型
+		"showTypeId":"填空",//题目显示类型
+		"questiontypename":"填空题",// 题型名称
+		"provenance":"",//出处
+		"provenanceName":"",//出处名称
+		"year":"2012",//年份
+		"school":"",//名校
+		"schoolName":"",//名校名称
+		"complexity":"5",//难易程度
+		"capacityText":"",//能力提升
+		"capacity":"",//能力提升id
+		"capacityText":"",//能力提升
+		"Tags":"",//自定义标签
+		"content":"",//题目
+		"operater":"stu002",//录入人id
+		"operaterName":"李清",//录入人
+		"createTime":"",//创建时间
+		"updateTime":"",//更新时间
+		"tqName":"人教版小学三年级数学上册第五单元《时、分、秒》测试题",//题目名称
+		"analytical":"",//解析
+		" answerOption":"",//选择题答案
+		"answerContent":"",//答案
+		"questionPrice":"20",//价格
+		" childnum":"3",//小题数量
+		"childQues": [//小题
+			{
+				"id": 1017,
+				"tqtid":"01",// 题型
+			   "questiontypename":"填空题",// 题型名称
+				"content": "",
+				"answerOption":"",
+				"answerContent": "xiao 1 daan",
+				"analytical": "",
+				"childnum": 0,       
+				"childQues": []//小小题
+			  }],
+		"status":""//题目状态(0待审核,1通过,2禁用)
+		},
+	],
+    "resCode": "000000",
+    "resMsg": "成功"
+}
+
+$(function(){
+	//选择课程
+	
+
+	//知识树	
+	var zNodes =[
+		{ id:1, pId:0, name:"语文"},
+		{ id:11, pId:1, name:"拼音"},
+		{ id:111, pId:11, name:"声母"},
+		{ id:112, pId:11, name:"韵母"},
+		{ id:12, pId:1, name:"标点符号"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"},
+		{ id:13, pId:1, name:"造句"},
+		{ id:14, pId:1, name:"语法"}
+	];
+	var setting = {
+		check:{enable:false,chkboxType:{"Y" : "", "N" : ""} },
+		data:{simpleData: {	enable: true} },
+		view:{showIcon:false,showLine:false}
+	};
+	$.fn.zTree.init($("#problem_tree"), setting, zNodes);
+	var treeObj = $.fn.zTree.init($("#problem_tree"), setting, zNodes);
+	treeObj.expandAll(true);
+	//删除JS
+	/*$('.teac_test_paper_list li').hover(function(){
+		$(this).children('span').show();
+		$(this).addClass('this');	
+		
+	},function(){
+		$(this).removeClass('this');
+		$(this).children('span').hide();
+	})*/
+	
+	$('.teac_test_paper_list li').live('mouseover',function(){
+		$(this).children('span').show();
+		$(this).addClass('this');	
+	})
+	
+	$('.teac_test_paper_list li').live('mouseout',function(){
+		$(this).removeClass('this');
+		$(this).children('span').hide();
+	})
+	
+	
+	
+	
+	
+	
+	
+})
+</script>
+</head>
+
+<body class="teacher Problem_management">
+<div class="head"></div>
+<!--top_end--> 
+<!--主体-->
+<div class="cont24">
+    <div class="grid24 main">
+        <div class="grid_5 main_l">
+            <div class="clearfix item l_userInfo"> <img src="../../images/teacher_l.jpg">
+                    <a style="border-right:1px solid #ddd"><em>30</em><br>试卷</a>
+                    <a><em>300</em><br>课程</a>
+            </div>
+            <div class="item l_asideMenu">
+                <h4>我的档案</h4>
+                <ul class="setupMenu">
+                    <li><a class="lisA ac" href="javascript:;"><i></i>个人设置</a>
+                        <ul class="subMenu">
+                            <li><a class="ac" href="#">信息</a></li>
+                            <li><a href="#">通知</a></li>
+                            <li><a href="#">系统消息</a></li>
+                            <li><a href="#">我的私信</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisB" href="javascript:;"><i></i>考试与试卷</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">考试管理</a></li>
+                            <li><a href="#">试卷管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisC" href="javascript:;"><i></i>题目与推题</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">题目推送</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisD" href="javascript:;"><i></i>作业管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">1403班</a></li>
+                            <li><a href="#">1404班</a></li>
+                            <li><a href="#">1405班</a></li>
+                            <li><a href="#">1406班</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisF" href="javascript:;"><i></i>课程管理</a>
+                        <ul class="subMenu hide">
+                            <li><a class="ac" href="#">课程管理</a></li>
+                            <li><a href="#">评论管理</a></li>
+                            <li><a href="#">课程总结</a></li>
+                            <li><a href="#">家长会管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisG" href="javascript:;"><i></i>数据统计中心</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">班级统计</a></li>
+                            <li><a href="#">熊孩子管理器</a></li>
+                            <li><a href="#">个人统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>教研工作</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">教研课题</a></li>
+                            <li><a href="#">教学计划</a></li>
+                            <li><a href="#">听课评课</a></li>
+                            <li><a href="#">教研组资料</a></li>
+                            <li><a href="#">教研日记</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>备课</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#"><span>公文包(教案|讲义|个人教学计划)</span></a></li>
+                            <li><a href="#">资料袋</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>我的收藏</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">收藏的讲义</a></li>
+                            <li><a href="#">收藏的课程</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="lisH" href="javascript:;"><i></i>答疑管理</a>
+                        <ul class="subMenu hide">
+                            <li><a href="#">暂无内容(空)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid_19 main_r">
+            <div class="main_cont tezhagnhaioast_problem">
+                <div class="title">
+                    <h4>试卷管理</h4>
+                </div>
+               	<div class="form_list no_padding_form_list">
+                    <div class="row">
+                        <div class="formL">
+                            <label>学段：</label>
+                        </div>
+                        <div class="formR">
+                            <ul class="resultList  clearfix testClsList">
+                                <li class="ac"><a href="#">小学</a></li>
+                                <li><a href="#">初中</a></li>
+                                 <li><a href="#">高中</a></li>                                                             
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>学科：</label>
+                        </div>
+                        <div class="formR">
+                            <ul class="resultList  clearfix testClsList">
+                                <li class="ac"><a href="#">语文</a></li>
+                                <li><a href="#">数学</a></li>
+                                 <li><a>英语</a></li>
+                                 <li><a>历史</a></li>
+                                 <li><a>地理</a></li>
+                                 <li><a>政治</a></li>
+                                 <li><a>物理</a></li> 
+                                 <li><a>化学</a></li>
+                                 <li><a>生物</a></li>    
+                                 <li><a>政治</a></li>
+                                 <li><a>物理</a></li> 
+                                 <li><a>化学</a></li>
+                                 <li><a>生物</a></li>                                                            
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="formL">
+                            <label>版本：</label>
+                        </div>
+                        <div class="formR">
+                            <ul class="resultList  clearfix testClsList">
+                                <li class="ac"><a href="#">沪教版五四制</a></li>
+                                <li><a>人教四年版</a></li>
+                                 <li><a>人教版</a></li>
+                                 <li><a>北师大版</a></li>
+                                 <li><a>华师大版</a></li>
+                                 <li><a>苏教版</a></li>
+                                 <li><a>湘教版</a></li> 
+                                 <li><a>沪教版</a></li>
+                                 <li><a>北师大版(2013)</a></li>  
+                                 <li><a>湘教版(2013)</a></li>                                                          
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="problem_box clearfix tacher_test_paper">
+                	
+                	<div class="problem_r">
+                    	 <div class="problem_r_list">
+                            <h5>创建试卷<i></i></h5>
+                            <ul class="hot" style="display:none;">
+                                <li><a class="t_ico" href="javascript:;">创建试卷<i></i></a></li>
+                                <li class="list this "><a class="" href="upload_testpaper.html">上传试卷</a></li>
+                                <li class="list"><a class="" href="make_testpaperA.html">组织试卷</a></li>
+                            </ul>
+                        </div>
+                        
+                    	<div class="tab fl">
+                            <ul class="tabList clearfix">
+                                <li><a href="javascript:;" class="ac">我的试卷</a></li>
+                                <li><a href="javascript:;">平台试卷</a></li>
+                                <li><a href="javascript:;">我收藏的试卷</a></li>
+                            </ul>
+                            <div class="tabCont teac_test_paper">
+
+                                <div class="tabItem">
+                                	<div class="form_list">
+                                        <div class="row">
+                                           
+                                            <div class="formR">
+                                                <ul class="resultList  clearfix testClsList" >
+                                                    <li class="ac"><a>所有试卷</a></li>
+                                                    <li><a>纸质试卷</a></li>
+                                                     <li><a>电子试卷</a></li>                                                             
+                                                </ul>
+                                            </div>
+                                        </div>
+                                   </div>
+                                    <div class="test_paper_sort clearfix">
+                                   		<p class="fl font14">
+                                        	<span>排序：&nbsp;&nbsp;发布时间</span>
+                                            <em class="up ac"></em>
+                                            <em class="down"></em>
+                                        </p>
+                                   </div>
+                    				<ul class="teac_test_paper_list clearfix">
+                                    	<li class="fl this">
+                                        	
+                                        	<h4>此处显示试卷名称</h4>
+                                            <dl class="clearfix">
+                                            	<dt class="fl"><img src="../../images/test_paper_img.png" alt=""></dt>
+                                                <dd class="fl synopsis" title="全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。">
+                                                	<strong>简介：</strong>全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。
+                                                </dd>
+                                                <dd class="fl">格式：Word</dd>
+                                                <dd class="fl">创建时间：2010-01-02 18:00</dd>
+                                            </dl>
+                                            <span class="txtDelBtn paper_txt font13">删除</span>
+                                        </li>
+                                        <li class="fl">
+                                        	<h4>此处显示试卷名称</h4>
+                                            <dl class="clearfix">
+                                            	<dt class="fl"><img src="../../images/test_paper_img2.png" alt=""></dt>
+                                                <dd class="fl">
+                                                	<strong>简介：</strong>全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。
+                                                </dd>
+                                                <dd class="fl">格式：图片</dd>
+                                                <dd class="fl">创建时间：2010-01-02 18:00</dd>
+                                            </dl>
+                                            <span class="txtDelBtn paper_txt font13">删除</span>
+                                        </li>
+                                         <li class="fl">
+                                         <span class="txtDelBtn paper_txt font13">删除</span>
+                                        	<h4>此处显示试卷名称</h4>
+                                            <dl class="clearfix">
+                                            	<dt class="fl"><img src="../../images/test_paper_img3.png" alt=""></dt>
+                                                <dd class="fl">
+                                                	<strong>简介：</strong>全方位多角度解读中考各科重难点迅速捕捉各类题型得分点，迅速捕捉各类题型得分点。
+                                                </dd>
+                                                <dd class="fl">格式：在线试卷</dd>
+                                                <dd class="fl">创建时间：2010-01-02 18:00</dd>
+                                            </dl>
+                                        </li>
+                                       
+                                    
+                                    </ul>
+									 <div class="page "><a class="jumpBtn prev">上一页</a><a class="current">1</a><span>……</span><a>2</a><a>3</a><a>4</a><a>5</a><span>……</span><a>9</a><a class="jumpBtn next">下一页</a></div>
+                                </div>
+                             
+                                <div class="tabItem hide">
+    								
+                                </div>
+                                <div class="tabItem hide">
+
+                                </div>
+                           
+                        	</div>
+                    </div>
+                    
+                    
+                    </div>
+                	
+                
+                </div>
+                
+               
+               
+               
+               
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--主体end-->
+</body>
+</html>
