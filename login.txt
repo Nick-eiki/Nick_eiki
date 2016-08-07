@@ -1,0 +1,5 @@
+<label for="userId">用户名:</label>
+<input type="text" id="userId"/><br/>
+<label for="userPsd">密码:</label>
+<input type="password" id="userPsd"/><br/></br>
+<button id="submit" onclick="submit();">登录</button>

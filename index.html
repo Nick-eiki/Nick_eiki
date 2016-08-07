@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        *{margin:0;padding:0}
+        label{width:100px;text-align:right;display:inline-block;padding-right:10px;margin-top:10px;}
+        .hide{visibility:hidden;}
+        button{margin-left:120px;margin-top:5px;width:50px;height:20px;border-radius:5px;outline:none;}
+    </style>
+</head>
+<body>
+<label for="userId">用户名:</label>
+<input type="text" id="userId"/><br/>
+<label for="userPsd">密码:</label>
+<input type="password" id="userPsd"/><br/>
+<label for="user_psd">密码确认:</label>
+<input type="password" id="user_psd"/><br/>
+<label for="userName">姓名:</label>
+<input type="text" id="userName"/><br/>
+<label for="personId">身份证号码:</label>
+<input type="text" id="personId"/><br/>
+<label for="email">邮箱:</label>
+<input type="email" id="email"/><br/>
+<label>账户类型:</label>
+<select name="" id="user_type">
+    <option value="0">储蓄账户</option>
+    <option value="1">信用账户</option>
+</select><br/>
+<label for="Celling" class="hide">透支额度:</label>
+<input type="text" id="Celling" class="hide" value="0"/><br>
+<button>注册</button>
+<button onclick="Band_balance()">银行总余额</button>
+<button>银行透支总额度</button>
+</body>
+<script>
+    /**
+     * 注册部分
+     */
+    var user_arr = '';
+    if (localStorage.getItem('user_arr') != null) {
+        user_arr = localStorage.getItem('user_arr');
+        console.log(user_arr);
+    }
+    function $(id) {
+        return document.getElementById(id);
+    }
+    //选择账户类型
+    $('user_type').onchange = function () {
+        if (document.querySelectorAll('option')[1].selected) {
+            document.getElementsByClassName('hide')[0].style.visibility = 'visible';
+            document.getElementsByClassName('hide')[1].style.visibility = 'visible';
+        } else {
+            document.getElementsByClassName('hide')[0].style.visibility = 'hidden';
+            document.getElementsByClassName('hide')[1].style.visibility = 'hidden';
+        }
+    };
+    document.querySelector('button').onclick = function () {
+        //邮箱正则表达式
+        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+        //身份证号码正则表达式
+        var myPersonId = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
+        if ($('userId').value == '') {
+            alert('提示\n\n用户名不能为空!');
+            $('userId').focus();
+            return false;
+        } else if ($('userPsd').value == '') {
+            alert('提示\n\n密码不能为空!');
+            $('userPsd').focus();
+            return false;
+        } else if ($('userPsd').value != $('user_psd').value) {
+            alert('提示\n\n密码不正确!');
+            $('user_psd').focus();
+            return false;
+        } else if ($('userName').value == '') {
+            alert('提示\n\n姓名不能为空!');
+            $('userName').focus();
+            return false;
+        } else if (!myPersonId.test($('personId').value)) {
+            alert('提示\n\n请输入有效的身份证！');
+            $('personId').focus();
+            return false;
+        } else if (!myreg.test($('email').value)) {
+            alert('提示\n\n请输入有效的E_mail！');
+            $('email').focus();
+            return false;
+        } else if (localStorage.getItem($('userId').value) != null) {
+            alert('用户已存在');
+            return false;
+        }
+        var Account = {
+            id: $('userId').value,//账户号码
+            password: $('userPsd').value,//账户密码
+            name: $('userName').value,//真实姓名
+            personId: $('personId').value,//身份证号码
+            email: $('email').value,//电子邮箱
+            balance: '0',//账户余额
+            SavingAccount: document.querySelectorAll('option')[0].selected,//储蓄账户
+            CreditAccount: document.querySelectorAll('option')[1].selected,//信用账户
+            Celling: parseInt($('Celling').value)//透支额度
+        };
+        if (user_arr != '') {
+            user_arr += ',' + Account.id;
+        } else {
+            user_arr += Account.id;
+        }
+        localStorage.setItem('user_arr', user_arr);
+        localStorage.setItem(Account.id, JSON.stringify(Account));
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'login.txt', true);
+        xhr.send(null);
+        xhr.onreadystatechange = function (event) {
+            if (xhr.readyState == 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    document.body.innerHTML = xhr.responseText;
+                    document.title='登录页面';
+                } else {//失败
+                    alert(xhr.status);
+                }
+            }
+        };
+    };
+    function Band_balance() {
+        var arr_balance = localStorage.getItem('user_arr').split(',');
+        var num=0;
+        for (var i = 0; arr_balance.length > i; i++) {
+            num+=parseInt(JSON.parse(localStorage.getItem(arr_balance[i])).balance);
+        }
+        alert(num);
+    }
+    function Band_overdraw() {
+        var arr_balance = localStorage.getItem('user_arr').split(',');
+        var num=0;
+        for (var i = 0; arr_balance.length > i; i++) {
+            num+=parseInt(JSON.parse(localStorage.getItem(arr_balance[i])).Celling);
+        }
+        alert(num);
+    }
+    /**
+     * 登录部分
+     */
+    var user;
+    function submit() {
+        if (localStorage.getItem($('userId').value) == null) {
+            alert('账号错误');
+            return false;
+        } else if ($('userPsd').value != JSON.parse(localStorage.getItem($('userId').value)).password) {
+            alert('密码错误');
+            return false;
+        }
+        user = JSON.parse(localStorage.getItem($('userId').value));
+        document.title='用户页面';
+        document.body.innerHTML = '<div style="margin:20px;"></div><label for=""></label>账户名:' + user.id + '<br />' + '<label for=""></label>余额:' + user.balance + '<br/>'
+                + '<label for=""></label>可透支:' + user.Celling+'<br /><label for=""></label><input type="text" id="num"><br /><button onclick="depoit();">取款</button><br/><button onclick="withdraw()">存款</button><br/>';
+    }
+    function depoit() {
+        if (user.balance >= parseInt($('num').value) && user.SavingAccount) {
+            user.balance -= parseInt($('num').value);
+            localStorage.setItem(user.id, user);
+            document.body.innerHTML = '<div style="margin:20px;"></div><label for=""></label>账户名:' + user.id + '<br />' + '<label for=""></label>余额:' + user.balance + '<br/>'
+                    + '<label for=""></label>可透支:' + user.Celling+'<br /><label for=""></label><input type="text" id="num"><br /><button onclick="depoit();">取款</button><br/><button onclick="withdraw()">存款</button><br/>';
+        } else if (user.balance + user.Celling >= parseInt($('num').value)) {
+            user.balance = parseInt(user.balance) - parseInt($('num').value);
+            localStorage.setItem(user.id, user);
+            document.body.innerHTML = '<div style="margin:20px;"></div><label for=""></label>账户名:' + user.id + '<br />' + '<label for=""></label>余额:' + user.balance + '<br/>'
+                    + '<label for=""></label>可透支:' + user.Celling+'<br /><label for=""></label><input type="text" id="num"><br /><button onclick="depoit();">取款</button><br/><button onclick="withdraw()">存款</button><br/>';
+        } else {
+            alert('余额不足');
+        }
+    }
+    function withdraw() {
+        user.balance = parseInt(user.balance) + parseInt($('num').value);
+        localStorage.setItem(user.id, user);
+        alert('存款成功');
+        document.body.innerHTML = '<div style="margin:20px;"></div><label for=""></label>账户名:' + user.id + '<br />' + '<label for=""></label>余额:' + user.balance + '<br/>'
+                + '<label for=""></label>可透支:' + user.Celling+'<br /><label for=""></label><input type="text" id="num"><br /><button onclick="depoit();">取款</button><br/><button onclick="withdraw()">存款</button><br/>';
+    }
+</script>
+</html>
